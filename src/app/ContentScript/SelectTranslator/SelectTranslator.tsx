@@ -113,11 +113,34 @@ export class SelectTranslator {
 
 	constructor(options?: Partial<Options>) {
 		if (options !== undefined) {
-			for (const key in options) {
-				(this.options as any)[key] = (options as any)[key];
-			}
+			this.setOptions(options);
 		}
 	}
+
+	/**
+	 * Update options on a live instance without remounting the popup.
+	 * Used when config/pageData changes while the translator is running
+	 * (e.g. SW wake broadcasting the same appConfig, pageLanguage scan).
+	 */
+	public setOptions(options: Partial<Options>) {
+		for (const key in options) {
+			(this.options as any)[key] = (options as any)[key];
+		}
+	}
+
+	/**
+	 * Once the user engages the floating icon / card is translating, document-level
+	 * `pointerdown` must not tear the popup down. LayerManager handles real
+	 * outside clicks for the card; this flag also covers the first-engage race
+	 * where a same-gesture or retargeted event would otherwise call hidePopup
+	 * while the Loader is mounting (especially the first translation on a page
+	 * when the service worker is cold).
+	 */
+	private suppressOutsidePointerClose = false;
+
+	public setSuppressOutsidePointerClose = (suppress: boolean) => {
+		this.suppressOutsidePointerClose = suppress;
+	};
 
 	// Flag which set while every selection event and reset while button shown
 	private unhandledSelection = false;
@@ -249,14 +272,35 @@ export class SelectTranslator {
 		evt.stopImmediatePropagation();
 	};
 
-	// NOTE: maybe it should be removed after start use popup
 	/**
-	 * Close popup by click outside the root
+	 * True when the event originates inside our shadow host / root.
+	 * Prefer composedPath so closed-shadow retargeting and nested hosts are covered.
+	 */
+	private readonly isEventInsideRoot = (evt: Event) => {
+		const root = this.shadowRoot.getRootNode();
+		if (root === null) return false;
+
+		if (typeof evt.composedPath === 'function') {
+			const path = evt.composedPath();
+			if (path.includes(root)) return true;
+			// react-shadow host is a child of root; path often ends at host for
+			// retargeted events depending on browser / listener attachment.
+			for (const node of path) {
+				if (node instanceof Node && root.contains(node)) return true;
+			}
+		}
+
+		return evt.target instanceof Node && root.contains(evt.target);
+	};
+
+	/**
+	 * Close popup by click outside the root.
+	 * Skipped while a translate session is engaged — LayerManager owns outside
+	 * close for the card, and false positives here were killing the first Loader.
 	 */
 	private readonly pointerDown = (evt: PointerEvent | TouchEvent) => {
-		const root = this.shadowRoot.getRootNode();
-		if (root !== null && evt.target instanceof Node && root.contains(evt.target))
-			return;
+		if (this.isEventInsideRoot(evt)) return;
+		if (this.suppressOutsidePointerClose) return;
 
 		this.hidePopup();
 	};
@@ -299,8 +343,8 @@ export class SelectTranslator {
 		const target = evt.target;
 		const root = this.shadowRoot.getRootNode();
 
-		// Skip events inside root node
-		if (root === null || (target instanceof Node && root.contains(target))) return;
+		// Skip events inside root node (icon / card clicks)
+		if (root === null || this.isEventInsideRoot(evt)) return;
 
 		this.getSelectedText().then((selectedTextObj) => {
 			let text: string | null = null;
@@ -385,6 +429,11 @@ export class SelectTranslator {
 		} = this.options;
 
 		const isForceQuickTranslate = enableTranslateFromContextMenu;
+		const immediateTranslate = isForceQuickTranslate || quickTranslate;
+
+		// Quick-translate opens the card immediately — suppress document
+		// pointerdown hide for the whole session until the popup is closed.
+		this.suppressOutsidePointerClose = immediateTranslate;
 
 		const rootNode = this.shadowRoot.getRootNode();
 		if (!rootNode) throw new Error('Root node is not found');
@@ -402,7 +451,10 @@ export class SelectTranslator {
 		this.shadowRoot.mountComponent(
 			<TextTranslatorPopup
 				closeHandler={this.hidePopup}
-				quickTranslate={isForceQuickTranslate || quickTranslate}
+				onTranslateEngage={() => {
+					this.setSuppressOutsidePointerClose(true);
+				}}
+				quickTranslate={immediateTranslate}
 				{...{
 					translate,
 					pageLanguage,
@@ -422,6 +474,7 @@ export class SelectTranslator {
 	};
 
 	private readonly hidePopup = () => {
+		this.suppressOutsidePointerClose = false;
 		this.mountEmptyComponent();
 	};
 

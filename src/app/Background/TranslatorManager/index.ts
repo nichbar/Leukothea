@@ -1,10 +1,11 @@
 import { isLanguageCodeISO639v1 } from 'anylang/languages';
-import { IScheduler, Scheduler, SchedulerWithCache } from 'anylang/scheduling';
+import { IScheduler, Scheduler } from 'anylang/scheduling';
 
 import { AppConfigType } from '../../../types/runtime';
 import { RecordValues } from '../../../types/utils';
 
 import { TranslatorsCacheStorage } from '../TranslatorsCacheStorage';
+import { SchedulerWithCache } from './SchedulerWithCache';
 import { TranslatorsMap } from '..';
 
 export type Config = Pick<
@@ -74,7 +75,12 @@ export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsM
 			if (useCache) {
 				// Wrap scheduler by cache
 				const cacheInstance = this.getCacheInstance();
-				schedulerInstance = new SchedulerWithCache(scheduler, cacheInstance);
+				// LLM backends should keep their own punctuation; do not re-attach
+				// source non-letter prefix/suffix stripped for cache keys.
+				const isLLMTranslator = this.config.translatorModule === 'LLMTranslator';
+				schedulerInstance = new SchedulerWithCache(scheduler, cacheInstance, {
+					restoreAffixes: !isLLMTranslator,
+				});
 			}
 
 			this.schedulerInstance = schedulerInstance;

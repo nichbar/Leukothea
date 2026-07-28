@@ -289,9 +289,12 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 		translateText();
 	}, [isInited, translateText]);
 
+	// Reposition once after Loader mounts and again when the result/error card
+	// appears. Avoid calling on every render — that can thrash popper while the
+	// first backend round-trip is in flight.
 	useEffect(() => {
 		if (updatePopup) updatePopup();
-	});
+	}, [isInited, translatedText, error, updatePopup]);
 
 	const isMobile = useMemo(() => isMobileBrowser(), []);
 

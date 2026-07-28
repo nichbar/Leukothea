@@ -5,10 +5,10 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -16,10 +16,10 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -29,7 +29,6 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,
@@ -59,10 +58,10 @@ exports[`config migrations > race condition detection > Detection race condition
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -70,10 +69,10 @@ exports[`config migrations > race condition detection > Detection race condition
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -83,7 +82,6 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,
@@ -113,10 +111,10 @@ exports[`config migrations > race condition detection > Detection race condition
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -124,10 +122,10 @@ exports[`config migrations > race condition detection > Detection race condition
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -137,7 +135,6 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,
@@ -167,10 +164,10 @@ exports[`config migrations > race condition detection > Detection race condition
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -178,10 +175,10 @@ exports[`config migrations > race condition detection > Detection race condition
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -191,7 +188,6 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,
@@ -221,10 +217,10 @@ exports[`config migrations > race condition detection > Detection race condition
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -232,10 +228,10 @@ exports[`config migrations > race condition detection > Detection race condition
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -245,7 +241,6 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,
@@ -275,10 +270,10 @@ exports[`config migrations > race condition detection > Detection race condition
   "cache": {
     "ignoreCase": true,
   },
+  "fixedSourceLanguage": null,
   "history": {
     "enabled": true,
   },
-  "fixedSourceLanguage": null,
   "language": "en",
   "llmTranslator": {
     "apiKey": "",
@@ -286,10 +281,10 @@ exports[`config migrations > race condition detection > Detection race condition
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
-    "popup": {
+  "popup": {
     "rememberLastTab": true,
   },
-    "scheduler": {
+  "scheduler": {
     "chunkSizeForInstantTranslate": null,
     "directTranslateLength": null,
     "isAllowDirectTranslateBadChunks": true,
@@ -299,7 +294,6 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "selectTranslator": {
     "detectedLangFirst": true,
-    "disableWhileTranslatePage": false,
     "enabled": true,
     "focusOnTranslateButton": false,
     "isUseAutoForDetectLang": true,

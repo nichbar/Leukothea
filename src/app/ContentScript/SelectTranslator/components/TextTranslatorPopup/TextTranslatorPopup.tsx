@@ -33,6 +33,12 @@ export interface TextTranslatorPopupProps
 	opacity?: number;
 
 	closeHandler: () => void;
+	/**
+	 * Fired as soon as the user engages the floating icon / translation starts.
+	 * Used by SelectTranslator to suppress document pointerdown outside-close
+	 * for the rest of the session (avoids first-open Loader unmount races).
+	 */
+	onTranslateEngage?: () => void;
 }
 
 const cnTheme = cn('Theme');
@@ -60,6 +66,7 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 	focusOnTranslateButton = false,
 	opacity = 0.95,
 	closeHandler,
+	onTranslateEngage,
 	...props
 }) => {
 	const [translating, setTranslating] = useState(quickTranslate);
@@ -99,21 +106,35 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 		[closeHandler, timeoutForHideButton],
 	);
 
+	// Ignore LayerManager click-close briefly after engage so the same gesture /
+	// first Loader mount cannot race an outside-close (common on the first
+	// translation of a page when backend/SW work stretches the loading window).
+	const clickCloseGraceUntilRef = useRef(0);
+
+	const markTranslateEngage = useCallback(() => {
+		isOpeningOrTranslatingRef.current = true;
+		clickCloseGraceUntilRef.current = Date.now() + 750;
+		toggleAutoclose(false);
+		onTranslateEngage?.();
+	}, [onTranslateEngage, toggleAutoclose]);
+
 	const doTranslate = useCallback(() => {
 		if (!translating) {
 			// Stop auto-hide before opening the card so a late timeout can't
 			// race the click and unmount the popup.
-			isOpeningOrTranslatingRef.current = true;
-			toggleAutoclose(false);
+			markTranslateEngage();
 			setTranslating(true);
 		}
-	}, [toggleAutoclose, translating]);
+	}, [markTranslateEngage, translating]);
 
 	// Init
 	useEffect(() => {
 		// Enable hide button by timeout if not already translating
 		if (!translating) {
 			toggleAutoclose(true);
+		} else {
+			// quickTranslate / context-menu path opens the card immediately
+			markTranslateEngage();
 		}
 
 		return () => {
@@ -142,27 +163,52 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 	// LayerManager (via Popup) closes on document click/ESC. Clicks inside a
 	// closed shadow root surface on document listeners with `event.target`
 	// equal to the host, so `popup.contains(event.target)` is false and
-	// LayerManager can treat them as outside. Drop those false positives; real
-	// outside presses still close via SelectTranslator.pointerDown (icon) /
-	// LayerManager (card). Capture phase also runs before React commits
-	// `doTranslate`, so ignore click closes while still in button mode.
+	// LayerManager can treat them as outside. Drop those false positives via
+	// composedPath + host checks. Capture-phase click can also fire before
+	// React commits `doTranslate`, so ignore click closes while still in
+	// button mode.
 	const handlePopupClose = useCallback(
 		(event: KeyboardEvent | MouseEvent, source: 'esc' | 'click') => {
 			if (source === 'click') {
+				// Icon mode: the engage click itself must never close the popup.
 				if (!translating) return;
 
+				// First-open grace: Loader is mounting / SW may be waking.
+				if (Date.now() < clickCloseGraceUntilRef.current) return;
+
+				const path =
+					typeof event.composedPath === 'function' ? event.composedPath() : [];
 				const inner =
 					containerRef.current ??
 					translateButtonRef.current ??
 					cursorRef.current;
-				if (inner && event.target instanceof Node) {
+
+				if (inner) {
 					const root = inner.getRootNode();
-					// Closed-shadow click: target is the host on document listeners
-					if (root instanceof ShadowRoot && event.target === root.host) {
+					// Closed-shadow: document listeners see the host as target
+					if (
+						root instanceof ShadowRoot &&
+						(event.target === root.host || path.includes(root.host))
+					) {
 						return;
 					}
-					if (inner === event.target || inner.contains(event.target)) {
+					if (
+						path.includes(inner) ||
+						(event.target instanceof Node &&
+							(inner === event.target || inner.contains(event.target)))
+					) {
 						return;
+					}
+				} else if (path.length > 0) {
+					// Refs not ready yet on first paint of the card — if the event
+					// path still hits our shadow tree, treat as inside.
+					for (const node of path) {
+						if (
+							node instanceof ShadowRoot ||
+							(node instanceof Element && node.shadowRoot)
+						) {
+							return;
+						}
 					}
 				}
 			}
@@ -281,10 +327,7 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 					// pointerdown runs before document-level click handlers and before
 					// selection-clearing side effects; cancel auto-hide immediately
 					// and mark intent so a late mouseleave can't re-arm the timer.
-					onPointerDown={() => {
-						isOpeningOrTranslatingRef.current = true;
-						toggleAutoclose(false);
-					}}
+					onPointerDown={markTranslateEngage}
 					onClick={doTranslate}
 					onMouseOver={() => {
 						toggleAutoclose(false);

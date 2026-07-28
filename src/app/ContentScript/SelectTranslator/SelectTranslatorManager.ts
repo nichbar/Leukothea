@@ -38,16 +38,11 @@ export class SelectTranslatorManager {
 				if (this.selectTranslator === null) {
 					this.selectTranslator = new SelectTranslator(config);
 				} else {
-					const isRun = this.selectTranslator.isRun();
-					if (isRun) {
-						this.selectTranslator.stop();
-					}
-
-					this.selectTranslator = new SelectTranslator(config);
-
-					if (isRun) {
-						this.selectTranslator.start();
-					}
+					// Soft-update options without stop/start so an open
+					// selection popup (including the loading spinner) is not
+					// torn down by identical config broadcasts or soft field
+					// changes like pageLanguage.
+					this.selectTranslator.setOptions(config);
 				}
 			} else {
 				if (this.selectTranslator === null) return;
