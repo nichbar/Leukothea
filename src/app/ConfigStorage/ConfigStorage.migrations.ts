@@ -350,6 +350,30 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Add selectTranslator.skipWhenSameAsUserLanguage
+		version: 16,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const updatedConfig = {
+				...actualData,
+				selectTranslator: {
+					...actualData?.selectTranslator,
+					skipWhenSameAsUserLanguage:
+						actualData?.selectTranslator?.skipWhenSameAsUserLanguage ?? false,
+				},
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

@@ -394,6 +394,18 @@ export const generateTree = ({
 								),
 							},
 						},
+						{
+							description: getMessage(
+								'settings_option_selectTranslation_skipWhenSameAsUserLanguage_desc',
+							),
+							path: 'selectTranslator.skipWhenSameAsUserLanguage',
+							optionContent: {
+								type: 'Checkbox',
+								text: getMessage(
+									'settings_option_selectTranslation_skipWhenSameAsUserLanguage',
+								),
+							},
+						},
 					],
 				},
 				{

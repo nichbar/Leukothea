@@ -85,6 +85,10 @@ export const AppConfig = type.type({
 		detectedLangFirst: type.boolean,
 		showOnceForSelection: type.boolean,
 		isUseAutoForDetectLang: type.boolean,
+		/**
+		 * Hide selection popup when detected language matches "Your language"
+		 */
+		skipWhenSameAsUserLanguage: type.boolean,
 		timeoutForHideButton: type.number,
 		/**
 		 * Opacity of the selection TextTranslator popup card (0–1)

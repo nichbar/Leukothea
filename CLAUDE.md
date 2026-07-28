@@ -74,6 +74,7 @@ Webpack targets (`EXT_TARGET`): `chromium` (default release), `chrome`, `firefox
 - Update snapshots intentionally (`vitest -u`) when migration output or locale tooling output changes
 - Show the diff (or summarize changed files) before committing when asked to commit
 - Prefer Chromium as the default load-unpacked target for manual verification in this fork
+- After every major change (features, selection popup, options/config, background/content-script behavior), rebuild Chromium with `make buildChromium` (output: `build/chromium`) so the unpacked extension can be reloaded without waiting to be asked
 
 ## Verification
 

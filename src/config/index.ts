@@ -48,6 +48,8 @@ export const defaultConfig: AppConfigType = {
 		focusOnTranslateButton: false,
 		showOnceForSelection: isMobileBrowser() ? false : true,
 		isUseAutoForDetectLang: true,
+		// Off by default so existing behavior is preserved for upgrades
+		skipWhenSameAsUserLanguage: false,
 		opacity: 0.95,
 	},
 	popup: {

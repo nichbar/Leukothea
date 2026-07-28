@@ -425,6 +425,12 @@
 	"settings_option_selectTranslation_isUseAutoForDetectLang_desc": {
 		"message": "Use automatic language detection by the translator when the language cannot be detected locally"
 	},
+	"settings_option_selectTranslation_skipWhenSameAsUserLanguage": {
+		"message": "Hide popup when text is already in Your language"
+	},
+	"settings_option_selectTranslation_skipWhenSameAsUserLanguage_desc": {
+		"message": "When enabled, the selection translation popup is not shown if the selected text is detected as the same language as Your language. If language detection fails, the popup still appears. Context-menu translation is not affected."
+	},
 	"settings_option_selectTranslation_mode": {
 		"message": "Translation trigger"
 	},

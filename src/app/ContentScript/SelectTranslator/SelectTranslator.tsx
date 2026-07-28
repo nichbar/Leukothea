@@ -1,6 +1,8 @@
 import React from 'react';
 
+import { detectLanguage } from '../../../lib/language';
 import { ShadowDOMContainerManager } from '../../../lib/ShadowDOMContainerManager';
+import { getUserLanguagePreferences } from '../../../requests/backend/getUserLanguagePreferences';
 import { translate } from '../../../requests/backend/translate';
 
 import { TextTranslatorPopup } from './components/TextTranslatorPopup/TextTranslatorPopup';
@@ -39,6 +41,11 @@ export interface Options {
 	 * Use auto detection for `from` direction
 	 */
 	isUseAutoForDetectLang: boolean;
+
+	/**
+	 * Hide selection popup when detected language matches "Your language"
+	 */
+	skipWhenSameAsUserLanguage: boolean;
 
 	/**
 	 * Remember translate direction
@@ -101,6 +108,7 @@ export class SelectTranslator {
 		rememberDirection: false,
 		showOnceForSelection: true,
 		isUseAutoForDetectLang: true,
+		skipWhenSameAsUserLanguage: false,
 		opacity: 0.95,
 		enableTranslateFromContextMenu: false,
 	};
@@ -400,7 +408,7 @@ export class SelectTranslator {
 			pointer,
 		});
 
-	private readonly showPopup = (text: string, anchorRect: AnchorRect) => {
+	private readonly showPopup = async (text: string, anchorRect: AnchorRect) => {
 		const trimmedText = text.trim();
 
 		if (trimmedText.length === 0) return;
@@ -413,6 +421,7 @@ export class SelectTranslator {
 			quickTranslate,
 			detectedLangFirst,
 			isUseAutoForDetectLang,
+			skipWhenSameAsUserLanguage,
 			rememberDirection,
 			zIndex,
 			timeoutForHideButton,
@@ -423,6 +432,34 @@ export class SelectTranslator {
 
 		const isForceQuickTranslate = enableTranslateFromContextMenu;
 		const immediateTranslate = isForceQuickTranslate || quickTranslate;
+
+		// Optional skip: hide selection UI when text is already in "Your language".
+		// Context-menu translate always shows.
+		// Use best-effort detection (reliableOnly=false). Chrome often marks short
+		// CJK selections as "unreliable" while still returning the correct top
+		// language (e.g. zh); requiring isReliable made the toggle look broken.
+		if (skipWhenSameAsUserLanguage && !isForceQuickTranslate) {
+			try {
+				const [userLanguage, detectedLanguage] = await Promise.all([
+					getUserLanguagePreferences(),
+					detectLanguage(trimmedText, false),
+				]);
+
+				const normalizeLang = (lang: string) => lang.toLowerCase().split('-')[0];
+				if (
+					detectedLanguage !== null &&
+					normalizeLang(detectedLanguage) === normalizeLang(userLanguage)
+				) {
+					return;
+				}
+			} catch (reason) {
+				// Detection / config failures must not block the popup.
+				console.error(
+					'[SelectTranslator] skipWhenSameAsUserLanguage check failed:',
+					reason,
+				);
+			}
+		}
 
 		// Quick-translate opens the card immediately — suppress document
 		// pointerdown hide for the whole session until the popup is closed.
