@@ -1,7 +1,7 @@
 import { DEFAULT_TRANSLATOR } from '../../../config';
 import { buildBackendRequest } from '../../utils/requestBuilder';
 
-import { getTranslatorsClasses, isCustomTranslatorId } from '.';
+import { getTranslatorsClasses } from '.';
 
 // TODO: move logic to `TranslateSchedulerConfig`
 export const [applyTranslatorsFactory, applyTranslators] = buildBackendRequest(
@@ -14,17 +14,13 @@ export const [applyTranslatorsFactory, applyTranslators] = buildBackendRequest(
 				const latestConfig = await config.get();
 				const { translatorModule: translatorName } = latestConfig;
 
-				if (isCustomTranslatorId(translatorName)) {
-					const isCurrentTranslatorAvailable =
-						translatorName in translatorsClasses;
-
-					// Reset translator to default
-					if (!isCurrentTranslatorAvailable) {
-						await config.set({
-							...latestConfig,
-							translatorModule: DEFAULT_TRANSLATOR,
-						});
-					}
+				// Reset to default when selected module is missing (removed built-in
+				// or deleted custom). Covers stale Google/Microsoft/Yandex/Bergamot ids.
+				if (!(translatorName in translatorsClasses)) {
+					await config.set({
+						...latestConfig,
+						translatorModule: DEFAULT_TRANSLATOR,
+					});
 				}
 
 				const translateManager = await backgroundContext.getTranslateManager();

@@ -91,9 +91,9 @@ export class App {
 			try {
 				offscreen.createDocument({
 					url: 'offscreen-documents/main/main.html',
-					reasons: ['WORKERS', 'IFRAME_SCRIPTING', 'MATCH_MEDIA'],
+					reasons: ['IFRAME_SCRIPTING', 'MATCH_MEDIA'],
 					justification:
-						'Main offscreen document, to run WASM and custom translators code in sandbox',
+						'Main offscreen document, to run custom translators code in sandbox and listen theme media queries',
 				});
 			} catch (error) {
 				if (

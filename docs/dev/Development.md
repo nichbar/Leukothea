@@ -7,7 +7,7 @@ The build scripts are designed to run on a Unix platform (Linux, macOS, BSD, etc
 - AMD64 platform. ARM platform is currently not tested, so the build may fail there
 - UNIX-like OS
 - make installed
-- Docker installed
+- Docker installed (only required for the full `make build` path that runs packaging in a container)
 
 If you have an ARM CPU and want to build the code, you can emulate AMD64 and run the build there. You may also try to [enable emulation](https://stackoverflow.com/questions/65612411/forcing-docker-to-use-linux-amd64-platform-by-default-on-macos) at the Docker level. If you use Docker, set the variable `export DOCKER_DEFAULT_PLATFORM=linux/amd64` or add the option `platform: linux/amd64` to a `docker-compose.yml` file.
 
@@ -24,9 +24,9 @@ CI and `make build` pack Chromium only. For a specific browser target, run `make
 - chromium: default release target (auto updates not from the Google Store)
 - chrome: Chrome Web Store variant (local builds)
 
-You must install dependencies and build third party code with `make prepare buildThirdparty` before running a specific target.
+Install dependencies first with `make prepare` (or `npm install`), then build a target.
 
-Example command to build only the Chromium version: `make prepare buildThirdparty buildChromium`.
+Example command to build only the Chromium version: `make prepare buildChromium`.
 
 
 # Development

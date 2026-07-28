@@ -41,7 +41,7 @@ console.log('WebpackConfig', {
 	isFastBuild,
 });
 
-const offscreenDocuments = ['main', 'worker', 'translator'];
+const offscreenDocuments = ['main', 'translator'];
 const pages = ['popup', 'options', 'dictionary', 'history'];
 
 module.exports = {
@@ -166,12 +166,6 @@ module.exports = {
 				{
 					from: './src/_locales',
 					to: path.join(outputPath, '_locales'),
-				},
-
-				// Offline translator
-				{
-					from: 'thirdparty/bergamot/build/*.{js,wasm}',
-					to: path.join(outputPath, 'thirdparty/bergamot/[name][ext]'),
 				},
 
 				// Serve static files

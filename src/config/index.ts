@@ -3,7 +3,7 @@ import { getUserLanguage } from '../lib/language';
 import { DEFAULT_LLM_PROMPT } from '../lib/translators/llm/LLMTranslator';
 import { AppConfigType } from '../types/runtime';
 
-export const DEFAULT_TRANSLATOR = 'MicrosoftTranslator';
+export const DEFAULT_TRANSLATOR = 'LLMTranslator';
 export const DEFAULT_TTS = 'google';
 
 // Init config

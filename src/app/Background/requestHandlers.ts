@@ -1,5 +1,4 @@
 // Request handlers
-import { bergamotHandlersFactory } from '../../requests/backend/bergamot';
 import { clearCacheFactory } from '../../requests/backend/clearCache';
 import { getConfigFactory } from '../../requests/backend/getConfig';
 import { getTranslatorFeaturesFactory } from '../../requests/backend/getTranslatorFeatures';
@@ -37,8 +36,6 @@ export const requestHandlers = [
 	...ttsRequestHandlers,
 
 	historyRequestHandlersFactory,
-
-	bergamotHandlersFactory,
 
 	getConfigFactory,
 	setConfigFactory,

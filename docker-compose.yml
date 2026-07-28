@@ -6,18 +6,3 @@ services:
       context: .
     volumes:
       - ./build:/mnt/builder/build
-      - ./thirdparty/bergamot/build:/mnt/builder/thirdparty/bergamot/build
-
-  bergamot:
-    user: node
-    platform: linux/amd64
-    build:
-      context: ./thirdparty/bergamot
-    volumes:
-      - ./thirdparty/bergamot/build:/mnt/bergamot/build
-      - bergamot-translator:/mnt/bergamot/bergamot-translator
-
-volumes:
-  # Persistent cache for fast builds in dev environment
-  bergamot-translator:
-    driver: local

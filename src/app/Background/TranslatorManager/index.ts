@@ -1,6 +1,7 @@
 import { isLanguageCodeISO639v1 } from 'anylang/languages';
 import { IScheduler, Scheduler } from 'anylang/scheduling';
 
+import { DEFAULT_TRANSLATOR } from '../../../config';
 import { AppConfigType } from '../../../types/runtime';
 import { RecordValues } from '../../../types/utils';
 
@@ -19,9 +20,21 @@ export type Config = Pick<
 export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsMap> {
 	private config: Config;
 	private translators: Translators;
+	private onTranslatorModuleFallback: ((moduleId: string) => void) | null = null;
+
 	constructor(config: Config, translators: Translators) {
 		this.config = config;
 		this.translators = translators;
+	}
+
+	/**
+	 * Soft-persist callback when a missing translatorModule is resolved to a fallback.
+	 * Used so Options UI and "Translated by …" stay consistent without a formal migration.
+	 */
+	public setTranslatorModuleFallbackHandler(
+		handler: ((moduleId: string) => void) | null,
+	) {
+		this.onTranslatorModuleFallback = handler;
 	}
 
 	public setConfig(config: Config) {
@@ -66,6 +79,7 @@ export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsM
 	private getTranslationSchedulerInstance(forceCreate = false) {
 		if (this.schedulerInstance === null || forceCreate) {
 			const translator = this.getTranslatorInstance(true);
+			const resolvedModuleId = this.getResolvedTranslatorModuleId();
 
 			const { useCache, ...schedulerConfig } = this.config.scheduler;
 
@@ -77,7 +91,7 @@ export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsM
 				const cacheInstance = this.getCacheInstance();
 				// LLM backends should keep their own punctuation; do not re-attach
 				// source non-letter prefix/suffix stripped for cache keys.
-				const isLLMTranslator = this.config.translatorModule === 'LLMTranslator';
+				const isLLMTranslator = resolvedModuleId === 'LLMTranslator';
 				schedulerInstance = new SchedulerWithCache(scheduler, cacheInstance, {
 					restoreAffixes: !isLLMTranslator,
 				});
@@ -93,11 +107,10 @@ export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsM
 	private getTranslatorInstance(forceCreate: boolean) {
 		if (!forceCreate && this.translator !== null) return this.translator;
 
+		const resolvedModuleId = this.getResolvedTranslatorModuleId();
 		const translatorClass = this.getTranslatorClass();
 		const translatorOptions =
-			this.config.translatorModule === 'LLMTranslator'
-				? this.config.llmTranslator
-				: undefined;
+			resolvedModuleId === 'LLMTranslator' ? this.config.llmTranslator : undefined;
 		this.translator = new translatorClass(translatorOptions) as InstanceType<
 			RecordValues<Translators>
 		>;
@@ -106,17 +119,48 @@ export class TranslatorManager<Translators extends TranslatorsMap = TranslatorsM
 	}
 
 	private getCacheInstance() {
-		const { translatorModule, cache } = this.config;
-		return new TranslatorsCacheStorage(translatorModule, cache);
+		// Key cache by the class actually used, not a stale missing id
+		const resolvedModuleId = this.getResolvedTranslatorModuleId();
+		return new TranslatorsCacheStorage(resolvedModuleId, this.config.cache);
+	}
+
+	/**
+	 * Resolve translator module id with fallback for removed/missing modules.
+	 * Prefer configured id if present; else DEFAULT_TRANSLATOR; else throw.
+	 */
+	private getResolvedTranslatorModuleId(): string {
+		const { translatorModule } = this.config;
+		const translators = this.getTranslators();
+
+		if (translatorModule in translators) {
+			return translatorModule;
+		}
+
+		if (DEFAULT_TRANSLATOR in translators) {
+			// Soft-persist once so UI stays consistent with the resolved module
+			if (
+				this.onTranslatorModuleFallback !== null &&
+				translatorModule !== DEFAULT_TRANSLATOR
+			) {
+				this.onTranslatorModuleFallback(DEFAULT_TRANSLATOR);
+				// Avoid re-firing on subsequent resolves in this process
+				this.config = {
+					...this.config,
+					translatorModule: DEFAULT_TRANSLATOR,
+				};
+			}
+			return DEFAULT_TRANSLATOR;
+		}
+
+		throw new Error(`Not found translator "${translatorModule}"`);
 	}
 
 	private getTranslatorClass(): RecordValues<Translators> {
-		const { translatorModule } = this.config;
-
+		const resolvedModuleId = this.getResolvedTranslatorModuleId();
 		const translators = this.getTranslators();
-		const translatorClass = translators[translatorModule];
+		const translatorClass = translators[resolvedModuleId];
 		if (translatorClass === undefined) {
-			throw new Error(`Not found translator "${translatorModule}"`);
+			throw new Error(`Not found translator "${resolvedModuleId}"`);
 		}
 
 		return translatorClass as RecordValues<Translators>;

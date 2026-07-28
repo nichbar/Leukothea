@@ -49,11 +49,57 @@ const defaultConfig = {
 	},
 };
 
-test('TranslatorManager thrown error when translator module not found', () => {
+test('TranslatorManager falls back to DEFAULT_TRANSLATOR when module is missing', async () => {
+	const translators = {
+		...createTranslatorsList(),
+		LLMTranslator: createTranslatorMockClass('LLMTranslator'),
+	};
+	const translatorManagerConfig = {
+		...defaultConfig,
+		translatorModule: 'GoogleTranslator',
+	};
+	const translatorManager = new TranslatorManager(translatorManagerConfig, translators);
+
+	const scheduler = translatorManager.getScheduler();
+	const translatedText = await scheduler.translate('Hello world', 'en', 'de');
+
+	const fallbackTranslator = new translators.LLMTranslator();
+	const expectedText = await fallbackTranslator.translate('Hello world', 'en', 'de');
+
+	expect(translatedText).toBe(expectedText);
+});
+
+test('TranslatorManager soft-persists fallback module id', () => {
+	const translators = {
+		...createTranslatorsList(),
+		LLMTranslator: createTranslatorMockClass('LLMTranslator'),
+	};
+	const fallbackHandler = vi.fn();
+	const translatorManager = new TranslatorManager(
+		{
+			...defaultConfig,
+			translatorModule: 'MicrosoftTranslator',
+		},
+		translators,
+	);
+	translatorManager.setTranslatorModuleFallbackHandler(fallbackHandler);
+
+	// Trigger resolve via getScheduler
+	translatorManager.getScheduler();
+
+	expect(fallbackHandler).toHaveBeenCalledWith('LLMTranslator');
+	// Second resolve should not re-fire after in-memory heal
+	fallbackHandler.mockClear();
+	translatorManager.getScheduler();
+	expect(fallbackHandler).not.toHaveBeenCalled();
+});
+
+test('TranslatorManager thrown error when translator module and default are missing', () => {
 	const translatorManagerConfig = {
 		...defaultConfig,
 		translatorModule: 'unknown translator id',
 	};
+	// No LLMTranslator / DEFAULT_TRANSLATOR in map
 	const translatorManager = new TranslatorManager(
 		translatorManagerConfig,
 		createTranslatorsList(),

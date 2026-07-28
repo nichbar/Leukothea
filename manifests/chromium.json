@@ -4,7 +4,7 @@
 	"permissions": ["offscreen"],
 	"host_permissions": ["<all_urls>"],
 	"content_security_policy": {
-		"extension_pages": "default-src 'self' 'wasm-unsafe-eval'; connect-src *; style-src 'self' 'unsafe-inline' *"
+		"extension_pages": "default-src 'self'; connect-src *; style-src 'self' 'unsafe-inline' *"
 	},
 	"sandbox": {
 		"pages": ["offscreen-documents/translator/translator.html"]

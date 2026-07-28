@@ -6,7 +6,7 @@ Translate highlighted text, subtitles (including Netflix), and private messages;
 
 # Why Linguist?
 
-Linguist is a standalone translation system — not a thin wrapper around a commercial widget. Translate privately and offline on your device, or plug in any backend you choose (including your own; see [Custom translators](https://linguister.io/docs/CustomTranslator)). See a [custom translators list](https://github.com/translate-tools/linguist-translators) for popular bindings.
+Linguist is a standalone translation system — not a thin wrapper around a commercial widget. The first-party translator is an LLM backend you configure; plug in any other backend you choose with custom modules (see [Custom translators](https://linguister.io/docs/CustomTranslator)). See a [custom translators list](https://github.com/translate-tools/linguist-translators) for popular bindings, including self-hosted / offline services.
 
 Linguist is free, open-source, and collects no personal data.
 
@@ -14,10 +14,9 @@ Linguist is free, open-source, and collects no personal data.
 
 Most important features
 - Modular translators system
-	- Built-in services such as Google, Yandex, Bing/Microsoft, and offline [Bergamot](https://github.com/browsermt/bergamot-translator)
-	- Built-in **LLM translator** (OpenAI-compatible chat completions): API key, URL, model, and system prompt are configurable in settings
-	- [Custom translators](https://linguister.io/docs/CustomTranslator): you can use your own translator module
-	- Offline translation on your device for privacy
+	- Built-in **LLM translator** (OpenAI-compatible chat completions): API key, URL, model, and system prompt are configurable in settings (default)
+	- [Custom translators](https://linguister.io/docs/CustomTranslator): load your own JS module (Google, DeepL, LibreTranslate, etc.)
+	- Offline / self-hosted translation via custom modules (no built-in Bergamot stack)
 - Selection and text translation
 	- Compact redesigned selection popup (language, translation, provider/model)
 	- Configurable popup opacity
@@ -42,6 +41,7 @@ Compared to upstream [translate-tools/linguist](https://github.com/translate-too
 
 ### Removed / simplified
 - Full-page translation engine, popup tab, auto-translate prefs, and page-translate context menu
+- Built-in Google, Microsoft/Bing, Yandex, and Bergamot translators (LLM is the only first-party backend; custom modules remain)
 - Release artifacts beyond Chromium zip (no CRX / Firefox XPI packaging in CI)
 
 ### Fixes
@@ -49,7 +49,7 @@ Compared to upstream [translate-tools/linguist](https://github.com/translate-too
 - Apply opacity to the loading popup state
 - Avoid duplicate translate requests on selection-popup init
 
-Version line: upstream is at `7.0.5`; this fork is at `7.0.9`.
+Version line: upstream is at `7.0.5`; this fork is at `7.0.10`.
 
 # Installation
 

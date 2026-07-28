@@ -1,14 +1,8 @@
 // Translators
-import {
-	GoogleTranslator,
-	MicrosoftTranslator,
-	TranslatorConstructor,
-	YandexTranslator,
-} from 'anylang/translators';
+import { TranslatorConstructor } from 'anylang/translators';
 import { isEqual } from 'lodash';
 
 import { createSelector } from '../../lib/effector/createSelector';
-import { BergamotTranslator } from '../../lib/translators/bergamot/BergamotTranslator';
 import { LLMTranslator } from '../../lib/translators/llm/LLMTranslator';
 import {
 	createPromiseWithControls,
@@ -23,10 +17,6 @@ import { TTSController } from './TTS/TTSController';
 import { TTSManager } from './TTS/TTSManager';
 
 export const embeddedTranslators = {
-	MicrosoftTranslator,
-	GoogleTranslator,
-	YandexTranslator,
-	BergamotTranslator,
 	LLMTranslator,
 } as const;
 
@@ -109,6 +99,24 @@ export class Background {
 		$translateManagerConfig.watch((config) => {
 			if (this.translateManager === null) {
 				this.translateManager = new TranslatorManager(config, translators);
+				// Soft-persist when a removed/missing module falls back to default
+				this.translateManager.setTranslatorModuleFallbackHandler((moduleId) => {
+					this.config
+						.get()
+						.then((latest) => {
+							if (latest.translatorModule === moduleId) return;
+							return this.config.set({
+								...latest,
+								translatorModule: moduleId,
+							});
+						})
+						.catch((error) => {
+							console.error(
+								'Failed to persist translatorModule fallback',
+								error,
+							);
+						});
+				});
 
 				// Return a scheduler instance for awaiters
 				if (this.translateManagerPromise !== null) {

@@ -1,10 +1,6 @@
 # Offline translation
 
-Starting from version 5.0, Linguist has a built-in offline translator called "Bergamot". To use it, simply choose this translator on the preferences page.
-
-You can also use offline translation with [custom translators](../CustomTranslator.md) starting from Linguist version 4.0.
-
-To do this, deploy any service locally for translating text and implement a JS binding for Linguist.
+Linguist no longer ships a built-in offline translator. Use a [custom translator](../CustomTranslator.md) that talks to a local or self-hosted service instead.
 
 ## LibreTranslate
 
