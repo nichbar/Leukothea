@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Matn bo'yicha qidirish"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Asl matnni ko'rsatish"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Tugma har bir matn tanlovi uchun faqat bir marta paydo bo'ladi. Uni qayta ko'rsatish uchun matnni qayta tanlang"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Asl matnni ko'rsatish"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tarjima pop-upiga asl matn bilan blok qo'shish"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Matn tanlashning qat'iy rejimi",

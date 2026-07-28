@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Поиск по тексту"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Показать оригинальный текст"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Скрыть исходный текст"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Переведено с помощью $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Кнопка появится только один раз для каждого выбора текста. Чтобы показать её снова, выберите текст заново"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Показать оригинальный текст"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Добавить блок с оригинальным текстом в всплывающее окно перевода"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Строгий режим выделения текста",

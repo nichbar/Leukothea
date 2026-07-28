@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Sakani ndi mawu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Onetsani mawu oyambirira"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Batani lidzawonekera kamodzi kokha pa kusankha malemba Aliwonse kuti liwonekere kachiwiri, sankhani malembawo kachiwiri"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Onetsani malemba oyambirira"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Onjezani gawo lokhala ndi malemba oyambirira ku pulogalamu yowonekera ya kumasulira"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Njira yokhazikika yosankha malemba",

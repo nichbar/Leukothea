@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Пошук за текстом"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Показати оригінальний текст"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Сховати оригінальний текст"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Перекладено за допомогою $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Кнопка з'явиться лише один раз для кожного вибору тексту. Щоб показати її знову, виберіть текст повторно"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Показати оригінальний текст"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Додати блок з оригінальним текстом у спливаюче вікно перекладу"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Строгий режим вибору текстового фрагмента",

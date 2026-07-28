@@ -149,9 +149,6 @@
 	"history_notification_disabled": {
 		"message": "History recording is disabled, so new entries will not appear. You may change it in <slot id=preferences>preferences</slot>"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Show original text"
-	},
 	"lang_change": {
 		"message": "Change language"
 	},
@@ -466,12 +463,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Button will show only once for each text selection. If you need to show it again, re-select text"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Show original text"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Add block with original text to a popup with translation"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Strict selection"

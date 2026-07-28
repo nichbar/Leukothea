@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Nach Text suchen"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Originaltext anzeigen"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Originaltext ausblenden"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Übersetzt von $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Der Button erscheint nur einmal pro Textauswahl. Um ihn erneut anzuzeigen, wählen Sie den Text erneut aus."
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Originaltext anzeigen"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Einen Block mit dem Originaltext im Übersetzungs-Popup hinzufügen"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Strikter Modus der Textauswahl",

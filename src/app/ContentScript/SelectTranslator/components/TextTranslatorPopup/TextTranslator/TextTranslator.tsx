@@ -30,8 +30,6 @@ export interface TextTranslatorComponentProps {
 	 */
 	updatePopup: () => void;
 	pageLanguage?: string;
-	/** Kept for API compatibility; original text is no longer shown in the selection popup */
-	showOriginalText?: boolean;
 }
 
 // TODO: rename component and move to element dir

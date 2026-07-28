@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Chọọ site na ederede"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Gosi ederede mbụ"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Bọtịnụ ahụ ga-apụta naanị otu ugboro maka nhọpụta ederede ọ bụla Iji gosi ya ọzọ, họrọ ederede ahụ ọzọ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Gosi ederede mbụ"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tinye ngọngọ nwere ederede mbụ na popup ntụgharị asụsụ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Ụdị siri ike nke nhọpụta ederede span",

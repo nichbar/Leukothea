@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Søk etter tekst"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Vis originaltekst"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Skjul originaltekst"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Oversatt av $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Knappen vil bare vises én gang for hvert tekstvalg. For å vise den igjen, velg teksten på nytt"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Vis originaltekst"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Legg til en blokk med originalteksten i oversettelses-popupen"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Streng modus for valg av tekstområde",

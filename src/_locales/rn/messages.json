@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Rondera ijambo"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Kwerekana inyandiko y'umwimerere"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Igikorwa kizokwerekana rimwe gusa ku gutora inyandiko kugira ngo kigaruke, tora inyandiko ukundi"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Kwerekana inyandiko y'umwimerere"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Shirako igice kirimwo inyandiko y'umwimerere mu gice ca popup"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Uburyo bukomeye bwo gutora igice c'inyandiko",

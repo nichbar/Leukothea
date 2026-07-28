@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Raadi qoraal"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Muuji qoraalka asalka ah"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Badhanka wuxuu soo muuqan doonaa hal mar oo keliya xulashada qoraalka kasta Si aad mar kale u muujiso, dib u dooro qoraalka"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Muuji qoraalka asalka ah"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ku dar block leh qoraalka asalka ah ee popup-ka tarjumaadda"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Habka adag ee xulashada span-ka qoraalka",

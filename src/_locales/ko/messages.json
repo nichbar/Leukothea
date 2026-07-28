@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "텍스트로 검색"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "원본 텍스트 보기"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "원문 숨기기"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "$1 제공 번역",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "버튼은 각 텍스트 선택에 대해 한 번만 나타납니다. 다시 표시하려면 텍스트를 다시 선택하세요."
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "원본 텍스트 표시"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "번역 팝업에 원본 텍스트가 포함된 블록 추가"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "텍스트 범위 선택의 엄격 모드",

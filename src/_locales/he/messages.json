@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "חיפוש לפי טקסט"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "הצג טקסט מקורי"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "הסתר טקסט מקורי"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "תורגם על ידי $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "הכפתור יופיע רק פעם אחת לכל בחירת טקסט. כדי להציג אותו שוב, בחר את הטקסט מחדש"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "הצג טקסט מקורי"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "הוסף בלוק עם הטקסט המקורי לחלון התרגום"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "מצב קפדני של בחירת טווח טקסט",

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Sök efter text"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Visa originaltext"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Dölj originaltext"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Översatt av $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Knappen kommer att visas endast en gång för varje textmarkering. För att visa den igen, markera texten på nytt"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Visa originaltext"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Lägg till ett block med originaltexten i översättningspopupen"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Strikt läge för textmarkering",

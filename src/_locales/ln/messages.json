@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Koluka na mokanda"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Komonisa mokanda ya liboso"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Butɔni ekomonana mbala moko kaka mpo na kopona maloba nyonso. Mpo na kolakisa yango lisusu, poná maloba lisusu"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Lakisa maloba ya ebandeli"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tia blok na maloba ya ebandeli na popup ya kobongola"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mode ya makasi ya kopona eteni ya maloba",

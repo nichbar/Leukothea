@@ -84,7 +84,6 @@ export const AppConfig = type.type({
 		strictSelection: type.boolean,
 		detectedLangFirst: type.boolean,
 		showOnceForSelection: type.boolean,
-		showOriginalText: type.boolean,
 		isUseAutoForDetectLang: type.boolean,
 		timeoutForHideButton: type.number,
 		/**

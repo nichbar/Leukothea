@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Mətni axtar"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Orijinal mətni göstər"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Düymə hər mətn seçimi üçün yalnız bir dəfə görünəcək. Yenidən göstərmək üçün mətni yenidən seçin"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Orijinal mətni göstər"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tərcümə pəncərəsinə orijinal mətn ilə blok əlavə et"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mətn seçiminin sərt rejimi",

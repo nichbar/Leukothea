@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "heka kuatiarogue rehe"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Mombe'u kuatiarogue ypykue"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Pe botón ojehechaukáta peteĩ jeynte peteĩ téxto ojehechaukáva rehe. Ojehechaukájeýramo, eiporavo jey pe téxto"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Ehechauka téxto original"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Eheja peteĩ blóke orekóva pe téxto original pe traduksión popup-pe"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Modo estrikto de selección de téxto span",

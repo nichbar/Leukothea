@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Căutare după text"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Afișează textul original"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Ascunde textul original"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Tradus de $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Butonul va apărea doar o dată pentru fiecare selecție de text. Pentru a-l afișa din nou, selectează din nou textul"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Afișează textul original"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Adaugă un bloc cu textul original în fereastra pop-up de traducere"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mod strict de selecție a textului",

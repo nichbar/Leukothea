@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "పాఠ్యంతో శోధించండి"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "అసలు పాఠ్యాన్ని చూపించు"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ప్రతి పాఠ్య ఎంపికకు బటన్ కేవలం ఒకసారి మాత్రమే కనిపిస్తుంది. దానిని మళ్లీ చూపించడానికి, పాఠ్యాన్ని మళ్లీ ఎంచుకోండి"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "మూల పాఠ్యాన్ని చూపించు"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "అనువాద పాప్‌అప్‌లో మూల పాఠ్యంతో బ్లాక్‌ను జోడించండి"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "పాఠ్య విస్తరణ ఎంపిక యొక్క కఠినమైన మోడ్",

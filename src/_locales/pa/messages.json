@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "ਪਾਠ ਦੁਆਰਾ ਖੋਜੋ"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "ਮੂਲ ਪਾਠ ਦਿਖਾਓ"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ਹਰ ਪਾਠ ਚੋਣ ਲਈ ਬਟਨ ਸਿਰਫ ਇੱਕ ਵਾਰ ਪ੍ਰਗਟ ਹੋਵੇਗਾ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਦਿਖਾਉਣ ਲਈ, ਪਾਠ ਨੂੰ ਮੁੜ ਚੁਣੋ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "ਮੂਲ ਪਾਠ ਦਿਖਾਓ"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "ਅਨੁਵਾਦ ਪੌਪਅੱਪ ਵਿੱਚ ਮੂਲ ਪਾਠ ਨਾਲ ਇੱਕ ਬਲਾਕ ਸ਼ਾਮਲ ਕਰੋ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "ਪਾਠ ਸਪੈਨ ਚੋਣ ਦਾ ਸਖਤ ਮੋਡ",

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Търсене по текст"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Показване на оригиналния текст"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Скрий оригиналния текст"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Преведено от $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Бутонът ще се появи само веднъж за всеки избор на текст. За да го покажете отново, изберете текста отново"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Показвай оригиналния текст"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Добавете блок с оригиналния текст в изскачащия прозорец за превод"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Строг режим на избор на текстов обхват",

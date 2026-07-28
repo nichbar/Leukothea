@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "متن کے ذریعے تلاش کریں"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "اصل متن دکھائیں"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "بٹن ہر متن کے انتخاب کے لئے صرف ایک بار ظاہر ہوگا۔ اسے دوبارہ دکھانے کے لئے، متن کو دوبارہ منتخب کریں"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "اصل متن دکھائیں"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "ترجمہ پاپ اپ میں اصل متن کے ساتھ ایک بلاک شامل کریں"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "متن کے انتخاب کے لئے سخت موڈ",

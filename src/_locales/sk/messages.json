@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Vyhľadávať podľa textu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Zobraziť pôvodný text"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Skryť pôvodný text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Preložené pomocou $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Tlačidlo sa objaví iba raz pre každý výber textu. Ak ho chcete zobraziť znova, znovu vyberte text"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Zobraziť pôvodný text"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Pridať blok s pôvodným textom do prekladového popupu"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Prísny režim výberu textového úseku",

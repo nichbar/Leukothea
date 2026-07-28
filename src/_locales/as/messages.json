@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "পাঠ্য অনুসন্ধান কৰক"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "মূল পাঠ্য দেখুৱাওক"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "প্ৰতি পাঠ বাছনিৰ বাবে বুটামটো কেৱল এবাৰহে প্ৰদৰ্শিত হ'ব। পুনৰ দেখুৱাবলৈ, পাঠটো পুনৰ বাছনি কৰক"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "মূল পাঠ দেখুৱাওক"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "অনুবাদ পপআপত মূল পাঠৰ সৈতে এটা ব্লক যোগ কৰক"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "পাঠ বাছনিৰ কঠোৰ ম'ড",

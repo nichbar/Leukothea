@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Пошук па тэксце"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Паказаць арыгінальны тэкст"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Кнопка з'явіцца толькі адзін раз для кожнага выбару тэксту. Каб паказаць яе зноў, выберыце тэкст яшчэ раз"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Паказаць арыгінальны тэкст"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Дадаць блок з арыгінальным тэкстам у ўсплываючае акно перакладу"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Строгі рэжым выбару фрагмента тэксту",

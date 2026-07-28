@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Barbaadi barruu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Barruu jalqabaa agarsiisi"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Tuqaan filannoo barreeffamaaf yeroo tokko qofa ni mul'ata. Irra deebi'ee agarsiisuuf, barreeffama irra deebi'ee filadhu"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Barreeffama duraa agarsiisi"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Barreeffama duraa waliin poppaaphiitti ida'i"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Haala filannoo barreeffama murtaa'aa",

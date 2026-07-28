@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "വാചകം ഉപയോഗിച്ച് തിരയുക"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "അസൽ വാചകം കാണിക്കുക"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ഓരോ വാചക തിരഞ്ഞെടുപ്പിനും ബട്ടൺ ഒരിക്കൽ മാത്രം പ്രത്യക്ഷപ്പെടും. അത് വീണ്ടും കാണിക്കാൻ, വാചകം വീണ്ടും തിരഞ്ഞെടുക്കുക"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "അസൽ വാചകം കാണിക്കുക"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "വിവർത്തന പോപ്അപ്പിൽ അസൽ വാചകമുള്ള ഒരു ബ്ലോക്ക് ചേർക്കുക"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "വാചക സ്പാൻ തിരഞ്ഞെടുപ്പിന്റെ കർശനമായ മോഡ്",

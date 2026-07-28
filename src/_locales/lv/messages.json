@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Meklēt pēc teksta"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Rādīt oriģinālo tekstu"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Paslēpt oriģinālo tekstu"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Tulkojis $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Poga parādīsies tikai vienreiz par katru teksta atlasi. Lai to parādītu vēlreiz, atkārtoti atlasiet tekstu"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Rādīt oriģinālo tekstu"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Pievienot bloku ar oriģinālo tekstu tulkošanas uznirstošajā logā"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Stingrs teksta atlases režīms",

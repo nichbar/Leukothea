@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Որոնել տեքստով"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Ցուցադրել բնօրինակ տեքստը"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Կոճակը կհայտնվի միայն մեկ անգամ յուրաքանչյուր տեքստի ընտրության համար։ Նորից ցուցադրելու համար, նորից ընտրեք տեքստը"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Ցուցադրել բնօրինակ տեքստը"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ավելացնել բնօրինակ տեքստի բլոկ թարգմանության փոփափում"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Խիստ ռեժիմ տեքստի հատվածի ընտրության համար",

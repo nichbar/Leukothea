@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Batla ka mongolo"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Bontša mongolo oa mantlha"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Konopo e tla hlaha hang feela bakeng sa khetho e 'ngoe le e 'ngoe ea sengoloa Ho e bontša hape, khetha sengoloa hape"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Bontša sengoloa sa mantlha"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Kenya block ka sengoloa sa mantlha ka popo ea phetolelo"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mokhoa o thata oa khetho ea span ea sengoloa",

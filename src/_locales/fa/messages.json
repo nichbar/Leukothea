@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "جستجو بر اساس متن"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "نمایش متن اصلی"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "پنهان کردن متن اصلی"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "ترجمه توسط $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "دکمه فقط یک بار برای هر انتخاب متن ظاهر می‌شود. برای نمایش مجدد، متن را دوباره انتخاب کنید"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "نمایش متن اصلی"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "یک بلوک با متن اصلی به پنجره ترجمه اضافه کنید"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "حالت سختگیرانه انتخاب محدوده متن",

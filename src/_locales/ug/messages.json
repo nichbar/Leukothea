@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "تېكست بويىچە ئىزدەش"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "ئەسلى تېكستنى كۆرسىتىش"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "كۇنۇپكا پەقەت ھەر بىر تېكىست تاللاشقا بىر قېتىملا كۆرۈنىدۇ قايتا كۆرسىتىش ئۈچۈن، تېكىستنى قايتا تاللاڭ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "ئەسلى تېكىستنى كۆرسىتىش"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "تەرجىمە كۆرسەتكۈچىگە ئەسلى تېكىستنى ئۆز ئىچىگە ئالغان بىر بلوك قوشۇش"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "تېكىست تاللاشنىڭ قاتتىق ھالىتى",

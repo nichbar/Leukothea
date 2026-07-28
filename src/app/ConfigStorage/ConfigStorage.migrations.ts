@@ -324,6 +324,32 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Remove selectTranslator.showOriginalText
+		version: 15,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const updatedConfig = { ...actualData };
+
+			if (
+				updatedConfig.selectTranslator &&
+				typeof updatedConfig.selectTranslator === 'object'
+			) {
+				const selectTranslator = { ...updatedConfig.selectTranslator };
+				delete selectTranslator.showOriginalText;
+				updatedConfig.selectTranslator = selectTranslator;
+			}
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "ટેક્સ્ટ દ્વારા શોધો"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "મૂળ લખાણ બતાવો"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "બટન દરેક ટેક્સ્ટ પસંદગી માટે ફક્ત એકવાર દેખાશે. તેને ફરીથી બતાવવા માટે, ટેક્સ્ટને ફરીથી પસંદ કરો"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "મૂળ ટેક્સ્ટ બતાવો"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "અનુવાદ પોપઅપમાં મૂળ ટેક્સ્ટ સાથેનો બ્લોક ઉમેરો"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "ટેક્સ્ટ સ્પાન પસંદગીનો કડક મોડ",

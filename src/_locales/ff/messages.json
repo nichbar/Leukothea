@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Nanaadee e binndol"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Hollu binndol jooni"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -448,12 +442,6 @@
 		"message": "Naatgol e nder ɗum"
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
-		"message": "Naatgol e nder ɗum"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Naatgol e nder ɗum"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
 		"message": "Naatgol e nder ɗum"
 	},
 	"settings_option_selectTranslation_strictSelection": {

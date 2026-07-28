@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Khangela ngombhalo"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Bonisa umbhalo wokuqala"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Iqhosha liya kuvela kube kanye kuphela ngokukhetha umbhalo Ngaphinda ukhethe umbhalo ukuze ulubonise kwakhona"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Bonisa umbhalo wokuqala"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Yongeza ibhloko enombhalo wokuqala kwi-popup yokuguqulela"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Imowudi engqongqo yokukhetha isithuba sombhalo",

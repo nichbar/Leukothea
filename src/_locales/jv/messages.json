@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Golèk miturut teks"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Tampilake teks asli"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Tombol bakal katon mung sapisan kanggo saben pilihan teks Kanggo nampilake maneh, pilih maneh teks"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Tampilake teks asli"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tambah blok kanthi teks asli menyang popup terjemahan"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mode ketat pilihan span teks",

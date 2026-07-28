@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Chèche pa tèks"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Montre tèks orijinal la"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Bouton an ap parèt sèlman yon fwa pou chak seleksyon tèks Pou montre li ankò, re-chwazi tèks la"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Montre tèks orijinal la"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ajoute yon blòk ak tèks orijinal la nan popup tradiksyon an"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mòd strik pou seleksyon span tèks",

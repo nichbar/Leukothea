@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Zoeken op tekst"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Originele tekst tonen"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Oorspronkelijke tekst verbergen"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Vertaald door $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "De button verschijnt slechts één keer voor elke tekstselectie. Om deze opnieuw te tonen, selecteer de tekst opnieuw"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Toon originele tekst"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Voeg een blok met de originele tekst toe aan de vertaalpopup"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Strikte modus voor tekstselectie",

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "按文本搜索"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "显示原文"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "隐藏原文"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "由 $1 翻译",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "按钮将仅在每次文本选择时出现一次。要再次显示，请重新选择文本"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "显示原始文本"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "在翻译弹出窗口中添加一个包含原始文本的块"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "严格的文本范围选择模式",

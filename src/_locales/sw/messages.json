@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Tafuta kwa maandishi"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Onyesha maandishi asilia"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Kitufe kitaonekana mara moja tu kwa kila uteuzi wa maandishi Ili kuonyesha tena, chagua maandishi tena"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Onyesha maandishi asilia"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ongeza kizuizi na maandishi asilia kwenye kidirisha cha tafsiri"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Hali kali ya uteuzi wa maandishi",

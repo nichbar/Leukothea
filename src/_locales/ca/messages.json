@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Cerca per text"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Mostra el text original"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Amaga el text original"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Traduït per $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "El botó apareixerà només una vegada per cada selecció de text. Per mostrar-lo de nou, torneu a seleccionar el text"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Mostra el text original"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Afegeix un bloc amb el text original al popup de traducció"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mode estricte de selecció de text",

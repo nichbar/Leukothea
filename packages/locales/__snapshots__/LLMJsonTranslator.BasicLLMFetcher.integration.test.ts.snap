@@ -152,9 +152,6 @@ exports[`Translation for a sample localization file 1`] = `
   "history_searchPlaceholder": {
     "message": "*REDACTED*",
   },
-  "inlineTranslator_showOriginalText": {
-    "message": "*REDACTED*",
-  },
   "lang_change": {
     "message": "*REDACTED*",
   },
@@ -474,12 +471,6 @@ exports[`Translation for a sample localization file 1`] = `
     "message": "*REDACTED*",
   },
   "settings_option_selectTranslation_showOnceForSelection_desc": {
-    "message": "*REDACTED*",
-  },
-  "settings_option_selectTranslation_showOriginalText": {
-    "message": "*REDACTED*",
-  },
-  "settings_option_selectTranslation_showOriginalText_desc": {
     "message": "*REDACTED*",
   },
   "settings_option_selectTranslation_strictSelection": {

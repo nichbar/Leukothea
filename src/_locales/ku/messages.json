@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "گەڕان بە تێکست"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "پیشاندانی دەقی سەرەکی"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "دوگمەکە تەنها جارێک بۆ هەر دیاریکردنی دەقێک دەربکەوێت بۆ نیشاندانی دووبارە، دەقەکە دووبارە دیاری بکە"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "دەقە سەرەتا نیشان بدە"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "بەشێک زیاد بکە بە دەقە سەرەتا بۆ پەیامەکانی وەرگێڕان"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "شێوازی بەردەوامی دیاریکردنی دەق",

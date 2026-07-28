@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "உரை மூலம் தேடுக"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "மூல உரையை காண்பி"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ஒவ்வொரு உரைத் தேர்விற்கும் பொத்தான் ஒருமுறை மட்டுமே தோன்றும். அதை மீண்டும் காட்ட உரையை மீண்டும் தேர்ந்தெடுக்கவும்"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "மூல உரையை காட்டு"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "மொழிபெயர்ப்பு பாப்அப்பில் மூல உரையுடன் ஒரு தொகுதியைச் சேர்க்கவும்"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "உரைத் தேர்வு கடுமையான முறை",

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "စာသားဖြင့် ရှာဖွေပါ"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "မူရင်းစာသားကို ပြပါ"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ခလုတ်သည်စာသားရွေးချယ်မှုတစ်ခုစီအတွက်တစ်ကြိမ်သာပေါ်လာပါမည်။ ထပ်မံပြရန် စာသားကိုပြန်လည်ရွေးချယ်ပါ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "မူရင်းစာသားကိုပြပါ"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "ဘာသာပြန် popup တွင်မူရင်းစာသားပါရှိသော block ကိုထည့်ပါ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "စာသား span ရွေးချယ်မှု၏တင်းကျပ်သော mode",

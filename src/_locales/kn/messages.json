@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "ಪಠ್ಯದಿಂದ ಹುಡುಕಿ"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸಿ"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ಬಟನ್ ಪ್ರತಿ ಪಠ್ಯ ಆಯ್ಕೆಗೆ ಒಮ್ಮೆ ಮಾತ್ರ ಕಾಣಿಸುತ್ತದೆ. ಅದನ್ನು ಮತ್ತೆ ತೋರಿಸಲು, ಪಠ್ಯವನ್ನು ಮರುಆಯ್ಕೆಮಾಡಿ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸಿ"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "ಅನುವಾದ ಪಾಪ್‌ಅಪ್‌ಗೆ ಮೂಲ ಪಠ್ಯದೊಂದಿಗೆ ಬ್ಲಾಕ್ ಸೇರಿಸಿ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "ಪಠ್ಯ ಸ್ಪ್ಯಾನ್ ಆಯ್ಕೆಯ ಕಠಿಣ ಮೋಡ್",

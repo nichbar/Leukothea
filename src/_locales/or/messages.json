@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "ପାଠ୍ୟ ଦ୍ୱାରା ଖୋଜନ୍ତୁ"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "ମୂଳ ପାଠ୍ୟ ଦେଖାନ୍ତୁ"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "ପ୍ରତ୍ୟେକ ପାଠ୍ୟ ଚୟନ ପାଇଁ ବଟନ୍ କେବଳ ଏକଥର ପ୍ରକାଶିତ ହେବ। ଏହାକୁ ପୁନଃ ଦେଖାଇବା ପାଇଁ, ପାଠ୍ୟକୁ ପୁନଃ ଚୟନ କରନ୍ତୁ"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "ମୂଳ ପାଠ୍ୟ ଦେଖାନ୍ତୁ"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "ଅନୁବାଦ ପପ୍ଅପ୍ରେ ମୂଳ ପାଠ୍ୟ ସହିତ ଏକ ବ୍ଲକ୍ ଯୋଡ଼ନ୍ତୁ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "ପାଠ୍ୟ ସ୍ପାନ୍ ଚୟନର କଠୋର ମୋଡ୍",

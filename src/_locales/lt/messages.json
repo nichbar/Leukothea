@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Ieškoti pagal tekstą"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Rodyti originalų tekstą"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Slėpti originalų tekstą"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Išvertė $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Mygtukas pasirodys tik vieną kartą kiekvienam teksto pasirinkimui. Norėdami jį parodyti dar kartą, pasirinkite tekstą iš naujo"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Rodyti originalų tekstą"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Pridėti bloką su originaliu tekstu vertimo iššokančiame lange"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Griežtas teksto pasirinkimo režimas",

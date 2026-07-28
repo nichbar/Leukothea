@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Αναζήτηση με βάση το κείμενο"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Εμφάνιση αρχικού κειμένου"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Απόκρυψη πρωτότυπου κειμένου"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Μετάφραση από $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Το κουμπί θα εμφανιστεί μόνο μία φορά για κάθε επιλογή κειμένου. Για να το εμφανίσετε ξανά, επιλέξτε ξανά το κείμενο"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Εμφάνιση αρχικού κειμένου"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Προσθήκη μπλοκ με το αρχικό κείμενο στο αναδυόμενο παράθυρο μετάφρασης"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Αυστηρή λειτουργία επιλογής εύρους κειμένου",

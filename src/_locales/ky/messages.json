@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Текст боюнча издөө"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Түпнуска текстти көрсөтүү"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Баскыч ар бир текст тандоодо бир гана жолу пайда болот. Аны кайра көрсөтүү үчүн текстти кайра тандаңыз"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Түпнуска текстти көрсөтүү"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Которуу терезесине түпнуска текст менен блок кошуу"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Текст тандоонун катуу режими",

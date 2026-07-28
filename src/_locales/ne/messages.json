@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "पाठद्वारा खोज्नुहोस्"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "मूल पाठ देखाउनुहोस्"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "बटन प्रत्येक पाठ चयनको लागि मात्र एक पटक देखा पर्नेछ। यसलाई फेरि देखाउन, पाठ पुनः चयन गर्नुहोस्"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "मूल पाठ देखाउनुहोस्"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "अनुवाद पपअपमा मूल पाठ सहितको ब्लक थप्नुहोस्"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "पाठ स्प्यान चयनको लागि कडा मोड",

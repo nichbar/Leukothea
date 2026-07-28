@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Bincika ta hanyar rubutu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Nuna rubutun asali"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Maɓallin zai bayyana sau ɗaya kawai don kowane zaɓin rubutu Don sake nuna shi, sake zaɓar rubutun"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Nuna rubutun asali"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ƙara wani toshe tare da rubutun asali zuwa faifan fassara"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Yanayin zaɓin tsauraran matakan rubutu",

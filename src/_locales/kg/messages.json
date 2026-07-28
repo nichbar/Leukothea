@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Luta na mambu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Lakisa mambu ya liboso"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Buta ta monana mbala mosi kaka sambu na mambu me selamaka. Sambu na kumonisa yo diaka, sola mambu diaka"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Monisa nsangu ya ntete"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tia block ti nsangu ya ntete na popup ya kulanda nsangu"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mode ya kiese ya kusala mambu me selamaka",

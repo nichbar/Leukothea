@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Cari mengikut teks"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Tunjukkan teks asal"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Sembunyikan teks asal"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Diterjemahkan oleh $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Butang akan muncul hanya sekali untuk setiap pemilihan teks. Untuk menunjukkannya semula, pilih semula teks"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Tunjukkan teks asal"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Tambah blok dengan teks asal ke dalam popup terjemahan"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mod ketat pemilihan rentang teks",

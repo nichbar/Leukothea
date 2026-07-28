@@ -47,7 +47,6 @@ export const defaultConfig: AppConfigType = {
 		timeoutForHideButton: 3000,
 		focusOnTranslateButton: false,
 		showOnceForSelection: isMobileBrowser() ? false : true,
-		showOriginalText: true,
 		isUseAutoForDetectLang: true,
 		opacity: 0.95,
 	},

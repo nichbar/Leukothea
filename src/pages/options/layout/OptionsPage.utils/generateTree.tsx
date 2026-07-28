@@ -351,18 +351,6 @@ export const generateTree = ({
 					},
 				},
 				{
-					path: 'selectTranslator.showOriginalText',
-					description: getMessage(
-						'settings_option_selectTranslation_showOriginalText_desc',
-					),
-					optionContent: {
-						type: 'Checkbox',
-						text: getMessage(
-							'settings_option_selectTranslation_showOriginalText',
-						),
-					},
-				},
-				{
 					title: getMessage(
 						'settings_option_selectTranslation_header_languageChoice',
 					),

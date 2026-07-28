@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Szukaj według tekstu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Pokaż oryginalny tekst"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Ukryj oryginalny tekst"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Przetłumaczone przez $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Przycisk pojawi się tylko raz dla każdego zaznaczenia tekstu. Aby pokazać go ponownie, zaznacz tekst ponownie"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Pokaż oryginalny tekst"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Dodaj blok z oryginalnym tekstem do okna tłumaczenia"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Tryb ścisłego zaznaczania fragmentu tekstu",

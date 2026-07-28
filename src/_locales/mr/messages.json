@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "मजकूरानुसार शोधा"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "मूळ मजकूर दाखवा"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "प्रत्येक मजकूर निवडीसाठी बटण फक्त एकदाच दिसेल. ते पुन्हा दाखवण्यासाठी, मजकूर पुन्हा निवडा"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "मूळ मजकूर दाखवा"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "अनुवाद पॉपअपमध्ये मूळ मजकूरासह एक ब्लॉक जोडा"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "मजकूर निवडीसाठी कठोर मोड",

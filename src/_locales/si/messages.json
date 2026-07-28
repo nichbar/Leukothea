@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "පෙළ අනුව සොයන්න"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "මුල් පෙළ පෙන්වන්න"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "බොත්තම එක් එක් පෙළ තේරීම සඳහා වරක් පමණක් පෙනේ. එය නැවත පෙන්වීමට, පෙළ නැවත තෝරන්න"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "මුල් පෙළ පෙන්වන්න"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "පරිවර්තන පෝප්අප් එකට මුල් පෙළ සමඟ බ්ලොක් එකක් එක් කරන්න"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "පෙළ පරාස තේරීමේ දැඩි ප්‍රකාරය",

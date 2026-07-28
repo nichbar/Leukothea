@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Tsvaga nemavara"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Ratidza mavara ekutanga"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Bhatani richangoonekwa kamwe chete pakusarudzwa kwechinyorwa. Kuti riratidze zvakare, sarudza chinyorwa zvakare"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Ratidza chinyorwa chepakutanga"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Wedzera bhuroko rine chinyorwa chepakutanga ku popup yekushandura"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Maitiro akaomarara ekusarudza chinyorwa span",

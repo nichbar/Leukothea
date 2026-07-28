@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Ṣàwárí nípa ọrọ"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Fi ọrọ ìpilẹ̀ hàn"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Bọtini naa yoo han lẹẹkan ṣoṣo fun yiyan ọrọ kọọkan Lati fi han lẹẹkansi, yan ọrọ naa lẹẹkansi"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Fi ọrọ atilẹba han"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Fi bulọọki kan kun pẹlu ọrọ atilẹba si itumọ popup"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Ipo to muna ti yiyan ọrọ",

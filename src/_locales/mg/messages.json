@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Karohy amin'ny alalan'ny lahatsoratra"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Asehoy ny lahatsoratra tany am-boalohany"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Hiseho indray mandeha ihany ny bokotra isaky ny fisafidianana lahatsoratra. Mba hisehoana azy indray, safidio indray ny lahatsoratra"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Asehoy ny lahatsoratra tany am-boalohany"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Ampio tontonana misy ny lahatsoratra tany am-boalohany ao amin'ny popup fandikan-teny"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Fomba henjana amin'ny fisafidianana elanelan'ny lahatsoratra",

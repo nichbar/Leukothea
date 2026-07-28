@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Pretraži po tekstu"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Prikaži originalni tekst"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Сакриј оригинални текст"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Преведено помоћу $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Dugme će se pojaviti samo jednom za svaki izbor teksta. Da biste ga ponovo prikazali, ponovo izaberite tekst"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Prikaži originalni tekst"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Dodaj blok sa originalnim tekstom u iskačući prozor za prevođenje"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Strogi režim izbora opsega teksta",

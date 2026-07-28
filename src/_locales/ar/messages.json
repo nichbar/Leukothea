@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "البحث بالنص"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "عرض النص الأصلي"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "إخفاء النص الأصلي"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "ترجمه $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "سيظهر الزر مرة واحدة فقط لكل تحديد نص. لإظهاره مرة أخرى، أعد تحديد النص"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "عرض النص الأصلي"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "إضافة كتلة بالنص الأصلي إلى نافذة الترجمة المنبثقة"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "وضع صارم لاختيار نطاق النص",

@@ -66,11 +66,6 @@ export interface Options {
 	showOnceForSelection?: boolean;
 
 	/**
-	 * Show block with original text
-	 */
-	showOriginalText: boolean;
-
-	/**
 	 * Opacity of the selection TextTranslator popup card (0–1)
 	 */
 	opacity?: number;
@@ -105,7 +100,6 @@ export class SelectTranslator {
 		strictSelection: false,
 		rememberDirection: false,
 		showOnceForSelection: true,
-		showOriginalText: true,
 		isUseAutoForDetectLang: true,
 		opacity: 0.95,
 		enableTranslateFromContextMenu: false,
@@ -423,7 +417,6 @@ export class SelectTranslator {
 			zIndex,
 			timeoutForHideButton,
 			focusOnTranslateButton,
-			showOriginalText,
 			opacity,
 			enableTranslateFromContextMenu,
 		} = this.options;
@@ -458,7 +451,6 @@ export class SelectTranslator {
 				{...{
 					translate,
 					pageLanguage,
-					showOriginalText,
 					detectedLangFirst,
 					isUseAutoForDetectLang,
 					rememberDirection,

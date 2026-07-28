@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "זוכן לויט טעקסט"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "ווייַזן אָריגינעל טעקסט"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "די קנעפּל וועט דערשייַנען בלויז איין מאָל פֿאַר יעדער טעקסט סעלעקציע צו ווייַזן עס ווידער, ריסעלעקט די טעקסט"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "ווייַזן אָריגינעל טעקסט"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "לייג אַ בלאָק מיט די אָריגינעל טעקסט צו די איבערזעצונג פּאָפּופּ"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "שטרענג מאָדע פון טעקסט שפּאַן סעלעקציע",

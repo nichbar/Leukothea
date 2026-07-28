@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Batla ka lentswe"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Bontsha lentswe la ntlha"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Konopo e tla tlhaga gangwe fela ka kgetho nngwe le nngwe ya selekanyo Go e bontsha gape, kgetha selekanyo gape"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Bontsha selekanyo sa ntlha"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Oketsa boloko ka selekanyo sa ntlha mo popo ya phetolelo"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mokgwa o o thata wa kgetho ya selekanyo sa selekanyo",

@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Maghanap ayon sa teksto"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Ipakita ang orihinal na teksto"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Hide original text"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Translated by $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "Ang pindutan ay lilitaw lamang isang beses para sa bawat pagpili ng teksto. Upang ipakita ito muli, muling piliin ang teksto"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Ipakita ang orihinal na teksto"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Magdagdag ng bloke na may orihinal na teksto sa popup ng pagsasalin"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "Mahigpit na mode ng pagpili ng saklaw ng teksto",

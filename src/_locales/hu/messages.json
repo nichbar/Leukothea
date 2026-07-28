@@ -150,12 +150,6 @@
 	"history_searchPlaceholder": {
 		"message": "Keresés szöveg alapján"
 	},
-	"inlineTranslator_showOriginalText": {
-		"message": "Eredeti szöveg megjelenítése"
-	},
-	"inlineTranslator_hideOriginalText": {
-		"message": "Eredeti szöveg elrejtése"
-	},
 	"inlineTranslator_translatedBy": {
 		"message": "Fordította: $1",
 		"placeholders": {
@@ -449,12 +443,6 @@
 	},
 	"settings_option_selectTranslation_showOnceForSelection_desc": {
 		"message": "A gomb csak egyszer jelenik meg minden szövegkiválasztásnál. Az újbóli megjelenítéshez válassza ki újra a szöveget"
-	},
-	"settings_option_selectTranslation_showOriginalText": {
-		"message": "Eredeti szöveg megjelenítése"
-	},
-	"settings_option_selectTranslation_showOriginalText_desc": {
-		"message": "Adjon hozzá egy blokkot az eredeti szöveggel a fordítási felugró ablakhoz"
 	},
 	"settings_option_selectTranslation_strictSelection": {
 		"message": "A szövegkiválasztás szigorú módja",
