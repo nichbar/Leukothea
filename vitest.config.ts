@@ -42,6 +42,8 @@ export default defineConfig({
 		setupFiles: [
 			path.join(__dirname, 'test/setupFiles/jest.js'),
 			'jest-localstorage-mock',
+			// Repair incomplete Node 25+ host storage if the mock could not replace it
+			path.join(__dirname, 'test/setupFiles/localStorage.js'),
 			'fake-indexeddb/auto',
 			path.join(__dirname, 'test/setupFiles/webextension.js'),
 		],
