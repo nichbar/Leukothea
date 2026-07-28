@@ -160,19 +160,24 @@ export const generateTree = ({
 				},
 				{
 					title: getMessage('settings_option_customTranslatorModule'),
-					description: getLocalizedNode({
-						messageName: 'settings_option_customTranslatorModule_desc',
-						slots: {
-							docs: buildLink(docsUrl('/docs/CustomTranslator')),
+					groupContent: [
+						{
+							description: getLocalizedNode({
+								messageName:
+									'settings_option_customTranslatorModule_desc',
+								slots: {
+									docs: buildLink(docsUrl('/docs/CustomTranslator')),
+								},
+							}),
+							optionContent: {
+								type: 'Button',
+								text: getMessage(
+									'settings_option_customTranslatorModule_manageButton',
+								),
+								action: toggleCustomTranslatorsWindow,
+							},
 						},
-					}),
-					optionContent: {
-						type: 'Button',
-						text: getMessage(
-							'settings_option_customTranslatorModule_manageButton',
-						),
-						action: toggleCustomTranslatorsWindow,
-					},
+					],
 				},
 				{
 					title: getMessage('settings_option_translateScheduler'),

@@ -4,7 +4,7 @@
 	gap: var(--typography-layout-indent-m-all);
 	width: max-content;
 	min-width: 300px;
-	max-width: min(100%, 640px);
+	max-width: min(100%, 740px);
 	padding: var(--typography-layout-indent-l-all);
 	box-sizing: border-box;
 	font-family: var(--typography-font-family);
@@ -37,7 +37,7 @@
 .TextTranslator-Body {
 	flex: 1 1 auto;
 	min-width: 0;
-	max-width: 600px;
+	max-width: 700px;
 	max-height: 400px;
 	overflow-y: auto;
 	font-size: var(--typography-layout-size-s-font-size);

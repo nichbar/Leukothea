@@ -260,22 +260,25 @@ export const PopupWindow: FC<PopupWindowProps> = ({
 			</div>
 		);
 	} else if (tabs !== undefined && activeTabId !== undefined && panes !== null) {
+		const showTabs = tabs.length > 1;
 		content = (
 			<>
-				<div className={cnPopupWindow('Tabs')}>
-					<TabsMenu
-						className={cnPopupWindow('TabsMenu')}
-						layout="horizontal"
-						size="m"
-						view="motion"
-						tabs={tabs.map(({ id }) => ({
-							id,
-							content: getMessage(`popup_tab_${id}`),
-						}))}
-						activeTab={activeTabId}
-						setActiveTab={setActiveTab}
-					/>
-				</div>
+				{showTabs ? (
+					<div className={cnPopupWindow('Tabs')}>
+						<TabsMenu
+							className={cnPopupWindow('TabsMenu')}
+							layout="horizontal"
+							size="m"
+							view="motion"
+							tabs={tabs.map(({ id }) => ({
+								id,
+								content: getMessage(`popup_tab_${id}`),
+							}))}
+							activeTab={activeTabId}
+							setActiveTab={setActiveTab}
+						/>
+					</div>
+				) : null}
 
 				<div className={cnPopupWindow('Content')}>
 					<PopupWindowContext.Provider value={{ activeTab: activeTabId }}>
