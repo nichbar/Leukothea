@@ -11,6 +11,9 @@ import { getRecentUsedLanguagesFactory } from '../../requests/backend/recentUsed
 import { resetConfigFactory } from '../../requests/backend/resetConfig';
 import { setConfigFactory } from '../../requests/backend/setConfig';
 import { suggestLanguageFactory } from '../../requests/backend/suggestLanguage';
+import { getWebDAVSyncStatusFactory } from '../../requests/backend/sync/getWebDAVSyncStatus';
+import { syncWebDAVNowFactory } from '../../requests/backend/sync/syncWebDAVNow';
+import { testWebDAVConnectionFactory } from '../../requests/backend/sync/testWebDAVConnection';
 import { translateFactory } from '../../requests/backend/translate';
 import { addTranslationFactory } from '../../requests/backend/translations/addTranslation';
 import { clearTranslationsFactory } from '../../requests/backend/translations/clearTranslations';
@@ -43,6 +46,10 @@ export const requestHandlers = [
 	setConfigFactory,
 	resetConfigFactory,
 	updateConfigFactory,
+
+	testWebDAVConnectionFactory,
+	syncWebDAVNowFactory,
+	getWebDAVSyncStatusFactory,
 
 	addTranslationFactory,
 	deleteTranslationFactory,

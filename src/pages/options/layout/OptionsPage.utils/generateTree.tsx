@@ -31,6 +31,11 @@ type Options = {
 	llmModelsError?: string;
 	llmModelsFetched: boolean;
 	refreshLLMModels: () => void;
+	webdavTestProcess: boolean;
+	webdavSyncProcess: boolean;
+	webdavStatusText: string;
+	testWebDAV: () => void;
+	syncWebDAVNow: () => void;
 };
 
 /**
@@ -48,6 +53,11 @@ export const generateTree = ({
 	llmModelsError,
 	llmModelsFetched,
 	refreshLLMModels,
+	webdavTestProcess,
+	webdavSyncProcess,
+	webdavStatusText,
+	testWebDAV,
+	syncWebDAVNow,
 }: Options): OptionsGroup[] => {
 	return [
 		{
@@ -579,6 +589,74 @@ export const generateTree = ({
 						type: 'Checkbox',
 						text: getMessage('settings_option_history_enable'),
 					},
+				},
+			],
+		},
+		{
+			title: getMessage('settings_section_sync'),
+			groupContent: [
+				{
+					title: getMessage('settings_option_syncWebdav'),
+					description: getMessage('settings_option_syncWebdav_desc'),
+					groupContent: [
+						{
+							description: getMessage(
+								'settings_option_syncWebdav_enable_desc',
+							),
+							path: 'sync.webdav.enabled',
+							optionContent: {
+								type: 'Checkbox',
+								text: getMessage('settings_option_syncWebdav_enable'),
+							},
+						},
+						{
+							title: getMessage('settings_option_syncWebdav_url'),
+							description: getMessage(
+								'settings_option_syncWebdav_url_desc',
+							),
+							path: 'sync.webdav.url',
+							optionContent: {
+								type: 'InputText',
+								placeholder:
+									'https://nextcloud.example/remote.php/dav/files/user/',
+							},
+						},
+						{
+							title: getMessage('settings_option_syncWebdav_username'),
+							path: 'sync.webdav.username',
+							optionContent: {
+								type: 'InputText',
+							},
+						},
+						{
+							title: getMessage('settings_option_syncWebdav_password'),
+							description: getMessage(
+								'settings_option_syncWebdav_password_desc',
+							),
+							path: 'sync.webdav.password',
+							optionContent: {
+								type: 'InputText',
+								password: true,
+							},
+						},
+						{
+							description: webdavStatusText,
+							optionContent: {
+								type: 'Button',
+								text: getMessage('settings_option_syncWebdav_test'),
+								disabled: webdavTestProcess,
+								action: testWebDAV,
+							},
+						},
+						{
+							optionContent: {
+								type: 'Button',
+								text: getMessage('settings_option_syncWebdav_syncNow'),
+								disabled: webdavSyncProcess,
+								action: syncWebDAVNow,
+							},
+						},
+					],
 				},
 			],
 		},

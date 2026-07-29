@@ -374,6 +374,64 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Add sync.webdav defaults
+		version: 17,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const existingWebdav =
+				actualData?.sync &&
+				typeof actualData.sync === 'object' &&
+				actualData.sync !== null
+					? (actualData.sync as { webdav?: Record<string, unknown> }).webdav
+					: undefined;
+
+			const updatedConfig = {
+				...actualData,
+				sync: {
+					...(typeof actualData?.sync === 'object' && actualData.sync !== null
+						? actualData.sync
+						: {}),
+					webdav: {
+						enabled: false,
+						url: '',
+						username: '',
+						password: '',
+						// Keep only user-facing credentials; path/interval are fixed in code.
+						...(existingWebdav
+							? {
+									enabled:
+										typeof existingWebdav.enabled === 'boolean'
+											? existingWebdav.enabled
+											: false,
+									url:
+										typeof existingWebdav.url === 'string'
+											? existingWebdav.url
+											: '',
+									username:
+										typeof existingWebdav.username === 'string'
+											? existingWebdav.username
+											: '',
+									password:
+										typeof existingWebdav.password === 'string'
+											? existingWebdav.password
+											: '',
+								}
+							: {}),
+					},
+				},
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

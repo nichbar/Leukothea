@@ -5,7 +5,7 @@
 	"icons": {
 		"512": "static/logo.png"
 	},
-	"permissions": ["storage", "tabs", "contextMenus", "scripting"],
+	"permissions": ["storage", "tabs", "contextMenus", "scripting", "alarms"],
 	"content_scripts": [
 		{
 			"matches": ["*://*/*"],

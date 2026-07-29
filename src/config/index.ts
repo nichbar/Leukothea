@@ -58,4 +58,12 @@ export const defaultConfig: AppConfigType = {
 	history: {
 		enabled: true,
 	},
+	sync: {
+		webdav: {
+			enabled: false,
+			url: '',
+			username: '',
+			password: '',
+		},
+	},
 };

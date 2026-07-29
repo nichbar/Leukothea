@@ -15,6 +15,7 @@ import { ObservableAsyncStorage } from '../ConfigStorage/ConfigStorage';
 import { TranslatorManager } from './TranslatorManager';
 import { TTSController } from './TTS/TTSController';
 import { TTSManager } from './TTS/TTSManager';
+import { WebDAVSyncManager } from './WebDAVSyncManager';
 
 export const embeddedTranslators = {
 	LLMTranslator,
@@ -31,9 +32,11 @@ export type TranslatorsMap = Record<string, TranslatorConstructor>;
 export class Background {
 	private readonly config: ObservableAsyncStorage<AppConfigType>;
 	private readonly ttsManager;
+	private readonly webdavSyncManager: WebDAVSyncManager;
 	constructor(config: ObservableAsyncStorage<AppConfigType>) {
 		this.config = config;
 		this.ttsManager = new TTSManager();
+		this.webdavSyncManager = new WebDAVSyncManager(config);
 	}
 
 	private translateManager: TranslatorManager | null = null;
@@ -64,6 +67,10 @@ export class Background {
 
 	public getTTSManager() {
 		return this.ttsManager;
+	}
+
+	public getWebDAVSyncManager() {
+		return this.webdavSyncManager;
 	}
 
 	private ttsController: TTSController | null = null;
@@ -136,5 +143,8 @@ export class Background {
 					ttsController.updateSpeaker(ttsModule);
 				});
 			});
+
+		// WebDAV config sync (push on write, pull on alarm/startup)
+		await this.webdavSyncManager.start();
 	}
 }

@@ -621,6 +621,95 @@
 	"settings_section_history": {
 		"message": "History"
 	},
+	"settings_section_sync": {
+		"message": "Sync"
+	},
+	"settings_option_syncWebdav": {
+		"message": "WebDAV config sync",
+		"description": "Settings group for bidirectional AppConfig sync over WebDAV"
+	},
+	"settings_option_syncWebdav_desc": {
+		"message": "Sync full settings (including LLM credentials) across devices via a WebDAV file. Dictionary and history stay local. Last write wins."
+	},
+	"settings_option_syncWebdav_enable": {
+		"message": "Enable WebDAV sync"
+	},
+	"settings_option_syncWebdav_enable_desc": {
+		"message": "When enabled, settings are pushed after local changes and pulled on startup and once per day. Remote file is always linguist/linguist-config.json under the base URL."
+	},
+	"settings_option_syncWebdav_url": {
+		"message": "WebDAV base URL"
+	},
+	"settings_option_syncWebdav_url_desc": {
+		"message": "Collection URL ending with a slash, for example https://nextcloud.example/remote.php/dav/files/user/. Settings are stored at linguist/linguist-config.json under this URL."
+	},
+	"settings_option_syncWebdav_username": {
+		"message": "Username"
+	},
+	"settings_option_syncWebdav_password": {
+		"message": "Password"
+	},
+	"settings_option_syncWebdav_password_desc": {
+		"message": "App password or account password. Stored in local extension storage like the LLM API key"
+	},
+	"settings_option_syncWebdav_test": {
+		"message": "Test connection"
+	},
+	"settings_option_syncWebdav_syncNow": {
+		"message": "Sync now"
+	},
+	"settings_option_syncWebdav_status": {
+		"message": "Status"
+	},
+	"settings_option_syncWebdav_status_idle": {
+		"message": "Not synced yet"
+	},
+	"settings_option_syncWebdav_status_ok": {
+		"message": "Last sync: $1 ($2)",
+		"placeholders": {
+			"time": {
+				"content": "$1",
+				"example": "2026-07-29 12:00"
+			},
+			"direction": {
+				"content": "$2",
+				"example": "push"
+			}
+		}
+	},
+	"settings_option_syncWebdav_status_error": {
+		"message": "Error: $1",
+		"placeholders": {
+			"error": {
+				"content": "$1",
+				"example": "HTTP 401"
+			}
+		}
+	},
+	"settings_message_syncWebdav_test_success": {
+		"message": "WebDAV connection OK"
+	},
+	"settings_message_syncWebdav_test_failed": {
+		"message": "WebDAV connection failed: $1",
+		"placeholders": {
+			"error": {
+				"content": "$1",
+				"example": "HTTP 401"
+			}
+		}
+	},
+	"settings_message_syncWebdav_sync_success": {
+		"message": "Config sync finished"
+	},
+	"settings_message_syncWebdav_sync_failed": {
+		"message": "Config sync failed: $1",
+		"placeholders": {
+			"error": {
+				"content": "$1",
+				"example": "HTTP 403"
+			}
+		}
+	},
 	"settings_section_popup": {
 		"message": "Popup"
 	},
@@ -702,5 +791,14 @@
 	},
 	"validation_positiveNumber": {
 		"message": "Value must be a positive number"
+	},
+	"settings_option_syncWebdav_direction_push": {
+		"message": "pushed to remote"
+	},
+	"settings_option_syncWebdav_direction_pull": {
+		"message": "pulled from remote"
+	},
+	"settings_option_syncWebdav_direction_none": {
+		"message": "already in sync"
 	}
 }

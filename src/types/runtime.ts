@@ -112,6 +112,20 @@ export const AppConfig = type.type({
 	history: type.type({
 		enabled: type.boolean,
 	}),
+	/**
+	 * Multi-device config sync settings (WebDAV).
+	 * Dictionary and history stay local; only AppConfig is synced.
+	 */
+	sync: type.type({
+		webdav: type.type({
+			enabled: type.boolean,
+			/** Base collection URL, e.g. https://nextcloud.example/remote.php/dav/files/user/ */
+			url: type.string,
+			username: type.string,
+			/** Stored plaintext in storage.local (same as llm apiKey). */
+			password: type.string,
+		}),
+	}),
 });
 
 export type AppConfigType = TypeOf<typeof AppConfig>;

@@ -25,6 +25,9 @@ import { listLLMModels } from '../../../requests/backend/llm/listLLMModels';
 import { ping } from '../../../requests/backend/ping';
 import { resetConfig as resetConfigReq } from '../../../requests/backend/resetConfig';
 import { setConfig as setConfigReq } from '../../../requests/backend/setConfig';
+import { getWebDAVSyncStatus } from '../../../requests/backend/sync/getWebDAVSyncStatus';
+import { syncWebDAVNow as syncWebDAVNowReq } from '../../../requests/backend/sync/syncWebDAVNow';
+import { testWebDAVConnection } from '../../../requests/backend/sync/testWebDAVConnection';
 import { getAvailableTranslators } from '../../../requests/backend/translators/getAvailableTranslators';
 import { getSpeakers } from '../../../requests/backend/tts/getSpeakers';
 import { updateConfig as updateConfigReq } from '../../../requests/backend/updateConfig';
@@ -78,6 +81,12 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 	const [llmModelsError, setLlmModelsError] = useState<string | undefined>();
 	const [llmModelsFetched, setLlmModelsFetched] = useState(false);
 	const llmModelsRequestIdRef = useRef(0);
+
+	const [webdavTestProcess, setWebdavTestProcess] = useState(false);
+	const [webdavSyncProcess, setWebdavSyncProcess] = useState(false);
+	const [webdavStatusText, setWebdavStatusText] = useState(
+		getMessage('settings_option_syncWebdav_status_idle'),
+	);
 
 	const updateConfig = useCallback(() => {
 		(async () => {
@@ -217,6 +226,116 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 			});
 	}, [addMessage, handleError]);
 
+	const formatWebDAVStatus = useCallback(
+		(status: {
+			lastSyncAt: number | null;
+			lastError: string | null;
+			lastDirection: string | null;
+		}) => {
+			if (status.lastError) {
+				return getMessage(
+					'settings_option_syncWebdav_status_error',
+					status.lastError,
+				);
+			}
+			if (status.lastSyncAt == null) {
+				return getMessage('settings_option_syncWebdav_status_idle');
+			}
+			const time = new Date(status.lastSyncAt).toLocaleString();
+			// 'none' = reconcile succeeded with no transfer (local and remote already equal)
+			const directionKey =
+				status.lastDirection === 'push'
+					? 'settings_option_syncWebdav_direction_push'
+					: status.lastDirection === 'pull'
+						? 'settings_option_syncWebdav_direction_pull'
+						: 'settings_option_syncWebdav_direction_none';
+			const direction = getMessage(directionKey);
+			return getMessage('settings_option_syncWebdav_status_ok', [time, direction]);
+		},
+		[],
+	);
+
+	const refreshWebDAVStatus = useCallback(async () => {
+		try {
+			const status = await getWebDAVSyncStatus();
+			setWebdavStatusText(formatWebDAVStatus(status));
+		} catch (error) {
+			// Keep previous text; surface only unexpected failures in console
+			console.error('Failed to load WebDAV sync status', error);
+		}
+	}, [formatWebDAVStatus]);
+
+	const getMergedWebDAVCredentials = useCallback(() => {
+		return {
+			url:
+				(modifiedConfig?.['sync.webdav.url'] as string | undefined) ??
+				config?.sync?.webdav?.url ??
+				'',
+			username:
+				(modifiedConfig?.['sync.webdav.username'] as string | undefined) ??
+				config?.sync?.webdav?.username ??
+				'',
+			password:
+				(modifiedConfig?.['sync.webdav.password'] as string | undefined) ??
+				config?.sync?.webdav?.password ??
+				'',
+		};
+	}, [config, modifiedConfig]);
+
+	const testWebDAV = useCallback(() => {
+		setWebdavTestProcess(true);
+		const credentials = getMergedWebDAVCredentials();
+		testWebDAVConnection(credentials)
+			.then((result) => {
+				if (result.ok) {
+					addMessage(
+						getMessage('settings_message_syncWebdav_test_success'),
+						'info',
+					);
+				} else {
+					addMessage(
+						getMessage(
+							'settings_message_syncWebdav_test_failed',
+							result.error ?? 'Unknown error',
+						),
+						'error',
+					);
+				}
+			})
+			.catch(handleError)
+			.finally(() => {
+				setWebdavTestProcess(false);
+			});
+	}, [addMessage, getMergedWebDAVCredentials, handleError]);
+
+	const syncWebDAVNow = useCallback(() => {
+		setWebdavSyncProcess(true);
+		syncWebDAVNowReq()
+			.then(async (status) => {
+				setWebdavStatusText(formatWebDAVStatus(status));
+				if (status.lastError) {
+					addMessage(
+						getMessage(
+							'settings_message_syncWebdav_sync_failed',
+							status.lastError,
+						),
+						'error',
+					);
+				} else {
+					addMessage(
+						getMessage('settings_message_syncWebdav_sync_success'),
+						'info',
+					);
+				}
+				// Config may have changed on pull
+				await updateConfig();
+			})
+			.catch(handleError)
+			.finally(() => {
+				setWebdavSyncProcess(false);
+			});
+	}, [addMessage, formatWebDAVStatus, handleError, updateConfig]);
+
 	const getMergedLlmCredentials = useCallback(() => {
 		const apiUrl =
 			(modifiedConfig?.['llmTranslator.apiUrl'] as string | undefined) ??
@@ -324,6 +443,12 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	// Load WebDAV sync status when options page is ready
+	useEffect(() => {
+		if (!loaded) return;
+		void refreshWebDAVStatus();
+	}, [loaded, refreshWebDAVStatus]);
+
 	// Load model suggestions when saved LLM credentials change (not on every keystroke).
 	useEffect(() => {
 		if (!loaded || config === undefined) return;
@@ -351,6 +476,11 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 			llmModelsError,
 			llmModelsFetched,
 			refreshLLMModels,
+			webdavTestProcess,
+			webdavSyncProcess,
+			webdavStatusText,
+			testWebDAV,
+			syncWebDAVNow,
 		});
 
 		setConfigTree(configTree);
@@ -364,6 +494,11 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		llmModelsError,
 		llmModelsFetched,
 		refreshLLMModels,
+		webdavTestProcess,
+		webdavSyncProcess,
+		webdavStatusText,
+		testWebDAV,
+		syncWebDAVNow,
 	]);
 
 	//
