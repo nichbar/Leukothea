@@ -26,9 +26,12 @@ import {
 	getLocalizedNode,
 	getMessage,
 } from '../../../../lib/language';
+import { getTranslatorProviderName } from '../../../../lib/translators/getTranslatorProviderName';
+import { getConfig } from '../../../../requests/backend/getConfig';
 import { addTranslationHistoryEntry } from '../../../../requests/backend/history/addTranslationHistoryEntry';
 import { TRANSLATION_ORIGIN } from '../../../../requests/backend/history/constants';
 import { suggestLanguage } from '../../../../requests/backend/suggestLanguage';
+import { getAvailableTranslators } from '../../../../requests/backend/translators/getAvailableTranslators';
 import { ITranslation } from '../../../../types/translation/Translation';
 import { MutableValue } from '../../../../types/utils';
 import { TabData } from '../../layout/PopupWindow';
@@ -120,11 +123,30 @@ export const TextTranslator: FC<TextTranslatorProps> = ({
 
 	const [inTranslateProcess, setInTranslateProcess] = useState(false);
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
+	const [providerName, setProviderName] = useState<string | null>(null);
 
 	const isFirstRenderRef = useIsFirstRenderRef();
 
 	const isTranslatedTextRelative =
 		translation !== null && translation.original === userInput;
+
+	// Resolve active translator display name for footer attribution
+	useEffect(() => {
+		let cancelled = false;
+
+		Promise.all([getConfig(), getAvailableTranslators()])
+			.then(([config, translators]) => {
+				if (cancelled) return;
+				setProviderName(getTranslatorProviderName(config, translators));
+			})
+			.catch((reason) => {
+				console.error('[TextTranslator] provider name resolve failed:', reason);
+			});
+
+		return () => {
+			cancelled = true;
+		};
+	}, []);
 
 	const [activeTTS, setActiveTTS] = useState<symbol | null>(null);
 	const TTSSignal = {
@@ -388,6 +410,11 @@ export const TextTranslator: FC<TextTranslatorProps> = ({
 				? translation.text
 				: null;
 
+	const showProviderAttribution =
+		providerName !== null &&
+		!inTranslateProcess &&
+		(errorMessage !== null || (translation !== null && isTranslatedTextRelative));
+
 	return (
 		<div className={cnTextTranslator({ view: isMobile ? 'mobile' : undefined })}>
 			<div className={cnTextTranslator('LangPanel')}>
@@ -476,6 +503,18 @@ export const TextTranslator: FC<TextTranslatorProps> = ({
 								<Icon glyph="volume-up" scalable={false} />
 							</Button>
 						</div>
+						{showProviderAttribution && (
+							<div className={cnTextTranslator('Footer')}>
+								<span
+									className={cnTextTranslator('Provider')}
+									title={providerName}
+								>
+									{getMessage('inlineTranslator_translatedBy', [
+										providerName,
+									])}
+								</span>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

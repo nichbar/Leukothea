@@ -72,6 +72,27 @@
 	word-break: break-word;
 }
 
+.TextTranslator-Footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	gap: var(--typography-layout-indent-s-all);
+	min-width: 0;
+	padding: 0 var(--textarea-size-m-control-indent) var(--textarea-size-m-control-indent);
+	padding-top: var(--typography-layout-indent-xs-all, 0.1rem);
+	box-sizing: border-box;
+}
+
+.TextTranslator-Provider {
+	color: var(--color-typo-secondary);
+	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+
 .TextTranslator-LanguageSuggestion > *:not(:last-child) {
 	margin-inline-end: 0.3em;
 }

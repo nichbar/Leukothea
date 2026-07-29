@@ -7,6 +7,7 @@ import { Button } from '../../../../../../components/primitives/Button/Button.bu
 import { Loader } from '../../../../../../components/primitives/Loader/Loader';
 import { isMobileBrowser } from '../../../../../../lib/browser';
 import { detectLanguage, getMessage } from '../../../../../../lib/language';
+import { getTranslatorProviderName } from '../../../../../../lib/translators/getTranslatorProviderName';
 import { TranslatorFeatures } from '../../../../../../pages/popup/layout/PopupWindow';
 import { getConfig } from '../../../../../../requests/backend/getConfig';
 import { getTranslatorFeatures } from '../../../../../../requests/backend/getTranslatorFeatures';
@@ -270,15 +271,7 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 			.then(([config, translators]) => {
 				if (isUnmount.current) return;
 
-				const moduleId = config.translatorModule;
-				// For the LLM translator, show the configured model instead of the generic name
-				if (moduleId === 'LLMTranslator') {
-					const model = config.llmTranslator?.model?.trim();
-					setProviderName(model || translators[moduleId] || moduleId);
-					return;
-				}
-
-				setProviderName(translators[moduleId] ?? moduleId);
+				setProviderName(getTranslatorProviderName(config, translators));
 			})
 			.catch((reason) => {
 				console.error('[SelectTranslator] provider name resolve failed:', reason);
