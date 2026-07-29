@@ -26,6 +26,11 @@ type Options = {
 	clearCache: () => void;
 	toggleCustomTranslatorsWindow: () => void;
 	toggleTTSModulesWindow: () => void;
+	llmModels: string[];
+	llmModelsLoading: boolean;
+	llmModelsError?: string;
+	llmModelsFetched: boolean;
+	refreshLLMModels: () => void;
 };
 
 /**
@@ -38,6 +43,11 @@ export const generateTree = ({
 	clearCache,
 	toggleCustomTranslatorsWindow,
 	toggleTTSModulesWindow,
+	llmModels,
+	llmModelsLoading,
+	llmModelsError,
+	llmModelsFetched,
+	refreshLLMModels,
 }: Options): OptionsGroup[] => {
 	return [
 		{
@@ -136,13 +146,50 @@ export const generateTree = ({
 						},
 						{
 							title: getMessage('settings_option_llmTranslator_model'),
-							description: getMessage(
-								'settings_option_llmTranslator_model_desc',
-							),
+							description: (() => {
+								const base = getMessage(
+									'settings_option_llmTranslator_model_desc',
+								);
+								if (llmModelsError) {
+									return `${base} ${getMessage(
+										'settings_option_llmTranslator_model_loadError',
+										llmModelsError,
+									)}`;
+								}
+								if (
+									!llmModelsLoading &&
+									llmModels.length === 0 &&
+									llmModelsFetched
+								) {
+									return `${base} ${getMessage(
+										'settings_option_llmTranslator_model_empty',
+									)}`;
+								}
+								if (
+									!llmModelsLoading &&
+									llmModels.length > 0 &&
+									llmModelsFetched
+								) {
+									return `${base} ${getMessage(
+										'settings_option_llmTranslator_model_loaded',
+										String(llmModels.length),
+									)}`;
+								}
+								return base;
+							})(),
 							path: 'llmTranslator.model',
 							optionContent: {
-								type: 'InputText',
+								type: 'InputTextWithSuggestions',
 								placeholder: 'gpt-4o-mini',
+								suggestions: llmModels,
+								action: {
+									text: getMessage(
+										'settings_option_llmTranslator_model_refresh',
+									),
+									action: refreshLLMModels,
+									disabled: llmModelsLoading,
+									pending: llmModelsLoading,
+								},
 							},
 						},
 						{

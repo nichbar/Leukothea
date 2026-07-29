@@ -35,6 +35,45 @@
 	width: min(100%, 600px);
 }
 
+.OptionsPage-InputWithSuggestions {
+	display: flex;
+	flex-direction: column;
+	gap: var(--typography-layout-indent-s-all);
+	max-width: min(100%, 600px);
+}
+
+.OptionsPage-InputWithAction {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	max-width: min(100%, 600px);
+}
+
+.OptionsPage-InputWithAction .Textinput {
+	flex: 1 1 16rem;
+	width: auto;
+	min-width: 12rem;
+}
+
+.OptionsPage-InputWithAction .Button {
+	flex: 0 0 auto;
+	white-space: nowrap;
+}
+
+.OptionsPage-SuggestionList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--typography-layout-indent-s-all);
+	max-height: 10rem;
+	overflow: auto;
+}
+
+.OptionsPage-SuggestionItem {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .OptionsPage .Textarea-Wrap {
 	min-height: 5rem;
 	max-height: 20rem;

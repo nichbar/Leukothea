@@ -4,6 +4,7 @@ import { getConfigFactory } from '../../requests/backend/getConfig';
 import { getTranslatorFeaturesFactory } from '../../requests/backend/getTranslatorFeatures';
 import { getUserLanguagePreferencesFactory } from '../../requests/backend/getUserLanguagePreferences';
 import { historyRequestHandlersFactory } from '../../requests/backend/history';
+import { listLLMModelsFactory } from '../../requests/backend/llm/listLLMModels';
 import { pingFactory } from '../../requests/backend/ping';
 import { addRecentUsedLanguageFactory } from '../../requests/backend/recentUsedLanguages/addRecentUsedLanguage';
 import { getRecentUsedLanguagesFactory } from '../../requests/backend/recentUsedLanguages/getRecentUsedLanguages';
@@ -32,6 +33,7 @@ export const requestHandlers = [
 	getUserLanguagePreferencesFactory,
 	getAvailableTranslatorsFactory,
 	clearCacheFactory,
+	listLLMModelsFactory,
 
 	...ttsRequestHandlers,
 

@@ -348,7 +348,34 @@
 		"message": "Model"
 	},
 	"settings_option_llmTranslator_model_desc": {
-		"message": "Model id passed to the chat completions API"
+		"message": "Model id passed to the chat completions API. Pick from the list loaded from the endpoint, or type any custom id"
+	},
+	"settings_option_llmTranslator_model_empty": {
+		"message": "No models returned. You can still type a model id."
+	},
+	"settings_option_llmTranslator_model_loaded": {
+		"message": "Loaded $1 models. Click one below or type a custom id.",
+		"description": "Shown after a successful models list fetch",
+		"placeholders": {
+			"count": {
+				"content": "$1",
+				"example": "12"
+			}
+		}
+	},
+	"settings_option_llmTranslator_model_loadError": {
+		"message": "Could not load models: $1",
+		"description": "Soft error when fetching models list fails",
+		"placeholders": {
+			"error": {
+				"content": "$1",
+				"example": "401 Unauthorized"
+			}
+		}
+	},
+	"settings_option_llmTranslator_model_refresh": {
+		"message": "Refresh models",
+		"description": "Button to reload model ids from the configured LLM API"
 	},
 	"settings_option_llmTranslator_prompt": {
 		"message": "System prompt"

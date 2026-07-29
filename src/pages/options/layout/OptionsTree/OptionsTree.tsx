@@ -32,6 +32,22 @@ export interface OptionInputText {
 	spellCheck?: boolean;
 }
 
+export interface OptionInputTextWithSuggestions {
+	type: 'InputTextWithSuggestions';
+	placeholder?: string;
+	spellCheck?: boolean;
+	password?: boolean;
+	/** Suggestion ids; current value need not be in the list */
+	suggestions: string[];
+	/** Optional secondary control (e.g. Refresh models) */
+	action?: {
+		text: string;
+		action: () => void;
+		disabled?: boolean;
+		pending?: boolean;
+	};
+}
+
 export interface OptionInputTextarea {
 	type: 'InputTextarea';
 	placeholder?: string;
@@ -78,6 +94,7 @@ export interface OptionItem {
 		| OptionSelectList
 		| OptionInputNumber
 		| OptionInputText
+		| OptionInputTextWithSuggestions
 		| OptionInputTextarea
 		| OptionInputMultilineFromArray
 		| OptionCheckbox
@@ -271,6 +288,91 @@ export const OptionsTree: FC<OptionsTreeProps> = ({
 							}}
 						/>
 					);
+				case 'InputTextWithSuggestions': {
+					const datalistId = `options-datalist-${path ?? 'field'}`;
+					const currentValue = value ?? '';
+					const input = (
+						<Textinput
+							state={error !== undefined ? 'error' : undefined}
+							value={currentValue}
+							placeholder={option.placeholder}
+							spellCheck={option.spellCheck ?? false}
+							controlProps={{
+								type: option.password ? 'password' : 'text',
+								list: datalistId,
+							}}
+							onInputText={(nextValue) => {
+								setOptionValueProxy(path, nextValue);
+							}}
+						/>
+					);
+					const datalist = (
+						<datalist id={datalistId}>
+							{option.suggestions.map((suggestion) => (
+								<option key={suggestion} value={suggestion} />
+							))}
+						</datalist>
+					);
+
+					// Native <datalist> often hides options that don't match the current
+					// input text (e.g. field is "gpt-4o-mini", API returned "gemma-*").
+					// Always show loaded models as explicit pick buttons.
+					const suggestionList =
+						option.suggestions.length > 0 ? (
+							<div className={cnOptionsPage('SuggestionList')}>
+								{option.suggestions.map((suggestion) => {
+									const selected = suggestion === currentValue;
+									return (
+										<Button
+											key={suggestion}
+											view={selected ? 'action' : 'default'}
+											onPress={() => {
+												setOptionValueProxy(path, suggestion);
+											}}
+											className={cnOptionsPage('SuggestionItem')}
+										>
+											{suggestion}
+										</Button>
+									);
+								})}
+							</div>
+						) : null;
+
+					const controls =
+						option.action === undefined ? (
+							<>
+								{input}
+								{datalist}
+							</>
+						) : (
+							<div
+								className={cnOptionsPage('InputWithAction', {}, [
+									cnOptionsPage('IndentMixin', { horizontal: true }),
+								])}
+							>
+								{input}
+								{datalist}
+								<Button
+									view="default"
+									onPress={option.action.action}
+									disabled={
+										option.action.disabled || option.action.pending
+									}
+								>
+									{option.action.pending
+										? `${option.action.text}…`
+										: option.action.text}
+								</Button>
+							</div>
+						);
+
+					return (
+						<div className={cnOptionsPage('InputWithSuggestions')}>
+							{controls}
+							{suggestionList}
+						</div>
+					);
+				}
 				case 'SelectList': {
 					// Some config fields use `null` for "unset" (e.g. fixedSourceLanguage).
 					// SelectList options encode that as an empty-string id.

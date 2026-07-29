@@ -21,6 +21,7 @@ import { getMessage } from '../../../lib/language';
 // Requests
 import { clearCache as clearCacheReq } from '../../../requests/backend/clearCache';
 import { getConfig } from '../../../requests/backend/getConfig';
+import { listLLMModels } from '../../../requests/backend/llm/listLLMModels';
 import { ping } from '../../../requests/backend/ping';
 import { resetConfig as resetConfigReq } from '../../../requests/backend/resetConfig';
 import { setConfig as setConfigReq } from '../../../requests/backend/setConfig';
@@ -71,6 +72,12 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 
 	const [ttsModules, setTTSModules] = useState<Record<string, string>>({});
 	const [isTTSModulesWindowOpen, setIsTTSModulesWindowOpen] = useState(false);
+
+	const [llmModels, setLlmModels] = useState<string[]>([]);
+	const [llmModelsLoading, setLlmModelsLoading] = useState(false);
+	const [llmModelsError, setLlmModelsError] = useState<string | undefined>();
+	const [llmModelsFetched, setLlmModelsFetched] = useState(false);
+	const llmModelsRequestIdRef = useRef(0);
 
 	const updateConfig = useCallback(() => {
 		(async () => {
@@ -210,6 +217,58 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 			});
 	}, [addMessage, handleError]);
 
+	const getMergedLlmCredentials = useCallback(() => {
+		const apiUrl =
+			(modifiedConfig?.['llmTranslator.apiUrl'] as string | undefined) ??
+			config?.llmTranslator?.apiUrl ??
+			'';
+		const apiKey =
+			(modifiedConfig?.['llmTranslator.apiKey'] as string | undefined) ??
+			config?.llmTranslator?.apiKey ??
+			'';
+		return { apiUrl, apiKey };
+	}, [config, modifiedConfig]);
+
+	const refreshLLMModels = useCallback(async () => {
+		const { apiUrl, apiKey } = getMergedLlmCredentials();
+		const requestId = ++llmModelsRequestIdRef.current;
+
+		// Skip network when URL is empty; free-text model field still works.
+		if (!apiUrl.trim()) {
+			setLlmModels([]);
+			setLlmModelsError(undefined);
+			setLlmModelsFetched(false);
+			setLlmModelsLoading(false);
+			return;
+		}
+
+		setLlmModelsLoading(true);
+		setLlmModelsError(undefined);
+
+		try {
+			const result = await listLLMModels({
+				apiUrl,
+				apiKey: apiKey || undefined,
+			});
+			if (requestId !== llmModelsRequestIdRef.current) return;
+
+			setLlmModels(result.models);
+			setLlmModelsError(result.error);
+			setLlmModelsFetched(true);
+		} catch (error) {
+			if (requestId !== llmModelsRequestIdRef.current) return;
+			const message =
+				error instanceof Error ? error.message : 'Failed to load models';
+			setLlmModels([]);
+			setLlmModelsError(message);
+			setLlmModelsFetched(true);
+		} finally {
+			if (requestId === llmModelsRequestIdRef.current) {
+				setLlmModelsLoading(false);
+			}
+		}
+	}, [getMergedLlmCredentials]);
+
 	//
 	// Utils
 	//
@@ -265,6 +324,15 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	// Load model suggestions when saved LLM credentials change (not on every keystroke).
+	useEffect(() => {
+		if (!loaded || config === undefined) return;
+		void refreshLLMModels();
+		// refreshLLMModels depends on modifiedConfig merge for manual refresh;
+		// auto-load intentionally tracks only saved apiUrl/apiKey.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [loaded, config?.llmTranslator?.apiUrl, config?.llmTranslator?.apiKey]);
+
 	// Update config tree
 	useEffect(() => {
 		const configTree = generateTree({
@@ -278,10 +346,25 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 			toggleTTSModulesWindow: () => {
 				setIsTTSModulesWindowOpen((value) => !value);
 			},
+			llmModels,
+			llmModelsLoading,
+			llmModelsError,
+			llmModelsFetched,
+			refreshLLMModels,
 		});
 
 		setConfigTree(configTree);
-	}, [translatorModules, clearCacheProcess, clearCache, ttsModules]);
+	}, [
+		translatorModules,
+		clearCacheProcess,
+		clearCache,
+		ttsModules,
+		llmModels,
+		llmModelsLoading,
+		llmModelsError,
+		llmModelsFetched,
+		refreshLLMModels,
+	]);
 
 	//
 	// Render
