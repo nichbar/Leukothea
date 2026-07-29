@@ -43,7 +43,38 @@
 	font-size: var(--typography-layout-size-s-font-size);
 	white-space: pre-line;
 	line-height: 1.35rem;
+
+	/* Firefox: thin bar with soft thumb matching popup chrome */
 	scrollbar-width: thin;
+	scrollbar-color: var(--text-translator-popup-scrollbar-thumb, rgb(0 0 0 / 18%))
+		var(--text-translator-popup-scrollbar-track, transparent);
+}
+
+/* Stronger thumb while the body (incl. scrollbar gutter) is hovered */
+.TextTranslator-Body:hover {
+	scrollbar-color: var(--text-translator-popup-scrollbar-thumb-hover, rgb(0 0 0 / 32%))
+		var(--text-translator-popup-scrollbar-track, transparent);
+}
+
+/* Chromium / WebKit: themed scrollbar matching popup border/shadow alphas */
+.TextTranslator-Body::-webkit-scrollbar {
+	width: 6px;
+}
+
+.TextTranslator-Body::-webkit-scrollbar-track {
+	background: var(--text-translator-popup-scrollbar-track, transparent);
+	border-radius: 3px;
+}
+
+.TextTranslator-Body::-webkit-scrollbar-thumb {
+	background: var(--text-translator-popup-scrollbar-thumb, rgb(0 0 0 / 18%));
+	border-radius: 3px;
+}
+
+/* Hover on body or directly on the thumb (track is part of the body hit area) */
+.TextTranslator-Body:hover::-webkit-scrollbar-thumb,
+.TextTranslator-Body::-webkit-scrollbar-thumb:hover {
+	background: var(--text-translator-popup-scrollbar-thumb-hover, rgb(0 0 0 / 32%));
 }
 
 .TextTranslator-Body_error {
