@@ -15,3 +15,8 @@ indexeddb
 webextension
 ollama
 retargeted
+webdav
+Webdav
+WEBDAV
+mkcol
+MKCOL
