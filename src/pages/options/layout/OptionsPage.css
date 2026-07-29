@@ -29,7 +29,8 @@
 	z-index: 999;
 }
 
-/* Inputs */
+/* Inputs — match system prompt / long-text fields */
+.OptionsPage .Textinput,
 .OptionsPage .Textarea {
 	width: min(100%, 600px);
 }
