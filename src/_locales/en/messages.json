@@ -381,7 +381,13 @@
 		"message": "System prompt"
 	},
 	"settings_option_llmTranslator_prompt_desc": {
-		"message": "Instructions sent to the model for each translation. Use {from} and {to} as placeholders for source and target language codes. Leave empty to restore the default prompt"
+		"message": "Instructions sent to the model for each translation. Use {from} and {to} as placeholders for source and target language codes, {title} for the current page title when Include page title is enabled. Leave empty to restore the default prompt"
+	},
+	"settings_option_llmTranslator_includePageTitle": {
+		"message": "Include page title"
+	},
+	"settings_option_llmTranslator_includePageTitle_desc": {
+		"message": "When enabled, the current page title is sent to the LLM as extra translation context (e.g. to disambiguate short selections). The title itself is not translated"
 	},
 	"settings_option_pageTranslation": {
 		"message": "The full page translation"

@@ -53,9 +53,13 @@ export const AppConfig = type.type({
 		apiUrl: type.string,
 		model: type.string,
 		/**
-		 * System prompt template. Use `{from}` and `{to}` for language codes.
+		 * System prompt template. Use `{from}` and `{to}` for language codes, `{title}` for page title.
 		 */
 		prompt: type.string,
+		/**
+		 * When true, send document.title as extra prompt context to LLM.
+		 */
+		includePageTitle: type.boolean,
 	}),
 	scheduler: type.type({
 		useCache: type.boolean,

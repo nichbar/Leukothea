@@ -432,6 +432,30 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Add llmTranslator.includePageTitle
+		version: 18,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const updatedConfig = {
+				...actualData,
+				llmTranslator: {
+					...actualData?.llmTranslator,
+					includePageTitle:
+						(actualData?.llmTranslator)?.includePageTitle ?? false,
+				},
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

@@ -7,11 +7,16 @@ export type LLMTranslatorOptions = {
 	apiUrl?: string;
 	model?: string;
 	/**
-	 * System prompt template. Supports `{from}` and `{to}` placeholders for language codes.
+	 * System prompt template. Supports `{from}`, `{to}`, `{title}` placeholders.
 	 * Empty/undefined falls back to the built-in default prompt.
 	 */
 	prompt?: string;
 };
+
+/**
+ * Maximum page title length (chars) forwarded as prompt context.
+ */
+const MAX_PAGE_TITLE_LENGTH = 500;
 
 const DEFAULT_API_URL = 'https://api.openai.com/v1/chat/completions';
 const DEFAULT_MODEL = 'gpt-4o-mini';
@@ -48,11 +53,28 @@ export class LLMTranslator {
 		return plainText.length - this.getLengthLimit();
 	};
 
-	private buildSystemPrompt(from: string, to: string) {
-		return this.prompt.replaceAll('{from}', from).replaceAll('{to}', to);
+	/**
+	 * Build system prompt from template.
+	 * Supports `{from}`, `{to}`, `{title}` placeholders. When pageTitle is
+	 * given but template has no `{title}`, the title is auto-appended as
+	 * extra context — so the default prompt still benefits from it.
+	 */
+	buildSystemPrompt(from: string, to: string, pageTitle?: string) {
+		const title = (pageTitle ?? '').trim().slice(0, MAX_PAGE_TITLE_LENGTH);
+		const hasTitlePlaceholder = this.prompt.includes('{title}');
+		let prompt = this.prompt
+			.replaceAll('{from}', from)
+			.replaceAll('{to}', to)
+			.replaceAll('{title}', title);
+
+		if (title.length > 0 && !hasTitlePlaceholder) {
+			prompt += `\n\nAdditional context - page title: "${title}". Use it to improve translation accuracy, but translate ONLY the user-provided text.`;
+		}
+
+		return prompt;
 	}
 
-	async translate(text: string, from: string, to: string) {
+	async translate(text: string, from: string, to: string, pageTitle?: string) {
 		if (!this.apiKey) {
 			throw new Error(
 				'LLM translator API key is not set. Configure it in extension settings.',
@@ -70,7 +92,7 @@ export class LLMTranslator {
 				messages: [
 					{
 						role: 'system',
-						content: this.buildSystemPrompt(from, to),
+						content: this.buildSystemPrompt(from, to, pageTitle),
 					},
 					{
 						role: 'user',
@@ -96,7 +118,9 @@ export class LLMTranslator {
 		return content.trim();
 	}
 
-	async translateBatch(texts: string[], from: string, to: string) {
-		return Promise.all(texts.map((text) => this.translate(text, from, to)));
+	async translateBatch(texts: string[], from: string, to: string, pageTitle?: string) {
+		return Promise.all(
+			texts.map((text) => this.translate(text, from, to, pageTitle)),
+		);
 	}
 }

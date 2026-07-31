@@ -33,12 +33,21 @@ export interface TextTranslatorComponentProps {
 	isUseAutoForDetectLang: boolean;
 	rememberDirection: boolean;
 	text: string;
-	translate: (text: string, from: string, to: string) => Promise<string>;
+	translate: (
+		text: string,
+		from: string,
+		to: string,
+		pageTitle?: string,
+	) => Promise<string>;
 	/**
 	 * Recalculate popup position
 	 */
 	updatePopup: () => void;
 	pageLanguage?: string;
+	/**
+	 * Optional page title to send as LLM context (when enabled in settings).
+	 */
+	pageTitle?: string;
 }
 
 // TODO: rename component and move to element dir
@@ -50,6 +59,7 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 	text,
 	translate,
 	updatePopup,
+	pageTitle,
 }) => {
 	const [from, setFrom] = useState<string>();
 	const [to, setTo] = useState<string>();
@@ -76,7 +86,7 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 		setTranslatedText(null);
 		setError(null);
 
-		translate(originalText, from, to)
+		translate(originalText, from, to, pageTitle)
 			.then((translatedText) => {
 				if (context !== translateContext.current) return;
 
@@ -107,7 +117,7 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 
 				translateContext.current = Symbol('TranslateContext');
 			});
-	}, [from, originalText, to, translate]);
+	}, [from, originalText, to, translate, pageTitle]);
 
 	// Resolve languages / features before the first LLM call. Failures used to
 	// leave the Loader forever because this path had no catch.

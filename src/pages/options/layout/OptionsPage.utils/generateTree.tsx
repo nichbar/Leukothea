@@ -213,6 +213,18 @@ export const generateTree = ({
 								placeholder: DEFAULT_LLM_PROMPT,
 							},
 						},
+						{
+							description: getMessage(
+								'settings_option_llmTranslator_includePageTitle_desc',
+							),
+							path: 'llmTranslator.includePageTitle',
+							optionContent: {
+								type: 'Checkbox',
+								text: getMessage(
+									'settings_option_llmTranslator_includePageTitle',
+								),
+							},
+						},
 					],
 				},
 				{

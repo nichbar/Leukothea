@@ -39,6 +39,11 @@ export interface TextTranslatorPopupProps
 	 * for the rest of the session (avoids first-open Loader unmount races).
 	 */
 	onTranslateEngage?: () => void;
+	/**
+	 * Current page title forwarded as optional LLM context. Read at popup
+	 * show time in SelectTranslator for freshness.
+	 */
+	pageTitle?: string;
 }
 
 const cnTheme = cn('Theme');

@@ -413,6 +413,8 @@ export class SelectTranslator {
 
 		if (trimmedText.length === 0) return;
 
+		const pageTitle = (typeof document !== 'undefined' ? document.title : '').trim();
+
 		// Update selection value
 		this.unhandledSelection = false;
 
@@ -485,6 +487,7 @@ export class SelectTranslator {
 					this.setSuppressOutsidePointerClose(true);
 				}}
 				quickTranslate={immediateTranslate}
+				pageTitle={pageTitle}
 				{...{
 					translate,
 					pageLanguage,

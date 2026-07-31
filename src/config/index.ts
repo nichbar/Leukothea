@@ -18,6 +18,7 @@ export const defaultConfig: AppConfigType = {
 		apiUrl: 'https://api.openai.com/v1/chat/completions',
 		model: 'gpt-4o-mini',
 		prompt: DEFAULT_LLM_PROMPT,
+		includePageTitle: false,
 	},
 	scheduler: {
 		useCache: true,
