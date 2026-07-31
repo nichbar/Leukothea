@@ -62,24 +62,12 @@ Version line: upstream is at `7.0.5`; this fork is at `7.0.10`.
 
 # Installation
 
-Upstream store listings (original project, not this fork):
-
-[![](./assets/firefox.png)](https://addons.mozilla.org/addon/linguist-translator/) [![](./assets/chrome.png)](https://chrome.google.com/webstore/detail/gbefmodhlophhakmoecijeppjblibmie)
-
-For **this fork**, use a package from the [GitHub Releases page](https://github.com/nichbar/linguist/releases) or a local build, then load it unpacked:
+Use a package from the [GitHub Releases page](https://github.com/nichbar/linguist/releases) or a local build, then load it unpacked:
 
 1. Build or download the Chromium package
 2. Open `chrome://extensions` (or Chromium equivalent)
 3. Enable **Developer mode**
 4. **Load unpacked** → select `build/chromium` (or extract a release zip)
-
-# Screenshots
-
-Upstream marketing site: https://linguister.io (may still show full-page translation, which this fork does not include).
-
-![](./packages/site/src/features/Landing/screenshots/text-translation.png)
-![](./packages/site/src/features/Landing/screenshots/selected-text-translation.png)
-![](./packages/site/src/features/Landing/screenshots/settings.png)
 
 # Development
 
