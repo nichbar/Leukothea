@@ -449,7 +449,7 @@ const migrations: Migration[] = [
 				llmTranslator: {
 					...actualData?.llmTranslator,
 					includePageTitle:
-						(actualData?.llmTranslator)?.includePageTitle ?? false,
+						actualData?.llmTranslator?.includePageTitle ?? false,
 				},
 			};
 

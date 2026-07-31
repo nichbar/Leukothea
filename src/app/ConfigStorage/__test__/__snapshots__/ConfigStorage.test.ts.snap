@@ -13,6 +13,7 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
@@ -74,6 +75,7 @@ exports[`config migrations > race condition detection > Detection race condition
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
@@ -135,6 +137,7 @@ exports[`config migrations > race condition detection > Detection race condition
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
@@ -196,6 +199,7 @@ exports[`config migrations > race condition detection > Detection race condition
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
@@ -257,6 +261,7 @@ exports[`config migrations > race condition detection > Detection race condition
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
@@ -318,6 +323,7 @@ exports[`config migrations > race condition detection > Detection race condition
   "llmTranslator": {
     "apiKey": "",
     "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "includePageTitle": false,
     "model": "gpt-4o-mini",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
