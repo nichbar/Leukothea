@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ڕێکخستنە گشتییەکان"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "مۆدیولە تایبەتییەکانی وەرگێڕان",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "دەتوانیت مۆدیولە تایبەتییەکانی وەرگێڕان زیاد بکەیت کە خزمەتگوزارییە وەرگێڕانی دڵخوازەکانت بەکار دەهێنن. زانیاری زیاتر لە <slot id=docs>بەڵگەنامەی وەرگێڕانی تایبەتی</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "بەڕێوەبردنی وەرگێڕان",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "چالاککردنی مێژوو"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "کاتێک ناچالاکە، پێشنیارەکانی زمان تەنها کاتێک دەردەکەون کە زمانە سەرچاوەکە دانراوە بۆ \"خۆکار\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "پیشاندانی وەرگێڕان"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ڕێکخستنی کاتی وەرگێڕان"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ڕێکخستەری کات هەوڵ دەداتەوە بۆ وەرگێڕانی دەقەکان کاتێک هەڵەکانی وەرگێڕان ڕوویدا. ئەم هەڵبژاردنە سنووردانی هەوڵدانەوەکان دانا. ژمارەی نیوەگرە دانە بۆ ڕێگەدان بە هەوڵدانەوەی بێ سنوور"
-	},
-	"settings_option_translatorModule": {
-		"message": "مۆدیولە وەرگێڕانەکان"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "کوالیتی وەرگێڕانەکان و زمانە دیاریکراوەکان پەیوەندیدارە بە مۆدیولە وەرگێڕانەکان"
 	},
 	"settings_option_tts": {
 		"message": "گۆڕینی دەق بۆ وتار (TTS)"

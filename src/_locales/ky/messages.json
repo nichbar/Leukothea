@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Жалпы жөндөөлөр"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Ыңгайлаштырылган котормо модулдары",
-		"description": "Которуу модулун ишке ашырган колдонуучу аныктаган код"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Сиз өзүңүздүн сүйүктүү котормо кызматтарыңызды колдонгон ыңгайлаштырылган котормо модулдарын кошо аласыз. <slot id=docs>ыңгайлаштырылган котормочулар документтеринен</slot> көбүрөөк билиңиз"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Котормочуларды башкаруу",
-		"description": "Котормо модулдарынын тизмесин көрсөтүүчү баскыч"
-	},
 	"settings_option_history_enable": {
 		"message": "Тарыхты иштетүү"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Өчүрүлгөндө, тил сунуштары булагы \"авто\" деп коюлганда гана пайда болот"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Котормо артыкчылыктары"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Котормо графиги"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Котормо каталары пайда болгондо график тексттерди кайра которууга аракет кылат. Бул параметр кайра аракет кылуу чектөөсүн белгилейт. Чексиз аракеттерге уруксат берүү үчүн терс санды коюңуз"
-	},
-	"settings_option_translatorModule": {
-		"message": "Котормо модулу"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Котормолордун сапаты жана жеткиликтүү тилдер котормо модулуна көз каранды"
 	},
 	"settings_option_tts": {
 		"message": "Текстти үнгө айландыруу (TTS)"

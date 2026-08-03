@@ -38,9 +38,10 @@ Webpack targets (`EXT_TARGET`): `chromium` (default release), `chrome`, `firefox
   - Defaults: `src/config/index.ts` (`defaultConfig`)
   - Any config field change must update schema, defaults, options UI (`src/pages/options/.../generateTree.tsx`), and usually a **new config migration**
 - **Translators / TTS**
-  - Built-in LLM: `src/lib/translators/llm/LLMTranslator.ts` (OpenAI-compatible chat completions)
-  - Custom translator/TTS modules load via offscreen docs + `src/lib/translators/customTranslators/`
-  - Do not reintroduce removed built-in backends (Google/Bing/Yandex/Bergamot) or full-page translation without an explicit product decision
+  - Built-in LLM is the only translator: `src/lib/translators/llm/LLMTranslator.ts` (OpenAI-compatible chat completions)
+  - Settings no longer expose translator module selection or custom translation modules; keep LLM-only UX
+  - Custom TTS modules still load via offscreen docs; legacy custom-translator backend code may remain for upgrades but must not reappear in settings
+  - Do not reintroduce removed built-in backends (Google/Bing/Yandex/Bergamot), custom translator settings, or full-page translation without an explicit product decision
 - **i18n**: message catalogs in `src/_locales/*/messages.json`. Source of truth for tooling is English + `packages/locales/` (`npm run sync` / `proofread` from that package). Prefer `getMessage(...)` over hard-coded UI strings.
 - **Themes**: `src/themes/` + Themekit (`themekit.config.json`). CSS often co-located with components; BEM via `@bem-react/classname`.
 - **Entry points**: `src/background-script.ts`, `src/contentscript.tsx`, page entries under `src/pages/*/`, offscreen under `src/offscreen-documents/`.

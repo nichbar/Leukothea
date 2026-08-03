@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "সাধারণ সেটিংস"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "কাস্টম অনুবাদ মডিউল",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "আপনি আপনার প্রিয় অনুবাদ পরিষেবাগুলি ব্যবহার করে কাস্টম অনুবাদ মডিউল যোগ করতে পারেন। <slot id=docs>কাস্টম অনুবাদক ডকুমেন্টেশন</slot> এ আরও জানুন"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "অনুবাদক পরিচালনা",
-		"description": "অনুবাদ মডিউলগুলির তালিকা দেখানোর জন্য একটি বোতাম"
-	},
 	"settings_option_history_enable": {
 		"message": "ইতিহাস সক্রিয় করুন"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "নিষ্ক্রিয় থাকলে, ভাষার প্রস্তাবনা শুধুমাত্র তখনই প্রদর্শিত হয় যখন উৎস ভাষা \"auto\" তে সেট করা থাকে"
 	},
-	"settings_option_translatePreferences": {
-		"message": "অনুবাদ পছন্দসমূহ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "অনুবাদ সময়সূচী"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "অনুবাদ ত্রুটি ঘটলে সময়সূচী টেক্সট অনুবাদ পুনরায় চেষ্টা করবে। এই বিকল্পটি পুনরায় চেষ্টা সীমা নির্ধারণ করে। সীমাহীন পুনরায় চেষ্টা করার জন্য একটি নেতিবাচক সংখ্যা সেট করুন"
-	},
-	"settings_option_translatorModule": {
-		"message": "অনুবাদ মডিউল"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "অনুবাদের গুণমান এবং উপলব্ধ ভাষাগুলি অনুবাদ মডিউলের উপর নির্ভর করে"
 	},
 	"settings_option_tts": {
 		"message": "টেক্সট টু স্পিচ রূপান্তর (TTS)"

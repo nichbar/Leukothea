@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ümumi parametrlər"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Xüsusi tərcümə modulları",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Sevdiyiniz tərcümə xidmətlərini istifadə edən xüsusi tərcümə modulları əlavə edə bilərsiniz. Daha ətraflı məlumat üçün <slot id=docs>xüsusi tərcüməçilər sənədləri</slot> bölməsinə baxın"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Tərcüməçiləri idarə et",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Tarixi aktiv et"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Söndürüldükdə, dil təklifləri yalnız mənbə dili \"avto\" olaraq təyin edildikdə görünür"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Tərcümə seçimləri"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Tərcümə cədvəli"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Tərcümə səhvləri baş verdikdə cədvəl mətnləri yenidən tərcümə etməyə çalışacaq. Bu seçim yenidən cəhd limitini təyin edir. Məhdudiyyətsiz yenidən cəhdlərə icazə vermək üçün mənfi bir rəqəm təyin edin"
-	},
-	"settings_option_translatorModule": {
-		"message": "Tərcümə modulu"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Tərcümələrin keyfiyyəti və mövcud dillər tərcümə modulundan asılıdır"
 	},
 	"settings_option_tts": {
 		"message": "Mətnin Səsə çevrilməsi (TTS)"

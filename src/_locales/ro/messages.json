@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Setări comune"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Module de traducere personalizate",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Puteți adăuga module de traducere personalizate care utilizează serviciile de traducere preferate. Aflați mai multe în <slot id=docs>documentația traducătorilor personalizați</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gestionarea traducătorilor",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Activează istoricul"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Când este dezactivat, sugestiile de limbă apar doar dacă limba sursă este setată pe \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferințe de traducere"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planificator de traducere"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planificatorul va încerca să retraducă textele când apar erori de traducere. Această opțiune stabilește o limită pentru încercările de retraducere. Setați un număr negativ pentru a permite încercări nelimitate"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modul de traducere"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Calitatea traducerilor și limbile disponibile depind de modulul de traducere"
 	},
 	"settings_option_tts": {
 		"message": "Conversie Text în Vorbire (TTS)"

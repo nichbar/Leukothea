@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "الإعدادات العامة"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "وحدات الترجمة المخصصة",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "يمكنك إضافة وحدات ترجمة مخصصة تستخدم خدمات الترجمة المفضلة لديك. تعرف على المزيد في <slot id=docs>وثائق المترجمين المخصصين</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "إدارة المترجمين",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "تمكين السجل"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "عند التعطيل، تظهر اقتراحات اللغة فقط إذا تم تعيين اللغة المصدر إلى \"تلقائي\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "تفضيلات الترجمة"
-	},
 	"settings_option_translateScheduler": {
 		"message": "جدول الترجمة"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "سيحاول الجدول إعادة ترجمة النصوص عند حدوث أخطاء في الترجمة. تحدد هذه الخيار حدًا لمحاولات إعادة الترجمة. قم بتعيين رقم سالب للسماح بمحاولات غير محدودة"
-	},
-	"settings_option_translatorModule": {
-		"message": "وحدة الترجمة"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "تعتمد جودة الترجمات واللغات المتاحة على وحدة الترجمة"
 	},
 	"settings_option_tts": {
 		"message": "تحويل النص إلى كلام (TTS)"

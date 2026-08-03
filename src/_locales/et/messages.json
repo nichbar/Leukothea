@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Üldised seaded"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Kohandatud tõlkemoodulid",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Saate lisada kohandatud tõlkemooduleid, mis kasutavad teie lemmik tõlketeenuseid. Lisateavet leiate <slot id=docs>kohandatud tõlkijate dokumentatsioonist</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Tõlkijate haldamine",
-		"description": "Nupp tõlkemoodulite loendi kuvamiseks"
-	},
 	"settings_option_history_enable": {
 		"message": "Luba ajalugu"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kui see on keelatud, ilmuvad keelesoovitused ainult siis, kui lähtekeel on seatud \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Tõlke eelistused"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Tõlke ajastaja"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ajastaja proovib tõlkimist uuesti, kui tekivad tõlkevead. See valik seab uuesti proovimise katsete piirangu. Piiramatu arvu katsete lubamiseks määrake negatiivne arv"
-	},
-	"settings_option_translatorModule": {
-		"message": "Tõlkemoodul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Tõlgete kvaliteet ja saadaval olevad keeled sõltuvad tõlkemoodulist"
 	},
 	"settings_option_tts": {
 		"message": "Teksti kõneks teisendamine (TTS)"

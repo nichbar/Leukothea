@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Qindaa'ina waliigalaa"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modula hiikkaa addaa",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Modula hiikkaa addaa tajaajila hiikkaa jaalatamaa fayyadamu dabaluu dandeessa. Odeeffannoo dabalataa <slot id=docs>barreeffama hiikkaa addaa</slot> keessatti baradhu"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Hiikkattoota to'achuu",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Seenaa ban"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Yoo dhaabbate, yaadni afaanii yeroo afaan madda \"auto\" irratti kaa'ame qofa ni mul'ata"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Filannoo hiika"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Yeroo hiika"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Yeroo dogoggorri hiika uumamu, yeroo hiika irra deebi'uu ni yaala. Filannoon kun daangaa yaalii irra deebi'uu kaa'a. Lakkoofsa faallaa kaa'i yaalii irra deebi'uu daangaa malee gochuuf"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modula hiika"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Gammachuu hiika fi afaanota argaman modula hiika irratti hundaa'a"
 	},
 	"settings_option_tts": {
 		"message": "Gara dubbii jijjiiruu (TTS)"

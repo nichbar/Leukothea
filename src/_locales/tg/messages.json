@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Танзимоти умумӣ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Модулҳои тарҷумаи фармоишӣ",
-		"description": "Коди муайянкардаи корбар, ки модулҳои тарҷумаро амалӣ мекунад"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Шумо метавонед модулҳои тарҷумаи фармоиширо, ки хидматҳои тарҷумаи дӯстдоштаи шуморо истифода мебаранд, илова кунед. Маълумоти бештарро дар <slot id=docs>ҳуҷҷатҳои тарҷумонҳои фармоишӣ</slot> омӯзед"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Идоракунии тарҷумонҳо",
-		"description": "Тугма барои нишон додани рӯйхати модулҳои тарҷума"
-	},
 	"settings_option_history_enable": {
 		"message": "Фаъол кардани таърих"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ҳангоми ғайрифаъол будан, пешниҳодҳои забон танҳо вақте пайдо мешаванд, ки забони манбаъ ба \"авто\" таъин шудааст"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Тарҷумаи афзалиятҳо"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Ҷадвали тарҷума"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ҷадвал ҳангоми рух додани хатогиҳои тарҷума кӯшиш мекунад, ки матнҳоро дубора тарҷума кунад. Ин имконот маҳдудияти кӯшишҳои такрориро таъин мекунад. Барои иҷозати кӯшишҳои беохир, рақами манфӣ таъин кунед"
-	},
-	"settings_option_translatorModule": {
-		"message": "Модули тарҷума"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Сифати тарҷумаҳо ва забонҳои дастрас аз модули тарҷума вобаста аст"
 	},
 	"settings_option_tts": {
 		"message": "Табдили матн ба нутқ (TTS)"

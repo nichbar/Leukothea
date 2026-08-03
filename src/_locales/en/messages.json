@@ -308,17 +308,6 @@
 	"settings_option_commonSettings": {
 		"message": "Common settings"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Custom translation modules",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "You can add custom translation modules that use your favorite translation services. Learn more in the <slot id=docs>custom translators documentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Managing translators",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Enable history"
 	},
@@ -342,7 +331,7 @@
 		"message": "Full chat completions endpoint URL (for example OpenAI, DeepSeek, Ollama, or a local proxy)"
 	},
 	"settings_option_llmTranslator_desc": {
-		"message": "Configure the OpenAI-compatible chat completions endpoint for the built-in LLM translator (default)"
+		"message": "Configure the OpenAI-compatible chat completions endpoint for the built-in LLM translator"
 	},
 	"settings_option_llmTranslator_model": {
 		"message": "Model"
@@ -564,9 +553,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "When disabled, language suggestions appear only if the source language is set to \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Translation preferences"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Translation scheduler"
 	},
@@ -581,12 +567,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "The scheduler will retry translating texts when translation errors occur. This option sets a limit on retry attempts. Set a negative number to allow unlimited retries"
-	},
-	"settings_option_translatorModule": {
-		"message": "Translation module"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "The quality of translations and the available languages depend on the translation module"
 	},
 	"settings_option_tts": {
 		"message": "Text to Speech conversion (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Cài đặt chung"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Các mô-đun dịch tùy chỉnh",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Bạn có thể thêm các mô-đun dịch tùy chỉnh sử dụng các dịch vụ dịch yêu thích của bạn. Tìm hiểu thêm trong <slot id=docs>tài liệu về dịch tùy chỉnh</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Quản lý dịch giả",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Bật lịch sử"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Khi bị vô hiệu hóa, đề xuất ngôn ngữ chỉ xuất hiện nếu ngôn ngữ nguồn được đặt thành \"tự động\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Tùy chọn dịch"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Lịch trình dịch"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Lịch trình sẽ thử lại dịch văn bản khi xảy ra lỗi dịch. Tùy chọn này đặt giới hạn cho số lần thử lại. Đặt số âm để cho phép thử lại không giới hạn"
-	},
-	"settings_option_translatorModule": {
-		"message": "Mô-đun dịch"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Chất lượng dịch và các ngôn ngữ có sẵn phụ thuộc vào mô-đun dịch"
 	},
 	"settings_option_tts": {
 		"message": "Chuyển đổi Văn bản thành Giọng nói (TTS)"

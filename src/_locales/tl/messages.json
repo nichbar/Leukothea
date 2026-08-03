@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Karaniwang mga setting"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Mga custom na module ng pagsasalin",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Maaari kang magdagdag ng mga custom na module ng pagsasalin na gumagamit ng iyong paboritong mga serbisyo ng pagsasalin. Alamin pa sa <slot id=docs>custom translators documentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Pamamahala ng mga tagasalin",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "I-enable ang kasaysayan"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kapag hindi pinagana, ang mga mungkahi sa wika ay lalabas lamang kung ang pinagmulan ng wika ay nakatakda sa \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Mga kagustuhan sa pagsasalin"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Tagapag-iskedyul ng pagsasalin"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Muling susubukan ng tagapag-iskedyul na isalin ang mga teksto kapag naganap ang mga error sa pagsasalin. Itinatakda ng opsyong ito ang limitasyon sa mga pagtatangka ng muling pagsasalin. Itakda ang negatibong numero upang payagan ang walang limitasyong muling pagsubok"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module ng pagsasalin"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ang kalidad ng mga pagsasalin at ang mga magagamit na wika ay nakadepende sa module ng pagsasalin"
 	},
 	"settings_option_tts": {
 		"message": "Pag-convert ng Teksto sa Boses (TTS)"

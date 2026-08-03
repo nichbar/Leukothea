@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ntọala nkịtị"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Ngwaọrụ ntụgharị omenala",
-		"description": "Koodu onye ọrụ kọwara nke na-emezigharị modul ntụgharị"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ị nwere ike ịgbakwunye modul ntụgharị omenala nke na-eji ọrụ ntụgharị masịrị gị. Mụta ihe ndị ọzọ na <slot id=docs>akwụkwọ ntụgharị omenala</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Na-achịkwa ndị ntụgharị",
-		"description": "Bọtịnụ iji gosi ndepụta nke modul ntụgharị"
-	},
 	"settings_option_history_enable": {
 		"message": "Kwado akụkọ ihe mere eme"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Mgbe agbanyụrụ, aro asụsụ na-apụta naanị ma ọ bụrụ na asụsụ isi mmalite edoziri na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Nhọrọ ntụgharị"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Ntụgharị oge"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Oge ga-anwa ntụgharị ederede ọzọ mgbe njehie ntụgharị mere. Nhọrọ a na-etinye oke na mgbalị ntụgharị ọzọ. Debe nọmba na-adịghị mma iji kwe ka ntụgharị ọzọ na-enweghị njedebe"
-	},
-	"settings_option_translatorModule": {
-		"message": "Mọdule ntụgharị"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ọdịmma nke ntụgharị na asụsụ dị na ya dabere na mọdule ntụgharị"
 	},
 	"settings_option_tts": {
 		"message": "Ntụgharị ederede na olu (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ñemohenda jepivegua"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Mba'ekuaa jejokoha jepivegua",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ikatu remoinge mba'ekuaa jejokoha jepivegua oipuru hag̃ua ne mba'ekuaa jejokoha ojehayhuvéva. Eikuaave <slot id=docs>mba'ekuaa jejokoha jepivegua kuatiañe'ẽme</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Mba'ekuaa jejokoha ñemotenonde",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Mombarete tembiasakue"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ojepe'áramo, ñe'ẽ jehechakuaa ojehechauka añónte oĩramo fuente ñe'ẽ omoĩva \"auto\"-pe"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Ñe'ẽmbohasa preferénsia"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Ñe'ẽmbohasa aravoñemohenda"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Pe aravoñemohenda ojevyta oñeha'ãvo ñe'ẽmbohasa oiko jave error ñe'ẽmbohasa rehe. Ko opción omoĩ límite jevy ñe'ẽmbohasa rehe. Emoĩ peteĩ número negativo oheja hag̃ua jevy opavave"
-	},
-	"settings_option_translatorModule": {
-		"message": "Ñe'ẽmbohasa módulo"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Pe ñe'ẽmbohasa calidad ha umi ñe'ẽ oĩva odepende pe módulo ñe'ẽmbohasa rehe"
 	},
 	"settings_option_tts": {
 		"message": "Ñe'ẽgui Ñe'ẽme (TTS)"

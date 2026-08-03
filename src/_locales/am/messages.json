@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "የተለመደ ቅንብር"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ብጁ የትርጉም ሞጁሎች",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "የተለያዩ የትርጉም አገልግሎቶችን የሚጠቀሙ ብጁ የትርጉም ሞጁሎችን ማከል ይችላሉ። በ<slot id=docs>ብጁ ተርጓሚዎች ሰነድ</slot> ውስጥ ተጨማሪ ያንብቡ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ተርጓሚዎችን መምሪያ",
-		"description": "የትርጉም ሞጁሎች ዝርዝር ለማሳየት አዝራር"
-	},
 	"settings_option_history_enable": {
 		"message": "ታሪክን አንቃ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ሲሰነዘር የቋንቋ ጥቆማዎች የሚታዩት የምንጭ ቋንቋ እንደ \"ራስ-ሰውር\" ተደርጎ በተወሰነ ጊዜ ብቻ ነው"
 	},
-	"settings_option_translatePreferences": {
-		"message": "የትርጉም ተመን"
-	},
 	"settings_option_translateScheduler": {
 		"message": "የትርጉም መርሃ ግብር"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "መርሃ ግብሩ የትርጉም ስህተቶች ሲከሰቱ ጽሁፎችን ድጋሚ ለመተርጎም ይሞክራል። ይህ አማራጭ የድጋሚ ሙከራ ግድብ ያወራል። ያለ ግድብ ድጋሚ ሙከራ ለማስቻል አሉታዊ ቁጥር ያስቀምጡ"
-	},
-	"settings_option_translatorModule": {
-		"message": "የትርጉም ሞጁል"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "የትርጉም ጥራት እና የሚገኙ ቋንቋዎች በየትርጉም ሞጁል ይመለከታሉ"
 	},
 	"settings_option_tts": {
 		"message": "የጽሁፍ ወደ ንግግር ሽግግር (TTS)"

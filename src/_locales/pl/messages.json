@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ustawienia ogólne"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Niestandardowe moduły tłumaczeń",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Możesz dodać niestandardowe moduły tłumaczeń, które korzystają z ulubionych usług tłumaczeniowych. Dowiedz się więcej w <slot id=docs>dokumentacji niestandardowych tłumaczy</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Zarządzanie tłumaczami",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Włącz historię"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Gdy wyłączone, sugestie językowe pojawiają się tylko, jeśli język źródłowy jest ustawiony na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferencje tłumaczenia"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Harmonogram tłumaczenia"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Harmonogram ponowi próby tłumaczenia tekstów, gdy wystąpią błędy tłumaczenia. Ta opcja ustawia limit prób ponownego tłumaczenia. Ustaw wartość ujemną, aby zezwolić na nieograniczoną liczbę prób"
-	},
-	"settings_option_translatorModule": {
-		"message": "Moduł tłumaczenia"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Jakość tłumaczeń i dostępne języki zależą od modułu tłumaczenia"
 	},
 	"settings_option_tts": {
 		"message": "Konwersja tekstu na mowę (TTS)"

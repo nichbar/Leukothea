@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Общи настройки"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Модули за персонализиран превод",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Можете да добавите персонализирани модули за превод, които използват вашите любими преводачески услуги. Научете повече в <slot id=docs>документацията за персонализирани преводачи</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Управление на преводачи",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Активиране на историята"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Когато е деактивирано, предложенията за език се появяват само ако изходният език е зададен на \"автоматично\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Предпочитания за превод"
-	},
 	"settings_option_translateScheduler": {
 		"message": "График за превод"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Графикът ще опита да преведе текстовете отново, когато възникнат грешки при превода. Тази опция задава ограничение на опитите за повторение. Задайте отрицателно число, за да позволите неограничени повторения"
-	},
-	"settings_option_translatorModule": {
-		"message": "Модул за превод"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Качеството на преводите и наличните езици зависят от модула за превод"
 	},
 	"settings_option_tts": {
 		"message": "Конвертиране на текст в реч (TTS)"

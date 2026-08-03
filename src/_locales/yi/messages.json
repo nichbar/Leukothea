@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "געמיינזאמען סעטטינגס"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "מנהג איבערזעצונג מאָדולעס",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "איר קענט לייגן מנהג איבערזעצונג מאָדולעס וואָס נוצן אייער באַליבסטע איבערזעצונג באַדינונגען. לערנען מער אין די <slot id=docs>מנהג איבערזעצער דאָקומענטאַציע</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "פירן איבערזעצער",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ענייבאַל געשיכטע"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ווען פאַרקריפּלט, שפּראַך פֿירלייגן דערשייַנען בלויז אויב די מקור שפּראַך איז באַשטימט צו \"אַוטאָ\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "איבערזעצונג פּרעפֿערענצן"
-	},
 	"settings_option_translateScheduler": {
 		"message": "איבערזעצונג פּלאַנירונג"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "דער פּלאַנירער וועט ריטרי איבערזעצן טעקסטן ווען איבערזעצונג ערראָרס פּאַסירן. דעם אָפּציע שטעלט אַ שיעור אויף ריטרי פּרווון. שטעלן אַ נעגאַטיוו נומער צו לאָזן אַנלימאַטאַד ריטריעס"
-	},
-	"settings_option_translatorModule": {
-		"message": "איבערזעצונג מאָדולע"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "די קוואַליטעט פון איבערזעצונגען און די פאַראַנען שפּראַכן אָפענגען אויף די איבערזעצונג מאָדולע"
 	},
 	"settings_option_tts": {
 		"message": "טעקסט צו רעדן קאַנווערזשאַן (TTS)"

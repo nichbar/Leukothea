@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Allgemeine Einstellungen"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Benutzerdefinierte Übersetzungsmodule",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Sie können benutzerdefinierte Übersetzungsmodule hinzufügen, die Ihre bevorzugten Übersetzungsdienste nutzen. Erfahren Sie mehr in der <slot id=docs>Dokumentation zu benutzerdefinierten Übersetzern</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Übersetzer verwalten",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Verlauf aktivieren"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Wenn deaktiviert, erscheinen Sprachvorschläge nur, wenn die Ausgangssprache auf \"auto\" eingestellt ist"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Übersetzungspräferenzen"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Übersetzungsplaner"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Der Planer wird versuchen, Texte erneut zu übersetzen, wenn Übersetzungsfehler auftreten. Diese Option legt ein Limit für Wiederholungsversuche fest. Setzen Sie eine negative Zahl, um unbegrenzte Wiederholungen zuzulassen"
-	},
-	"settings_option_translatorModule": {
-		"message": "Übersetzungsmodul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Die Qualität der Übersetzungen und die verfügbaren Sprachen hängen vom Übersetzungsmodul ab"
 	},
 	"settings_option_tts": {
 		"message": "Text-zu-Sprache-Umwandlung (TTS)"

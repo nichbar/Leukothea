@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ئورتاق تەڭشەكلەر"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "خاس تەرجىمە مودۇللىرى",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "سىز خاس تەرجىمە مودۇللىرىنى قوشالايسىز، ئۇلار سىز ياخشى كۆرىدىغان تەرجىمە مۇلازىمىتىنى ئىشلىتىدۇ. <slot id=docs>خاس تەرجىمىلەر ھۆججەتلىرى</slot>دىن تېخىمۇ كۆپ ئۇچۇرغا ئېرىشىڭ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "تەرجىمىلەرنى باشقۇرۇش",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "تارىخنى قوزغىتىش"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "چەكلەنگەن بولغاندا، تىل تەۋسىيەلىرى پەقەت مەنبە تىلى \"ئاپتوماتىك\" بەلگىلەنگەن بولغاندالا كۆرۈنىدۇ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "تەرجىمە تاللاشلىرى"
-	},
 	"settings_option_translateScheduler": {
 		"message": "تەرجىمە جەدۋىلى"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "تەرجىمە خاتالىقى يۈز بەرگەندە جەدۋىل تېكىستنى قايتا تەرجىمە قىلىشقا سىنايدۇ. بۇ تاللاش قايتا سىناش ئىلتىماسلار چەكىنى بەلگىلەيدۇ. چەكسىز قايتا سىناشقا يول قويۇش ئۈچۈن مەنپىي سان بەلگىلەڭ"
-	},
-	"settings_option_translatorModule": {
-		"message": "تەرجىمە مودۇلى"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "تەرجىمە سۈپىتى ۋە بار بولغان تىللار تەرجىمە مودۇلىغا باغلىق"
 	},
 	"settings_option_tts": {
 		"message": "تېكىستنى ئاۋازغا ئايلاندۇرۇش (TTS)"

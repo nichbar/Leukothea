@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Setélan umum"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modul tarjamahan khusus",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Anjeun tiasa nambihan modul tarjamahan khusus anu nganggo jasa tarjamahan karesep anjeun. Diajar langkung seueur dina <slot id=docs>dokuméntasi tarjamahan khusus</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Ngatur tarjamahan",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktipkeun sajarah"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Nalika dinonaktipkeun, saran basa ngan ukur muncul upami basa sumber disetél ka \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferensi tarjamahan"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Jadwal tarjamahan"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Jadwal bakal nyobian deui narjamahkeun téks nalika kasalahan tarjamahan lumangsung. Pilihan ieu nyetél wates dina usaha ulang. Atur angka négatip pikeun ngidinan usaha ulang anu teu aya watesna"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modul tarjamahan"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kualitas tarjamahan sareng basa anu sayogi gumantung kana modul tarjamahan"
 	},
 	"settings_option_tts": {
 		"message": "Konversi Téks ka Ucapan (TTS)"

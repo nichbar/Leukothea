@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Izilungiselelo ezivamile"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Amamojula okuguqulela ngokwezifiso",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ungangeza amamojula okuguqulela ngokwezifiso asebenzisa izinsizakalo zakho zokuguqulela ozithandayo. Funda kabanzi ku-<slot id=docs>imibhalo yabaguquleli ngokwezifiso</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Phatha abaguquleli",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Vula umlando"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Uma kungasebenzi, iziphakamiso zolimi ziveza kuphela uma ulimi lomthombo lusethelwe ku-\"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Izintandokazi zokuhumusha"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Isheduli yokuhumusha"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Isheduli izozama kabusha ukuhumusha imibhalo uma kwenzeka amaphutha okuhumusha. Le nketho isetha umkhawulo wezama kabusha. Setha inombolo engalungile ukuvumela ukuzama kabusha okungenamkhawulo"
-	},
-	"settings_option_translatorModule": {
-		"message": "Imodyuli yokuhumusha"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ikhwalithi yokuhumusha nezilimi ezitholakalayo zincike kwimodyuli yokuhumusha"
 	},
 	"settings_option_tts": {
 		"message": "Ukuguqulwa kombhalo ube yizwi (TTS)"

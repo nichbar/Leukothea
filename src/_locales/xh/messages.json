@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Iisetingi eziqhelekileyo"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Iimodyuli zotoliko ezilungiselelwe wena",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ungongeza iimodyuli zotoliko ezilungiselelwe wena ezisebenzisa iinkonzo zakho ozithandayo zotoliko. Funda ngakumbi kwi-<slot id=docs>uxwebhu lweenguqu ezilungiselelwe wena</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Ukulawula abaguquleli",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Vula imbali"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Xa ikhubazekile, iziphakamiso zolwimi ziya kuvela kuphela ukuba ulwimi lomthombo lusetiwe ku-\"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Izinto ezikhethwayo zoguqulelo"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Ishedyuli yoguqulelo"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ishedyuli iya kuphinda izame ukuguqulela imibhalo xa iimpazamo zoguqulelo zenzeka. Olu khetho luseta umda wezilingo zokuphinda. Misa inani elingalunganga ukuvumela ukuphinda okungenamda"
-	},
-	"settings_option_translatorModule": {
-		"message": "Imodyuli yoguqulelo"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Umgangatho woguqulelo kunye neelwimi ezifumanekayo zixhomekeke kwimodyuli yoguqulelo"
 	},
 	"settings_option_tts": {
 		"message": "Uguqulelo lombhalo ukuya kwintetho (TTS)"

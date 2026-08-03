@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Yleiset asetukset"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Mukautetut käännösmoduulit",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Voit lisätä mukautettuja käännösmoduleja, jotka käyttävät suosikkikäännöspalveluitasi. Lue lisää <slot id=docs>mukautettujen kääntäjien dokumentaatiosta</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kääntäjien hallinta",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Ota historia käyttöön"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kun tämä on pois käytöstä, kieliehdotuksia näytetään vain, jos lähdekieli on asetettu \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Käännöksen asetukset"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Käännösaikataulu"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Aikataulu yrittää uudelleen kääntää tekstejä, kun käännösvirheitä ilmenee. Tämä asetus määrittää uudelleenyritysten rajoituksen. Aseta negatiivinen numero sallimaan rajattomat uudelleenyritykset"
-	},
-	"settings_option_translatorModule": {
-		"message": "Käännösmoduuli"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Käännösten laatu ja saatavilla olevat kielet riippuvat käännösmoduulista"
 	},
 	"settings_option_tts": {
 		"message": "Tekstin muuntaminen puheeksi (TTS)"

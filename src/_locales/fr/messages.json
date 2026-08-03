@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Paramètres communs"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modules de traduction personnalisés",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Vous pouvez ajouter des modules de traduction personnalisés qui utilisent vos services de traduction préférés. En savoir plus dans la <slot id=docs>documentation des traducteurs personnalisés</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gérer les traducteurs",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Activer l'historique"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Lorsqu'il est désactivé, les suggestions de langue apparaissent uniquement si la langue source est réglée sur \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Préférences de traduction"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planificateur de traduction"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Le planificateur réessaiera de traduire les textes lorsque des erreurs de traduction se produisent. Cette option définit une limite sur les tentatives de réessai. Définissez un nombre négatif pour autoriser des réessais illimités"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module de traduction"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "La qualité des traductions et les langues disponibles dépendent du module de traduction"
 	},
 	"settings_option_tts": {
 		"message": "Conversion texte en parole (TTS)"

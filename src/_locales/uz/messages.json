@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Umumiy sozlamalar"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Maxsus tarjima modullari",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Sevimli tarjima xizmatlaringizdan foydalanadigan maxsus tarjima modullarini qo'shishingiz mumkin. <slot id=docs>maxsus tarjimonlar hujjatlari</slot>da ko'proq ma'lumot oling"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Tarjimonlarni boshqarish",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Tarixni yoqish"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "O'chirilganda, til takliflari faqat manba tili \"avto\" ga o'rnatilgan bo'lsa paydo bo'ladi"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Tarjima afzalliklari"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Tarjima rejalashtiruvchisi"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Rejalashtiruvchi tarjima xatolari yuzaga kelganda matnlarni qayta tarjima qilishga urinadi. Ushbu parametr qayta urinishlar soniga cheklov qo'yadi. Cheksiz qayta urinishlarga ruxsat berish uchun manfiy sonni belgilang"
-	},
-	"settings_option_translatorModule": {
-		"message": "Tarjima moduli"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Tarjimalar sifati va mavjud tillar tarjima moduliga bog'liq"
 	},
 	"settings_option_tts": {
 		"message": "Matndan nutqqa aylantirish (TTS)"

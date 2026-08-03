@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Zikhazikiko zofala"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Maimidwe a kumasulira mwamakonda",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Mutha kuwonjezera maimidwe a kumasulira mwamakonda omwe amagwiritsa ntchito ntchito zanu zomwe mumakonda. Dziwani zambiri mu <slot id=docs>zolemba za kumasulira mwamakonda</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kuwongolera omasulira",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Yatsani mbiri"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Mukachotsa, malingaliro a chinenero amawonekera kokha ngati chinenero choyambira chakhazikitsidwa kukhala \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Zokonda kumasulira"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Wokonza nthawi ya kumasulira"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Wokonza nthawi adzayesanso kumasulira mawu pamene zolakwika za kumasulira zikachitika. Njirayi imakhazikitsa malire a kuyesanso. Ikani nambala yochepa kuti mulole kuyesanso kopanda malire"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module ya kumasulira"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ubwino wa kumasulira ndi zilankhulo zomwe zilipo zimadalira module ya kumasulira"
 	},
 	"settings_option_tts": {
 		"message": "Kusintha Mawu kukhala Mawu (TTS)"

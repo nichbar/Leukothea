@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "共通設定"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "カスタム翻訳モジュール",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "お気に入りの翻訳サービスを使用するカスタム翻訳モジュールを追加できます。詳細は<slot id=docs>カスタム翻訳者のドキュメント</slot>をご覧ください"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "翻訳者の管理",
-		"description": "翻訳モジュールのリストを表示するボタン"
-	},
 	"settings_option_history_enable": {
 		"message": "履歴を有効にする"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "無効にすると、言語の提案はソース言語が「自動」に設定されている場合にのみ表示されます"
 	},
-	"settings_option_translatePreferences": {
-		"message": "翻訳設定"
-	},
 	"settings_option_translateScheduler": {
 		"message": "翻訳スケジューラー"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "翻訳エラーが発生した場合、スケジューラーはテキストの翻訳を再試行します。このオプションは再試行回数の制限を設定します。無制限の再試行を許可するには負の数を設定します"
-	},
-	"settings_option_translatorModule": {
-		"message": "翻訳モジュール"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "翻訳の品質と利用可能な言語は翻訳モジュールに依存します"
 	},
 	"settings_option_tts": {
 		"message": "テキスト読み上げ変換（TTS）"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "일반 설정"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "사용자 정의 번역 모듈",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "사용자가 선호하는 번역 서비스를 사용하는 사용자 정의 번역 모듈을 추가할 수 있습니다. <slot id=docs>사용자 정의 번역기 문서</slot>에서 자세히 알아보세요."
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "번역기 관리",
-		"description": "번역 모듈 목록을 표시하는 버튼"
-	},
 	"settings_option_history_enable": {
 		"message": "기록 활성화"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "비활성화된 경우, 소스 언어가 \"자동\"으로 설정된 경우에만 언어 제안이 나타납니다."
 	},
-	"settings_option_translatePreferences": {
-		"message": "번역 환경 설정"
-	},
 	"settings_option_translateScheduler": {
 		"message": "번역 스케줄러"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "번역 오류가 발생할 때 스케줄러는 텍스트 번역을 재시도합니다. 이 옵션은 재시도 횟수에 제한을 설정합니다. 무제한 재시도를 허용하려면 음수를 설정하십시오"
-	},
-	"settings_option_translatorModule": {
-		"message": "번역 모듈"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "번역의 품질과 사용 가능한 언어는 번역 모듈에 따라 다릅니다"
 	},
 	"settings_option_tts": {
 		"message": "텍스트 음성 변환 (TTS)"

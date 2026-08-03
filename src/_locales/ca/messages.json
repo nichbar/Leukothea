@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Configuració comuna"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Mòduls de traducció personalitzats",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Podeu afegir mòduls de traducció personalitzats que utilitzin els vostres serveis de traducció preferits. Més informació a la <slot id=docs>documentació de traductors personalitzats</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gestionar traductors",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Activar historial"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Quan està desactivat, les suggerències d'idioma apareixen només si l'idioma d'origen està configurat a \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferències de traducció"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planificador de traducció"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "El planificador tornarà a intentar traduir els textos quan es produeixin errors de traducció. Aquesta opció estableix un límit en els intents de reintentar. Establiu un nombre negatiu per permetre intents il·limitats"
-	},
-	"settings_option_translatorModule": {
-		"message": "Mòdul de traducció"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "La qualitat de les traduccions i els idiomes disponibles depenen del mòdul de traducció"
 	},
 	"settings_option_tts": {
 		"message": "Conversió de text a veu (TTS)"

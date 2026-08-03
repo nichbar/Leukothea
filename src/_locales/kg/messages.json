@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Bikuma ya bomoko"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Bikuma ya botekisi ya moto moko",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Okoki kobakisa bikuma ya botekisi ya moto moko oyo esalelaka baservice ya botekisi oyo olingaka. Yekola mingi na <slot id=docs>ndakisa ya botekisi ya moto moko</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kokamba batranslator",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Sukisa lisolo"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ntangu yai kele ve, ba suggestion ya linga ke monana kaka kana linga ya kisika kele na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Ba preference ya kutanina"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Scheduler ya kutanina"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Scheduler ke zola kutanina ba text ntangu ba error ya kutanina ke salama. Option yai ke sala limit na ba tentative ya kutanina. Sala kiadi ya negative sambu na kubakisa ba tentative ya kutanina"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module ya kutanina"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kwalite ya ba kutanina mpi ba linga ya kele na module ya kutanina"
 	},
 	"settings_option_tts": {
 		"message": "Kutana text na mambu (TTS)"

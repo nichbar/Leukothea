@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Algemene instellings"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Pasgemaakte vertaalmodules",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Jy kan pasgemaakte vertaalmodules byvoeg wat jou gunsteling vertaaldienste gebruik. Leer meer in die <slot id=docs>pasgemaakte vertalers dokumentasie</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Bestuur vertalers",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktiveer geskiedenis"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Wanneer gedeaktiveer, verskyn taalvoorstelle slegs as die brontaal op \"auto\" gestel is"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Vertaalvoorkeure"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Vertaal skeduleerder"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Die skeduleerder sal probeer om tekste weer te vertaal wanneer vertaalfoute voorkom. Hierdie opsie stel 'n beperking op herprobeerpogings. Stel 'n negatiewe getal in om onbeperkte herprobeersels toe te laat"
-	},
-	"settings_option_translatorModule": {
-		"message": "Vertaalmodule"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Die kwaliteit van vertalings en die beskikbare tale hang af van die vertaalmodule"
 	},
 	"settings_option_tts": {
 		"message": "Teks na Spraak omskakeling (TTS)"

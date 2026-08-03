@@ -332,15 +332,6 @@
 	"settings_option_commonSettings": {
 		"message": "Common settings"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Custom translators"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "You can add custom translators for your favorite translation services. Read more and find modules in the <slot id=docs>custom translators documentation</slot>."
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Manage translators"
-	},
 	"settings_option_mainPreferences": {
 		"message": "Main settings"
 	},
@@ -509,9 +500,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "When disabled, language suggestions will only appear when the source language is auto detected"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Translation preferences"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Translation scheduler"
 	},
@@ -526,12 +514,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "The scheduler will retry translating texts for translation errors. This option sets a limit for the retry attempts. Set a negative number to allow unlimited retries"
-	},
-	"settings_option_translatorModule": {
-		"message": "Translator module"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "The quality of translations and the available languages for translation depend on the translator."
 	},
 	"settings_option_tts": {
 		"message": "Text to speech (TTS)"

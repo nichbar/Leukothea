@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ерөнхий тохиргоо"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Захиалгат орчуулгын модулиуд",
-		"description": "Орчуулгын модуль хэрэгжүүлдэг хэрэглэгчийн тодорхойлсон код"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Өөрийн дуртай орчуулгын үйлчилгээг ашиглах захиалгат орчуулгын модулиудыг нэмэх боломжтой. <slot id=docs>захиалгат орчуулагчдын баримт бичиг</slot>-ээс дэлгэрэнгүйг үзнэ үү"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Орчуулагчдыг удирдах",
-		"description": "Орчуулгын модулиудын жагсаалтыг харуулах товч"
-	},
 	"settings_option_history_enable": {
 		"message": "Түүхийг идэвхжүүлэх"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Идэвхгүй бол эх хэл \"авто\" гэж тохируулагдсан үед л хэлний санал гарч ирнэ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Орчуулгын тохиргоо"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Орчуулгын хуваарь"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Орчуулгын алдаа гарсан үед хуваарь нь текстийг дахин орчуулахыг оролдоно. Энэ сонголт нь дахин оролдох оролдлогын хязгаарыг тогтооно. Хязгааргүй дахин оролдохыг зөвшөөрөхийн тулд сөрөг тоо тохируулна уу"
-	},
-	"settings_option_translatorModule": {
-		"message": "Орчуулгын модуль"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Орчуулгын чанар болон боломжтой хэлнүүд нь орчуулгын модулиас хамаарна"
 	},
 	"settings_option_tts": {
 		"message": "Текстийг яриа болгон хувиргах (TTS)"

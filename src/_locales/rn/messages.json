@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ivyerekeye vyose"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Ibikoresho vyihariye vyo guhindura",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Urashobora kongerako ibikoresho vyihariye vyo guhindura bikoresha ibisata ukunda. Menya vyinshi muri <slot id=docs>inyandiko zerekeye abahindura vyihariye</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gucunga abahindura",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Gushiraho kahise"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Iyo bidashizwe mu bikorwa, ivyifuzo vy'ururimi biza gusa igihe ururimi rw'inkomoko rushizwe kuri \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Ivyipfuzo vy'ihindura"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Igenamigambi ry'ihindura"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Igenamigambi rizosubira mu gusaba ihindura ry'inyandiko igihe amakosa y'ihindura abaye. Iyi nzira ishiraho umupaka ku kugerageza gusubira mu gusaba. Shira igitigiri kibi kugira ngo wemerere gusubira mu gusaba bidafise umupaka"
-	},
-	"settings_option_translatorModule": {
-		"message": "Ihimbaza ry'ihindura"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ubwiza bw'ihindura n'indimi ziboneka biterwa n'ihimbaza ry'ihindura"
 	},
 	"settings_option_tts": {
 		"message": "Guhindura inyandiko mu majwi (TTS)"

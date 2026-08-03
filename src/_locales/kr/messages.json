@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Saitunan gama gari"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Kayayyakin fassara na musamman",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Zaka iya ƙara kayayyakin fassara na musamman da ke amfani da sabis na fassara da kake so. Kara koyo a cikin <slot id=docs>takardun fassara na musamman</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gudanar da masu fassara",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Kunna tarihi"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Idan an kashe, shawarwarin harshe suna bayyana ne kawai idan an saita harshen asali zuwa \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Zaɓuɓɓukan fassara"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Jadawalin fassara"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Jadawalin zai sake ƙoƙarin fassara rubutu lokacin da kurakuran fassara suka faru. Wannan zaɓin yana saita iyaka akan ƙoƙarin sake gwadawa. Saita lamba mara kyau don ba da damar sake gwadawa mara iyaka"
-	},
-	"settings_option_translatorModule": {
-		"message": "Matsayin fassara"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ingancin fassara da harsunan da ake da su suna dogara da tsarin fassara"
 	},
 	"settings_option_tts": {
 		"message": "Canjin rubutu zuwa magana (TTS)"

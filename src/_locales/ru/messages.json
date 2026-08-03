@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Общие настройки"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Пользовательские модули перевода",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Вы можете добавить пользовательские модули перевода, которые используют ваши любимые сервисы перевода. Узнайте больше в <slot id=docs>документации по пользовательским переводчикам</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Управление переводчиками",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Включить историю"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Когда отключено, предложения по языку появляются только если исходный язык установлен на \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Настройки перевода"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Планировщик перевода"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Планировщик будет повторно пытаться перевести тексты при возникновении ошибок перевода. Эта опция устанавливает лимит на количество повторных попыток. Установите отрицательное число, чтобы разрешить неограниченное количество повторных попыток"
-	},
-	"settings_option_translatorModule": {
-		"message": "Модуль перевода"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Качество переводов и доступные языки зависят от модуля перевода"
 	},
 	"settings_option_tts": {
 		"message": "Преобразование текста в речь (TTS)"

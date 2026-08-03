@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ការកំណត់ទូទៅ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ម៉ូឌុលបកប្រែផ្ទាល់ខ្លួន",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "អ្នកអាចបន្ថែមម៉ូឌុលបកប្រែផ្ទាល់ខ្លួន ដែលប្រើសេវាកម្មបកប្រែដែលអ្នកចូលចិត្ត សូមស្វែងយល់បន្ថែមនៅក្នុង <slot id=docs>ឯកសារអំពីអ្នកបកប្រែផ្ទាល់ខ្លួន</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "គ្រប់គ្រងអ្នកបកប្រែ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "បើកប្រវត្តិ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "នៅពេលបិទ ការផ្តល់យោបល់ភាសានឹងបង្ហាញតែប៉ុណ្ណោះប្រសិនបើភាសាប្រភពត្រូវបានកំណត់ទៅ \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "ចំណូលចិត្តបកប្រែ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "កាលវិភាគបកប្រែ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "កាលវិភាគនឹងសាកល្បងបកប្រែអត្ថបទម្តងទៀតនៅពេលមានកំហុសបកប្រែ។ ជម្រើសនេះកំណត់ដែនកំណត់លើការសាកល្បងម្តងទៀត។ កំណត់លេខអវិជ្ជមានដើម្បីអនុញ្ញាតឱ្យសាកល្បងម្តងទៀតដោយគ្មានដែនកំណត់"
-	},
-	"settings_option_translatorModule": {
-		"message": "ម៉ូឌុលបកប្រែ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "គុណភាពនៃការបកប្រែ និងភាសាដែលអាចប្រើបានអាស្រ័យលើម៉ូឌុលបកប្រែ"
 	},
 	"settings_option_tts": {
 		"message": "ការបម្លែងអត្ថបទទៅជាសំឡេង (TTS)"

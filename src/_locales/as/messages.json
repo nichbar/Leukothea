@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "সাধাৰণ ছেটিংছ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "কাষ্টম অনুবাদ মডিউলসমূহ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "আপুনি আপোনাৰ প্ৰিয় অনুবাদ সেৱাসমূহ ব্যৱহাৰ কৰা কাষ্টম অনুবাদ মডিউলসমূহ যোগ কৰিব পাৰে। অধিক জানিবলৈ <slot id=docs>কাষ্টম অনুবাদকৰ নথিপত্ৰ</slot> চাওক"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "অনুবাদকসমূহ পৰিচালনা",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ইতিহাস সক্ষম কৰক"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "অক্ষম কৰিলে, ভাষা প্ৰস্তাৱসমূহ কেৱল উৎস ভাষা \"auto\" হিচাপে ছেট কৰা হ'লে দেখুওৱা হয়"
 	},
-	"settings_option_translatePreferences": {
-		"message": "অনুবাদ পছন্দসমূহ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "অনুবাদ সময়সূচী"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "অনুবাদৰ সময়ত ভুল হ'লে সময়সূচীয়ে পুনৰ অনুবাদৰ চেষ্টা কৰিব। এই বিকল্পই পুনঃপ্ৰয়াসৰ সীমা নিৰ্ধাৰণ কৰে। অসীম পুনঃপ্ৰয়াসৰ অনুমতি দিবলৈ ঋণাত্মক সংখ্যা ছেট কৰক"
-	},
-	"settings_option_translatorModule": {
-		"message": "অনুবাদ মডিউল"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "অনুবাদৰ গুণমান আৰু উপলব্ধ ভাষাসমূহ অনুবাদ মডিউলৰ ওপৰত নিৰ্ভৰ কৰে"
 	},
 	"settings_option_tts": {
 		"message": "পাঠৰ পৰা শব্দত ৰূপান্তৰ (TTS)"

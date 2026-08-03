@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Allmänna inställningar"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Anpassade översättningsmoduler",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Du kan lägga till anpassade översättningsmoduler som använder dina favoritöversättningstjänster. Läs mer i <slot id=docs>anpassade översättares dokumentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Hantera översättare",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktivera historik"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "När inaktiverad visas språksförslag endast om källspråket är inställt på \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Översättningsinställningar"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Översättningsschemaläggare"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Schemaläggaren kommer att försöka översätta texter igen när översättningsfel uppstår. Detta alternativ sätter en gräns för antalet försök. Ställ in ett negativt tal för att tillåta obegränsade försök"
-	},
-	"settings_option_translatorModule": {
-		"message": "Översättningsmodul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kvaliteten på översättningar och de tillgängliga språken beror på översättningsmodulen"
 	},
 	"settings_option_tts": {
 		"message": "Text till tal-konvertering (TTS)"

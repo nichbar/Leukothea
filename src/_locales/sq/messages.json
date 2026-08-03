@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Cilësimet e përgjithshme"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modulet e përkthimit të personalizuar",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Mund të shtoni module përkthimi të personalizuara që përdorin shërbimet tuaja të preferuara të përkthimit. Mësoni më shumë në <slot id=docs> dokumentacionin e përkthyesve të personalizuar</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Menaxhimi i përkthyesve",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktivizo historinë"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kur çaktivizohet, sugjerimet e gjuhës shfaqen vetëm nëse gjuha burimore është vendosur në \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferencat e përkthimit"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planifikuesi i përkthimit"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planifikuesi do të përpiqet të përkthejë tekstet kur ndodhin gabime në përkthim. Kjo opsion vendos një kufi për përpjekjet e përsëritjes. Vendosni një numër negativ për të lejuar përsëritje të pakufizuara"
-	},
-	"settings_option_translatorModule": {
-		"message": "Moduli i përkthimit"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Cilësia e përkthimeve dhe gjuhët e disponueshme varen nga moduli i përkthimit"
 	},
 	"settings_option_tts": {
 		"message": "Konvertimi i Tekstit në Zë (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ebongiseli ya ndenge nyonso"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Bamodule ya kobongola ya moto moko",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Okoki kobakisa bamodule ya kobongola ya moto moko oyo esalelaka baservice ya kobongola oyo olingaka. Yekola mingi na <slot id=docs>ndakisa ya kobongola ya moto moko</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kobongisa babongoli",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Kokisa lisolo"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Soki ebongisami te, toli ya lokota ekomonana kaka soki lokota ya ebandeli esalemi na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Boponi ya kotranslate"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planificateur ya kotranslate"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planificateur ekozongela kotranslate maloba soki ezwi mabunga na kotranslate. Oyo ezali kopesa limite ya ba essais ya kotranslate lisusu. Salela motuya ya nse mpo na kopesa nzela ya ba essais oyo eza te na limite"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module ya kotranslate"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kozala ya malamu ya ba translations mpe ba lokota oyo ezali na module ya kotranslate"
 	},
 	"settings_option_tts": {
 		"message": "Kobongola maloba na mongongo (TTS)"

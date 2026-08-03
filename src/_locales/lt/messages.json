@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Bendri nustatymai"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Tinkinti vertimo moduliai",
-		"description": "Vartotojo apibrėžtas kodas, kuris įgyvendina vertimo modulį"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Galite pridėti pasirinktinius vertimo modulius, kurie naudoja jūsų mėgstamas vertimo paslaugas. Sužinokite daugiau <slot id=docs>pasirinktinių vertėjų dokumentacijoje</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Vertėjų valdymas",
-		"description": "Mygtukas, skirtas parodyti vertimo modulių sąrašą"
-	},
 	"settings_option_history_enable": {
 		"message": "Įjungti istoriją"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kai išjungta, kalbos pasiūlymai rodomi tik tada, kai šaltinio kalba nustatyta kaip \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Vertimo nuostatos"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Vertimo planuotojas"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planavimo priemonė bandys iš naujo versti tekstus, kai įvyksta vertimo klaidos. Ši parinktis nustato pakartojimo bandymų limitą. Nustatykite neigiamą skaičių, kad leistumėte neribotą pakartojimą"
-	},
-	"settings_option_translatorModule": {
-		"message": "Vertimo modulis"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Vertimų kokybė ir galimos kalbos priklauso nuo vertimo modulio"
 	},
 	"settings_option_tts": {
 		"message": "Teksto į kalbą konvertavimas (TTS)"

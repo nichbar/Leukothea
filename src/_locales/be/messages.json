@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Агульныя налады"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Карыстальніцкія модулі перакладу",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Вы можаце дадаць карыстальніцкія модулі перакладу, якія выкарыстоўваюць вашы любімыя сэрвісы перакладу. Даведайцеся больш у <slot id=docs>дакументацыі па карыстальніцкіх перакладчыках</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Кіраванне перакладчыкамі",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Уключыць гісторыю"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Калі адключана, прапановы мовы з'яўляюцца толькі калі мова крыніцы ўсталявана на \"аўта\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Налады перакладу"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Планавальнік перакладу"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Планавальнік будзе спрабаваць перакладаць тэксты, калі ўзнікаюць памылкі перакладу. Гэтая опцыя ўсталёўвае ліміт на колькасць спробаў. Усталюйце адмоўнае значэнне, каб дазволіць неабмежаваную колькасць спробаў"
-	},
-	"settings_option_translatorModule": {
-		"message": "Модуль перакладу"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Якасць перакладаў і даступныя мовы залежаць ад модуля перакладу"
 	},
 	"settings_option_tts": {
 		"message": "Пераўтварэнне тэксту ў маўленне (TTS)"

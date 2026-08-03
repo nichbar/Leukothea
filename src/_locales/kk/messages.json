@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Жалпы баптаулар"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Арнайы аударма модульдері",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Сіз өзіңіздің сүйікті аударма қызметтеріңізді пайдаланатын арнайы аударма модульдерін қоса аласыз. <slot id=docs>арнайы аудармашылар құжаттамасынан</slot> көбірек біліңіз"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Аудармашыларды басқару",
-		"description": "Аударма модульдерінің тізімін көрсетуге арналған батырма"
-	},
 	"settings_option_history_enable": {
 		"message": "Тарихты қосу"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Өшірілген кезде, тіл ұсыныстары тек бастапқы тіл \"авто\" ретінде орнатылғанда ғана пайда болады"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Аударма параметрлері"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Аударма жоспарлаушысы"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Жоспарлаушы аударма қателері болғанда мәтіндерді қайта аударуға тырысады. Бұл опция қайта әрекет ету шегін орнатады. Шексіз қайта әрекет етуге рұқсат беру үшін теріс сан орнатыңыз"
-	},
-	"settings_option_translatorModule": {
-		"message": "Аударма модулі"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Аудармалардың сапасы және қолжетімді тілдер аударма модуліне байланысты"
 	},
 	"settings_option_tts": {
 		"message": "Мәтінді сөйлеуге түрлендіру (TTS)"

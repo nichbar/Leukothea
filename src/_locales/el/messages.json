@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Κοινές ρυθμίσεις"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Προσαρμοσμένες μονάδες μετάφρασης",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Μπορείτε να προσθέσετε προσαρμοσμένα μεταφραστικά modules που χρησιμοποιούν τις αγαπημένες σας υπηρεσίες μετάφρασης. Μάθετε περισσότερα στην <slot id=docs>τεκμηρίωση προσαρμοσμένων μεταφραστών</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Διαχείριση μεταφραστών",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Ενεργοποίηση ιστορικού"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Όταν είναι απενεργοποιημένο, οι προτάσεις γλώσσας εμφανίζονται μόνο εάν η γλώσσα προέλευσης έχει οριστεί σε \"αυτόματο\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Προτιμήσεις μετάφρασης"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Προγραμματιστής μετάφρασης"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ο προγραμματιστής θα προσπαθήσει ξανά να μεταφράσει κείμενα όταν προκύψουν σφάλματα μετάφρασης. Αυτή η επιλογή ορίζει ένα όριο στις προσπάθειες επανάληψης. Ορίστε έναν αρνητικό αριθμό για να επιτρέψετε απεριόριστες επαναλήψεις"
-	},
-	"settings_option_translatorModule": {
-		"message": "Μονάδα μετάφρασης"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Η ποιότητα των μεταφράσεων και οι διαθέσιμες γλώσσες εξαρτώνται από τη μονάδα μετάφρασης"
 	},
 	"settings_option_tts": {
 		"message": "Μετατροπή κειμένου σε ομιλία (TTS)"

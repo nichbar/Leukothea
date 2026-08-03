@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "عام تنظیمات"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "دودیز ژباړې ماډلونه",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "تاسو کولی شئ دودیز ژباړې ماډلونه اضافه کړئ چې ستاسو د خوښې ژباړې خدمتونه کاروي. په <slot id=docs>دودیز ژباړونکي سندونه</slot> کې نور معلومات زده کړئ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ژباړونکي اداره کول",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "تاریخ فعالول"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "کله چې غیر فعال وي، د ژبې وړاندیزونه یوازې هغه وخت ښکاري کله چې د سرچینې ژبه \"اتوماتیک\" ته ټاکل شوې وي"
 	},
-	"settings_option_translatePreferences": {
-		"message": "د ژباړې غوره توبونه"
-	},
 	"settings_option_translateScheduler": {
 		"message": "د ژباړې مهال ویش"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "مهال ویش به د ژباړې د تېروتنو په صورت کې د متنونو ژباړه بیا هڅه وکړي. دا اختیار د بیا هڅې هڅو باندې حد ټاکي. د غیر محدودو بیا هڅو لپاره منفي شمیره وټاکئ"
-	},
-	"settings_option_translatorModule": {
-		"message": "د ژباړې ماډل"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "د ژباړو کیفیت او موجودې ژبې د ژباړې ماډل پورې اړه لري"
 	},
 	"settings_option_tts": {
 		"message": "د متن څخه وینا ته بدلون (TTS)"

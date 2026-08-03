@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "عام ترتیبات"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "حسب ضرورت ترجمہ ماڈیولز",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "آپ اپنے پسندیدہ ترجمہ خدمات استعمال کرنے والے حسب ضرورت ترجمہ ماڈیولز شامل کر سکتے ہیں۔ مزید جانیں <slot id=docs>حسب ضرورت مترجمین کی دستاویزات</slot> میں"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "مترجمین کا انتظام",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "تاریخ فعال کریں"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "جب غیر فعال ہو، زبان کی تجاویز صرف اس صورت میں ظاہر ہوتی ہیں جب ماخذ زبان \"خودکار\" پر سیٹ ہو"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ترجمہ کی ترجیحات"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ترجمہ کا شیڈولر"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "جب ترجمہ کی غلطیاں ہوتی ہیں تو شیڈولر متن کا دوبارہ ترجمہ کرنے کی کوشش کرے گا۔ یہ آپشن دوبارہ کوششوں کی حد مقرر کرتا ہے۔ لامحدود دوبارہ کوششوں کی اجازت دینے کے لیے منفی عدد سیٹ کریں"
-	},
-	"settings_option_translatorModule": {
-		"message": "ترجمہ ماڈیول"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ترجمہ کی کوالٹی اور دستیاب زبانیں ترجمہ ماڈیول پر منحصر ہیں"
 	},
 	"settings_option_tts": {
 		"message": "متن کو تقریر میں تبدیل کرنا (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Mipangilio ya kawaida"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Moduli za tafsiri maalum",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Unaweza kuongeza moduli za tafsiri maalum zinazotumia huduma zako za tafsiri unazopenda. Jifunze zaidi katika <slot id=docs>hati za watafsiri maalum</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kusimamia watafsiri",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Wezesha historia"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ikizimwa, mapendekezo ya lugha yanaonekana tu ikiwa lugha ya chanzo imewekwa kuwa \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Mapendeleo ya tafsiri"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Ratiba ya tafsiri"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ratiba itajaribu tena kutafsiri maandishi wakati makosa ya tafsiri yanapotokea. Chaguo hili linaweka kikomo cha majaribio ya kurudia. Weka nambari hasi kuruhusu majaribio yasiyo na kikomo"
-	},
-	"settings_option_translatorModule": {
-		"message": "Moduli ya tafsiri"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ubora wa tafsiri na lugha zinazopatikana zinategemea moduli ya tafsiri"
 	},
 	"settings_option_tts": {
 		"message": "Ubadilishaji wa Maandishi kuwa Sauti (TTS)"

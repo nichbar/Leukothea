@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "تنظیمات عمومی"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ماژول‌های ترجمه سفارشی",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "شما می‌توانید ماژول‌های ترجمه سفارشی که از خدمات ترجمه مورد علاقه شما استفاده می‌کنند را اضافه کنید. بیشتر در <slot id=docs>مستندات مترجمان سفارشی</slot> بیاموزید"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "مدیریت مترجمان",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "فعال‌سازی تاریخچه"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "وقتی غیرفعال است، پیشنهادات زبان فقط در صورتی ظاهر می‌شوند که زبان منبع به \"auto\" تنظیم شده باشد"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ترجیحات ترجمه"
-	},
 	"settings_option_translateScheduler": {
 		"message": "برنامه‌ریز ترجمه"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "برنامه‌ریز در صورت بروز خطاهای ترجمه، تلاش مجدد برای ترجمه متون را انجام می‌دهد. این گزینه محدودیتی برای تلاش‌های مجدد تعیین می‌کند. برای اجازه به تلاش‌های نامحدود، یک عدد منفی تنظیم کنید"
-	},
-	"settings_option_translatorModule": {
-		"message": "ماژول ترجمه"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "کیفیت ترجمه‌ها و زبان‌های موجود به ماژول ترجمه بستگی دارد"
 	},
 	"settings_option_tts": {
 		"message": "تبدیل متن به گفتار (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "പൊതു ക്രമീകരണങ്ങൾ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ഇഷ്ടാനുസൃത വിവർത്തന മോഡ്യൂളുകൾ",
-		"description": "വിവർത്തന മോഡ്യൂൾ നടപ്പിലാക്കുന്ന ഉപയോക്താവിനായി നിർവചിച്ച കോഡ്"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "നിങ്ങളുടെ ഇഷ്ടാനുസൃത വിവർത്തന സേവനങ്ങൾ ഉപയോഗിക്കുന്ന ഇഷ്ടാനുസൃത വിവർത്തന മോഡ്യൂളുകൾ നിങ്ങൾക്ക് ചേർക്കാം. <slot id=docs>ഇഷ്ടാനുസൃത വിവർത്തകരുടെ ഡോക്യുമെന്റേഷൻ</slot> ൽ കൂടുതൽ അറിയുക"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "വിവർത്തകരെ നിയന്ത്രിക്കുക",
-		"description": "വിവർത്തന മോഡ്യൂളുകളുടെ പട്ടിക കാണിക്കുന്നതിന് ഒരു ബട്ടൺ"
-	},
 	"settings_option_history_enable": {
 		"message": "ചരിത്രം പ്രാപ്തമാക്കുക"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "അപ്രാപ്തമാക്കിയാൽ, ഉറവിട ഭാഷ \"ഓട്ടോ\" ആയി സജ്ജമാക്കിയാൽ മാത്രമേ ഭാഷ നിർദ്ദേശങ്ങൾ പ്രത്യക്ഷപ്പെടൂ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "വിവർത്തന മുൻഗണനകൾ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "വിവർത്തന ഷെഡ്യൂളർ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "വിവർത്തന പിശകുകൾ സംഭവിക്കുമ്പോൾ ഷെഡ്യൂളർ വാചകങ്ങൾ വിവർത്തനം ചെയ്യാൻ വീണ്ടും ശ്രമിക്കും. പുനഃശ്രമങ്ങളുടെ പരിധി ഈ ഓപ്ഷൻ സജ്ജമാക്കുന്നു. പരിധിയില്ലാത്ത പുനഃശ്രമങ്ങൾ അനുവദിക്കാൻ ഒരു നെഗറ്റീവ് സംഖ്യ സജ്ജമാക്കുക"
-	},
-	"settings_option_translatorModule": {
-		"message": "വിവർത്തന മോഡ്യൂൾ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "വിവർത്തനങ്ങളുടെ ഗുണനിലവാരവും ലഭ്യമായ ഭാഷകളും വിവർത്തന മോഡ്യൂളിൽ ആശ്രയിച്ചിരിക്കുന്നു"
 	},
 	"settings_option_tts": {
 		"message": "വാചകം ശബ്ദമായി മാറ്റുക (TTS)"

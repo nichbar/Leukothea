@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Anviwònman komen"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modil tradiksyon koutim",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ou ka ajoute modil tradiksyon koutim ki itilize sèvis tradiksyon pi renmen ou yo. Aprann plis nan <slot id=docs>dokimantasyon tradiktè koutim</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Jere tradiktè yo",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktive istwa"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Lè li dezaktive, sijesyon lang parèt sèlman si lang sous la mete sou \"oto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferans tradiksyon"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Planifikatè tradiksyon"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planifikatè a ap eseye retradui tèks lè erè tradiksyon rive. Opsyon sa a mete yon limit sou tantativ retradiksyon. Mete yon nimewo negatif pou pèmèt retradiksyon san limit"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modil tradiksyon"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kalite tradiksyon yo ak lang ki disponib yo depann de modil tradiksyon an"
 	},
 	"settings_option_tts": {
 		"message": "Konvèsyon Tèks an Lapawòl (TTS)"

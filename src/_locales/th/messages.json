@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "การตั้งค่าทั่วไป"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "โมดูลการแปลที่กำหนดเอง",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "คุณสามารถเพิ่มโมดูลการแปลที่กำหนดเองที่ใช้บริการแปลที่คุณชื่นชอบ เรียนรู้เพิ่มเติมใน <slot id=docs>เอกสารการแปลที่กำหนดเอง</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "จัดการตัวแปล",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "เปิดใช้งานประวัติ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "เมื่อปิดใช้งาน คำแนะนำภาษาจะปรากฏเฉพาะเมื่อกำหนดภาษาต้นทางเป็น \"อัตโนมัติ\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "การตั้งค่าการแปล"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ตัวจัดการเวลาแปล"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ตัวจัดการเวลาจะลองแปลข้อความใหม่เมื่อเกิดข้อผิดพลาดในการแปล ตัวเลือกนี้กำหนดจำนวนครั้งในการลองใหม่ ตั้งค่าตัวเลขติดลบเพื่ออนุญาตให้ลองใหม่ได้ไม่จำกัด"
-	},
-	"settings_option_translatorModule": {
-		"message": "โมดูลการแปล"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "คุณภาพของการแปลและภาษาที่มีให้ขึ้นอยู่กับโมดูลการแปล"
 	},
 	"settings_option_tts": {
 		"message": "การแปลงข้อความเป็นเสียงพูด (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Fælles indstillinger"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Brugerdefinerede oversættelsesmoduler",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Du kan tilføje brugerdefinerede oversættelsesmoduler, der bruger dine foretrukne oversættelsestjenester. Læs mere i <slot id=docs>brugerdefinerede oversættere dokumentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Administrer oversættere",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktiver historik"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Når deaktiveret, vises sprogforslag kun, hvis kildesproget er indstillet til \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Oversættelsespræferencer"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Oversættelsesplanlægger"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Planlæggeren vil forsøge at oversætte tekster igen, når der opstår oversættelsesfejl. Denne mulighed sætter en grænse for antallet af gentagne forsøg. Indstil et negativt tal for at tillade ubegrænsede gentagelser"
-	},
-	"settings_option_translatorModule": {
-		"message": "Oversættelsesmodul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kvaliteten af oversættelserne og de tilgængelige sprog afhænger af oversættelsesmodulet"
 	},
 	"settings_option_tts": {
 		"message": "Tekst til tale konvertering (TTS)"

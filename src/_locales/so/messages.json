@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Dejinta guud"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Qaybaha tarjumaadda gaarka ah",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Waxaad ku dari kartaa qaybo tarjumaad oo gaar ah oo adeegsanaya adeegyada tarjumaadda ee aad jeceshahay. Wax badan ka baro <slot id=docs>dukumentiyada tarjumaadaha gaarka ah</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Maareynta tarjumaadaha",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Daar taariikhda"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Marka la naafo yahay, soo jeedinta luqadda waxay soo muuqanaysaa oo keliya haddii luqadda isha la dejiyo \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Doorbidida tarjumaadda"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Jadwalka tarjumaadda"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Jadwalku wuxuu isku dayi doonaa inuu dib u tarjumo qoraallada marka khaladaadka tarjumaadda dhacaan. Xulashadan waxay dejinaysaa xadka isku dayga dib u tarjumaadda. Dhig tiro taban si aad u oggolaato isku dayo aan xadidnayn"
-	},
-	"settings_option_translatorModule": {
-		"message": "Qaybta tarjumaadda"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Tayada tarjumaadaha iyo luqadaha la heli karo waxay ku xiran yihiin qaybta tarjumaadda"
 	},
 	"settings_option_tts": {
 		"message": "Beddelka Qoraalka Ilaa Hadalka (TTS)"

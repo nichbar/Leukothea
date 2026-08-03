@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Kopējie iestatījumi"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Pielāgoti tulkošanas moduļi",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Varat pievienot pielāgotus tulkošanas moduļus, kas izmanto jūsu iecienītākos tulkošanas pakalpojumus. Uzziniet vairāk <slot id=docs>pielāgoto tulkotāju dokumentācijā</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Tulkotāju pārvaldība",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Ieslēgt vēsturi"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kad atspējots, valodas ieteikumi parādās tikai tad, ja avota valoda ir iestatīta uz \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Tulkošanas preferences"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Tulkošanas plānotājs"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Plānotājs mēģinās atkārtoti tulkot tekstus, kad rodas tulkošanas kļūdas. Šī opcija nosaka mēģinājumu ierobežojumu. Iestatiet negatīvu skaitli, lai atļautu neierobežotus mēģinājumus"
-	},
-	"settings_option_translatorModule": {
-		"message": "Tulkošanas modulis"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Tulkojumu kvalitāte un pieejamās valodas ir atkarīgas no tulkošanas moduļa"
 	},
 	"settings_option_tts": {
 		"message": "Teksta pārveidošana uz runu (TTS)"

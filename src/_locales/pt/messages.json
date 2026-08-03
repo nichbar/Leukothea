@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Configurações comuns"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Módulos de tradução personalizados",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Você pode adicionar módulos de tradução personalizados que usam seus serviços de tradução favoritos. Saiba mais na <slot id=docs>documentação de tradutores personalizados</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gerenciar tradutores",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Ativar histórico"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Quando desativado, sugestões de idioma aparecem apenas se o idioma de origem estiver definido como \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferências de tradução"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Agendador de tradução"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "O agendador tentará traduzir novamente os textos quando ocorrerem erros de tradução. Esta opção define um limite para tentativas de nova tradução. Defina um número negativo para permitir tentativas ilimitadas"
-	},
-	"settings_option_translatorModule": {
-		"message": "Módulo de tradução"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "A qualidade das traduções e os idiomas disponíveis dependem do módulo de tradução"
 	},
 	"settings_option_tts": {
 		"message": "Conversão de Texto para Fala (TTS)"

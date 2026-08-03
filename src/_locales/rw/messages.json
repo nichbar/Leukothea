@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Igenamiterere rusange"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modules yihariye yo guhindura",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Urashobora kongeramo modules yihariye yo guhindura ikoresha serivisi zawe ukunda zo guhindura. Menya byinshi muri <slot id=docs>inyandiko z'abahindura yihariye</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Gucunga abahindura",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Gushyiraho amateka"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Iyo bidakoreshejwe, inama z'ururimi zigaragara gusa niba ururimi rw'inkomoko rushyizwe kuri \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Ibyifuzo byo guhindura"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Igenamigambi ryo guhindura"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Igenamigambi rizasubira mu guhindura inyandiko igihe habaye amakosa yo guhindura. Iyi nzira ishyiraho umupaka ku busubiramo bwo kugerageza. Shyiramo umubare mubi kugira ngo wemere ubusubiramo butagira umupaka"
-	},
-	"settings_option_translatorModule": {
-		"message": "Icyiciro cyo guhindura"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ubwiza bw'ubuhinduzi n'indimi ziboneka biterwa n'icyiciro cyo guhindura"
 	},
 	"settings_option_tts": {
 		"message": "Guhindura inyandiko mu majwi (TTS)"

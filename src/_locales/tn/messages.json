@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Dikgetho tse di tlwaelegileng"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Dikgokaganyo tsa phetolo tse di ikemetseng",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "O ka oketsa dikgokaganyo tsa phetolo tse di ikemetseng tse di dirisang ditirelo tsa gago tse o di ratang tsa phetolo. Ithute go le gontsi mo <slot id=docs>dikgokaganyong tsa phetolo tse di ikemetseng</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Tsamaisa diphetolo",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Bula hisitori"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Fa e tima, ditshitshinyo tsa puo di tlaa bonala fela fa puo ya motswedi e setilwe go \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Dikgetho tsa phetolelo"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Mokgweetsi wa phetolelo"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Mokgweetsi o tlaa leka go ranola mafoko gape fa diphoso tsa phetolelo di direga. Kgetho eno e seta melelwane ya maiteko a go leka gape. Seta palo e e sa siamang go letlelela maiteko a a se nang melelwane"
-	},
-	"settings_option_translatorModule": {
-		"message": "Mokgwa wa phetolelo"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Boleng jwa diphetolelo le dipuo tse di leng teng di ikaegile ka mokgwa wa phetolelo"
 	},
 	"settings_option_tts": {
 		"message": "Phetolelo ya mafoko go go bua (TTS)"

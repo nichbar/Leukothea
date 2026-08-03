@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Common settings"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Custom translation modules",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "You can add custom translation modules that use your favorite translation services. Learn more in the <slot id=docs>custom translators documentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Managing translators",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Enable history"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "So tawii ɗiɗi waɗi ko ɓuri, holli ɗiɗi waɗi ko ɓuri so tawii source ɗiɗi waɗi ko ɓuri \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferences ɗiɗi waɗi ko ɓuri"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Scheduler ɗiɗi waɗi ko ɓuri"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Scheduler ɗiɗi waɗi ko ɓuri waɗi ko ɓuri texts ɗiɗi waɗi ko ɓuri so tawii errors ɗiɗi waɗi ko ɓuri. Option ɗiɗi waɗi ko ɓuri waɗi ko ɓuri limit ɗiɗi waɗi ko ɓuri retry ɗiɗi waɗi ko ɓuri. Settii number ɗiɗi waɗi ko ɓuri so tawii aɗa yiɗi ko ɓuri unlimited retries"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module ɗiɗi waɗi ko ɓuri"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Quality ɗiɗi waɗi ko ɓuri e languages ɗiɗi waɗi ko ɓuri waɗi ko ɓuri module ɗiɗi waɗi ko ɓuri"
 	},
 	"settings_option_tts": {
 		"message": "Text to Speech conversion (TTS)"

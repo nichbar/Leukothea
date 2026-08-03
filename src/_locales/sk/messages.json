@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Spoločné nastavenia"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Vlastné prekladové moduly",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Môžete pridať vlastné prekladové moduly, ktoré používajú vaše obľúbené prekladové služby. Viac sa dozviete v <slot id=docs>dokumentácii o vlastných prekladoch</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Správa prekladateľov",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Povoliť históriu"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Keď je vypnuté, návrhy jazykov sa zobrazia iba vtedy, ak je zdrojový jazyk nastavený na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferencie prekladu"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Plánovač prekladu"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Plánovač sa pokúsi preložiť texty znova, keď dôjde k chybám prekladu. Táto možnosť nastavuje limit na pokusy o opätovný preklad. Nastavte záporné číslo pre neobmedzené pokusy"
-	},
-	"settings_option_translatorModule": {
-		"message": "Prekladový modul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kvalita prekladov a dostupné jazyky závisia od prekladového modulu"
 	},
 	"settings_option_tts": {
 		"message": "Konverzia textu na reč (TTS)"

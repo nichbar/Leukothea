@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Általános beállítások"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Egyéni fordítási modulok",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Hozzáadhat egyéni fordítási modulokat, amelyek a kedvenc fordítási szolgáltatásait használják. További információ a <slot id=docs>egyéni fordítók dokumentációjában</slot> található"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Fordítók kezelése",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Előzmények engedélyezése"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ha le van tiltva, a nyelvi javaslatok csak akkor jelennek meg, ha a forrásnyelv \"auto\"-ra van állítva"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Fordítási beállítások"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Fordítási ütemező"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Az ütemező újrapróbálkozik a szövegek fordításával, ha fordítási hibák lépnek fel. Ez az opció korlátozza az újrapróbálkozások számát. Állítson be negatív számot a korlátlan újrapróbálkozások engedélyezéséhez"
-	},
-	"settings_option_translatorModule": {
-		"message": "Fordítási modul"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "A fordítások minősége és az elérhető nyelvek a fordítási modultól függenek"
 	},
 	"settings_option_tts": {
 		"message": "Szöveg-beszéd átalakítás (TTS)"

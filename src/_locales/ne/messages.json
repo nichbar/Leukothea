@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "सामान्य सेटिङहरू"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "अनुकूलन अनुवाद मोड्युलहरू",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "तपाईं आफ्नो मनपर्ने अनुवाद सेवाहरू प्रयोग गर्ने अनुकूलन अनुवाद मोड्युलहरू थप्न सक्नुहुन्छ। <slot id=docs>अनुकूलन अनुवादकहरूको दस्तावेज</slot> मा थप जान्नुहोस्"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "अनुवादकहरू व्यवस्थापन गर्दै",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "इतिहास सक्षम गर्नुहोस्"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "अक्षम हुँदा, भाषा सुझावहरू मात्र देखिन्छन् यदि स्रोत भाषा \"स्वतः\" मा सेट गरिएको छ भने"
 	},
-	"settings_option_translatePreferences": {
-		"message": "अनुवाद प्राथमिकताहरू"
-	},
 	"settings_option_translateScheduler": {
 		"message": "अनुवाद अनुसूचक"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "अनुवाद त्रुटिहरू हुँदा अनुसूचकले पाठहरू अनुवाद गर्न पुन: प्रयास गर्नेछ। यस विकल्पले पुन: प्रयास प्रयासहरूको सीमालाई सेट गर्दछ। असीमित पुन: प्रयासहरू अनुमति दिन नकारात्मक संख्या सेट गर्नुहोस्"
-	},
-	"settings_option_translatorModule": {
-		"message": "अनुवाद मोड्युल"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "अनुवादहरूको गुणस्तर र उपलब्ध भाषाहरू अनुवाद मोड्युलमा निर्भर गर्दछ"
 	},
 	"settings_option_tts": {
 		"message": "पाठलाई भाषणमा रूपान्तरण (TTS)"

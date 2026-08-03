@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Setelan umum"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Modul terjemahan khusus",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Sampeyan bisa nambah modul terjemahan khusus sing nggunakake layanan terjemahan favorit sampeyan. Sinau luwih lengkap ing <slot id=docs>dokumen penerjemah khusus</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Ngatur penerjemah",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Aktifake riwayat"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Yen dipateni, saran basa mung katon yen basa sumber disetel menyang \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Preferensi terjemahan"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Jadwal terjemahan"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Jadwal bakal nyoba maneh nerjemahake teks nalika kesalahan terjemahan kedadeyan. Pilihan iki nyetel watesan kanggo nyoba maneh. Atur angka negatif kanggo ngidini nyoba maneh tanpa watesan"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modul terjemahan"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kualitas terjemahan lan basa sing kasedhiya gumantung ing modul terjemahan"
 	},
 	"settings_option_tts": {
 		"message": "Konversi Teks dadi Ucapan (TTS)"

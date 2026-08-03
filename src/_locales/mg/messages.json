@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Fikirana iombonana"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Module fandikan-teny manokana",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Afaka manampy module fandikan-teny manokana ianao izay mampiasa ny serivisy fandikan-teny tianao indrindra. Mianara bebe kokoa ao amin'ny <slot id=docs>antontan-taratasy momba ny mpandika manokana</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Fitantanana mpandika",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Alefaso ny tantara"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Rehefa tsy alefa, miseho ihany ny tolo-kevitra momba ny fiteny raha toa ka apetraka ho \"auto\" ny fiteny loharano"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Safidy fandikan-teny"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Fandaharam-potoana fandikan-teny"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Hiezaka indray ny fandaharam-potoana fandikan-teny rehefa misy hadisoana fandikan-teny. Ity safidy ity dia mametra ny isan'ny fiezahana indray. Apetraho ho isa ratsy raha te-hanome fiezahana tsy voafetra"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module fandikan-teny"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Ny kalitaon'ny fandikan-teny sy ny fiteny misy dia miankina amin'ny module fandikan-teny"
 	},
 	"settings_option_tts": {
 		"message": "Fiovam-peo ho lahatsoratra (TTS)"

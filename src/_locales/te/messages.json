@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "సాధారణ సెట్టింగ్‌లు"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "కస్టమ్ అనువాద మాడ్యూల్‌లు",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "మీకు ఇష్టమైన అనువాద సేవలను ఉపయోగించే కస్టమ్ అనువాద మాడ్యూల్‌లను మీరు జోడించవచ్చు. <slot id=docs>కస్టమ్ అనువాదకుల డాక్యుమెంటేషన్</slot>లో మరింత తెలుసుకోండి"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "అనువాదకులను నిర్వహించడం",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "చరిత్ర ప్రారంభించండి"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "అచేతనం చేసినప్పుడు, మూల భాష \"ఆటో\"గా సెట్ చేయబడితే మాత్రమే భాష సూచనలు కనిపిస్తాయి"
 	},
-	"settings_option_translatePreferences": {
-		"message": "అనువాద ప్రాధాన్యతలు"
-	},
 	"settings_option_translateScheduler": {
 		"message": "అనువాద షెడ్యూలర్"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "అనువాద లోపాలు సంభవించినప్పుడు షెడ్యూలర్ పాఠాలను అనువదించడానికి మళ్లీ ప్రయత్నిస్తుంది. ఈ ఎంపిక పునఃప్రయత్నాల పరిమితిని సెట్ చేస్తుంది. పరిమిత లేని పునఃప్రయత్నాలను అనుమతించడానికి ప్రతికూల సంఖ్యను సెట్ చేయండి"
-	},
-	"settings_option_translatorModule": {
-		"message": "అనువాద మాడ్యూల్"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "అనువాదాల నాణ్యత మరియు అందుబాటులో ఉన్న భాషలు అనువాద మాడ్యూల్‌పై ఆధారపడి ఉంటాయి"
 	},
 	"settings_option_tts": {
 		"message": "పాఠం నుండి మాటలుగా మార్పు (TTS)"

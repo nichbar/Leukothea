@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "הגדרות כלליות"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "מודולים מותאמים אישית לתרגום",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "אתה יכול להוסיף מודולי תרגום מותאמים אישית שמשתמשים בשירותי התרגום המועדפים עליך. למד עוד ב<slot id=docs>תיעוד מתרגמים מותאמים אישית</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ניהול מתרגמים",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "הפעל היסטוריה"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "כאשר מושבת, הצעות לשפה מופיעות רק אם שפת המקור מוגדרת ל\"אוטומטי\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "העדפות תרגום"
-	},
 	"settings_option_translateScheduler": {
 		"message": "מתזמן תרגום"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "המתזמן ינסה לתרגם מחדש טקסטים כאשר מתרחשות שגיאות תרגום. אפשרות זו קובעת הגבלה על ניסיונות חוזרים. הגדר מספר שלילי כדי לאפשר ניסיונות בלתי מוגבלים"
-	},
-	"settings_option_translatorModule": {
-		"message": "מודול תרגום"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "איכות התרגומים והשפות הזמינות תלויות במודול התרגום"
 	},
 	"settings_option_tts": {
 		"message": "המרת טקסט לדיבור (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ସାଧାରଣ ସେଟିଂସ୍"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "କଷ୍ଟମ୍ ଅନୁବାଦ ମଡ୍ୟୁଲଗୁଡ଼ିକ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "ଆପଣ ଆପଣଙ୍କ ପସନ୍ଦର ଅନୁବାଦ ସେବାଗୁଡ଼ିକ ବ୍ୟବହାର କରୁଥିବା କଷ୍ଟମ୍ ଅନୁବାଦ ମଡ୍ୟୁଲଗୁଡ଼ିକ ଯୋଡ଼ିପାରିବେ। <slot id=docs>କଷ୍ଟମ୍ ଅନୁବାଦକାରୀ ଡକ୍ୟୁମେଣ୍ଟେସନ୍</slot>ରେ ଅଧିକ ଜାଣନ୍ତୁ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ଅନୁବାଦକାରୀମାନଙ୍କୁ ପରିଚାଳନା କରନ୍ତୁ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ଇତିହାସ ସକ୍ରିୟ କରନ୍ତୁ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ଯଦି ଅକ୍ଷମ କରାଯାଇଛି, ଭାଷା ପ୍ରସ୍ତାବଗୁଡ଼ିକ କେବଳ ଯଦି ଉତ୍ସ ଭାଷାକୁ \"ସ୍ୱୟଂ\" ରୂପେ ସେଟ୍ କରାଯାଇଛି ତେବେ ପ୍ରକାଶିତ ହୁଏ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ଅନୁବାଦ ପସନ୍ଦ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ଅନୁବାଦ ସମୟସୂଚୀ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ଅନୁବାଦ ତ୍ରୁଟି ଘଟିଲେ ସମୟସୂଚୀ ପାଠ୍ୟଗୁଡ଼ିକୁ ପୁନଃ ଅନୁବାଦ କରିବାକୁ ଚେଷ୍ଟା କରିବ। ଏହି ବିକଳ୍ପ ପୁନଃଚେଷ୍ଟା ପ୍ରୟାସଗୁଡ଼ିକରେ ସୀମା ସେଟ୍ କରେ। ଅସୀମିତ ପୁନଃଚେଷ୍ଟାକୁ ଅନୁମତି ଦେବା ପାଇଁ ଏକ ଋଣାତ୍ମକ ସଂଖ୍ୟା ସେଟ୍ କରନ୍ତୁ"
-	},
-	"settings_option_translatorModule": {
-		"message": "ଅନୁବାଦ ମଡ୍ୟୁଲ୍"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ଅନୁବାଦର ଗୁଣବତ୍ତା ଏବଂ ଉପଲବ୍ଧ ଭାଷାଗୁଡ଼ିକ ଅନୁବାଦ ମଡ୍ୟୁଲ୍ ଉପରେ ନିର୍ଭର କରେ"
 	},
 	"settings_option_tts": {
 		"message": "ପାଠ୍ୟରୁ ଧ୍ୱନିରେ ପରିବର୍ତ୍ତନ (TTS)"

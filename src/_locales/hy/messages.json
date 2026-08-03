@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Ընդհանուր կարգավորումներ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Անհատական թարգմանական մոդուլներ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Դուք կարող եք ավելացնել անհատական թարգմանական մոդուլներ, որոնք օգտագործում են ձեր նախընտրած թարգմանական ծառայությունները։ Իմացեք ավելին <slot id=docs>անհատական թարգմանիչների փաստաթղթերում</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Թարգմանիչների կառավարում",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Միացնել պատմությունը"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Երբ անջատված է, լեզվի առաջարկները հայտնվում են միայն, եթե աղբյուրի լեզուն սահմանված է \"ավտո\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Թարգմանության նախընտրանքներ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Թարգմանության ժամանակացույց"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Ժամանակացույցը կփորձի կրկին թարգմանել տեքստերը, երբ թարգմանության սխալներ են առաջանում: Այս ընտրանքը սահմանում է կրկնակի փորձերի սահմանափակում: Սահմանեք բացասական թիվ՝ անսահմանափակ կրկնակի փորձերի համար"
-	},
-	"settings_option_translatorModule": {
-		"message": "Թարգմանության մոդուլ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Թարգմանությունների որակը և հասանելի լեզուները կախված են թարգմանության մոդուլից"
 	},
 	"settings_option_tts": {
 		"message": "Տեքստից խոսքի փոխարկում (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "အထွေထွေပြင်ဆင်မှုများ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "စိတ်ကြိုက်ဘာသာပြန်မှု module များ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "သင်နှစ်သက်သောဘာသာပြန်ဝန်ဆောင်မှုများကို အသုံးပြုသော စိတ်ကြိုက်ဘာသာပြန်မှု module များကို ထည့်သွင်းနိုင်သည်။ <slot id=docs>စိတ်ကြိုက်ဘာသာပြန်သူများ၏စာရွက်စာတမ်း</slot>တွင် ပိုမိုလေ့လာပါ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ဘာသာပြန်သူများကိုစီမံပါ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "မှတ်တမ်းကိုဖွင့်ပါ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ပိတ်ထားပါက ဘာသာစကားအကြံပြုချက်များသည် \"auto\" သတ်မှတ်ထားသောအခါတွင်သာပေါ်ပါမည်။"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ဘာသာပြန်ရွေးချယ်မှုများ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ဘာသာပြန်အချိန်ဇယား"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ဘာသာပြန်မှုအမှားများဖြစ်ပေါ်သောအခါ စာသားများကိုပြန်လည်ဘာသာပြန်ရန် အချိန်ဇယားသည်ကြိုးစားပါမည်။ ဤရွေးချယ်မှုသည် ကြိုးစားမှုအရေအတွက်ကိုကန့်သတ်သည်။ အကန့်အသတ်မရှိသောကြိုးစားမှုများကိုခွင့်ပြုရန် အနုတ်လက္ခဏာနံပါတ်ကိုသတ်မှတ်ပါ။"
-	},
-	"settings_option_translatorModule": {
-		"message": "ဘာသာပြန်မော်ဂျူး"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ဘာသာပြန်မှုအရည်အသွေးနှင့်ရရှိနိုင်သောဘာသာစကားများသည် ဘာသာပြန်မော်ဂျူးပေါ်မူတည်သည်။"
 	},
 	"settings_option_tts": {
 		"message": "စာသားမှအသံပြောင်းခြင်း (TTS)"

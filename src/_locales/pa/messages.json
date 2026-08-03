@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ਸਧਾਰਨ ਸੈਟਿੰਗਾਂ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ਕਸਟਮ ਅਨੁਵਾਦ ਮਾਡਿਊਲ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "ਤੁਸੀਂ ਆਪਣੇ ਮਨਪਸੰਦ ਅਨੁਵਾਦ ਸੇਵਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵਾਲੇ ਕਸਟਮ ਅਨੁਵਾਦ ਮਾਡਿਊਲ ਜੋੜ ਸਕਦੇ ਹੋ। <slot id=docs>ਕਸਟਮ ਅਨੁਵਾਦਕ ਦਸਤਾਵੇਜ਼</slot> ਵਿੱਚ ਹੋਰ ਜਾਣੋ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ਅਨੁਵਾਦਕਾਂ ਦਾ ਪ੍ਰਬੰਧਨ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ਇਤਿਹਾਸ ਚਾਲੂ ਕਰੋ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ਜਦੋਂ ਅਯੋਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਭਾਸ਼ਾ ਦੇ ਸੁਝਾਅ ਸਿਰਫ਼ ਉਸ ਵੇਲੇ ਪ੍ਰਗਟ ਹੁੰਦੇ ਹਨ ਜਦੋਂ ਸਰੋਤ ਭਾਸ਼ਾ ਨੂੰ \"auto\" 'ਤੇ ਸੈੱਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ਅਨੁਵਾਦ ਪਸੰਦਾਂ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ਅਨੁਵਾਦ ਸ਼ਡਿਊਲਰ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ਜਦੋਂ ਅਨੁਵਾਦ ਦੀਆਂ ਗਲਤੀਆਂ ਹੁੰਦੀਆਂ ਹਨ ਤਾਂ ਸ਼ਡਿਊਲਰ ਪਾਠਾਂ ਦਾ ਅਨੁਵਾਦ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੇਗਾ। ਇਹ ਵਿਕਲਪ ਮੁੜ ਕੋਸ਼ਿਸ਼ਾਂ ਦੀ ਸੀਮਾ ਸੈੱਟ ਕਰਦਾ ਹੈ। ਅਨੰਤ ਮੁੜ ਕੋਸ਼ਿਸ਼ਾਂ ਦੀ ਆਗਿਆ ਦੇਣ ਲਈ ਨਕਾਰਾਤਮਕ ਸੰਖਿਆ ਸੈੱਟ ਕਰੋ"
-	},
-	"settings_option_translatorModule": {
-		"message": "ਅਨੁਵਾਦ ਮੋਡੀਊਲ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ਅਨੁਵਾਦਾਂ ਦੀ ਗੁਣਵੱਤਾ ਅਤੇ ਉਪਲਬਧ ਭਾਸ਼ਾਵਾਂ ਅਨੁਵਾਦ ਮੋਡੀਊਲ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀਆਂ ਹਨ"
 	},
 	"settings_option_tts": {
 		"message": "ਪਾਠ ਤੋਂ ਬੋਲਣ ਦੀ ਰੂਪਾਂਤਰਨ (TTS)"

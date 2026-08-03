@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Umumy sazlamalar"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Özboluşly terjime modullary",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Halan terjime hyzmatlaryňyzy ulanýan özboluşly terjime modullaryny goşup bilersiňiz. <slot id=docs>özboluşly terjimeçiler dokumentasiýasy</slot> bilen has giňişleýin tanyşyň"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Terjimeçileri dolandyrmak",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Taryhy işjeňleşdiriň"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Öçürilen ýagdaýynda, dil teklipleri diňe çeşme dili \"awto\" hökmünde kesgitlenende peýda bolýar"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Terjime islegleri"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Terjime meýilnamasy"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Terjime ýalňyşlyklary ýüze çykanda meýilnama tekstleri terjime etmäge gaýtadan synanyşar. Bu opsiýa gaýtadan synanyşmalaryň çägini kesgitleýär. Çäksiz gaýtadan synanyşmalara rugsat bermek üçin otrisatel san goýuň"
-	},
-	"settings_option_translatorModule": {
-		"message": "Terjime moduly"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Terjimeleriň hili we elýeterli diller terjime modulyna bagly"
 	},
 	"settings_option_tts": {
 		"message": "Teksti sese öwürmek (TTS)"

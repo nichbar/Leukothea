@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ການຕັ້ງຄ່າທົ່ວໄປ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ໂມດູນແປພາສາທີ່ກຳນົດເອງ",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "ທ່ານສາມາດເພີ່ມໂມດູນແປພາສາທີ່ກຳນົດເອງທີ່ໃຊ້ບໍລິການແປພາສາທີ່ທ່ານມັກ. ຮຽນຮູ້ເພີ່ມເຕີມໃນ <slot id=docs>ເອກະສານແປພາສາທີ່ກຳນົດເອງ</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ຈັດການຜູ້ແປ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ເປີດໃຊ້ປະຫວັດ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ເມື່ອປິດ, ຄວາມແນະນໍາພາສາຈະປາກົດພຽງແຕ່ຖ້າພາສາຕົ້ນສະບັບຖືກຕັ້ງເປັນ \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "ຄວາມຕ້ອງການແປ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ຕາຕະລາງການແປ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ຕາຕະລາງຈະພະຍາຍາມແປຂໍ້ຄວາມຄືນເມື່ອມີຂໍ້ຜິດພາດໃນການແປ. ຕົວເລືອກນີ້ຈະຕັ້ງຂອບເຂດສໍາລັບຄວາມພະຍາຍາມແປຄືນ. ຕັ້ງຄ່າເປັນຈໍານວນລົບເພື່ອອະນຸຍາດໃຫ້ມີຄວາມພະຍາຍາມຄືນບໍ່ຈໍາກັດ"
-	},
-	"settings_option_translatorModule": {
-		"message": "ໂມດູນແປ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ຄຸນນະພາບຂອງການແປແລະພາສາທີ່ມີຢູ່ຂຶ້ນຢູ່ກັບໂມດູນແປ"
 	},
 	"settings_option_tts": {
 		"message": "ການປ່ຽນຂໍ້ຄວາມເປັນສຽງ (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Litlhophiso tse tloaelehileng"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Lisebelisoa tsa phetolelo tse ikhethileng",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "U ka eketsa lisebelisoa tsa phetolelo tse ikhethileng tse sebelisang lits'ebeletso tsa hau tsa phetolelo tseo u li ratang. Ithute haholoanyane ho <slot id=docs>litokomane tsa bafetoleli ba ikhethileng</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Ho laola bafetoleli",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Bulela nalane"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Ha e tima, litlhahiso tsa puo li hlaha feela haeba puo ea mohloli e behiloe ho \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Litakatso tsa phetolelo"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Mokhoa oa ho hlophisa phetolelo"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Mokhoa o tla leka hape ho fetolela lingoloa ha liphoso tsa phetolelo li etsahala. Khetho ena e beha moeli oa liteko tsa ho pheta. Beha palo e mpe ho lumella liteko tse sa lekanyetsoang"
-	},
-	"settings_option_translatorModule": {
-		"message": "Mokhoa oa phetolelo"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Boleng ba liphetolelo le lipuo tse fumanehang li itšetlehile ka mokhoa oa phetolelo"
 	},
 	"settings_option_tts": {
 		"message": "Phetoho ea Mongolo ho Puo (TTS)"

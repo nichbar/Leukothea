@@ -21,10 +21,8 @@ const docsUrl = (path: string) => {
 
 type Options = {
 	clearCacheProcess: boolean;
-	translatorModules: Record<string, string>;
 	ttsModules: Record<string, string>;
 	clearCache: () => void;
-	toggleCustomTranslatorsWindow: () => void;
 	toggleTTSModulesWindow: () => void;
 	llmModels: string[];
 	llmModelsLoading: boolean;
@@ -45,10 +43,8 @@ type Options = {
  */
 export const generateTree = ({
 	clearCacheProcess,
-	translatorModules,
 	ttsModules,
 	clearCache,
-	toggleCustomTranslatorsWindow,
 	toggleTTSModulesWindow,
 	llmModels,
 	llmModelsLoading,
@@ -112,204 +108,150 @@ export const generateTree = ({
 			],
 		},
 		{
-			title: getMessage('settings_option_translatePreferences'),
+			title: getMessage('settings_option_llmTranslator'),
 			groupContent: [
-				Object.keys(translatorModules).length === 0
-					? undefined
-					: {
-							title: getMessage('settings_option_translatorModule'),
-							description: getMessage(
-								'settings_option_translatorModule_desc',
-							),
-							path: 'translatorModule',
-							optionContent: {
-								type: 'SelectList',
-								options: Object.keys(translatorModules).map((value) => ({
-									id: value,
-									content: translatorModules[value],
-								})),
-							},
-						},
 				{
-					title: getMessage('settings_option_llmTranslator'),
-					description: getMessage('settings_option_llmTranslator_desc'),
-					groupContent: [
-						{
-							title: getMessage('settings_option_llmTranslator_apiKey'),
-							description: getMessage(
-								'settings_option_llmTranslator_apiKey_desc',
-							),
-							path: 'llmTranslator.apiKey',
-							optionContent: {
-								type: 'InputText',
-								password: true,
-								placeholder: 'public',
-							},
-						},
-						{
-							title: getMessage('settings_option_llmTranslator_apiUrl'),
-							description: getMessage(
-								'settings_option_llmTranslator_apiUrl_desc',
-							),
-							path: 'llmTranslator.apiUrl',
-							optionContent: {
-								type: 'InputText',
-								placeholder:
-									'https://opencode.ai/zen/v1/chat/completions',
-							},
-						},
-						{
-							title: getMessage('settings_option_llmTranslator_model'),
-							description: (() => {
-								const base = getMessage(
-									'settings_option_llmTranslator_model_desc',
-								);
-								if (llmModelsError) {
-									return `${base} ${getMessage(
-										'settings_option_llmTranslator_model_loadError',
-										llmModelsError,
-									)}`;
-								}
-								if (
-									!llmModelsLoading &&
-									llmModels.length === 0 &&
-									llmModelsFetched
-								) {
-									return `${base} ${getMessage(
-										'settings_option_llmTranslator_model_empty',
-									)}`;
-								}
-								if (
-									!llmModelsLoading &&
-									llmModels.length > 0 &&
-									llmModelsFetched
-								) {
-									return `${base} ${getMessage(
-										'settings_option_llmTranslator_model_loaded',
-										String(llmModels.length),
-									)}`;
-								}
-								return base;
-							})(),
-							path: 'llmTranslator.model',
-							optionContent: {
-								type: 'InputTextWithSuggestions',
-								placeholder: 'big-pickle',
-								suggestions: llmModels,
-								action: {
-									text: getMessage(
-										'settings_option_llmTranslator_model_refresh',
-									),
-									action: refreshLLMModels,
-									disabled: llmModelsLoading,
-									pending: llmModelsLoading,
-								},
-							},
-						},
-						{
-							title: getMessage('settings_option_llmTranslator_prompt'),
-							description: getMessage(
-								'settings_option_llmTranslator_prompt_desc',
-							),
-							path: 'llmTranslator.prompt',
-							optionContent: {
-								type: 'InputTextarea',
-								placeholder: DEFAULT_LLM_PROMPT,
-							},
-						},
-						{
-							description: getMessage(
-								'settings_option_llmTranslator_includePageTitle_desc',
-							),
-							path: 'llmTranslator.includePageTitle',
-							optionContent: {
-								type: 'Checkbox',
-								text: getMessage(
-									'settings_option_llmTranslator_includePageTitle',
-								),
-							},
-						},
-					],
+					title: getMessage('settings_option_llmTranslator_apiKey'),
+					description: getMessage('settings_option_llmTranslator_apiKey_desc'),
+					path: 'llmTranslator.apiKey',
+					optionContent: {
+						type: 'InputText',
+						password: true,
+						placeholder: 'public',
+					},
 				},
 				{
-					title: getMessage('settings_option_customTranslatorModule'),
-					groupContent: [
-						{
-							description: getLocalizedNode({
-								messageName:
-									'settings_option_customTranslatorModule_desc',
-								slots: {
-									docs: buildLink(docsUrl('/docs/CustomTranslator')),
-								},
-							}),
-							optionContent: {
-								type: 'Button',
-								text: getMessage(
-									'settings_option_customTranslatorModule_manageButton',
-								),
-								action: toggleCustomTranslatorsWindow,
-							},
-						},
-					],
+					title: getMessage('settings_option_llmTranslator_apiUrl'),
+					description: getMessage('settings_option_llmTranslator_apiUrl_desc'),
+					path: 'llmTranslator.apiUrl',
+					optionContent: {
+						type: 'InputText',
+						placeholder: 'https://opencode.ai/zen/v1/chat/completions',
+					},
 				},
 				{
-					title: getMessage('settings_option_translateScheduler'),
-					groupContent: [
-						{
-							title: getMessage('settings_option_translateScheduler_delay'),
-							description: getMessage(
-								'settings_option_translateScheduler_delay_desc',
+					title: getMessage('settings_option_llmTranslator_model'),
+					description: (() => {
+						const base = getMessage(
+							'settings_option_llmTranslator_model_desc',
+						);
+						if (llmModelsError) {
+							return `${base} ${getMessage(
+								'settings_option_llmTranslator_model_loadError',
+								llmModelsError,
+							)}`;
+						}
+						if (
+							!llmModelsLoading &&
+							llmModels.length === 0 &&
+							llmModelsFetched
+						) {
+							return `${base} ${getMessage(
+								'settings_option_llmTranslator_model_empty',
+							)}`;
+						}
+						if (
+							!llmModelsLoading &&
+							llmModels.length > 0 &&
+							llmModelsFetched
+						) {
+							return `${base} ${getMessage(
+								'settings_option_llmTranslator_model_loaded',
+								String(llmModels.length),
+							)}`;
+						}
+						return base;
+					})(),
+					path: 'llmTranslator.model',
+					optionContent: {
+						type: 'InputTextWithSuggestions',
+						placeholder: 'big-pickle',
+						suggestions: llmModels,
+						action: {
+							text: getMessage(
+								'settings_option_llmTranslator_model_refresh',
 							),
-							path: 'scheduler.translatePoolDelay',
-							optionContent: {
-								type: 'InputNumber',
-							},
+							action: refreshLLMModels,
+							disabled: llmModelsLoading,
+							pending: llmModelsLoading,
 						},
-						{
-							title: getMessage(
-								'settings_option_translateScheduler_retryLimit',
-							),
-							description: getMessage(
-								'settings_option_translateScheduler_retryLimit_desc',
-							),
-							path: 'scheduler.translateRetryAttemptLimit',
-							optionContent: {
-								type: 'InputNumber',
-							},
-						},
-					],
+					},
 				},
 				{
-					title: getMessage('settings_option_cache'),
-					groupContent: [
-						{
-							description: getMessage('settings_option_cache_enable_desc'),
-							path: 'scheduler.useCache',
-							optionContent: {
-								type: 'Checkbox',
-								text: getMessage('settings_option_cache_enable'),
-							},
-						},
-						{
-							description: getMessage(
-								'settings_option_cache_ignoreCase_desc',
-							),
-							path: 'cache.ignoreCase',
-							optionContent: {
-								type: 'Checkbox',
-								text: getMessage('settings_option_cache_ignoreCase'),
-							},
-						},
-						{
-							description: getMessage('settings_option_cache_clear_desc'),
-							optionContent: {
-								type: 'Button',
-								text: getMessage('settings_option_cache_clear'),
-								disabled: clearCacheProcess,
-								action: clearCache,
-							},
-						},
-					],
+					title: getMessage('settings_option_llmTranslator_prompt'),
+					description: getMessage('settings_option_llmTranslator_prompt_desc'),
+					path: 'llmTranslator.prompt',
+					optionContent: {
+						type: 'InputTextarea',
+						placeholder: DEFAULT_LLM_PROMPT,
+					},
+				},
+				{
+					description: getMessage(
+						'settings_option_llmTranslator_includePageTitle_desc',
+					),
+					path: 'llmTranslator.includePageTitle',
+					optionContent: {
+						type: 'Checkbox',
+						text: getMessage(
+							'settings_option_llmTranslator_includePageTitle',
+						),
+					},
+				},
+			],
+		},
+		{
+			title: getMessage('settings_option_translateScheduler'),
+			groupContent: [
+				{
+					title: getMessage('settings_option_translateScheduler_delay'),
+					description: getMessage(
+						'settings_option_translateScheduler_delay_desc',
+					),
+					path: 'scheduler.translatePoolDelay',
+					optionContent: {
+						type: 'InputNumber',
+					},
+				},
+				{
+					title: getMessage('settings_option_translateScheduler_retryLimit'),
+					description: getMessage(
+						'settings_option_translateScheduler_retryLimit_desc',
+					),
+					path: 'scheduler.translateRetryAttemptLimit',
+					optionContent: {
+						type: 'InputNumber',
+					},
+				},
+			],
+		},
+		{
+			title: getMessage('settings_option_cache'),
+			groupContent: [
+				{
+					description: getMessage('settings_option_cache_enable_desc'),
+					path: 'scheduler.useCache',
+					optionContent: {
+						type: 'Checkbox',
+						text: getMessage('settings_option_cache_enable'),
+					},
+				},
+				{
+					description: getMessage('settings_option_cache_ignoreCase_desc'),
+					path: 'cache.ignoreCase',
+					optionContent: {
+						type: 'Checkbox',
+						text: getMessage('settings_option_cache_ignoreCase'),
+					},
+				},
+				{
+					description: getMessage('settings_option_cache_clear_desc'),
+					optionContent: {
+						type: 'Button',
+						text: getMessage('settings_option_cache_clear'),
+						disabled: clearCacheProcess,
+						action: clearCache,
+					},
 				},
 			],
 		},

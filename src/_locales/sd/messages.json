@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "عام سيٽنگون"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ڪسٽم ترجمو ماڊول",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "توهان پنهنجي پسنديده ترجمي خدمتن کي استعمال ڪندي ڪسٽم ترجمو ماڊول شامل ڪري سگهو ٿا. وڌيڪ ڄاڻو <slot id=docs>ڪسٽم ترجما دستاويز</slot> ۾"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ترجما منظم ڪرڻ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "تاريخ کي فعال ڪريو"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "جڏهن غير فعال هجي، ٻولي جون تجويزون صرف تڏهن ظاهر ٿينديون جڏهن ماخذ ٻولي \"خودڪار\" تي مقرر هجي"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ترجمي جون ترجيحات"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ترجمو شيڊولر"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "شيڊولر ترجمو غلطين جي صورت ۾ متن کي ٻيهر ترجمو ڪرڻ جي ڪوشش ڪندو. هي اختيار ٻيهر ڪوشش جي حد مقرر ڪري ٿو. لامحدود ڪوششون جي اجازت ڏيڻ لاءِ منفي نمبر مقرر ڪريو"
-	},
-	"settings_option_translatorModule": {
-		"message": "ترجمو ماڊل"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ترجمن جي معيار ۽ موجود ٻوليون ترجمو ماڊل تي دارومدار رکن ٿيون"
 	},
 	"settings_option_tts": {
 		"message": "متن کي آواز ۾ تبديل ڪرڻ (TTS)"

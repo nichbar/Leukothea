@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Zvirongwa zvakajairika"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Mamwe ma module ekushandura",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Unogona kuwedzera mamwe ma module ekushandura anoshandisa masevhisi ako aunofarira ekushandura. Dzidza zvakawanda mu <slot id=docs>custom translators documentation</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Kugadzirisa vashanduri",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Vhura nhoroondo"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kana dzimwa, kurudziro dzemutauro dzinoonekwa chete kana mutauro wekutanga wakaiswa ku \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Zvaunofarira pakushandura"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Purogiramu yekushandura"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Purogiramu ichaedzazve kushandura zvinyorwa kana zvikanganiso zvekushandura zvikaitika. Sarudzo iyi inogadza muganhu wekuedza zvakare. Isa nhamba isina kunaka kuti ubvumidze kuedza kusingaperi"
-	},
-	"settings_option_translatorModule": {
-		"message": "Module yekushandura"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Hunhu hwekushandura uye mitauro inowanikwa zvinoenderana ne module yekushandura"
 	},
 	"settings_option_tts": {
 		"message": "Kushandura Zvinyorwa kuKutaura (TTS)"

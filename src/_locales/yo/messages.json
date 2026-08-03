@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Àwọn eto àpapọ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Àwọn module itumọ ti adani",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "O le ṣafikun awọn module itumọ ti adani ti o lo awọn iṣẹ itumọ ayanfẹ rẹ. Kọ ẹkọ diẹ sii ninu <slot id=docs>iwe itumọ adani</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Ṣakoso awọn itumọ",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Muu itan ṣiṣẹ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Nigbati o ba ti mu ma ṣiṣẹ, awọn aba ede yoo han nikan ti ede orisun ba ṣeto si \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Awọn ayanfẹ itumọ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Atunṣe itumọ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Atunṣe naa yoo tun gbiyanju lati tumọ awọn ọrọ nigbati awọn aṣiṣe itumọ ba waye. Aṣayan yii ṣeto opin lori awọn igbiyanju atunṣe. Ṣeto nọmba odi lati gba awọn atunṣe ailopin laaye"
-	},
-	"settings_option_translatorModule": {
-		"message": "Ẹka itumọ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Didara awọn itumọ ati awọn ede ti o wa da lori ẹka itumọ"
 	},
 	"settings_option_tts": {
 		"message": "Iyipada ọrọ si Ohùn (TTS)"

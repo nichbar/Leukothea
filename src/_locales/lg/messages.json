@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Eby'okulonda ebisookerwako"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Eby'okulonda ebikolebwa omuntu ku kutaputa",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Osobola okwongeza eby'okulonda ebikolebwa omuntu ku kutaputa ebikozesa eby'okutaputa by'oyagala. Yiga ebisingawo mu <slot id=docs>ebiwandiiko ku kutaputa okw'enjawulo</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Okutwala abataputa",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Kozesa ebyafaayo"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Bwe kiba tekikozesebwa, ebirowoozo by'olulimi birabika nga olulimi lw'ensibuko luli ku \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Eby'okwagala mu kutaputa"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Olukalala lw'okutaputa"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Olukalala lujja kugezako okutaputa ebigambo nate nga waliwo ensobi mu kutaputa. Kino kirambika omuwendo gw'okugezaako nate. Teeka omuwendo ogutali muwendo gwa nnegativu okusobola okukkiriza okutuuka ku nkomerero"
-	},
-	"settings_option_translatorModule": {
-		"message": "Ekibinja ky'okutaputa"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Omulembe gw'okutaputa n'olulimi oluliwo bisinga ku kibinja ky'okutaputa"
 	},
 	"settings_option_tts": {
 		"message": "Okukyusa ebigambo okufuuka eddoboozi (TTS)"

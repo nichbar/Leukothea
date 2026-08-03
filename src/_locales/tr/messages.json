@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Genel ayarlar"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Özel çeviri modülleri",
-		"description": "Bir çeviri modülünü uygulayan kullanıcı tanımlı kod"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Favori çeviri hizmetlerinizi kullanan özel çeviri modülleri ekleyebilirsiniz. Daha fazla bilgi için <slot id=docs>özel çeviriciler belgelerine</slot> bakın"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Çeviricileri yönet",
-		"description": "Çeviri modülleri listesini gösteren bir düğme"
-	},
 	"settings_option_history_enable": {
 		"message": "Geçmişi etkinleştir"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Devre dışı bırakıldığında, dil önerileri yalnızca kaynak dil \"otomatik\" olarak ayarlandığında görünür"
 	},
-	"settings_option_translatePreferences": {
-		"message": "Çeviri tercihleri"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Çeviri zamanlayıcısı"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Çeviri hataları meydana geldiğinde zamanlayıcı metinleri yeniden çevirmeyi dener. Bu seçenek, yeniden deneme girişimlerinin sınırını belirler. Sınırsız yeniden denemeye izin vermek için negatif bir sayı ayarlayın"
-	},
-	"settings_option_translatorModule": {
-		"message": "Çeviri modülü"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Çevirilerin kalitesi ve mevcut diller çeviri modülüne bağlıdır"
 	},
 	"settings_option_tts": {
 		"message": "Metinden Sese Dönüşüm (TTS)"

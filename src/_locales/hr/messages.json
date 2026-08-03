@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Opće postavke"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Prilagođeni moduli za prevođenje",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Možete dodati prilagođene module za prevođenje koji koriste vaše omiljene usluge prevođenja. Saznajte više u <slot id=docs>dokumentaciji o prilagođenim prevoditeljima</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Upravljanje prevoditeljima",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Omogući povijest"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Kada je onemogućeno, prijedlozi jezika pojavljuju se samo ako je izvorni jezik postavljen na \"auto\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Postavke prijevoda"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Raspored prijevoda"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Raspored će pokušati ponovno prevesti tekstove kada dođe do pogrešaka u prevođenju. Ova opcija postavlja ograničenje na broj pokušaja ponovnog prevođenja. Postavite negativan broj za neograničene pokušaje"
-	},
-	"settings_option_translatorModule": {
-		"message": "Modul za prevođenje"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Kvaliteta prijevoda i dostupni jezici ovise o modulu za prevođenje"
 	},
 	"settings_option_tts": {
 		"message": "Pretvorba teksta u govor (TTS)"

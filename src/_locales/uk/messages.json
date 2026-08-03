@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "Загальні налаштування"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "Модулі користувацького перекладу",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "Ви можете додати користувацькі модулі перекладу, які використовують ваші улюблені служби перекладу. Дізнайтеся більше в <slot id=docs>документації з користувацьких перекладачів</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "Управління перекладачами",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "Увімкнути історію"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "Коли вимкнено, пропозиції мови з'являються лише якщо мова джерела встановлена на \"авто\""
 	},
-	"settings_option_translatePreferences": {
-		"message": "Налаштування перекладу"
-	},
 	"settings_option_translateScheduler": {
 		"message": "Планувальник перекладу"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "Планувальник повторюватиме спроби перекладу текстів, коли виникають помилки перекладу. Цей параметр встановлює ліміт на кількість спроб. Встановіть від'ємне число, щоб дозволити необмежену кількість спроб"
-	},
-	"settings_option_translatorModule": {
-		"message": "Модуль перекладу"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "Якість перекладів та доступні мови залежать від модуля перекладу"
 	},
 	"settings_option_tts": {
 		"message": "Перетворення тексту в мову (TTS)"

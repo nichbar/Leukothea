@@ -28,12 +28,10 @@ import { setConfig as setConfigReq } from '../../../requests/backend/setConfig';
 import { getWebDAVSyncStatus } from '../../../requests/backend/sync/getWebDAVSyncStatus';
 import { syncWebDAVNow as syncWebDAVNowReq } from '../../../requests/backend/sync/syncWebDAVNow';
 import { testWebDAVConnection } from '../../../requests/backend/sync/testWebDAVConnection';
-import { getAvailableTranslators } from '../../../requests/backend/translators/getAvailableTranslators';
 import { getSpeakers } from '../../../requests/backend/tts/getSpeakers';
 import { updateConfig as updateConfigReq } from '../../../requests/backend/updateConfig';
 import { AppConfigType } from '../../../types/runtime';
 
-import { TranslatorsManager } from './OptionsPage.components/TranslatorsManager/TranslatorsManager';
 import { TTSList } from './OptionsPage.components/TTSList/TTSList';
 import { generateTree } from './OptionsPage.utils/generateTree';
 import { OptionsGroup, OptionsTree } from './OptionsTree/OptionsTree';
@@ -67,12 +65,6 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 
 	const [clearCacheProcess, setClearCacheProcess] = useState<boolean>(false);
 
-	const [translatorModules, setTranslatorModules] = useState<Record<string, string>>(
-		{},
-	);
-	const [isOpenCustomTranslatorsWindow, setIsOpenCustomTranslatorsWindow] =
-		useState(false);
-
 	const [ttsModules, setTTSModules] = useState<Record<string, string>>({});
 	const [isTTSModulesWindowOpen, setIsTTSModulesWindowOpen] = useState(false);
 
@@ -92,7 +84,6 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		(async () => {
 			await Promise.all([
 				getConfig().then(setConfig),
-				getAvailableTranslators().then(setTranslatorModules),
 				getSpeakers().then(setTTSModules),
 			]);
 
@@ -495,19 +486,15 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 	// Effective WebDAV enable (saved value + unsaved checkbox edits).
 	const webdavEnabled =
 		typeof modifiedConfig?.['sync.webdav.enabled'] === 'boolean'
-			? (modifiedConfig['sync.webdav.enabled'])
+			? modifiedConfig['sync.webdav.enabled']
 			: (config?.sync?.webdav?.enabled ?? false);
 
 	// Update config tree
 	useEffect(() => {
 		const configTree = generateTree({
 			clearCacheProcess,
-			translatorModules,
 			ttsModules,
 			clearCache,
-			toggleCustomTranslatorsWindow: () => {
-				setIsOpenCustomTranslatorsWindow((value) => !value);
-			},
 			toggleTTSModulesWindow: () => {
 				setIsTTSModulesWindowOpen((value) => !value);
 			},
@@ -526,7 +513,6 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 
 		setConfigTree(configTree);
 	}, [
-		translatorModules,
 		clearCacheProcess,
 		clearCache,
 		ttsModules,
@@ -628,13 +614,6 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 				<div ref={windowsStackRef} />
 
 				<OptionsModalsContext.Provider value={windowsStackRef}>
-					<TranslatorsManager
-						visible={isOpenCustomTranslatorsWindow}
-						onClose={() => {
-							setIsOpenCustomTranslatorsWindow(false);
-						}}
-						updateConfig={updateConfig}
-					/>
 					<TTSList
 						visible={isTTSModulesWindowOpen}
 						onClose={() => {

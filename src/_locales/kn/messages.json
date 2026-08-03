@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "ಸಾಮಾನ್ಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "ಕಸ್ಟಮ್ ಭಾಷಾಂತರ ಮಾಯಾಂತ್ರಿಕಗಳು",
-		"description": "ಭಾಷಾಂತರ ಮಾಯಾಂತ್ರಿಕವನ್ನು ಅನುಷ್ಠಾನಗೊಳಿಸುವ ಬಳಕೆದಾರನ ನಿರ್ಧರಿತ ಕೋಡ್"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "ನೀವು ನಿಮ್ಮ ಮೆಚ್ಚಿನ ಅನುವಾದ ಸೇವೆಗಳನ್ನು ಬಳಸುವ ಕಸ್ಟಮ್ ಅನುವಾದ ಮಾಯೂಲುಗಳನ್ನು ಸೇರಿಸಬಹುದು. <slot id=docs>ಕಸ್ಟಮ್ ಅನುವಾದಕರ ಡಾಕ್ಯುಮೆಂಟೇಶನ್</slot> ನಲ್ಲಿ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "ಅನುವಾದಕರನ್ನು ನಿರ್ವಹಣೆ",
-		"description": "ಅನುವಾದ ಮಾಯೂಲುಗಳ ಪಟ್ಟಿಯನ್ನು ತೋರಿಸಲು ಬಟನ್"
-	},
 	"settings_option_history_enable": {
 		"message": "ಇತಿಹಾಸವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಮೂಲ ಭಾಷೆಯನ್ನು \"ಸ್ವಯಂ\" ಗೆ ಹೊಂದಿಸಿದಾಗ ಮಾತ್ರ ಭಾಷಾ ಸೂಚನೆಗಳು ಕಾಣಿಸುತ್ತವೆ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "ಭಾಷಾಂತರಣ ಆಯ್ಕೆಗಳು"
-	},
 	"settings_option_translateScheduler": {
 		"message": "ಭಾಷಾಂತರಣ ವೇಳಾಪಟ್ಟಿ"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "ಭಾಷಾಂತರಣ ದೋಷಗಳು ಸಂಭವಿಸಿದಾಗ, ವೇಳಾಪಟ್ಟಿ ಪಠ್ಯಗಳನ್ನು ಪುನಃ ಭಾಷಾಂತರಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ. ಈ ಆಯ್ಕೆಯು ಪುನಃ ಪ್ರಯತ್ನಗಳ ಮಿತಿಯನ್ನು ಹೊಂದಿಸುತ್ತದೆ. ಅನಿಯಮಿತ ಪುನಃ ಪ್ರಯತ್ನಗಳನ್ನು ಅನುಮತಿಸಲು ಋಣಾತ್ಮಕ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿಸಿ"
-	},
-	"settings_option_translatorModule": {
-		"message": "ಭಾಷಾಂತರಣ ಘಟಕ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "ಭಾಷಾಂತರಣಗಳ ಗುಣಮಟ್ಟ ಮತ್ತು ಲಭ್ಯವಿರುವ ಭಾಷೆಗಳು ಭಾಷಾಂತರಣ ಘಟಕದ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿವೆ"
 	},
 	"settings_option_tts": {
 		"message": "ಪಠ್ಯವನ್ನು ಮಾತುಗಳಿಗೆ ಪರಿವರ್ತನೆ (TTS)"

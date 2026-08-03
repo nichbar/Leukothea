@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "பொது அமைப்புகள்"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "தனிப்பயன் மொழிபெயர்ப்பு தொகுதிகள்",
-		"description": "மொழிபெயர்ப்பு தொகுதியை செயல்படுத்தும் பயனர் வரையறுக்கப்பட்ட குறியீடு"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "உங்கள் விருப்பமான மொழிபெயர்ப்பு சேவைகளைப் பயன்படுத்தும் தனிப்பயன் மொழிபெயர்ப்பு தொகுதிகளை நீங்கள் சேர்க்கலாம். <slot id=docs>தனிப்பயன் மொழிபெயர்ப்பாளர்கள் ஆவணத்தில்</slot> மேலும் அறிக"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "மொழிபெயர்ப்பாளர்களை நிர்வகித்தல்",
-		"description": "மொழிபெயர்ப்பு தொகுதிகளின் பட்டியலைக் காட்ட ஒரு பொத்தான்"
-	},
 	"settings_option_history_enable": {
 		"message": "வரலாற்றை இயக்கவும்"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "முடக்கப்பட்டால், மூல மொழி \"auto\" ஆக அமைக்கப்பட்டால் மட்டுமே மொழி பரிந்துரைகள் தோன்றும்"
 	},
-	"settings_option_translatePreferences": {
-		"message": "மொழிபெயர்ப்பு விருப்பங்கள்"
-	},
 	"settings_option_translateScheduler": {
 		"message": "மொழிபெயர்ப்பு அட்டவணையாளர்"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "மொழிபெயர்ப்பு பிழைகள் ஏற்படும் போது அட்டவணையாளர் உரைகளை மீண்டும் மொழிபெயர்க்க முயற்சிக்கும். மீண்டும் முயற்சி செய்யும் வரம்பை இந்த விருப்பம் அமைக்கிறது. வரம்பற்ற மீண்டும் முயற்சிகளை அனுமதிக்க எதிர்மறை எண்ணை அமைக்கவும்"
-	},
-	"settings_option_translatorModule": {
-		"message": "மொழிபெயர்ப்பு தொகுதி"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "மொழிபெயர்ப்புகளின் தரம் மற்றும் கிடைக்கும் மொழிகள் மொழிபெயர்ப்பு தொகுதியின் மீது निर्भर"
 	},
 	"settings_option_tts": {
 		"message": "உரை முதல் பேச்சு மாற்றம் (TTS)"

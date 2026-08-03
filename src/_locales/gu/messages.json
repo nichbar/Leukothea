@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "સામાન્ય સેટિંગ્સ"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "કસ્ટમ અનુવાદ મોડ્યુલો",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "તમે તમારા મનપસંદ અનુવાદ સેવાઓનો ઉપયોગ કરતા કસ્ટમ અનુવાદ મોડ્યુલો ઉમેરી શકો છો. <slot id=docs>કસ્ટમ અનુવાદકો દસ્તાવેજીકરણ</slot> માં વધુ જાણો"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "અનુવાદકોનું સંચાલન",
-		"description": "અનુવાદ મોડ્યુલોની યાદી બતાવવા માટેનું બટન"
-	},
 	"settings_option_history_enable": {
 		"message": "ઇતિહાસ સક્ષમ કરો"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "જ્યારે નિષ્ક્રિય હોય, ભાષા સૂચનો ફક્ત ત્યારે જ દેખાય છે જ્યારે સ્ત્રોત ભાષા \"auto\" પર સેટ હોય"
 	},
-	"settings_option_translatePreferences": {
-		"message": "અનુવાદ પસંદગીઓ"
-	},
 	"settings_option_translateScheduler": {
 		"message": "અનુવાદ શેડ્યૂલર"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "જ્યારે અનુવાદમાં ભૂલો થાય છે ત્યારે શેડ્યૂલર ટેક્સ્ટનું અનુવાદ ફરી પ્રયાસ કરશે. આ વિકલ્પ ફરી પ્રયાસોની મર્યાદા નક્કી કરે છે. અનંત ફરી પ્રયાસોની મંજૂરી આપવા માટે નકારાત્મક સંખ્યા સેટ કરો"
-	},
-	"settings_option_translatorModule": {
-		"message": "અનુવાદ મોડ્યુલ"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "અનુવાદની ગુણવત્તા અને ઉપલબ્ધ ભાષાઓ અનુવાદ મોડ્યુલ પર આધાર રાખે છે"
 	},
 	"settings_option_tts": {
 		"message": "ટેક્સ્ટ ટુ સ્પીચ રૂપાંતર (TTS)"

@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "通用设置"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "自定义翻译模块",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "您可以添加使用您喜欢的翻译服务的自定义翻译模块。了解更多信息，请参阅<slot id=docs>自定义翻译器文档</slot>"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "管理翻译器",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "启用历史记录"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "禁用时，只有在源语言设置为“自动”时才会出现语言建议"
 	},
-	"settings_option_translatePreferences": {
-		"message": "翻译偏好"
-	},
 	"settings_option_translateScheduler": {
 		"message": "翻译调度器"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "当翻译错误发生时，调度器将重试翻译文本。此选项设置重试次数的限制。设置为负数以允许无限重试"
-	},
-	"settings_option_translatorModule": {
-		"message": "翻译模块"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "翻译的质量和可用语言取决于翻译模块"
 	},
 	"settings_option_tts": {
 		"message": "文本转语音转换（TTS）"

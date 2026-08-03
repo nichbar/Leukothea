@@ -304,17 +304,6 @@
 	"settings_option_commonSettings": {
 		"message": "පොදු සැකසුම්"
 	},
-	"settings_option_customTranslatorModule": {
-		"message": "අභිරුචි පරිවර්තන මොඩියුල",
-		"description": "An user defined code that implements a translation module"
-	},
-	"settings_option_customTranslatorModule_desc": {
-		"message": "ඔබේ ප්‍රියතම පරිවර්තන සේවාවන් භාවිතා කරන අභිරුචි පරිවර්තන මොඩියුල එකතු කළ හැක. <slot id=docs>අභිරුචි පරිවර්තක ලේඛනය</slot> තුළ වැඩිදුර ඉගෙන ගන්න"
-	},
-	"settings_option_customTranslatorModule_manageButton": {
-		"message": "පරිවර්තක කළමනාකරණය",
-		"description": "A button to show list of translation modules"
-	},
 	"settings_option_history_enable": {
 		"message": "ඉතිහාසය සක්‍රීය කරන්න"
 	},
@@ -484,9 +473,6 @@
 	"settings_option_textTranslator_suggestLanguageAlways_desc": {
 		"message": "අක්‍රීය කළ විට, මූලාශ්‍ර භාෂාව \"ස්වයංක්‍රීය\" ලෙස සකසා ඇති විට පමණක් භාෂා යෝජනා පෙනේ"
 	},
-	"settings_option_translatePreferences": {
-		"message": "පරිවර්තන අභිමතයන්"
-	},
 	"settings_option_translateScheduler": {
 		"message": "පරිවර්තන කාලසටහන"
 	},
@@ -501,12 +487,6 @@
 	},
 	"settings_option_translateScheduler_retryLimit_desc": {
 		"message": "පරිවර්තන දෝෂ සිදුවන විට කාලසටහන පෙළ පරිවර්තනය නැවත උත්සාහ කරයි. නැවත උත්සාහ කිරීම් සීමාව මෙම විකල්පය සකසයි. සීමාවක් නොමැතිව නැවත උත්සාහ කිරීමට ඍජු සංඛ්‍යා අගයක් සකසන්න"
-	},
-	"settings_option_translatorModule": {
-		"message": "පරිවර්තන මොඩියුලය"
-	},
-	"settings_option_translatorModule_desc": {
-		"message": "පරිවර්තන ගුණාත්මකභාවය සහ ලබා ගත හැකි භාෂා පරිවර්තන මොඩියුලය මත රඳා පවතී"
 	},
 	"settings_option_tts": {
 		"message": "පෙළ හඬ පරිවර්තනය (TTS)"
