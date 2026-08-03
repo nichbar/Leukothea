@@ -76,6 +76,7 @@ Webpack targets (`EXT_TARGET`): `chromium` (default release), `chrome`, `firefox
 - Show the diff (or summarize changed files) before committing when asked to commit
 - Prefer Chromium as the default load-unpacked target for manual verification in this fork
 - After every major change (features, selection popup, options/config, background/content-script behavior), rebuild Chromium with `make buildChromium` (output: `build/chromium`) so the unpacked extension can be reloaded without waiting to be asked
+- After every major change (and before any commit/push that touches source), run `npm run lint` (prettier check + eslint max-warnings 0 + stylelint) and fix failures with `npm run prettify` if needed — do not wait to be asked; CI's Test workflow fails on lint
 
 ## Verification
 
@@ -84,7 +85,8 @@ Webpack targets (`EXT_TARGET`): `chromium` (default release), `chrome`, `firefox
   (update snapshots if migration latest version output changes)
 - Translator / pure logic: targeted vitest files under the same feature directory
 - Broader suite: `npm test` or `npm run test:all`
-- Lint before PR-quality commits: `npm run lint`
+- Lint (required after major changes / before push): `npm run lint`  
+  Fix: `npm run prettify`
 - UI / selection popup: production or dev Chromium build → load unpacked → exercise selection translate, options, popup
 - Locale key add/remove: update `src/_locales/en/messages.json` (and typically all locales or run `packages/locales` sync); keep `packages/locales/sample.json` aligned when it is used as sample source
 - Release: tag workflow builds via `make build` and publishes `build/chromium.zip`

@@ -1,4 +1,4 @@
-import { sendBackgroundRequest } from ".";
+import { sendBackgroundRequest } from '.';
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
