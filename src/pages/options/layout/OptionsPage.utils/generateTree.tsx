@@ -34,6 +34,8 @@ type Options = {
 	webdavTestProcess: boolean;
 	webdavSyncProcess: boolean;
 	webdavStatusText: string;
+	/** Effective enable flag (saved + unsaved edits). */
+	webdavEnabled: boolean;
 	testWebDAV: () => void;
 	syncWebDAVNow: () => void;
 };
@@ -56,6 +58,7 @@ export const generateTree = ({
 	webdavTestProcess,
 	webdavSyncProcess,
 	webdavStatusText,
+	webdavEnabled,
 	testWebDAV,
 	syncWebDAVNow,
 }: Options): OptionsGroup[] => {
@@ -140,7 +143,7 @@ export const generateTree = ({
 							optionContent: {
 								type: 'InputText',
 								password: true,
-								placeholder: 'sk-...',
+								placeholder: 'public',
 							},
 						},
 						{
@@ -151,7 +154,8 @@ export const generateTree = ({
 							path: 'llmTranslator.apiUrl',
 							optionContent: {
 								type: 'InputText',
-								placeholder: 'https://api.openai.com/v1/chat/completions',
+								placeholder:
+									'https://opencode.ai/zen/v1/chat/completions',
 							},
 						},
 						{
@@ -190,7 +194,7 @@ export const generateTree = ({
 							path: 'llmTranslator.model',
 							optionContent: {
 								type: 'InputTextWithSuggestions',
-								placeholder: 'gpt-4o-mini',
+								placeholder: 'big-pickle',
 								suggestions: llmModels,
 								action: {
 									text: getMessage(
@@ -609,65 +613,94 @@ export const generateTree = ({
 			groupContent: [
 				{
 					title: getMessage('settings_option_syncWebdav'),
-					description: getMessage('settings_option_syncWebdav_desc'),
+					description: webdavEnabled
+						? getMessage('settings_option_syncWebdav_desc')
+						: undefined,
 					groupContent: [
 						{
-							description: getMessage(
-								'settings_option_syncWebdav_enable_desc',
-							),
+							description: webdavEnabled
+								? getMessage('settings_option_syncWebdav_enable_desc')
+								: undefined,
 							path: 'sync.webdav.enabled',
 							optionContent: {
 								type: 'Checkbox',
 								text: getMessage('settings_option_syncWebdav_enable'),
 							},
 						},
-						{
-							title: getMessage('settings_option_syncWebdav_url'),
-							description: getMessage(
-								'settings_option_syncWebdav_url_desc',
-							),
-							path: 'sync.webdav.url',
-							optionContent: {
-								type: 'InputText',
-								placeholder:
-									'https://nextcloud.example/remote.php/dav/files/user/',
-							},
-						},
-						{
-							title: getMessage('settings_option_syncWebdav_username'),
-							path: 'sync.webdav.username',
-							optionContent: {
-								type: 'InputText',
-							},
-						},
-						{
-							title: getMessage('settings_option_syncWebdav_password'),
-							description: getMessage(
-								'settings_option_syncWebdav_password_desc',
-							),
-							path: 'sync.webdav.password',
-							optionContent: {
-								type: 'InputText',
-								password: true,
-							},
-						},
-						{
-							description: webdavStatusText,
-							optionContent: {
-								type: 'Button',
-								text: getMessage('settings_option_syncWebdav_test'),
-								disabled: webdavTestProcess,
-								action: testWebDAV,
-							},
-						},
-						{
-							optionContent: {
-								type: 'Button',
-								text: getMessage('settings_option_syncWebdav_syncNow'),
-								disabled: webdavSyncProcess,
-								action: syncWebDAVNow,
-							},
-						},
+						// Connection + actions only when sync is enabled (incl. unsaved toggle).
+						...(webdavEnabled
+							? [
+									{
+										title: getMessage(
+											'settings_option_syncWebdav_url',
+										),
+										description: getMessage(
+											'settings_option_syncWebdav_url_desc',
+										),
+										path: 'sync.webdav.url',
+										optionContent: {
+											type: 'InputText' as const,
+											placeholder:
+												'https://nextcloud.example/remote.php/dav/files/user/',
+										},
+									},
+									{
+										title: getMessage(
+											'settings_option_syncWebdav_username',
+										),
+										path: 'sync.webdav.username',
+										optionContent: {
+											type: 'InputText' as const,
+										},
+									},
+									{
+										title: getMessage(
+											'settings_option_syncWebdav_password',
+										),
+										description: getMessage(
+											'settings_option_syncWebdav_password_desc',
+										),
+										path: 'sync.webdav.password',
+										optionContent: {
+											type: 'InputText' as const,
+											password: true,
+										},
+									},
+									{
+										description: getMessage(
+											'settings_option_syncWebdav_syncSecrets_desc',
+										),
+										path: 'sync.webdav.syncSecrets',
+										optionContent: {
+											type: 'Checkbox' as const,
+											text: getMessage(
+												'settings_option_syncWebdav_syncSecrets',
+											),
+										},
+									},
+									{
+										description: webdavStatusText,
+										optionContent: {
+											type: 'Button' as const,
+											text: getMessage(
+												'settings_option_syncWebdav_test',
+											),
+											disabled: webdavTestProcess,
+											action: testWebDAV,
+										},
+									},
+									{
+										optionContent: {
+											type: 'Button' as const,
+											text: getMessage(
+												'settings_option_syncWebdav_syncNow',
+											),
+											disabled: webdavSyncProcess,
+											action: syncWebDAVNow,
+										},
+									},
+								]
+							: []),
 					],
 				},
 			],

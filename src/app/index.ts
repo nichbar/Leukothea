@@ -1,7 +1,7 @@
 import { createEvent, createStore, Store } from 'effector';
 import browser from 'webextension-polyfill';
 
-import { defaultConfig } from '../config';
+import { getDefaultConfig } from '../config';
 import { isBackgroundContext, isChromium, isFirefox } from '../lib/browser';
 import { getAllTabs } from '../lib/browser/tabs';
 import { TextTranslatorStorage } from '../pages/popup/tabs/TextTranslator/TextTranslator.utils/TextTranslatorStorage';
@@ -34,7 +34,8 @@ export class App {
 		// Migrate data
 		await migrateAll();
 
-		const config = new ConfigStorage(defaultConfig);
+		// Resolve defaults at startup so "Your language" matches the browser.
+		const config = new ConfigStorage(getDefaultConfig());
 		const observableConfig = new ObservableAsyncStorage(config);
 		const background = new Background(observableConfig);
 

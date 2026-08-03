@@ -52,6 +52,36 @@ export type ParseEnvelopeResult =
 	| { ok: false; error: string; extensionVersion?: string; updatedAt?: number };
 
 /**
+ * Fill fields introduced after older remotes were written so strict AppConfig
+ * decode still accepts them (e.g. sync.webdav.syncSecrets).
+ */
+const normalizeRemoteConfigShape = (config: unknown): unknown => {
+	if (config == null || typeof config !== 'object' || Array.isArray(config)) {
+		return config;
+	}
+
+	const cfg = { ...(config as Record<string, unknown>) };
+	const syncRaw = cfg.sync;
+	if (syncRaw != null && typeof syncRaw === 'object' && !Array.isArray(syncRaw)) {
+		const sync = { ...(syncRaw as Record<string, unknown>) };
+		const webdavRaw = sync.webdav;
+		if (
+			webdavRaw != null &&
+			typeof webdavRaw === 'object' &&
+			!Array.isArray(webdavRaw)
+		) {
+			const webdav = { ...(webdavRaw as Record<string, unknown>) };
+			if (typeof webdav.syncSecrets !== 'boolean') {
+				webdav.syncSecrets = false;
+			}
+			sync.webdav = webdav;
+		}
+		cfg.sync = sync;
+	}
+	return cfg;
+};
+
+/**
  * Parse remote envelope text and validate nested AppConfig with io-ts.
  */
 export const parseEnvelope = (text: string): ParseEnvelopeResult => {
@@ -97,7 +127,7 @@ export const parseEnvelope = (text: string): ParseEnvelopeResult => {
 		};
 	}
 
-	const decoded = decodeStruct(AppConfig, obj.config);
+	const decoded = decodeStruct(AppConfig, normalizeRemoteConfigShape(obj.config));
 	if (decoded.errors !== null) {
 		return {
 			ok: false,

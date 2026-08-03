@@ -1,4 +1,4 @@
-import { defaultConfig } from '../../config';
+import { getDefaultConfig } from '../../config';
 
 import { buildBackendRequest } from '../utils/requestBuilder';
 
@@ -6,6 +6,7 @@ export const [resetConfigFactory, resetConfig] = buildBackendRequest('resetConfi
 	factoryHandler:
 		({ config }) =>
 		async () => {
-			await config.set(defaultConfig);
+			// Re-resolve browser language at reset time (not module load).
+			await config.set(getDefaultConfig());
 		},
 });

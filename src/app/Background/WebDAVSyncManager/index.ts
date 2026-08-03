@@ -1,10 +1,12 @@
 export {
 	WebDAVSyncManager,
 	WEBDAV_SYNC_ALARM_NAME,
+	WEBDAV_PUSH_ALARM_NAME,
 	WEBDAV_CONFIG_PATH,
 	WEBDAV_PULL_INTERVAL_MINUTES,
+	WEBDAV_PUSH_DEBOUNCE_MINUTES,
 } from './WebDAVSyncManager';
-export type { WebDAVSyncStatus } from './WebDAVSyncManager';
+export type { WebDAVSyncStatus, WebDAVSyncManagerOptions } from './WebDAVSyncManager';
 export {
 	getConfigSyncMeta,
 	setConfigSyncMeta,

@@ -43,9 +43,9 @@ const defaultConfig = {
 		ignoreCase: true,
 	},
 	llmTranslator: {
-		apiKey: '',
-		apiUrl: 'https://api.openai.com/v1/chat/completions',
-		model: 'gpt-4o-mini',
+		apiKey: 'public',
+		apiUrl: 'https://opencode.ai/zen/v1/chat/completions',
+		model: 'big-pickle',
 	},
 };
 

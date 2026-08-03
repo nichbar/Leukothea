@@ -128,6 +128,12 @@ export const AppConfig = type.type({
 			username: type.string,
 			/** Stored plaintext in storage.local (same as llm apiKey). */
 			password: type.string,
+			/**
+			 * When false (default), LLM API key is not synced (push preserves
+			 * remote key; pull keeps local key). WebDAV username/password are
+			 * always local-only regardless of this flag.
+			 */
+			syncSecrets: type.boolean,
 		}),
 	}),
 });

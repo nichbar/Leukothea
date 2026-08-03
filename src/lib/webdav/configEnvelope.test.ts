@@ -31,6 +31,25 @@ describe('configEnvelope', () => {
 		expect(result.extensionVersion).toBe('7.0.11');
 		expect(result.updatedAt).toBe(1);
 	});
+
+	test('parse accepts legacy config missing syncSecrets (defaults false)', () => {
+		const config = JSON.parse(
+			JSON.stringify(defaultConfig),
+		) as typeof defaultConfig & {
+			sync: { webdav: Record<string, unknown> };
+		};
+		delete config.sync.webdav.syncSecrets;
+		const text = JSON.stringify({
+			version: 1,
+			updatedAt: 1,
+			extensionVersion: '7.0.12',
+			config,
+		});
+		const parsed = parseEnvelope(text);
+		expect(parsed.ok).toBe(true);
+		if (!parsed.ok) return;
+		expect(parsed.envelope.config.sync.webdav.syncSecrets).toBe(false);
+	});
 });
 
 describe('decideSyncAction', () => {

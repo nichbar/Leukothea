@@ -11,10 +11,10 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -47,6 +47,7 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },
@@ -73,10 +74,10 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -109,6 +110,7 @@ exports[`config migrations > race condition detection > Detection race condition
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },
@@ -135,10 +137,10 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -171,6 +173,7 @@ exports[`config migrations > race condition detection > Detection race condition
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },
@@ -197,10 +200,10 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -233,6 +236,7 @@ exports[`config migrations > race condition detection > Detection race condition
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },
@@ -259,10 +263,10 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -295,6 +299,7 @@ exports[`config migrations > race condition detection > Detection race condition
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },
@@ -321,10 +326,10 @@ exports[`config migrations > race condition detection > Detection race condition
   },
   "language": "en",
   "llmTranslator": {
-    "apiKey": "",
-    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "public",
+    "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
-    "model": "gpt-4o-mini",
+    "model": "big-pickle",
     "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
   },
   "popup": {
@@ -357,6 +362,7 @@ exports[`config migrations > race condition detection > Detection race condition
     "webdav": {
       "enabled": false,
       "password": "",
+      "syncSecrets": false,
       "url": "",
       "username": "",
     },

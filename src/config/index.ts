@@ -1,22 +1,32 @@
 import { isMobileBrowser } from '../lib/browser';
 import { getUserLanguage } from '../lib/language';
-import { DEFAULT_LLM_PROMPT } from '../lib/translators/llm/LLMTranslator';
+import {
+	DEFAULT_LLM_API_KEY,
+	DEFAULT_LLM_API_URL,
+	DEFAULT_LLM_MODEL,
+	DEFAULT_LLM_PROMPT,
+} from '../lib/translators/llm/LLMTranslator';
 import { AppConfigType } from '../types/runtime';
 
 export const DEFAULT_TRANSLATOR = 'LLMTranslator';
 export const DEFAULT_TTS = 'google';
 
-// Init config
-export const defaultConfig: AppConfigType = {
+/**
+ * Build a fresh default config. Prefer this over the module snapshot when
+ * seeding storage or resetting settings so "Your language" tracks the
+ * current browser language.
+ */
+export const getDefaultConfig = (): AppConfigType => ({
 	translatorModule: DEFAULT_TRANSLATOR,
 	ttsModule: DEFAULT_TTS,
+	// Default "Your language" from the browser preferred language list.
 	language: getUserLanguage(),
 	// null = detect/auto; ISO 639-1 code = always translate from that language
 	fixedSourceLanguage: null,
 	llmTranslator: {
-		apiKey: '',
-		apiUrl: 'https://api.openai.com/v1/chat/completions',
-		model: 'gpt-4o-mini',
+		apiKey: DEFAULT_LLM_API_KEY,
+		apiUrl: DEFAULT_LLM_API_URL,
+		model: DEFAULT_LLM_MODEL,
 		prompt: DEFAULT_LLM_PROMPT,
 		includePageTitle: false,
 	},
@@ -65,6 +75,11 @@ export const defaultConfig: AppConfigType = {
 			url: '',
 			username: '',
 			password: '',
+			syncSecrets: false,
 		},
 	},
-};
+});
+
+// Module-load snapshot for call sites that need a static object (tests, codecs).
+// Live seeding / reset should use getDefaultConfig() instead.
+export const defaultConfig: AppConfigType = getDefaultConfig();

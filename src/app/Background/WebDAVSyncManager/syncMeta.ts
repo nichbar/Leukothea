@@ -12,6 +12,8 @@ export type ConfigSyncMeta = {
 	lastSyncAt: number | null;
 	lastError: string | null;
 	lastDirection: ConfigSyncDirection | null;
+	/** Last known remote ETag for conditional PUT (null if unknown / unsupported). */
+	lastRemoteEtag: string | null;
 };
 
 const ConfigSyncMetaCodec = type.type({
@@ -25,6 +27,8 @@ const ConfigSyncMetaCodec = type.type({
 		type.literal('none'),
 		type.null,
 	]),
+	// Optional in stored blobs for forward-compat with meta written before etag support.
+	lastRemoteEtag: type.union([type.string, type.null]),
 });
 
 export const defaultConfigSyncMeta = (): ConfigSyncMeta => ({
@@ -33,6 +37,7 @@ export const defaultConfigSyncMeta = (): ConfigSyncMeta => ({
 	lastSyncAt: null,
 	lastError: null,
 	lastDirection: null,
+	lastRemoteEtag: null,
 });
 
 export const getConfigSyncMeta = async (): Promise<ConfigSyncMeta> => {
@@ -43,7 +48,13 @@ export const getConfigSyncMeta = async (): Promise<ConfigSyncMeta> => {
 		return defaultConfigSyncMeta();
 	}
 
-	const decoded = decodeStruct(ConfigSyncMetaCodec, raw);
+	// Accept legacy meta without lastRemoteEtag by filling the default.
+	const withDefaults =
+		raw != null && typeof raw === 'object' && !Array.isArray(raw)
+			? { ...defaultConfigSyncMeta(), ...(raw as Record<string, unknown>) }
+			: raw;
+
+	const decoded = decodeStruct(ConfigSyncMetaCodec, withDefaults);
 	if (decoded.errors !== null) {
 		return defaultConfigSyncMeta();
 	}

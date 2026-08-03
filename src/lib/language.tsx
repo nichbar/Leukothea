@@ -5,7 +5,51 @@ import browser from 'webextension-polyfill';
 import { isMobileBrowser } from './browser';
 import { capitalizeString } from './utils';
 
-export const getUserLanguage = () => browser.i18n.getUILanguage().split('-')[0];
+/**
+ * Normalize a BCP-47 / locale tag to ISO 639-1 when valid.
+ */
+const toISO639v1 = (tag: string): string | null => {
+	const code = tag.trim().toLowerCase().split(/[-_]/)[0];
+	if (!code) return null;
+	return isLanguageCodeISO639v1(code) ? code : null;
+};
+
+/**
+ * Best-effort preferred language for "Your language" defaults.
+ * Prefers the browser language list (`navigator.languages`), then
+ * `navigator.language`, then the browser UI language from the extension API.
+ * Falls back to `en` when nothing valid is available.
+ */
+export const getUserLanguage = (): string => {
+	const candidates: string[] = [];
+
+	if (typeof navigator !== 'undefined') {
+		if (Array.isArray(navigator.languages)) {
+			for (const tag of navigator.languages) {
+				if (typeof tag === 'string') candidates.push(tag);
+			}
+		}
+		if (typeof navigator.language === 'string' && navigator.language) {
+			candidates.push(navigator.language);
+		}
+	}
+
+	try {
+		const uiLanguage = browser.i18n.getUILanguage();
+		if (typeof uiLanguage === 'string' && uiLanguage) {
+			candidates.push(uiLanguage);
+		}
+	} catch {
+		// Some test / non-extension hosts omit i18n.
+	}
+
+	for (const tag of candidates) {
+		const code = toISO639v1(tag);
+		if (code) return code;
+	}
+
+	return 'en';
+};
 
 export const getInternationalizedMessage = <T extends unknown = null>(
 	messageName: string,

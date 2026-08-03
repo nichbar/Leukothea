@@ -12,6 +12,7 @@ const SyncStatusCodec = type.type({
 		type.literal('none'),
 		type.null,
 	]),
+	lastRemoteEtag: type.union([type.string, type.null]),
 	enabled: type.boolean,
 	url: type.string,
 	path: type.string,
@@ -20,12 +21,17 @@ const SyncStatusCodec = type.type({
 export const [syncWebDAVNowFactory, syncWebDAVNow] = buildBackendRequest(
 	'syncWebDAVNow',
 	{
+		requestValidator: type.partial({
+			url: type.string,
+			username: type.string,
+			password: type.string,
+		}),
 		responseValidator: SyncStatusCodec,
 		factoryHandler:
 			({ backgroundContext }) =>
-			async () => {
+			async (credentials) => {
 				const manager = backgroundContext.getWebDAVSyncManager();
-				return manager.syncNow();
+				return manager.syncNow(credentials);
 			},
 	},
 );

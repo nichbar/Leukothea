@@ -635,7 +635,7 @@
 		"description": "Settings group for bidirectional AppConfig sync over WebDAV"
 	},
 	"settings_option_syncWebdav_desc": {
-		"message": "Sync full settings (including LLM credentials) across devices via a WebDAV file. Dictionary and history stay local. Last write wins."
+		"message": "Sync settings across devices via a WebDAV file. Dictionary and history stay local. Last write wins. WebDAV URL, username, and password always stay on this device. The LLM API key is off by default — enable “Sync secrets” only if you trust the WebDAV host and its ACLs."
 	},
 	"settings_option_syncWebdav_enable": {
 		"message": "Enable WebDAV sync"
@@ -657,6 +657,12 @@
 	},
 	"settings_option_syncWebdav_password_desc": {
 		"message": "App password or account password. Stored in local extension storage like the LLM API key"
+	},
+	"settings_option_syncWebdav_syncSecrets": {
+		"message": "Sync secrets"
+	},
+	"settings_option_syncWebdav_syncSecrets_desc": {
+		"message": "Also upload the LLM API key to the remote file (plaintext JSON). WebDAV URL, username, and password never leave this device. Leave off to sync preferences only; each device keeps its own API key."
 	},
 	"settings_option_syncWebdav_test": {
 		"message": "Test connection"
@@ -715,6 +721,12 @@
 				"example": "HTTP 403"
 			}
 		}
+	},
+	"settings_message_syncWebdav_not_configured": {
+		"message": "WebDAV sync is not configured. Enable it, set a base URL, and save settings."
+	},
+	"settings_message_syncWebdav_save_required": {
+		"message": "Save settings before syncing (fix validation failed)."
 	},
 	"settings_section_popup": {
 		"message": "Popup"

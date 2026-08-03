@@ -188,26 +188,27 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		setErrors(null);
 	}, []);
 
-	const saveChanges = useCallback(() => {
+	const saveChanges = useCallback(async (): Promise<boolean> => {
 		// Skip empty changes
-		if (modifiedConfig === null) return;
+		if (modifiedConfig === null) return true;
 
-		updateConfigReq(modifiedConfig)
-			.then(async ({ success, errors }) => {
-				if (!success) {
-					setErrors(errors);
-					return;
-				}
+		try {
+			const { success, errors } = await updateConfigReq(modifiedConfig);
+			if (!success) {
+				setErrors(errors);
+				return false;
+			}
 
-				const config = await getConfig();
-
-				setConfig(config);
-				setModifiedConfig(null);
-				setErrors(null);
-
-				addMessage(getMessage('settings_message_saveChanges_success'), 'info');
-			})
-			.catch(handleError);
+			const nextConfig = await getConfig();
+			setConfig(nextConfig);
+			setModifiedConfig(null);
+			setErrors(null);
+			addMessage(getMessage('settings_message_saveChanges_success'), 'info');
+			return true;
+		} catch (error) {
+			handleError(error);
+			return false;
+		}
 	}, [addMessage, handleError, modifiedConfig]);
 
 	//
@@ -310,14 +311,39 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 
 	const syncWebDAVNow = useCallback(() => {
 		setWebdavSyncProcess(true);
-		syncWebDAVNowReq()
-			.then(async (status) => {
+		(async () => {
+			try {
+				// Sync uses saved storage, not the form draft. Persist first so
+				// enable/url/credentials just typed are actually used.
+				const saved = await saveChanges();
+				if (!saved) {
+					addMessage(
+						getMessage(
+							'settings_message_syncWebdav_sync_failed',
+							getMessage('settings_message_syncWebdav_save_required'),
+						),
+						'error',
+					);
+					return;
+				}
+
+				// Same credential source as Test connection (form draft + saved).
+				const status = await syncWebDAVNowReq(getMergedWebDAVCredentials());
 				setWebdavStatusText(formatWebDAVStatus(status));
 				if (status.lastError) {
 					addMessage(
 						getMessage(
 							'settings_message_syncWebdav_sync_failed',
 							status.lastError,
+						),
+						'error',
+					);
+				} else if (status.lastSyncAt == null) {
+					// Defensive: reconcile returned without recording a sync cycle.
+					addMessage(
+						getMessage(
+							'settings_message_syncWebdav_sync_failed',
+							getMessage('settings_message_syncWebdav_not_configured'),
 						),
 						'error',
 					);
@@ -329,12 +355,20 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 				}
 				// Config may have changed on pull
 				await updateConfig();
-			})
-			.catch(handleError)
-			.finally(() => {
+			} catch (error) {
+				handleError(error);
+			} finally {
 				setWebdavSyncProcess(false);
-			});
-	}, [addMessage, formatWebDAVStatus, handleError, updateConfig]);
+			}
+		})();
+	}, [
+		addMessage,
+		formatWebDAVStatus,
+		getMergedWebDAVCredentials,
+		handleError,
+		saveChanges,
+		updateConfig,
+	]);
 
 	const getMergedLlmCredentials = useCallback(() => {
 		const apiUrl =
@@ -458,6 +492,12 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loaded, config?.llmTranslator?.apiUrl, config?.llmTranslator?.apiKey]);
 
+	// Effective WebDAV enable (saved value + unsaved checkbox edits).
+	const webdavEnabled =
+		typeof modifiedConfig?.['sync.webdav.enabled'] === 'boolean'
+			? (modifiedConfig['sync.webdav.enabled'])
+			: (config?.sync?.webdav?.enabled ?? false);
+
 	// Update config tree
 	useEffect(() => {
 		const configTree = generateTree({
@@ -479,6 +519,7 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 			webdavTestProcess,
 			webdavSyncProcess,
 			webdavStatusText,
+			webdavEnabled,
 			testWebDAV,
 			syncWebDAVNow,
 		});
@@ -497,6 +538,7 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		webdavTestProcess,
 		webdavSyncProcess,
 		webdavStatusText,
+		webdavEnabled,
 		testWebDAV,
 		syncWebDAVNow,
 	]);

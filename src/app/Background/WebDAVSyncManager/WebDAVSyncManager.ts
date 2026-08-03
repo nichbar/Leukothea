@@ -7,7 +7,13 @@ import {
 	parseEnvelope,
 	serializeEnvelope,
 } from '../../../lib/webdav/configEnvelope';
-import { WebDAVClient, WebDAVCredentials } from '../../../lib/webdav/WebDAVClient';
+import { mergeRemoteConfig, prepareConfigForPush } from '../../../lib/webdav/syncSecrets';
+import {
+	WebDAVClient,
+	WebDAVClientLike,
+	WebDAVCredentials,
+	WebDAVPreconditionFailedError,
+} from '../../../lib/webdav/WebDAVClient';
 import { AppConfigType } from '../../../types/runtime';
 import { ObservableAsyncStorage } from '../../ConfigStorage/ConfigStorage';
 
@@ -18,7 +24,11 @@ import {
 	setConfigSyncMeta,
 } from './syncMeta';
 
+/** Periodic pull alarm (daily). */
 export const WEBDAV_SYNC_ALARM_NAME = 'webdav-config-sync';
+
+/** One-shot push debounce / MV3 reliability backstop after local writes. */
+export const WEBDAV_PUSH_ALARM_NAME = 'webdav-config-push';
 
 /** Fixed remote filename under the configured WebDAV base URL. */
 export const WEBDAV_CONFIG_PATH = 'linguist/linguist-config.json';
@@ -26,7 +36,14 @@ export const WEBDAV_CONFIG_PATH = 'linguist/linguist-config.json';
 /** Fixed periodic pull interval (once per day). */
 export const WEBDAV_PULL_INTERVAL_MINUTES = 1440;
 
-const PUSH_DEBOUNCE_MS = 1000;
+/**
+ * Chromium MV3 minimum practical alarm delay is 1 minute.
+ * Immediate reconcile runs while the SW is awake; this is the sleep backstop.
+ */
+export const WEBDAV_PUSH_DEBOUNCE_MINUTES = 1;
+
+/** Cap dirty re-runs in one reconcile() call to avoid tight loops on flaky servers. */
+const MAX_DIRTY_RERUNS = 5;
 
 export type WebDAVSyncStatus = ConfigSyncMeta & {
 	enabled: boolean;
@@ -34,24 +51,43 @@ export type WebDAVSyncStatus = ConfigSyncMeta & {
 	path: string;
 };
 
+export type WebDAVSyncManagerOptions = {
+	/** Inject client for tests. Defaults to real WebDAVClient. */
+	createClient?: (credentials: WebDAVCredentials) => WebDAVClientLike;
+};
+
 type WebDAVSettings = AppConfigType['sync']['webdav'];
+
+type ReconcileReason = 'startup' | 'alarm' | 'manual' | 'localWrite';
 
 const isConfigured = (settings: WebDAVSettings): boolean =>
 	settings.enabled && settings.url.trim() !== '';
 
 /**
  * Bidirectional WebDAV sync of full AppConfig (last-write-wins + extension version gate).
+ *
+ * See docs/dev/WebDAVSync.md for the runtime contract (dirty re-run, alarms, conditional PUT).
  */
 export class WebDAVSyncManager {
 	private readonly config: ObservableAsyncStorage<AppConfigType>;
+	private readonly createClient: (credentials: WebDAVCredentials) => WebDAVClientLike;
 	private applyingRemote = false;
-	private pushTimer: ReturnType<typeof setTimeout> | null = null;
 	private reconcilePromise: Promise<void> | null = null;
+	private dirtyWhileReconciling = false;
+	/** Most recent trigger reason while a chain is active (used for dirty re-entry). */
+	private latestReconcileReason: ReconcileReason = 'manual';
 	private started = false;
 	private lastSettings: WebDAVSettings | null = null;
+	/** One-shot credentials for manual sync/test-aligned reconcile. */
+	private credentialsOverride: Partial<WebDAVCredentials> | null = null;
 
-	constructor(config: ObservableAsyncStorage<AppConfigType>) {
+	constructor(
+		config: ObservableAsyncStorage<AppConfigType>,
+		options?: WebDAVSyncManagerOptions,
+	) {
 		this.config = config;
+		this.createClient =
+			options?.createClient ?? ((credentials) => new WebDAVClient(credentials));
 	}
 
 	public async start() {
@@ -75,7 +111,7 @@ export class WebDAVSyncManager {
 			void this.onSettingsChange(settings);
 		});
 
-		// Any config write that is not applyRemote → local write + debounced push.
+		// Any config write that is not applyRemote → local write + push schedule.
 		// Skip the initial store.watch emission (current state is not a local write).
 		let seenInitialConfig = false;
 		$config.watch(() => {
@@ -87,11 +123,13 @@ export class WebDAVSyncManager {
 			void this.onLocalConfigWrite();
 		});
 
-		// Alarms for periodic pull
+		// Alarms for periodic pull + debounced push backstop
 		if (browser.alarms?.onAlarm) {
 			browser.alarms.onAlarm.addListener((alarm) => {
 				if (alarm.name === WEBDAV_SYNC_ALARM_NAME) {
 					void this.reconcile('alarm');
+				} else if (alarm.name === WEBDAV_PUSH_ALARM_NAME) {
+					void this.reconcile('localWrite');
 				}
 			});
 		}
@@ -115,13 +153,29 @@ export class WebDAVSyncManager {
 	/**
 	 * Force a reconcile cycle (manual Sync now / test path).
 	 */
-	public async syncNow(): Promise<WebDAVSyncStatus> {
-		await this.reconcile('manual');
-		return this.getStatus();
+	/**
+	 * Force a reconcile cycle. Optional credentials override uses the same source
+	 * as "Test connection" (form values) so Sync now cannot diverge after save.
+	 */
+	public async syncNow(
+		override?: Partial<WebDAVCredentials>,
+	): Promise<WebDAVSyncStatus> {
+		this.credentialsOverride = override ?? null;
+		try {
+			await this.reconcile('manual');
+			return this.getStatus();
+		} finally {
+			this.credentialsOverride = null;
+		}
 	}
 
 	/**
-	 * Test connection with provided or current credentials (GET remote path).
+	 * Test connection with provided or current credentials.
+	 *
+	 * GET-only (same as the original client): 404 means auth worked and the file
+	 * is simply not created yet. Do not probe MKCOL here — many servers reject
+	 * MKCOL on existing collections (or return 401 for write methods) while
+	 * GET/PUT still work. That write-probe is what broke Test after our changes.
 	 */
 	public async testConnection(
 		override?: Partial<WebDAVCredentials>,
@@ -129,9 +183,9 @@ export class WebDAVSyncManager {
 		const config = await this.config.get();
 		const webdav = config.sync.webdav;
 		const credentials: WebDAVCredentials = {
-			url: override?.url ?? webdav.url,
-			username: override?.username ?? webdav.username,
-			password: override?.password ?? webdav.password,
+			url: (override?.url ?? webdav.url).trim(),
+			username: (override?.username ?? webdav.username).trim(),
+			password: (override?.password ?? webdav.password).replace(/[\r\n]+$/g, ''),
 			path: WEBDAV_CONFIG_PATH,
 		};
 
@@ -140,11 +194,25 @@ export class WebDAVSyncManager {
 		}
 
 		try {
-			const client = new WebDAVClient(credentials);
+			const client = this.createClient(credentials);
 			const result = await client.get();
-			// 404 means auth + path parent may be OK (file not created yet)
+			// 404 = auth + base path OK (file not created yet); 2xx = readable
 			if (result.status === 404 || (result.status >= 200 && result.status < 300)) {
 				return { ok: true, status: result.status };
+			}
+			if (result.status === 401) {
+				return {
+					ok: false,
+					status: 401,
+					error: '401 Unauthorized — check username/password (use an app password if required).',
+				};
+			}
+			if (result.status === 403) {
+				return {
+					ok: false,
+					status: 403,
+					error: '403 Forbidden — authenticated but not allowed to read this path.',
+				};
 			}
 			return {
 				ok: false,
@@ -162,7 +230,8 @@ export class WebDAVSyncManager {
 		this.lastSettings = settings;
 
 		if (!isConfigured(settings)) {
-			await this.clearAlarm();
+			await this.clearAlarm(WEBDAV_SYNC_ALARM_NAME);
+			await this.clearAlarm(WEBDAV_PUSH_ALARM_NAME);
 			return;
 		}
 
@@ -175,7 +244,7 @@ export class WebDAVSyncManager {
 
 		// Fixed daily pull; reschedule when enabling / credentials change.
 		if (prev == null || credentialsChanged || prev.enabled !== settings.enabled) {
-			await this.scheduleAlarm();
+			await this.schedulePullAlarm();
 		}
 
 		if (credentialsChanged || prev == null) {
@@ -192,20 +261,12 @@ export class WebDAVSyncManager {
 		}
 
 		await bumpLocalWriteAt(Date.now());
-		this.scheduleDebouncedPush();
+		// MV3 backstop: alarm survives SW sleep. Also reconcile immediately while awake.
+		await this.schedulePushAlarm();
+		void this.reconcile('localWrite');
 	}
 
-	private scheduleDebouncedPush() {
-		if (this.pushTimer !== null) {
-			clearTimeout(this.pushTimer);
-		}
-		this.pushTimer = setTimeout(() => {
-			this.pushTimer = null;
-			void this.reconcile('localWrite');
-		}, PUSH_DEBOUNCE_MS);
-	}
-
-	private async scheduleAlarm() {
+	private async schedulePullAlarm() {
 		if (!browser.alarms?.create) return;
 		await browser.alarms.clear(WEBDAV_SYNC_ALARM_NAME);
 		browser.alarms.create(WEBDAV_SYNC_ALARM_NAME, {
@@ -214,40 +275,83 @@ export class WebDAVSyncManager {
 		});
 	}
 
-	private async clearAlarm() {
+	private async schedulePushAlarm() {
+		if (!browser.alarms?.create) return;
+		// Reset debounce window on each local write.
+		await browser.alarms.clear(WEBDAV_PUSH_ALARM_NAME);
+		browser.alarms.create(WEBDAV_PUSH_ALARM_NAME, {
+			delayInMinutes: WEBDAV_PUSH_DEBOUNCE_MINUTES,
+		});
+	}
+
+	private async clearAlarm(name: string) {
 		if (!browser.alarms?.clear) return;
-		await browser.alarms.clear(WEBDAV_SYNC_ALARM_NAME);
+		await browser.alarms.clear(name);
+	}
+
+	private async clearPushAlarm() {
+		await this.clearAlarm(WEBDAV_PUSH_ALARM_NAME);
 	}
 
 	/**
-	 * GET-first reconcile. Serializes concurrent calls via a single in-flight promise.
+	 * GET-first reconcile. Single-flight with dirty re-run if work arrives mid-cycle.
+	 *
+	 * Every caller marks dirty first. One owner drains until clean (or hit rerun cap).
+	 * Waiters await the owner; if dirty remains after the lock is released (gap race),
+	 * they re-enter and become the next owner.
 	 */
-	public async reconcile(
-		_reason: 'startup' | 'alarm' | 'manual' | 'localWrite',
-	): Promise<void> {
+	public async reconcile(reason: ReconcileReason): Promise<void> {
+		this.dirtyWhileReconciling = true;
+		this.latestReconcileReason = reason;
+
 		if (this.reconcilePromise) {
 			await this.reconcilePromise;
+			if (this.dirtyWhileReconciling && !this.reconcilePromise) {
+				await this.reconcile(this.latestReconcileReason);
+			}
 			return;
 		}
 
-		this.reconcilePromise = this.runReconcile().finally(() => {
+		this.reconcilePromise = this.drainReconcile().finally(() => {
 			this.reconcilePromise = null;
 		});
 		await this.reconcilePromise;
+
+		if (this.dirtyWhileReconciling) {
+			await this.reconcile(this.latestReconcileReason);
+		}
 	}
 
-	private async runReconcile(): Promise<void> {
+	private async drainReconcile(): Promise<void> {
+		let reruns = 0;
+		while (this.dirtyWhileReconciling && reruns < MAX_DIRTY_RERUNS) {
+			this.dirtyWhileReconciling = false;
+			const cycleReason: ReconcileReason =
+				reruns === 0 ? this.latestReconcileReason : 'localWrite';
+			await this.runReconcile(cycleReason);
+			reruns += 1;
+		}
+	}
+
+	private async runReconcile(_reason: ReconcileReason): Promise<void> {
 		const config = await this.config.get();
 		const settings = config.sync.webdav;
 
 		if (!isConfigured(settings)) {
+			// Surface a real error so UI does not show "finished" while idle.
+			await setConfigSyncMeta({
+				lastError:
+					'Sync is not configured. Enable WebDAV sync, set a base URL, and save settings first.',
+				lastDirection: 'none',
+			});
 			return;
 		}
 
-		const client = new WebDAVClient({
-			url: settings.url,
-			username: settings.username,
-			password: settings.password,
+		const override = this.credentialsOverride;
+		const client = this.createClient({
+			url: (override?.url ?? settings.url).trim(),
+			username: (override?.username ?? settings.username).trim(),
+			password: (override?.password ?? settings.password).replace(/[\r\n]+$/g, ''),
 			path: WEBDAV_CONFIG_PATH,
 		});
 
@@ -259,7 +363,7 @@ export class WebDAVSyncManager {
 			meta = await bumpLocalWriteAt(Date.now());
 		}
 
-		let getResult: { status: number; bodyText: string };
+		let getResult: { status: number; bodyText: string; etag: string | null };
 		try {
 			getResult = await client.get();
 		} catch (error) {
@@ -270,37 +374,33 @@ export class WebDAVSyncManager {
 
 		// Create on 404
 		if (getResult.status === 404) {
-			try {
-				const updatedAt = meta.lastLocalWriteAt || Date.now();
-				const body = serializeEnvelope(config, updatedAt, localExt);
-				await client.put(body);
-				await setConfigSyncMeta({
-					lastRemoteUpdatedAt: updatedAt,
-					lastSyncAt: Date.now(),
-					lastError: null,
-					lastDirection: 'push',
-				});
-			} catch (error) {
-				const message =
-					error instanceof Error ? error.message : 'WebDAV PUT (create) failed';
-				await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
-			}
+			await this.pushCreate(client, localExt);
 			return;
 		}
 
 		if (getResult.status < 200 || getResult.status >= 300) {
+			const detail =
+				getResult.status === 401
+					? 'WebDAV GET failed: 401 Unauthorized. Check username/password (or app password).'
+					: getResult.status === 403
+						? 'WebDAV GET failed: 403 Forbidden. Authenticated but not allowed to read this path.'
+						: `WebDAV GET failed: HTTP ${getResult.status}`;
 			await setConfigSyncMeta({
-				lastError: `WebDAV GET failed: HTTP ${getResult.status}`,
+				lastError: detail,
 				lastDirection: 'none',
 			});
 			return;
+		}
+
+		// Remember etag from successful GET for conditional update
+		if (getResult.etag != null) {
+			meta = await setConfigSyncMeta({ lastRemoteEtag: getResult.etag });
 		}
 
 		const parsed = parseEnvelope(getResult.bodyText);
 
 		// Unreadable / invalid envelope — never push over it
 		if (!parsed.ok) {
-			// Still try to extract extensionVersion for messaging when partial
 			const remoteExt = parsed.extensionVersion;
 			const remoteUpdatedAt = parsed.updatedAt ?? null;
 			const action = decideSyncAction({
@@ -328,6 +428,8 @@ export class WebDAVSyncManager {
 		}
 
 		const remote = parsed.envelope;
+		// Re-read local write clock — may have advanced during GET
+		meta = await getConfigSyncMeta();
 		const action = decideSyncAction({
 			localWriteAt: meta.lastLocalWriteAt,
 			remoteUpdatedAt: remote.updatedAt,
@@ -342,17 +444,18 @@ export class WebDAVSyncManager {
 				lastSyncAt: Date.now(),
 				lastError: null,
 				lastDirection: 'none',
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
+			await this.clearPushAlarm();
 			return;
 		}
 
 		if (action === 'skipPushOlderExtension') {
-			// Optional pull already handled inside decide when remote newer+valid;
-			// if we landed here, either remote is older/equal or we shouldn't pull.
 			await setConfigSyncMeta({
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastError: `Remote config was written by a newer extension (${remote.extensionVersion}); upgrade this install to sync.`,
 				lastDirection: 'none',
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
 			return;
 		}
@@ -362,6 +465,7 @@ export class WebDAVSyncManager {
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastError: 'Remote config is incompatible with this extension version',
 				lastDirection: 'none',
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
 			return;
 		}
@@ -375,7 +479,9 @@ export class WebDAVSyncManager {
 					lastSyncAt: Date.now(),
 					lastError: null,
 					lastDirection: 'pull',
+					...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 				});
+				await this.clearPushAlarm();
 			} catch (error) {
 				const message =
 					error instanceof Error
@@ -387,30 +493,95 @@ export class WebDAVSyncManager {
 		}
 
 		if (action === 'push') {
-			try {
-				const updatedAt = meta.lastLocalWriteAt || Date.now();
-				// Re-read config in case it changed during GET
-				const latest = await this.config.get();
-				const body = serializeEnvelope(latest, updatedAt, localExt);
-				await client.put(body);
+			await this.pushUpdate(
+				client,
+				localExt,
+				getResult.etag ?? meta.lastRemoteEtag,
+				remote.config,
+			);
+		}
+	}
+
+	private async pushCreate(client: WebDAVClientLike, localExt: string): Promise<void> {
+		try {
+			const meta = await getConfigSyncMeta();
+			const updatedAt = meta.lastLocalWriteAt || Date.now();
+			const latest = await this.config.get();
+			const payload = prepareConfigForPush(latest, null);
+			const body = serializeEnvelope(payload, updatedAt, localExt);
+			const putResult = await client.put(body, { createOnly: true });
+			await setConfigSyncMeta({
+				lastRemoteUpdatedAt: updatedAt,
+				lastSyncAt: Date.now(),
+				lastError: null,
+				lastDirection: 'push',
+				lastRemoteEtag: putResult.etag ?? null,
+			});
+			await this.clearPushAlarm();
+		} catch (error) {
+			if (error instanceof WebDAVPreconditionFailedError) {
+				// File appeared mid-flight — re-run as normal reconcile
+				this.dirtyWhileReconciling = true;
 				await setConfigSyncMeta({
-					lastRemoteUpdatedAt: updatedAt,
-					lastSyncAt: Date.now(),
-					lastError: null,
-					lastDirection: 'push',
+					lastError: 'Remote file appeared during create; retrying',
+					lastDirection: 'none',
 				});
-			} catch (error) {
-				const message =
-					error instanceof Error ? error.message : 'WebDAV PUT failed';
-				await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+				return;
 			}
+			const message =
+				error instanceof Error ? error.message : 'WebDAV PUT (create) failed';
+			await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+		}
+	}
+
+	private async pushUpdate(
+		client: WebDAVClientLike,
+		localExt: string,
+		etag: string | null,
+		remoteConfig: AppConfigType | null,
+	): Promise<void> {
+		try {
+			// Always re-read clocks + config at push time (mid-cycle edits)
+			const meta = await getConfigSyncMeta();
+			const updatedAt = meta.lastLocalWriteAt || Date.now();
+			const latest = await this.config.get();
+			const payload = prepareConfigForPush(latest, remoteConfig);
+			const body = serializeEnvelope(payload, updatedAt, localExt);
+			const putResult = await client.put(body, {
+				// Only send If-Match when we have an etag; otherwise degrade to unconditional.
+				...(etag != null && etag !== '' ? { ifMatch: etag } : {}),
+			});
+			await setConfigSyncMeta({
+				lastRemoteUpdatedAt: updatedAt,
+				lastSyncAt: Date.now(),
+				lastError: null,
+				lastDirection: 'push',
+				lastRemoteEtag: putResult.etag ?? etag,
+			});
+			await this.clearPushAlarm();
+		} catch (error) {
+			if (error instanceof WebDAVPreconditionFailedError) {
+				// Remote changed under us — mark dirty so outer loop re-GETs and re-decides
+				this.dirtyWhileReconciling = true;
+				await setConfigSyncMeta({
+					lastError:
+						'Remote config changed on another device (precondition failed); retrying',
+					lastDirection: 'none',
+					lastRemoteEtag: null,
+				});
+				return;
+			}
+			const message = error instanceof Error ? error.message : 'WebDAV PUT failed';
+			await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
 		}
 	}
 
 	private async applyRemote(remoteConfig: AppConfigType, remoteUpdatedAt: number) {
 		this.applyingRemote = true;
 		try {
-			await this.config.set(remoteConfig);
+			const local = await this.config.get();
+			const merged = mergeRemoteConfig(remoteConfig, local);
+			await this.config.set(merged);
 			// Clocks updated by caller; keep applyingRemote until set settles watches
 			void remoteUpdatedAt;
 		} finally {

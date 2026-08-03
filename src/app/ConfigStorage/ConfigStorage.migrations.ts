@@ -1,8 +1,13 @@
 import browser from 'webextension-polyfill';
 
-import { DEFAULT_TRANSLATOR, DEFAULT_TTS, defaultConfig } from '../../config';
+import { DEFAULT_TRANSLATOR, DEFAULT_TTS, getDefaultConfig } from '../../config';
 import { createMigrationTask, Migration } from '../../lib/migrations/createMigrationTask';
-import { DEFAULT_LLM_PROMPT } from '../../lib/translators/llm/LLMTranslator';
+import {
+	DEFAULT_LLM_API_KEY,
+	DEFAULT_LLM_API_URL,
+	DEFAULT_LLM_MODEL,
+	DEFAULT_LLM_PROMPT,
+} from '../../lib/translators/llm/LLMTranslator';
 import { decodeStruct } from '../../lib/types';
 import { AppConfig } from '../../types/runtime';
 
@@ -456,6 +461,90 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Switch stock LLM defaults to OpenCode Zen (public key)
+		version: 19,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const previousStockApiUrl = 'https://api.openai.com/v1/chat/completions';
+			const previousStockModel = 'gpt-4o-mini';
+			const llmTranslator = {
+				...(actualData?.llmTranslator ?? {}),
+			};
+
+			const apiKey =
+				typeof llmTranslator.apiKey === 'string' ? llmTranslator.apiKey : '';
+			const apiUrl =
+				typeof llmTranslator.apiUrl === 'string' ? llmTranslator.apiUrl : '';
+			const model =
+				typeof llmTranslator.model === 'string' ? llmTranslator.model : '';
+
+			// Only rewrite fully stock previous defaults so custom OpenAI /
+			// third-party setups (real keys, custom URLs/models) are preserved.
+			const isStockApiKey = apiKey.trim() === '';
+			const isStockApiUrl = apiUrl.trim() === '' || apiUrl === previousStockApiUrl;
+			const isStockModel = model.trim() === '' || model === previousStockModel;
+
+			if (isStockApiKey && isStockApiUrl && isStockModel) {
+				llmTranslator.apiKey = DEFAULT_LLM_API_KEY;
+				llmTranslator.apiUrl = DEFAULT_LLM_API_URL;
+				llmTranslator.model = DEFAULT_LLM_MODEL;
+			}
+
+			const updatedConfig = {
+				...actualData,
+				llmTranslator,
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
+	{
+		// Add sync.webdav.syncSecrets (default off — do not upload API keys)
+		version: 20,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const sync =
+				typeof actualData.sync === 'object' && actualData.sync !== null
+					? actualData.sync
+					: {};
+			const webdav =
+				typeof (sync as { webdav?: unknown }).webdav === 'object' &&
+				(sync as { webdav?: unknown }).webdav !== null
+					? (sync as { webdav: Record<string, unknown> }).webdav
+					: {};
+
+			const updatedConfig = {
+				...actualData,
+				sync: {
+					...sync,
+					webdav: {
+						...webdav,
+						syncSecrets:
+							typeof webdav.syncSecrets === 'boolean'
+								? webdav.syncSecrets
+								: false,
+					},
+				},
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {
@@ -468,6 +557,6 @@ export const ConfigStorageMigration = createMigrationTask(migrations, {
 		if (errors === null) return;
 
 		console.warn('Config object is invalid, fallback to default config', errors);
-		await browser.storage.local.set({ [storageName]: defaultConfig });
+		await browser.storage.local.set({ [storageName]: getDefaultConfig() });
 	},
 });

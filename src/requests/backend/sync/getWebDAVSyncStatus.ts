@@ -12,6 +12,7 @@ const SyncStatusCodec = type.type({
 		type.literal('none'),
 		type.null,
 	]),
+	lastRemoteEtag: type.union([type.string, type.null]),
 	enabled: type.boolean,
 	url: type.string,
 	path: type.string,

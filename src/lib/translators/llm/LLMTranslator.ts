@@ -18,8 +18,11 @@ export type LLMTranslatorOptions = {
  */
 const MAX_PAGE_TITLE_LENGTH = 500;
 
-const DEFAULT_API_URL = 'https://api.openai.com/v1/chat/completions';
-const DEFAULT_MODEL = 'gpt-4o-mini';
+/** Default OpenAI-compatible chat completions endpoint (OpenCode Zen). */
+export const DEFAULT_LLM_API_URL = 'https://opencode.ai/zen/v1/chat/completions';
+/** Public API key accepted by the default OpenCode Zen endpoint. */
+export const DEFAULT_LLM_API_KEY = 'public';
+export const DEFAULT_LLM_MODEL = 'big-pickle';
 export const DEFAULT_LLM_PROMPT =
 	'You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.';
 
@@ -40,9 +43,9 @@ export class LLMTranslator {
 	private readonly prompt: string;
 
 	constructor(options: LLMTranslatorOptions = {}) {
-		this.apiKey = options.apiKey ?? '';
-		this.apiUrl = options.apiUrl || DEFAULT_API_URL;
-		this.model = options.model || DEFAULT_MODEL;
+		this.apiKey = options.apiKey ?? DEFAULT_LLM_API_KEY;
+		this.apiUrl = options.apiUrl || DEFAULT_LLM_API_URL;
+		this.model = options.model || DEFAULT_LLM_MODEL;
 		this.prompt = options.prompt?.trim() || DEFAULT_LLM_PROMPT;
 	}
 
