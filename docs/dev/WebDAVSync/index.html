@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-dev/WebDAVSync" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">WebDAV config sync | Linguist – Privacy‑First Translation Extension for Chrome and Firefox</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:image" content="https://linguister.io/img/app.png"><meta data-rh="true" name="twitter:image" content="https://linguister.io/img/app.png"><meta data-rh="true" property="og:url" content="https://linguister.io/docs/dev/WebDAVSync"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="WebDAV config sync | Linguist – Privacy‑First Translation Extension for Chrome and Firefox"><meta data-rh="true" name="description" content="Design note for multi-device AppConfig sync over WebDAV."><meta data-rh="true" property="og:description" content="Design note for multi-device AppConfig sync over WebDAV."><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://linguister.io/docs/dev/WebDAVSync"><link data-rh="true" rel="alternate" href="https://linguister.io/docs/dev/WebDAVSync" hreflang="en"><link data-rh="true" rel="alternate" href="https://linguister.io/docs/dev/WebDAVSync" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WebDAV config sync","item":"https://linguister.io/docs/dev/WebDAVSync"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Linguist – Privacy‑First Translation Extension for Chrome and Firefox RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Linguist – Privacy‑First Translation Extension for Chrome and Firefox Atom Feed"><link rel="stylesheet" href="/assets/css/styles.96f65661.css">
+<script src="/assets/js/runtime~main.9c153a1b.js" defer="defer"></script>
+<script src="/assets/js/main.186a0514.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" target="_self" href="/"><div class="navbar__logo"><img src="/logo.svg" alt="Linguist Translate" class="themedComponent_mlkZ themedComponent--light_NVdE" width="100"><img src="/logo.svg" alt="Linguist Translate" class="themedComponent_mlkZ themedComponent--dark_xIcU" width="100"></div></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link" target="_self" href="/blog">Blog</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" target="_self" href="/docs">Docs</a><a href="https://github.com/translate-tools/linguist" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/">Introduction</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/CustomModules">Customization</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/CustomModules">Custom modules introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/CustomTranslator">Translation services</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/CustomTTS">Text to speech</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/guides/OfflineTranslation">Guides</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/OfflineTranslation">Offline translation</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/api/custom-module">API</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/custom-module">Custom module API</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/translator">Translator</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/tts">Text to speech</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/dev/AndroidDebug">Development</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/dev/AndroidDebug">Debug on Android</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/dev/Development">Build from sources</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/dev/SelectionTranslateInfiniteLoader">Selection translate: infinite loader (no LLM request)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/dev/WebDAVSync">WebDAV config sync</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><span class="breadcrumbs__link">Development</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">WebDAV config sync</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>WebDAV config sync</h1></header>
+<p>Design note for multi-device <code>AppConfig</code> sync over WebDAV.</p>
+<p>Status: v1.1 runtime + conditional writes + secrets opt-in (syncSecrets default off). UX polish remains a follow-up.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-it-is">What it is<a href="#what-it-is" class="hash-link" aria-label="Direct link to What it is" title="Direct link to What it is">​</a></h2>
+<p>Bidirectional <strong>whole-blob</strong> sync of <code>AppConfig</code> to a fixed WebDAV object:</p>
+<p><code>{baseUrl}/linguist/linguist-config.json</code></p>
+<ul>
+<li>Dictionary / history stay local.</li>
+<li>Transport: GET / PUT / MKCOL + Basic auth (<code>WebDAVClient</code>).</li>
+<li>Decision: last-write-wins on <code>updatedAt</code> + extension-version gate (<code>configEnvelope</code>).</li>
+<li>Orchestration: background <code>WebDAVSyncManager</code> (startup / alarm / local write / manual).</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="layers">Layers<a href="#layers" class="hash-link" aria-label="Direct link to Layers" title="Direct link to Layers">​</a></h2>
+<table><thead><tr><th>Layer</th><th>Role</th></tr></thead><tbody><tr><td><code>src/lib/webdav/WebDAVClient.ts</code></td><td>Minimal WebDAV IO</td></tr><tr><td><code>src/lib/webdav/configEnvelope.ts</code></td><td>Envelope serialize/parse + <code>decideSyncAction</code></td></tr><tr><td><code>src/app/Background/WebDAVSyncManager/</code></td><td>Watch config, alarms, reconcile</td></tr><tr><td><code>src/requests/backend/sync/*</code></td><td>Status / sync now / test connection</td></tr><tr><td>Options + <code>sync.webdav.*</code></td><td>Enable + credentials UI</td></tr></tbody></table>
+<p>Local meta (not in envelope) lives in <code>storage.local</code> under <code>configSyncMeta</code>:</p>
+<ul>
+<li><code>lastLocalWriteAt</code>, <code>lastRemoteUpdatedAt</code>, <code>lastSyncAt</code></li>
+<li><code>lastError</code>, <code>lastDirection</code></li>
+<li><code>lastRemoteEtag</code> (conditional writes)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="envelope-v1">Envelope (v1)<a href="#envelope-v1" class="hash-link" aria-label="Direct link to Envelope (v1)" title="Direct link to Envelope (v1)">​</a></h2>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;version&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;updatedAt&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1730000000000</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;extensionVersion&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;7.0.x&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;config&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;...AppConfig...&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><br></span></code></pre></div></div>
+<p>Rules (<code>decideSyncAction</code>):</p>
+<ol>
+<li>Remote missing (404) → push (create).</li>
+<li><code>localExt &lt; remoteExt</code> → never push; may pull if remote newer and valid.</li>
+<li>Invalid remote config → never push over it (<code>skipIncompatibleRemote</code>).</li>
+<li>Else LWW on <code>updatedAt</code>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="known-gaps-review-summary">Known gaps (review summary)<a href="#known-gaps-review-summary" class="hash-link" aria-label="Direct link to Known gaps (review summary)" title="Direct link to Known gaps (review summary)">​</a></h2>
+<table><thead><tr><th>Sev</th><th>Issue</th><th>v1.1 stance</th></tr></thead><tbody><tr><td>High</td><td>Concurrent reconcile dropped mid-flight work</td><td><strong>Fixed</strong>: dirty flag + re-run</td></tr><tr><td>High</td><td><code>setTimeout</code> push debounce dies with MV3 SW</td><td><strong>Fixed</strong>: immediate reconcile while awake + one-shot alarm backstop</td></tr><tr><td>High</td><td>Unconditional PUT (lost update A/B)</td><td><strong>Fixed</strong>: ETag <code>If-Match</code> / create <code>If-None-Match: *</code>; 412 → re-reconcile</td></tr><tr><td>High</td><td>Full config includes secrets</td><td><strong>Fixed (PR C)</strong>: WebDAV url/username/password always local-only; <code>syncSecrets</code> (default off) only gates LLM API key</td></tr><tr><td>Med</td><td>Remote apply skips migrations</td><td>Keep decode-only; upgrade extension to recover</td></tr><tr><td>Med</td><td>Soft system config writes bump LWW clock</td><td>Follow-up (<code>set</code> source tag)</td></tr><tr><td>Med</td><td>Thin client (timeouts, test=GET only)</td><td>Timeouts added; <strong>Test stays GET-only</strong> (MKCOL probe falsely failed on existing folders)</td></tr><tr><td>Med</td><td>Manager untested</td><td><strong>Fixed</strong>: manager unit tests with mock client</td></tr><tr><td>Low</td><td>i18n / status UX / fixed path+interval</td><td>Follow-up</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="v11-runtime-contract">v1.1 runtime contract<a href="#v11-runtime-contract" class="hash-link" aria-label="Direct link to v1.1 runtime contract" title="Direct link to v1.1 runtime contract">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="single-flight--dirty">Single-flight + dirty<a href="#single-flight--dirty" class="hash-link" aria-label="Direct link to Single-flight + dirty" title="Direct link to Single-flight + dirty">​</a></h3>
+<ul>
+<li>At most one <code>runReconcile</code> in flight.</li>
+<li>If another trigger arrives while busy → set <code>dirtyWhileReconciling</code> and <strong>re-run after finish</strong>.</li>
+<li>Push always re-reads latest config + <code>lastLocalWriteAt</code> (no stale snapshot).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="local-write-path">Local write path<a href="#local-write-path" class="hash-link" aria-label="Direct link to Local write path" title="Direct link to Local write path">​</a></h3>
+<ol>
+<li>Always bump <code>lastLocalWriteAt</code> (even if sync disabled — preserves LWW once enabled).</li>
+<li>If configured:<!-- -->
+<ul>
+<li>Schedule one-shot push alarm (<code>webdav-config-push</code>, ~1 min) as <strong>MV3 reliability backstop</strong>.</li>
+<li>Best-effort <code>reconcile(&#x27;localWrite&#x27;)</code> immediately while the SW is awake.</li>
+</ul>
+</li>
+<li>Clear push alarm after a successful reconcile cycle.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="periodic-pull">Periodic pull<a href="#periodic-pull" class="hash-link" aria-label="Direct link to Periodic pull" title="Direct link to Periodic pull">​</a></h3>
+<ul>
+<li>Alarm <code>webdav-config-sync</code>, fixed <code>1440</code> minutes (unchanged).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="conditional-write">Conditional write<a href="#conditional-write" class="hash-link" aria-label="Direct link to Conditional write" title="Direct link to Conditional write">​</a></h3>
+<ul>
+<li>GET stores <code>ETag</code> in meta (<code>lastRemoteEtag</code>).</li>
+<li>Create (404 path): <code>PUT</code> with <code>If-None-Match: *</code>.</li>
+<li>Update: <code>PUT</code> with <code>If-Match: &lt;etag&gt;</code> when etag known; if server never gave an etag, unconditional PUT (degraded).</li>
+<li>HTTP 412 → treat as dirty remote, re-GET and re-decide (no blind overwrite).</li>
+<li>After pull/push success, refresh <code>lastRemoteEtag</code> from response when present.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="conflict-ux-minimal">Conflict UX (minimal)<a href="#conflict-ux-minimal" class="hash-link" aria-label="Direct link to Conflict UX (minimal)" title="Direct link to Conflict UX (minimal)">​</a></h3>
+<ul>
+<li>412 loops that still cannot decide cleanly surface <code>lastError</code> (user can Sync now / pull).</li>
+<li>No vector clocks / device ids in v1.1.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="follow-up-roadmap">Follow-up roadmap<a href="#follow-up-roadmap" class="hash-link" aria-label="Direct link to Follow-up roadmap" title="Direct link to Follow-up roadmap">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="pr-c--secrets-done">PR C — Secrets (done)<a href="#pr-c--secrets-done" class="hash-link" aria-label="Direct link to PR C — Secrets (done)" title="Direct link to PR C — Secrets (done)">​</a></h3>
+<ul>
+<li><code>sync.webdav.syncSecrets: boolean</code> default <code>false</code> (migration v20) — <strong>LLM API key only</strong>.</li>
+<li>WebDAV <strong>url + username + password are always local-only</strong> (never uploaded / never adopted from remote), even when syncSecrets is on.</li>
+<li><code>prepareConfigForPush</code> / <code>mergeRemoteConfig</code> in <code>src/lib/webdav/syncSecrets.ts</code>.</li>
+<li>Push without syncSecrets: empty API key on create; keep existing remote API key on update; always clear WebDAV connection fields (url/username/password).</li>
+<li>Pull: always keep local WebDAV connection; keep local API key when syncSecrets is off.</li>
+<li><code>syncSecrets</code> itself is a <strong>per-device policy</strong> — never adopted from remote on pull.</li>
+<li>Options checkbox + EN copy; threat model blurb in group description.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="pr-d--ux--client-polish">PR D — UX / client polish<a href="#pr-d--ux--client-polish" class="hash-link" aria-label="Direct link to PR D — UX / client polish" title="Direct link to PR D — UX / client polish">​</a></h3>
+<ul>
+<li>Timeouts already preferred on fetch; map 401 vs 403.</li>
+<li>Test connection should prove write ACL (not GET-only).</li>
+<li>Richer status: last remote vs local times, conflict CTA.</li>
+<li>Complete locales + <code>packages/locales/sample.json</code>.</li>
+<li>Optional: configurable relative path; faster pull interval.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="deferred">Deferred<a href="#deferred" class="hash-link" aria-label="Direct link to Deferred" title="Direct link to Deferred">​</a></h3>
+<ul>
+<li>Per-field CRDT, dictionary/history sync, OAuth WebDAV, encrypted blob, remote migration pipeline, multi-profile paths.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="testing">Testing<a href="#testing" class="hash-link" aria-label="Direct link to Testing" title="Direct link to Testing">​</a></h2>
+<ul>
+<li>Pure: <code>configEnvelope</code> decision + parse (existing).</li>
+<li>Client: URL join, auth header, conditional header plumbing.</li>
+<li>Manager (mock client + real <code>ObservableAsyncStorage</code> / <code>storage.local</code> meta):<!-- -->
+<ul>
+<li>dirty re-run after concurrent local write</li>
+<li><code>applyingRemote</code> does not echo push</li>
+<li>404 create with <code>If-None-Match: *</code></li>
+<li>local newer → conditional push</li>
+<li>remote newer → pull</li>
+<li>412 → second GET + re-decide</li>
+<li>older extension never pushes</li>
+<li>push alarm scheduled on local write</li>
+<li>WebDAV connection always stripped on push / retained on pull; LLM key gated by syncSecrets</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="threat-model-short">Threat model (short)<a href="#threat-model-short" class="hash-link" aria-label="Direct link to Threat model (short)" title="Direct link to Threat model (short)">​</a></h2>
+<ul>
+<li>Remote file is <strong>plaintext JSON</strong> on user-controlled WebDAV (same class as <code>storage.local</code> plaintext).</li>
+<li>Anyone with WebDAV read can see synced settings; with write can plant config.</li>
+<li>Default installs do <strong>not</strong> upload the LLM API key. WebDAV url/username/password never leave the device. With <code>syncSecrets</code> on, treat WebDAV ACL as the boundary for the LLM API key.</li>
+<li>Prefer app passwords; do not sync to shared/public collections.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="success-criteria-v11">Success criteria (v1.1)<a href="#success-criteria-v11" class="hash-link" aria-label="Direct link to Success criteria (v1.1)" title="Direct link to Success criteria (v1.1)">​</a></h2>
+<ol>
+<li>Rapid local edits during an in-flight sync → final remote matches final local.</li>
+<li>SW sleep after a settings write → push still lands via alarm backstop.</li>
+<li>Two devices push without etag match → 412 path re-GETs; no silent clobber when etags work.</li>
+<li>Manager tests cover single-flight, create, 412, and no pull→push loop.</li>
+<li>Push never includes WebDAV url/username/password; default <code>syncSecrets: false</code> → empty LLM API key on create; pull keeps local WebDAV connection + local API key.</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/dev/SelectionTranslateInfiniteLoader"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Selection translate: infinite loader (no LLM request)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-it-is" class="table-of-contents__link toc-highlight">What it is</a></li><li><a href="#layers" class="table-of-contents__link toc-highlight">Layers</a></li><li><a href="#envelope-v1" class="table-of-contents__link toc-highlight">Envelope (v1)</a></li><li><a href="#known-gaps-review-summary" class="table-of-contents__link toc-highlight">Known gaps (review summary)</a></li><li><a href="#v11-runtime-contract" class="table-of-contents__link toc-highlight">v1.1 runtime contract</a><ul><li><a href="#single-flight--dirty" class="table-of-contents__link toc-highlight">Single-flight + dirty</a></li><li><a href="#local-write-path" class="table-of-contents__link toc-highlight">Local write path</a></li><li><a href="#periodic-pull" class="table-of-contents__link toc-highlight">Periodic pull</a></li><li><a href="#conditional-write" class="table-of-contents__link toc-highlight">Conditional write</a></li><li><a href="#conflict-ux-minimal" class="table-of-contents__link toc-highlight">Conflict UX (minimal)</a></li></ul></li><li><a href="#follow-up-roadmap" class="table-of-contents__link toc-highlight">Follow-up roadmap</a><ul><li><a href="#pr-c--secrets-done" class="table-of-contents__link toc-highlight">PR C — Secrets (done)</a></li><li><a href="#pr-d--ux--client-polish" class="table-of-contents__link toc-highlight">PR D — UX / client polish</a></li><li><a href="#deferred" class="table-of-contents__link toc-highlight">Deferred</a></li></ul></li><li><a href="#testing" class="table-of-contents__link toc-highlight">Testing</a></li><li><a href="#threat-model-short" class="table-of-contents__link toc-highlight">Threat model (short)</a></li><li><a href="#success-criteria-v11" class="table-of-contents__link toc-highlight">Success criteria (v1.1)</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 PrimeBits. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
