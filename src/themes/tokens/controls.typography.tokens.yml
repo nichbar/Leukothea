@@ -1,7 +1,7 @@
 typography:
   controls:
     fontFamily:
-      value: Arial, Helvetica, sans-serif
+      value: 'system-ui, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif'
 
     border:
       radius:
