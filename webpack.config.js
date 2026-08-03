@@ -243,8 +243,16 @@ module.exports = {
 					publicPath: '/',
 				},
 			},
+			// Animated SVGs (e.g. Loader nyan cat) need raw markup so nested <style>/keyframes survive.
+			// SVGR + SVGO strip animation frames and prefix CSS selectors, which breaks them.
 			{
 				test: /\.svg$/,
+				resourceQuery: /raw/,
+				type: 'asset/source',
+			},
+			{
+				test: /\.svg$/,
+				resourceQuery: { not: [/raw/] },
 				use: ['@svgr/webpack'],
 			},
 			{

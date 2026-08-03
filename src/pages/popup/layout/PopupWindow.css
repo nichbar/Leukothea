@@ -91,7 +91,7 @@ body {
 	min-height: 200px;
 }
 
-.PopupWindow-Loader .Loader-Image {
-	width: 5rem;
-	height: 5rem;
+.PopupWindow-Loader > svg {
+	width: 8rem;
+	height: auto;
 }

@@ -5,19 +5,9 @@
 	justify-content: center;
 }
 
-.Loader-Image {
-	animation-name: loader-spin;
-	animation-duration: 0.8s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-@keyframes loader-spin {
-	from {
-		transform: rotate(0deg);
-	}
-
-	to {
-		transform: rotate(360deg);
-	}
+/* Nyan cat is wide (~2.87:1); size the inlined root <svg> */
+.Loader > svg {
+	width: 5rem;
+	height: auto;
+	display: block;
 }

@@ -29,7 +29,7 @@ body {
 	height: 100%;
 }
 
-.Page-Placeholder .Loader-Image {
-	width: 3rem;
-	height: 3rem;
+.Page-Placeholder .Loader > svg {
+	width: 6rem;
+	height: auto;
 }

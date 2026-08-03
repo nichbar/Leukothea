@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
 import { cn } from '@bem-react/classname';
 
-import SpinnerSVGElement from './Loader.assets/fidget_spinner.svg';
+// Raw SVG string: SVGR/SVGO strips nested animation styles/frames for this asset.
+import nyancatSvg from './Loader.assets/nyancat.svg?raw';
 
 import './Loader.css';
 
 export const cnLoader = cn('Loader');
 
-// TODO: use library spinner
 export const Loader: FC<{ className?: string }> = ({ className }) => {
 	return (
-		<div className={cnLoader('', {}, [className])}>
-			<SpinnerSVGElement className={cnLoader('Image')} viewBox="0 0 54 54" />
-		</div>
+		<div
+			className={cnLoader('', {}, [className])}
+			// Inline animated SVG (CSS keyframes + frame opacity cycle).
+			dangerouslySetInnerHTML={{ __html: nyancatSvg }}
+		/>
 	);
 };

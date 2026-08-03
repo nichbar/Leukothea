@@ -106,19 +106,17 @@
 	max-width: 100%;
 }
 
-/* Loader */
+/* Loader — no card chrome; just the animated icon */
 .TextTranslator-Loader {
-	padding: 0.25rem;
-	border: 1px solid var(--color-control-type-blank-border-color-base);
-	border-radius: var(--text-translator-popup-border-radius, 14px);
-	color: var(--color-typo-primary);
-	background: var(--text-translator-popup-fill-color, #fff);
-	box-shadow: var(--text-translator-popup-shadow, 0 4px 24px rgb(0 0 0 / 12%));
+	padding: 0;
+	border: none;
+	background: transparent;
+	box-shadow: none;
 }
 
-.TextTranslator-Loader .Loader-Image {
-	width: 2rem;
-	height: 2rem;
+.TextTranslator-Loader > svg {
+	width: 4.5rem;
+	height: auto;
 }
 
 /* Mobile density */
