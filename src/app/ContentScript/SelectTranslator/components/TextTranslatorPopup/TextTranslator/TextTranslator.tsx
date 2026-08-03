@@ -14,6 +14,7 @@ import { getTranslatorFeatures } from '../../../../../../requests/backend/getTra
 import { getUserLanguagePreferences } from '../../../../../../requests/backend/getUserLanguagePreferences';
 import { addTranslationHistoryEntry } from '../../../../../../requests/backend/history/addTranslationHistoryEntry';
 import { TRANSLATION_ORIGIN } from '../../../../../../requests/backend/history/constants';
+import { ping as pingBackend } from '../../../../../../requests/backend/ping';
 import { getAvailableTranslators } from '../../../../../../requests/backend/translators/getAvailableTranslators';
 
 import './TextTranslator.css';
@@ -126,6 +127,14 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 		setTranslatedText(null);
 
 		try {
+			// Wait for the MV3 service worker to finish registering handlers.
+			// Without this, getTranslatorFeatures/getConfig can resolve as
+			// `undefined` during SW wake and surface as "Invalid type".
+			const backgroundReady = await pingBackend({ timeout: 2000, delay: 50 });
+			if (!backgroundReady) {
+				throw new Error(getMessage('common_bgUnavailable'));
+			}
+
 			const { supportedLanguages, isSupportAutodetect } =
 				await getTranslatorFeatures();
 			const [userLanguage, config] = await Promise.all([

@@ -3,6 +3,10 @@ import * as t from 'io-ts';
 import { tryDecode } from '../../../lib/types';
 import { RequestHandlerFactory, RequestHandlerFactoryProps } from '../../types';
 
+import {
+	ensureBackgroundReady,
+	isMissingBackgroundResponse,
+} from '../ensureBackgroundReady';
 import { addRequestHandler, sendBackgroundRequest } from '..';
 
 type BackgroundOptions<O = any, R = any, C = RequestHandlerFactoryProps> = {
@@ -11,6 +15,14 @@ type BackgroundOptions<O = any, R = any, C = RequestHandlerFactoryProps> = {
 	requestValidator?: t.Type<O, O>;
 	responseValidator?: t.Type<R, R>;
 };
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+/**
+ * How many times to re-send when the SW returns `undefined` (no listener yet).
+ * First attempt is immediate; later attempts wait for `ping` readiness.
+ */
+const MISSING_RESPONSE_RETRY_LIMIT = 4;
 
 /**
  * Factory for building requests which ensure its types
@@ -29,6 +41,46 @@ export const buildBackendRequest = <O = void, R = void, C = RequestHandlerFactor
 		handler: (options: O) => Promise<R>;
 		filter?: (options: O) => boolean;
 	} | null = null;
+
+	const validateResponse = (response: unknown): R => {
+		if (responseValidator !== undefined) {
+			tryDecode(responseValidator, response, {
+				context: `backend:${endpoint}:response`,
+			});
+		}
+
+		return response as R;
+	};
+
+	/**
+	 * Remote path with SW wake/startup tolerance.
+	 * Chromium resolves sendMessage as `undefined` when the background has no
+	 * matching listener yet (migrations / handler registration still running).
+	 */
+	const sendRemoteRequest = async (options: O): Promise<R> => {
+		let response: unknown;
+
+		for (let attempt = 0; attempt < MISSING_RESPONSE_RETRY_LIMIT; attempt++) {
+			if (attempt > 0) {
+				// Don't recurse through buildBackendRequest('ping') — raw messenger only.
+				if (endpoint !== 'ping') {
+					await ensureBackgroundReady(1500, 40);
+				} else {
+					await sleep(40 * attempt);
+				}
+			}
+
+			response = await sendBackgroundRequest(endpoint, options);
+
+			// Successful payload (including legitimate null / false responses).
+			if (!isMissingBackgroundResponse(response)) {
+				return validateResponse(response);
+			}
+		}
+
+		// Exhausted retries — surface the same diagnostic as a hard validation miss.
+		return validateResponse(response);
+	};
 
 	const hook = (options: O) => {
 		// TODO: throw exceptions for attempts to call not ready handlers
@@ -59,15 +111,7 @@ export const buildBackendRequest = <O = void, R = void, C = RequestHandlerFactor
 			return preparedRequestHandler.handler(options);
 		}
 
-		// Send request
-		return sendBackgroundRequest(endpoint, options).then((response): R => {
-			// Validate request props
-			if (responseValidator !== undefined) {
-				tryDecode(responseValidator, response);
-			}
-
-			return response;
-		});
+		return sendRemoteRequest(options);
 	};
 
 	const factory: RequestHandlerFactory<C> = (factoryProps) => {
@@ -88,9 +132,11 @@ export const buildBackendRequest = <O = void, R = void, C = RequestHandlerFactor
 			}
 
 			return Promise.resolve().then(async () => {
-				// Validate request props
+				// Validate request payload before running the handler
 				if (requestValidator !== undefined) {
-					tryDecode(requestValidator, reqProps);
+					tryDecode(requestValidator, reqProps, {
+						context: `backend:${endpoint}:request`,
+					});
 				}
 
 				return requestHandler(reqProps);

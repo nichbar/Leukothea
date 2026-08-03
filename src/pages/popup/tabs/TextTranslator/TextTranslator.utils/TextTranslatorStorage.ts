@@ -41,7 +41,9 @@ export class TextTranslatorStorage {
 
 	public setData = async (data: TextTranslatorData) => {
 		// Verify data
-		tryDecode(storageSignature, data);
+		tryDecode(storageSignature, data, {
+			context: 'TextTranslatorStorage.setData',
+		});
 
 		const storeName = this.storeName;
 		await browser.storage.local.set({ [storeName]: data });

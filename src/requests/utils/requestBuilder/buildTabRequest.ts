@@ -25,9 +25,11 @@ export const buildTabRequest = <O = void, R = void>(
 ) => {
 	const hook = (tabId: number, options: O) =>
 		sendTabRequest(tabId, endpoint, options).then((response): R => {
-			// Validate request props
+			// Validate response payload from the tab content script
 			if (responseValidator !== undefined) {
-				tryDecode(responseValidator, response);
+				tryDecode(responseValidator, response, {
+					context: `tab:${endpoint}:response`,
+				});
 			}
 
 			return response;
@@ -37,9 +39,11 @@ export const buildTabRequest = <O = void, R = void>(
 		const handler = factoryHandler(factoryProps);
 
 		return addRequestHandler(endpoint, async (reqProps) => {
-			// Validate request props
+			// Validate request payload before running the handler
 			if (requestValidator !== undefined) {
-				tryDecode(requestValidator, reqProps);
+				tryDecode(requestValidator, reqProps, {
+					context: `tab:${endpoint}:request`,
+				});
 			}
 
 			return handler(reqProps);

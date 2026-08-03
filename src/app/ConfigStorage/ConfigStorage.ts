@@ -2,7 +2,7 @@ import { createEvent, createStore, Store } from 'effector';
 import browser from 'webextension-polyfill';
 
 import { updateNotEqualProps } from '../../lib/effector/reducers';
-import { decodeStruct } from '../../lib/types';
+import { decodeStruct, formatDecodeErrors } from '../../lib/types';
 import { AppConfig, AppConfigType } from '../../types/runtime';
 
 export interface AsyncStorage<T> {
@@ -31,7 +31,16 @@ export class ConfigStorage implements AsyncStorage<AppConfigType> {
 
 		const configCodec = decodeStruct(AppConfig, data);
 		if (configCodec.errors !== null) {
-			throw new Error('Invalid config');
+			const details = formatDecodeErrors(
+				configCodec.errors.map((error) => ({
+					key: error.key,
+					value: error.value,
+					typeName: error.type.name,
+					message: error.message,
+				})),
+			);
+			console.error('Invalid config', { data, errors: configCodec.errors });
+			throw new Error(`Invalid config: ${details}`);
 		}
 
 		return configCodec.data;
