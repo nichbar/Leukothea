@@ -1,0 +1,19 @@
+# Dark-mode overrides for app brand / surface colors
+color:
+  # Avoid pure black — softer charcoal page background
+  essential:
+    value: '#121212'
+    comment: 'background color'
+
+  project:
+    value: '#4d8cff'
+
+  typo:
+    primary:
+      value: '#fff'
+      comment: 'Primary color for all text'
+    secondary:
+      value: 'rgba(255, 255, 255, 0.65)'
+      comment: 'Used for descriptions'
+    alert:
+      value: '#ff6b6b'

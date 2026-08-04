@@ -105,6 +105,28 @@ export const generateTree = ({
 						],
 					},
 				},
+				{
+					title: getMessage('settings_option_themeMode'),
+					description: getMessage('settings_option_themeMode_desc'),
+					path: 'themeMode',
+					optionContent: {
+						type: 'SelectList',
+						options: [
+							{
+								id: 'auto',
+								content: getMessage('settings_option_themeMode_auto'),
+							},
+							{
+								id: 'light',
+								content: getMessage('settings_option_themeMode_light'),
+							},
+							{
+								id: 'dark',
+								content: getMessage('settings_option_themeMode_dark'),
+							},
+						],
+					},
+				},
 			],
 		},
 		{

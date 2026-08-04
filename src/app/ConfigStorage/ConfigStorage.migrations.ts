@@ -545,6 +545,30 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Add themeMode (light | dark | auto); default auto follows system preference
+		version: 21,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const themeMode = (actualData as { themeMode?: unknown }).themeMode;
+			const isValidThemeMode =
+				themeMode === 'light' || themeMode === 'dark' || themeMode === 'auto';
+
+			const updatedConfig = {
+				...actualData,
+				themeMode: isValidThemeMode ? themeMode : 'auto',
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

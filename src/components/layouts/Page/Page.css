@@ -5,6 +5,10 @@
 
 body {
 	margin: 0;
+
+	/* Inherit palette from theme classes on documentElement */
+	background-color: var(--color-essential, #fff);
+	color: var(--color-typo-primary, #000);
 }
 
 /* Page */

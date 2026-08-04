@@ -1,6 +1,7 @@
 {
 	"entry": {
-		"default": "./src/themes/default.theme.json"
+		"default": "./src/themes/default.theme.json",
+		"dark": "./src/themes/dark.theme.json"
 	},
 	"output": {
 		"css": {
@@ -13,7 +14,7 @@
 					"format": "css/variables",
 					"filter": "whitepaper/color",
 					"options": {
-						"selector": ".Theme_color_default"
+						"selector": ".Theme_color_[entry]"
 					}
 				},
 				{
@@ -21,7 +22,7 @@
 					"format": "css/variables",
 					"filter": "whitepaper/root",
 					"options": {
-						"selector": ".Theme_root_default"
+						"selector": ".Theme_root_[entry]"
 					}
 				}
 			]

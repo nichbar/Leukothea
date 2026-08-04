@@ -1,3 +1,7 @@
+// Import both palettes so shadow-DOM selection popup can switch classes.
+import '../../../../../themes/presets/dark/desktop';
+import '../../../../../themes/presets/default/desktop';
+
 import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { isKeyCode, Keys } from 'react-elegant-ui/esm/lib/keyboard';
 import { cn } from '@bem-react/classname';
@@ -5,8 +9,8 @@ import { cn } from '@bem-react/classname';
 import { Modal } from '../../../../../components/primitives/Modal/Modal.bundle/desktop';
 import { Popup } from '../../../../../components/primitives/Popup/Popup';
 import { isMobileBrowser } from '../../../../../lib/browser';
+import { getThemeByMode, ThemeMode } from '../../../../../lib/theme/themeMode';
 import LogoElement from '../../../../../res/logo-icon.svg';
-import { theme } from '../../../../../themes/presets/default/desktop';
 
 import {
 	TextTranslator,
@@ -31,6 +35,10 @@ export interface TextTranslatorPopupProps
 	 * Opacity of the selection TextTranslator popup card (0–1)
 	 */
 	opacity?: number;
+	/**
+	 * UI theme from app config (light / dark / auto)
+	 */
+	themeMode?: ThemeMode;
 
 	closeHandler: () => void;
 	/**
@@ -70,11 +78,13 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 	quickTranslate = false,
 	focusOnTranslateButton = false,
 	opacity = 0.95,
+	themeMode = 'auto',
 	closeHandler,
 	onTranslateEngage,
 	...props
 }) => {
 	const [translating, setTranslating] = useState(quickTranslate);
+	const theme = useMemo(() => getThemeByMode(themeMode), [themeMode]);
 
 	const isUnmount = useRef(false);
 	const autoCloseTimeout = useRef<number | null>(null);

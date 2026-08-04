@@ -77,6 +77,11 @@ export interface Options {
 	 */
 	opacity?: number;
 
+	/**
+	 * UI theme: light / dark / auto (system)
+	 */
+	themeMode?: 'light' | 'dark' | 'auto';
+
 	enableTranslateFromContextMenu?: boolean;
 }
 
@@ -110,6 +115,7 @@ export class SelectTranslator {
 		isUseAutoForDetectLang: true,
 		skipWhenSameAsUserLanguage: false,
 		opacity: 0.95,
+		themeMode: 'auto',
 		enableTranslateFromContextMenu: false,
 	};
 
@@ -429,6 +435,7 @@ export class SelectTranslator {
 			timeoutForHideButton,
 			focusOnTranslateButton,
 			opacity,
+			themeMode,
 			enableTranslateFromContextMenu,
 		} = this.options;
 
@@ -488,6 +495,7 @@ export class SelectTranslator {
 				}}
 				quickTranslate={immediateTranslate}
 				pageTitle={pageTitle}
+				themeMode={themeMode}
 				{...{
 					translate,
 					pageLanguage,

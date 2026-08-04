@@ -33,6 +33,9 @@ body {
 /* Logo */
 .PopupWindow-Logo {
 	display: inline-block;
+
+	/* Wordmark follows theme text color (paths use fill="currentColor") */
+	color: var(--color-typo-primary);
 }
 
 .PopupWindow-Logo svg {
@@ -40,6 +43,7 @@ body {
 	vertical-align: middle;
 	width: 80px;
 	height: auto;
+	fill: currentcolor;
 }
 
 /* HeaderMenu */

@@ -1,0 +1,24 @@
+# Dark surfaces for pages / selection popup that are hard-coded in light tokens
+textTranslatorPopup:
+  fillColor:
+    value: '#1c1c1e'
+  borderColor:
+    value: 'rgb(255 255 255 / 12%)'
+  shadow:
+    value: '0 4px 24px rgb(0 0 0 / 45%)'
+  scrollbarThumb:
+    value: 'rgb(255 255 255 / 22%)'
+  scrollbarThumbHover:
+    value: 'rgb(255 255 255 / 36%)'
+  scrollbarTrack:
+    value: 'transparent'
+
+optionsPage:
+  dialog:
+    fillColor:
+      value: '#2c2c2e'
+
+popupWindow:
+  header:
+    fillColor:
+      value: '#2c2c2e'

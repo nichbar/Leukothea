@@ -11,6 +11,7 @@ export class SelectTranslatorManager {
 		$state: Store<{
 			enabled: boolean;
 			config: AppConfigType['selectTranslator'];
+			themeMode: AppConfigType['themeMode'];
 			pageData: PageData;
 		}>,
 	) {
@@ -25,11 +26,12 @@ export class SelectTranslatorManager {
 
 	public start() {
 		// Manage text translation instance
-		this.$state.watch(({ config: preferences, pageData }) => {
+		this.$state.watch(({ config: preferences, themeMode, pageData }) => {
 			if (preferences.enabled) {
 				const { mode, ...restPreferences } = preferences;
 				const config = {
 					...restPreferences,
+					themeMode,
 					pageLanguage: pageData.language || undefined,
 					quickTranslate: mode === 'quickTranslate',
 					enableTranslateFromContextMenu: mode === 'contextMenu',

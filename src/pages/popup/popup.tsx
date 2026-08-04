@@ -2,15 +2,15 @@ import '../../polyfills/scrollfix';
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { configureRootTheme } from 'react-elegant-ui/esm/theme';
 
 import { isMobileBrowser } from '../../lib/browser';
 import { getMessage } from '../../lib/language';
+import { applyRootTheme } from '../../lib/theme/themeMode';
+import { useAppTheme } from '../../lib/theme/useAppTheme';
 import { getConfig } from '../../requests/backend/getConfig';
 import { getTranslatorFeatures } from '../../requests/backend/getTranslatorFeatures';
 import { ping as pingBackend } from '../../requests/backend/ping';
-// Resources
-import { theme } from '../../themes/presets/default/desktop';
+import { onAppConfigUpdated } from '../../requests/global/appConfigUpdate';
 import { AppConfigType } from '../../types/runtime';
 
 import { IPopupWindowTab, PopupWindow, TranslatorFeatures } from './layout/PopupWindow';
@@ -37,6 +37,9 @@ const PopupPage: FC<PopupPageProps> = ({ rootElement }) => {
 	const [translatorFeatures, setTranslatorFeatures] = useState<TranslatorFeatures>();
 
 	const [error, setError] = useState<string>();
+
+	// Apply light/dark/auto from config (and live updates from settings / sync)
+	useAppTheme(config?.themeMode);
 
 	const getTabsHash = useCallback(() => {
 		if (tabs === undefined) {
@@ -97,6 +100,8 @@ const PopupPage: FC<PopupPageProps> = ({ rootElement }) => {
 						: getMessage('message_unknownError'),
 				);
 			});
+
+		return onAppConfigUpdated(setConfig);
 	}, []);
 
 	// Update active tab
@@ -147,7 +152,8 @@ function renderPage() {
 	}
 }
 
-configureRootTheme({ theme, root: document.documentElement });
+// Immediate paint before config loads: follow system preference
+applyRootTheme('auto');
 
 // For universal render
 if (document.readyState == 'loading') {

@@ -43,6 +43,14 @@ export const AppConfig = type.type({
 	 * `null` keeps the normal detect / auto behavior.
 	 */
 	fixedSourceLanguage: type.union([type.null, LangCode]),
+	/**
+	 * UI color scheme: light, dark, or auto (follow system preference).
+	 */
+	themeMode: type.union([
+		StringLiteralType('light'),
+		StringLiteralType('dark'),
+		StringLiteralType('auto'),
+	]),
 	translatorModule: type.string,
 	ttsModule: type.string,
 	/**

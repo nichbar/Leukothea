@@ -67,6 +67,7 @@ export class PageTranslationContext {
 			({ config, translatorsState, pageData }) => ({
 				enabled: translatorsState.textTranslation,
 				config: config.selectTranslator,
+				themeMode: config.themeMode,
 				pageData,
 			}),
 		);

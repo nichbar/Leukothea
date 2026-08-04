@@ -625,5 +625,20 @@
 	},
 	"validation_positiveNumber": {
 		"message": "The parameter must be a positive number."
+	},
+	"settings_option_themeMode": {
+		"message": "Theme"
+	},
+	"settings_option_themeMode_desc": {
+		"message": "Choose light or dark appearance, or follow the system setting"
+	},
+	"settings_option_themeMode_auto": {
+		"message": "Auto (system)"
+	},
+	"settings_option_themeMode_light": {
+		"message": "Light"
+	},
+	"settings_option_themeMode_dark": {
+		"message": "Dark"
 	}
 }

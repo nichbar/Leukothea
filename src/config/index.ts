@@ -23,6 +23,8 @@ export const getDefaultConfig = (): AppConfigType => ({
 	language: getUserLanguage(),
 	// null = detect/auto; ISO 639-1 code = always translate from that language
 	fixedSourceLanguage: null,
+	// Follow OS / browser light-dark preference by default
+	themeMode: 'auto',
 	llmTranslator: {
 		apiKey: DEFAULT_LLM_API_KEY,
 		apiUrl: DEFAULT_LLM_API_URL,
