@@ -161,8 +161,11 @@ export class WebDAVClient {
 		const controller = new AbortController();
 		const timer = setTimeout(() => controller.abort(), this.fetchTimeoutMs);
 		try {
+			// Always bypass HTTP cache so reconcile never decides LWW from a stale envelope.
+			// `cache` is forced after `...init` so callers cannot accidentally re-enable caching.
 			return await fetch(url, {
 				...init,
+				cache: 'no-store',
 				signal: controller.signal,
 			});
 		} catch (error) {
@@ -183,7 +186,11 @@ export class WebDAVClient {
 	public async get(): Promise<WebDAVGetResult> {
 		const response = await this.fetchWithTimeout(this.resolveFileUrl(), {
 			method: 'GET',
-			headers: this.headers(),
+			// Extra cache-busting headers for intermediaries that ignore fetch `cache`.
+			headers: this.headers({
+				'Cache-Control': 'no-cache',
+				Pragma: 'no-cache',
+			}),
 		});
 		const bodyText = await response.text();
 		return {

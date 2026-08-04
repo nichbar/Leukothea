@@ -19,6 +19,7 @@ import { ObservableAsyncStorage } from '../../ConfigStorage/ConfigStorage';
 
 import {
 	bumpLocalWriteAt,
+	ConfigSyncDirection,
 	ConfigSyncMeta,
 	getConfigSyncMeta,
 	setConfigSyncMeta,
@@ -44,6 +45,15 @@ export const WEBDAV_PUSH_DEBOUNCE_MINUTES = 1;
 
 /** Cap dirty re-runs in one reconcile() call to avoid tight loops on flaky servers. */
 const MAX_DIRTY_RERUNS = 5;
+
+/**
+ * How recent a transfer's lastSyncAt must be for a trailing equal-clocks cycle to
+ * keep reporting it. chainTransferDirection already covers those in the same drain;
+ * this window covers a cycle in a *following* drain — e.g. saveChanges' local-write
+ * reconcile pulls, then the manual Sync now cycle finds equal clocks. Without it,
+ * the manual sync would report "already in sync" right after a real transfer.
+ */
+const TRAILING_NOOP_DIRECTION_WINDOW_MS = 30_000;
 
 export type WebDAVSyncStatus = ConfigSyncMeta & {
 	enabled: boolean;
@@ -76,6 +86,12 @@ export class WebDAVSyncManager {
 	private dirtyWhileReconciling = false;
 	/** Most recent trigger reason while a chain is active (used for dirty re-entry). */
 	private latestReconcileReason: ReconcileReason = 'manual';
+	/**
+	 * Successful push/pull inside the current drainReconcile loop.
+	 * Trailing noop cycles must not wipe this for status UI ("already in sync"
+	 * after a real transfer in the same Sync now / reconcile chain).
+	 */
+	private chainTransferDirection: 'push' | 'pull' | null = null;
 	private started = false;
 	private lastSettings: WebDAVSettings | null = null;
 	/** One-shot credentials for manual sync/test-aligned reconcile. */
@@ -323,6 +339,8 @@ export class WebDAVSyncManager {
 	}
 
 	private async drainReconcile(): Promise<void> {
+		// Reset per drain so a pure equal-clocks sync still reports "already in sync".
+		this.chainTransferDirection = null;
 		let reruns = 0;
 		while (this.dirtyWhileReconciling && reruns < MAX_DIRTY_RERUNS) {
 			this.dirtyWhileReconciling = false;
@@ -331,6 +349,28 @@ export class WebDAVSyncManager {
 			await this.runReconcile(cycleReason);
 			reruns += 1;
 		}
+	}
+
+	/**
+	 * lastDirection for a successful no-transfer cycle.
+	 *
+	 * Prefers the in-drain chainTransferDirection, then a transfer that completed in
+	 * an immediately-preceding reconcile (same Sync now / saveChanges operation) so a
+	 * trailing equal-clocks cycle does not wipe a real push/pull from status UI.
+	 */
+	private directionForSuccessfulNoop(meta: ConfigSyncMeta): ConfigSyncDirection {
+		if (this.chainTransferDirection != null) {
+			return this.chainTransferDirection;
+		}
+		const lastDirection = meta.lastDirection;
+		if (
+			(lastDirection === 'push' || lastDirection === 'pull') &&
+			meta.lastSyncAt != null &&
+			Date.now() - meta.lastSyncAt < TRAILING_NOOP_DIRECTION_WINDOW_MS
+		) {
+			return lastDirection;
+		}
+		return 'none';
 	}
 
 	private async runReconcile(_reason: ReconcileReason): Promise<void> {
@@ -443,7 +483,8 @@ export class WebDAVSyncManager {
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastSyncAt: Date.now(),
 				lastError: null,
-				lastDirection: 'none',
+				// Keep push/pull from an earlier cycle in this drain (trailing noop).
+				lastDirection: this.directionForSuccessfulNoop(meta),
 				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
 			await this.clearPushAlarm();
@@ -473,6 +514,7 @@ export class WebDAVSyncManager {
 		if (action === 'pull') {
 			try {
 				await this.applyRemote(remote.config, remote.updatedAt);
+				this.chainTransferDirection = 'pull';
 				await setConfigSyncMeta({
 					lastLocalWriteAt: remote.updatedAt,
 					lastRemoteUpdatedAt: remote.updatedAt,
@@ -510,6 +552,7 @@ export class WebDAVSyncManager {
 			const payload = prepareConfigForPush(latest, null);
 			const body = serializeEnvelope(payload, updatedAt, localExt);
 			const putResult = await client.put(body, { createOnly: true });
+			this.chainTransferDirection = 'push';
 			await setConfigSyncMeta({
 				lastRemoteUpdatedAt: updatedAt,
 				lastSyncAt: Date.now(),
@@ -551,6 +594,7 @@ export class WebDAVSyncManager {
 				// Only send If-Match when we have an etag; otherwise degrade to unconditional.
 				...(etag != null && etag !== '' ? { ifMatch: etag } : {}),
 			});
+			this.chainTransferDirection = 'push';
 			await setConfigSyncMeta({
 				lastRemoteUpdatedAt: updatedAt,
 				lastSyncAt: Date.now(),

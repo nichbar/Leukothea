@@ -91,6 +91,11 @@ Rules (`decideSyncAction`):
 - HTTP 412 → treat as dirty remote, re-GET and re-decide (no blind overwrite).
 - After pull/push success, refresh `lastRemoteEtag` from response when present.
 
+### Cache bypass + status direction
+
+- All WebDAV `fetch` calls use `cache: 'no-store'`; GET also sends `Cache-Control: no-cache` / `Pragma: no-cache` so LWW never decides from a stale envelope.
+- `lastDirection` for a successful equal-clocks (`noop`) cycle preserves a push/pull that already happened earlier in the same `drainReconcile` chain, so Sync now status is not wiped to "already in sync" by a trailing noop. A recent transfer in a **following** drain (e.g. saveChanges' local-write reconcile pulls, then the manual Sync now cycle noops) is also preserved within a short window (`TRAILING_NOOP_DIRECTION_WINDOW_MS`, 30s) so the manual sync does not report "already in sync" right after a real transfer.
+
 ### Conflict UX (minimal)
 
 - 412 loops that still cannot decide cleanly surface `lastError` (user can Sync now / pull).

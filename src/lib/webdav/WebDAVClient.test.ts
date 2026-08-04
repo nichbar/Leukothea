@@ -112,6 +112,42 @@ describe('WebDAVClient conditional headers', () => {
 		expect(result.etag).toBe('"abc123"');
 	});
 
+	test('get bypasses HTTP cache (no-store + no-cache headers)', async () => {
+		const fetchMock = vi.fn(async () => {
+			return new Response('{}', { status: 200, headers: { ETag: '"v1"' } });
+		});
+		vi.stubGlobal('fetch', fetchMock);
+
+		const client = new WebDAVClient(credentials);
+		await client.get();
+
+		expect(fetchMock).toHaveBeenCalledTimes(1);
+		const init = fetchMock.mock.calls[0]?.[1] as RequestInit;
+		expect(init.cache).toBe('no-store');
+		const headers = init.headers as Record<string, string>;
+		expect(headers['Cache-Control']).toBe('no-cache');
+		expect(headers.Pragma).toBe('no-cache');
+	});
+
+	test('put uses cache: no-store', async () => {
+		const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+			if (init?.method === 'MKCOL') {
+				return new Response(null, { status: 201 });
+			}
+			return new Response(null, { status: 204, headers: { ETag: '"new"' } });
+		});
+		vi.stubGlobal('fetch', fetchMock);
+
+		const client = new WebDAVClient(credentials);
+		await client.put('{"ok":true}', { ifMatch: '"old"' });
+
+		const putCall = fetchMock.mock.calls.find(
+			(call) => (call[1] as RequestInit | undefined)?.method === 'PUT',
+		);
+		expect(putCall).toBeDefined();
+		expect((putCall?.[1] as RequestInit).cache).toBe('no-store');
+	});
+
 	test('put sends If-Match when provided', async () => {
 		const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
 			if (init?.method === 'MKCOL') {

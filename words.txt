@@ -20,3 +20,6 @@ Webdav
 WEBDAV
 mkcol
 MKCOL
+nyan
+nyancat
+misdetected

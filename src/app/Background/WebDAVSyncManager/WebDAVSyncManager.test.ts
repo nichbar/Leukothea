@@ -414,6 +414,136 @@ describe('WebDAVSyncManager', () => {
 		expect(meta.lastError).toMatch(/validation|incompatible|failed/i);
 	});
 
+	test('equal clocks report already-in-sync direction none', async () => {
+		const local = configuredConfig();
+		local.language = 'en';
+		await storage.set(local);
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 3000,
+			lastRemoteUpdatedAt: 3000,
+		});
+
+		const remoteConfig = configuredConfig();
+		remoteConfig.language = 'en';
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeEnvelope(remoteConfig, 3000),
+			etag: '"same"',
+		});
+
+		const manager = createManager();
+		await manager.reconcile('manual');
+
+		expect(mockClient.put).not.toHaveBeenCalled();
+		const meta = await getConfigSyncMeta();
+		expect(meta.lastDirection).toBe('none');
+		expect(meta.lastError).toBeNull();
+		expect(meta.lastSyncAt).not.toBeNull();
+	});
+
+	test('trailing noop after pull keeps lastDirection pull', async () => {
+		const local = configuredConfig();
+		local.language = 'en';
+		await storage.set(local);
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+
+		const remoteConfig = configuredConfig();
+		remoteConfig.language = 'ja';
+
+		let getCount = 0;
+		mockClient.get.mockImplementation(async () => {
+			getCount += 1;
+			if (getCount === 1) {
+				return {
+					status: 200,
+					bodyText: makeEnvelope(remoteConfig, 3000),
+					etag: '"remote-new"',
+				};
+			}
+			// Second cycle in the same drain sees equal clocks after pull adopted remote.updatedAt.
+			return {
+				status: 200,
+				bodyText: makeEnvelope(remoteConfig, 3000),
+				etag: '"remote-new"',
+			};
+		});
+
+		const manager = createManager();
+		// Mark dirty during applyRemote's config.set so drainReconcile runs a trailing cycle.
+		const originalSet = storage.set.bind(storage);
+		let forcedDirty = false;
+		vi.spyOn(storage, 'set').mockImplementation(async (next) => {
+			const result = await originalSet(next);
+			if (!forcedDirty) {
+				forcedDirty = true;
+				// Concurrent reconcile while drain owns the lock → dirty flag + re-entry.
+				void manager.reconcile('localWrite');
+			}
+			return result;
+		});
+
+		await manager.reconcile('manual');
+
+		const applied = await storage.get();
+		expect(applied.language).toBe('ja');
+		expect(mockClient.put).not.toHaveBeenCalled();
+		expect(getCount).toBeGreaterThanOrEqual(2);
+
+		const meta = await getConfigSyncMeta();
+		// Trailing equal-clocks cycle must not wipe the pull transfer for status UI.
+		expect(meta.lastDirection).toBe('pull');
+		expect(meta.lastError).toBeNull();
+		expect(meta.lastLocalWriteAt).toBe(3000);
+	});
+
+	test('sequential reconcile after a pull keeps lastDirection pull (no wipe)', async () => {
+		// Remote (3000) is newer than local (1000). A preceding reconcile — e.g. the
+		// saveChanges-triggered localWrite sync that fires when "Sync now" saves first —
+		// pulls and advances the local clock to 3000. The manual Sync now then runs as a
+		// SEPARATE drain, sees equal clocks, and noops; it must keep reporting the pull
+		// from the same Sync-now operation instead of "already in sync".
+		const local = configuredConfig();
+		local.language = 'en';
+		await storage.set(local);
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+
+		const remoteConfig = configuredConfig();
+		remoteConfig.language = 'ja';
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeEnvelope(remoteConfig, 3000),
+			etag: '"remote-new"',
+		});
+
+		const manager = createManager();
+		// saveChanges wrote config → bumped the clock below remote and fired localWrite sync.
+		await setConfigSyncMeta({ lastLocalWriteAt: 2500 });
+		await (
+			manager as unknown as {
+				reconcile: (
+					r: 'startup' | 'alarm' | 'manual' | 'localWrite',
+				) => Promise<void>;
+			}
+		).reconcile('localWrite');
+
+		const status = await manager.syncNow();
+
+		const applied = await storage.get();
+		expect(applied.language).toBe('ja');
+		expect(status.lastDirection).toBe('pull');
+		expect(status.lastLocalWriteAt).toBe(3000);
+		expect(status.lastError).toBeNull();
+	});
+
 	test('legacy configSyncMeta without lastRemoteEtag still loads', async () => {
 		await browser.storage.local.set({
 			[CONFIG_SYNC_META_KEY]: {
