@@ -11,8 +11,10 @@ import { get, isEqual } from 'lodash';
 import { cn } from '@bem-react/classname';
 
 import { LayoutFlow } from '../../../components/layouts/LayoutFlow/LayoutFlow';
+import { ModalLayout } from '../../../components/layouts/ModalLayout/ModalLayout';
 import { Page } from '../../../components/layouts/Page/Page';
 import { Button } from '../../../components/primitives/Button/Button.bundle/universal';
+import { Modal } from '../../../components/primitives/Modal/Modal.bundle/desktop';
 import { ToastMessages } from '../../../components/primitives/ToastMessages/ToastMessages';
 import { useToastMessages } from '../../../components/primitives/ToastMessages/useToastMessages';
 import { isMobileBrowser } from '../../../lib/browser';
@@ -25,6 +27,7 @@ import { listLLMModels } from '../../../requests/backend/llm/listLLMModels';
 import { ping } from '../../../requests/backend/ping';
 import { resetConfig as resetConfigReq } from '../../../requests/backend/resetConfig';
 import { setConfig as setConfigReq } from '../../../requests/backend/setConfig';
+import { forcePushWebDAVRemote } from '../../../requests/backend/sync/forcePushWebDAVRemote';
 import { getWebDAVSyncStatus } from '../../../requests/backend/sync/getWebDAVSyncStatus';
 import { syncWebDAVNow as syncWebDAVNowReq } from '../../../requests/backend/sync/syncWebDAVNow';
 import { testWebDAVConnection } from '../../../requests/backend/sync/testWebDAVConnection';
@@ -76,6 +79,10 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 
 	const [webdavTestProcess, setWebdavTestProcess] = useState(false);
 	const [webdavSyncProcess, setWebdavSyncProcess] = useState(false);
+	const [webdavForcePushProcess, setWebdavForcePushProcess] = useState(false);
+	const [webdavCorruptDialogDetail, setWebdavCorruptDialogDetail] = useState<
+		string | null
+	>(null);
 	const [webdavStatusText, setWebdavStatusText] = useState(
 		getMessage('settings_option_syncWebdav_status_idle'),
 	);
@@ -247,6 +254,10 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		[],
 	);
 
+	const closeWebdavCorruptDialog = useCallback(() => {
+		setWebdavCorruptDialogDetail(null);
+	}, []);
+
 	const refreshWebDAVStatus = useCallback(async () => {
 		try {
 			const status = await getWebDAVSyncStatus();
@@ -321,7 +332,12 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 				// Same credential source as Test connection (form draft + saved).
 				const status = await syncWebDAVNowReq(getMergedWebDAVCredentials());
 				setWebdavStatusText(formatWebDAVStatus(status));
-				if (status.lastError) {
+				if (status.recovery === 'forcePushInvalidRemote') {
+					// Dialog is the primary surface for corrupt-remote recovery.
+					setWebdavCorruptDialogDetail(
+						status.lastError ?? 'Remote config failed AppConfig validation',
+					);
+				} else if (status.lastError) {
 					addMessage(
 						getMessage(
 							'settings_message_syncWebdav_sync_failed',
@@ -359,6 +375,47 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		handleError,
 		saveChanges,
 		updateConfig,
+	]);
+
+	const forcePushWebDAV = useCallback(() => {
+		setWebdavForcePushProcess(true);
+		(async () => {
+			try {
+				const status = await forcePushWebDAVRemote(getMergedWebDAVCredentials());
+				setWebdavStatusText(formatWebDAVStatus(status));
+				if (status.lastError) {
+					addMessage(
+						getMessage(
+							'settings_message_syncWebdav_forcePush_failed',
+							status.lastError,
+						),
+						'error',
+					);
+					// Keep dialog open when still recoverable so the user can retry.
+					if (status.recovery !== 'forcePushInvalidRemote') {
+						closeWebdavCorruptDialog();
+					} else if (status.lastError) {
+						setWebdavCorruptDialogDetail(status.lastError);
+					}
+				} else {
+					closeWebdavCorruptDialog();
+					addMessage(
+						getMessage('settings_message_syncWebdav_forcePush_success'),
+						'info',
+					);
+				}
+			} catch (error) {
+				handleError(error);
+			} finally {
+				setWebdavForcePushProcess(false);
+			}
+		})();
+	}, [
+		addMessage,
+		closeWebdavCorruptDialog,
+		formatWebDAVStatus,
+		getMergedWebDAVCredentials,
+		handleError,
 	]);
 
 	const getMergedLlmCredentials = useCallback(() => {
@@ -621,6 +678,80 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 						}}
 						updateConfig={updateConfig}
 					/>
+					<Modal
+						visible={webdavCorruptDialogDetail != null}
+						onClose={closeWebdavCorruptDialog}
+						scope={windowsStackRef}
+						preventBodyScroll
+					>
+						<div className={cnOptionsPage('WebdavCorruptDialog')}>
+							<ModalLayout
+								title={getMessage(
+									'settings_dialog_syncWebdav_corruptRemote_title',
+								)}
+								footer={[
+									<Button
+										key="force"
+										view="action"
+										disabled={webdavForcePushProcess}
+										onPress={forcePushWebDAV}
+									>
+										{getMessage(
+											'settings_dialog_syncWebdav_corruptRemote_forcePush',
+										)}
+									</Button>,
+									<Button
+										key="cancel"
+										disabled={webdavForcePushProcess}
+										onPress={closeWebdavCorruptDialog}
+									>
+										{getMessage(
+											'settings_dialog_syncWebdav_corruptRemote_cancel',
+										)}
+									</Button>,
+								]}
+							>
+								<LayoutFlow direction="vertical" indent="m">
+									<p className={cnOptionsPage('WebdavCorruptIntro')}>
+										{getMessage(
+											'settings_dialog_syncWebdav_corruptRemote_intro',
+										)}
+									</p>
+									<div
+										className={cnOptionsPage(
+											'WebdavCorruptBlockedBy',
+										)}
+									>
+										<div
+											className={cnOptionsPage(
+												'WebdavCorruptBlockedByLabel',
+											)}
+										>
+											{getMessage(
+												'settings_dialog_syncWebdav_corruptRemote_blockedBy',
+											)}
+										</div>
+										<pre
+											className={cnOptionsPage(
+												'WebdavCorruptBlockedByDetail',
+											)}
+										>
+											{webdavCorruptDialogDetail ?? ''}
+										</pre>
+									</div>
+									<p
+										className={cnOptionsPage(
+											'WebdavCorruptForcePushWarning',
+										)}
+									>
+										{getMessage(
+											'settings_dialog_syncWebdav_corruptRemote_forcePushWarning',
+										)}
+									</p>
+								</LayoutFlow>
+							</ModalLayout>
+						</div>
+					</Modal>
 				</OptionsModalsContext.Provider>
 			</div>
 		</Page>

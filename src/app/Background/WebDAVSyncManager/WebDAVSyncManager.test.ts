@@ -412,6 +412,97 @@ describe('WebDAVSyncManager', () => {
 		expect(mockClient.put).not.toHaveBeenCalled();
 		const meta = await getConfigSyncMeta();
 		expect(meta.lastError).toMatch(/validation|incompatible|failed/i);
+		expect(meta.recovery).toBe('forcePushInvalidRemote');
+	});
+
+	test('forcePushRemote overwrites invalid remote with local envelope', async () => {
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 5000,
+			recovery: 'forcePushInvalidRemote',
+			lastError: 'Remote config failed AppConfig validation',
+			lastRemoteEtag: '"bad"',
+		});
+		const invalidBody =
+			'{"version":1,"updatedAt":1,"extensionVersion":"7.0.12","config":{}}';
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: invalidBody,
+			etag: '"bad"',
+		});
+		mockClient.put.mockResolvedValue({ etag: '"forced"' });
+
+		const manager = createManager();
+		const status = await manager.forcePushRemote();
+
+		expect(mockClient.put).toHaveBeenCalledTimes(1);
+		expect(mockClient.put.mock.calls[0]?.[1]).toMatchObject({ ifMatch: '"bad"' });
+		const putBody = mockClient.put.mock.calls[0]?.[0] as string;
+		const putParsed = JSON.parse(putBody) as ConfigEnvelope;
+		expect(putParsed.config).toBeDefined();
+		expect(putParsed.updatedAt).toBe(5000);
+
+		expect(status.lastError).toBeNull();
+		expect(status.recovery).toBeNull();
+		expect(status.lastDirection).toBe('push');
+		expect(status.lastRemoteEtag).toBe('"forced"');
+	});
+
+	test('forcePushRemote aborts when remote is readable again', async () => {
+		const remoteConfig = configuredConfig();
+		remoteConfig.language = 'de';
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 1000,
+			recovery: 'forcePushInvalidRemote',
+			lastError: 'Remote config failed AppConfig validation',
+		});
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeEnvelope(remoteConfig, 9000),
+			etag: '"ok"',
+		});
+
+		const manager = createManager();
+		const status = await manager.forcePushRemote();
+
+		expect(mockClient.put).not.toHaveBeenCalled();
+		expect(status.lastError).toMatch(/readable again|Sync now/i);
+		expect(status.recovery).toBeNull();
+	});
+
+	test('forcePushRemote retries once after 412 when remote still invalid', async () => {
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 4000,
+			recovery: 'forcePushInvalidRemote',
+		});
+		const invalidBody =
+			'{"version":1,"updatedAt":1,"extensionVersion":"7.0.12","config":{}}';
+		mockClient.get
+			.mockResolvedValueOnce({
+				status: 200,
+				bodyText: invalidBody,
+				etag: '"e1"',
+			})
+			.mockResolvedValueOnce({
+				status: 200,
+				bodyText: invalidBody,
+				etag: '"e2"',
+			});
+		mockClient.put
+			.mockRejectedValueOnce(new WebDAVPreconditionFailedError('stale'))
+			.mockResolvedValueOnce({ etag: '"e3"' });
+
+		const manager = createManager();
+		const status = await manager.forcePushRemote();
+
+		expect(mockClient.get).toHaveBeenCalledTimes(2);
+		expect(mockClient.put).toHaveBeenCalledTimes(2);
+		expect(mockClient.put.mock.calls[1]?.[1]).toMatchObject({ ifMatch: '"e2"' });
+		expect(status.lastError).toBeNull();
+		expect(status.recovery).toBeNull();
+		expect(status.lastDirection).toBe('push');
 	});
 
 	test('equal clocks report already-in-sync direction none', async () => {

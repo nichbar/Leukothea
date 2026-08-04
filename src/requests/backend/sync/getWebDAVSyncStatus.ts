@@ -1,27 +1,11 @@
-import { type } from '../../../lib/types';
 import { buildBackendRequest } from '../../utils/requestBuilder';
 
-const SyncStatusCodec = type.type({
-	lastLocalWriteAt: type.number,
-	lastRemoteUpdatedAt: type.number,
-	lastSyncAt: type.union([type.number, type.null]),
-	lastError: type.union([type.string, type.null]),
-	lastDirection: type.union([
-		type.literal('push'),
-		type.literal('pull'),
-		type.literal('none'),
-		type.null,
-	]),
-	lastRemoteEtag: type.union([type.string, type.null]),
-	enabled: type.boolean,
-	url: type.string,
-	path: type.string,
-});
+import { WebDAVSyncStatusCodec } from './webdavSyncStatusCodec';
 
 export const [getWebDAVSyncStatusFactory, getWebDAVSyncStatus] = buildBackendRequest(
 	'getWebDAVSyncStatus',
 	{
-		responseValidator: SyncStatusCodec,
+		responseValidator: WebDAVSyncStatusCodec,
 		factoryHandler:
 			({ backgroundContext }) =>
 			async () => {

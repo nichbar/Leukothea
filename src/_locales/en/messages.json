@@ -723,6 +723,36 @@
 	"settings_message_syncWebdav_save_required": {
 		"message": "Save settings before syncing (fix validation failed)."
 	},
+	"settings_dialog_syncWebdav_corruptRemote_title": {
+		"message": "Sync blocked"
+	},
+	"settings_dialog_syncWebdav_corruptRemote_intro": {
+		"message": "This device cannot read the remote settings file, so sync cannot pull or safely update it."
+	},
+	"settings_dialog_syncWebdav_corruptRemote_blockedBy": {
+		"message": "What is blocking sync"
+	},
+	"settings_dialog_syncWebdav_corruptRemote_forcePushWarning": {
+		"message": "Force push replaces the remote file with this device’s settings. Settings that exist only on the remote (or on other devices that have not synced yet) may be lost. If the remote was written by a newer extension version, upgrade this install instead when possible."
+	},
+	"settings_dialog_syncWebdav_corruptRemote_forcePush": {
+		"message": "Force push"
+	},
+	"settings_dialog_syncWebdav_corruptRemote_cancel": {
+		"message": "Cancel"
+	},
+	"settings_message_syncWebdav_forcePush_success": {
+		"message": "Remote config replaced with this device’s settings"
+	},
+	"settings_message_syncWebdav_forcePush_failed": {
+		"message": "Force push failed: $1",
+		"placeholders": {
+			"error": {
+				"content": "$1",
+				"example": "HTTP 403"
+			}
+		}
+	},
 	"settings_section_popup": {
 		"message": "Popup"
 	},

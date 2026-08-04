@@ -6,6 +6,9 @@ export const CONFIG_SYNC_META_KEY = 'configSyncMeta';
 
 export type ConfigSyncDirection = 'push' | 'pull' | 'none';
 
+/** Manual recovery action the Options UI may offer after a failed sync. */
+export type ConfigSyncRecovery = 'forcePushInvalidRemote';
+
 export type ConfigSyncMeta = {
 	lastLocalWriteAt: number;
 	lastRemoteUpdatedAt: number;
@@ -14,6 +17,12 @@ export type ConfigSyncMeta = {
 	lastDirection: ConfigSyncDirection | null;
 	/** Last known remote ETag for conditional PUT (null if unknown / unsupported). */
 	lastRemoteEtag: string | null;
+	/**
+	 * When set, Options may offer a recovery action (e.g. force-push over a
+	 * remote envelope that failed AppConfig validation). Cleared on success
+	 * and on non-recovery errors.
+	 */
+	recovery: ConfigSyncRecovery | null;
 };
 
 const ConfigSyncMetaCodec = type.type({
@@ -29,6 +38,8 @@ const ConfigSyncMetaCodec = type.type({
 	]),
 	// Optional in stored blobs for forward-compat with meta written before etag support.
 	lastRemoteEtag: type.union([type.string, type.null]),
+	// Optional for meta written before recovery UX.
+	recovery: type.union([type.literal('forcePushInvalidRemote'), type.null]),
 });
 
 export const defaultConfigSyncMeta = (): ConfigSyncMeta => ({
@@ -38,6 +49,7 @@ export const defaultConfigSyncMeta = (): ConfigSyncMeta => ({
 	lastError: null,
 	lastDirection: null,
 	lastRemoteEtag: null,
+	recovery: null,
 });
 
 export const getConfigSyncMeta = async (): Promise<ConfigSyncMeta> => {

@@ -3,8 +3,12 @@ import { buildBackendRequest } from '../../utils/requestBuilder';
 
 import { WebDAVSyncStatusCodec } from './webdavSyncStatusCodec';
 
-export const [syncWebDAVNowFactory, syncWebDAVNow] = buildBackendRequest(
-	'syncWebDAVNow',
+/**
+ * Manually overwrite a remote config that failed AppConfig validation.
+ * Does not run automatic LWW reconcile — only Options recovery "Force push".
+ */
+export const [forcePushWebDAVRemoteFactory, forcePushWebDAVRemote] = buildBackendRequest(
+	'forcePushWebDAVRemote',
 	{
 		requestValidator: type.partial({
 			url: type.string,
@@ -16,7 +20,7 @@ export const [syncWebDAVNowFactory, syncWebDAVNow] = buildBackendRequest(
 			({ backgroundContext }) =>
 			async (credentials) => {
 				const manager = backgroundContext.getWebDAVSyncManager();
-				return manager.syncNow(credentials);
+				return manager.forcePushRemote(credentials);
 			},
 	},
 );

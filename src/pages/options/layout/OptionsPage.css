@@ -79,6 +79,46 @@
 	max-height: 20rem;
 }
 
+/* WebDAV corrupt-remote recovery dialog */
+.OptionsPage-WebdavCorruptDialog {
+	box-sizing: border-box;
+	width: min(100vw - 2rem, 26rem);
+	max-width: 26rem;
+}
+
+.OptionsPage-WebdavCorruptIntro,
+.OptionsPage-WebdavCorruptForcePushWarning {
+	margin: 0;
+	line-height: 1.45;
+	overflow-wrap: anywhere;
+}
+
+.OptionsPage-WebdavCorruptForcePushWarning {
+	opacity: 0.85;
+	font-size: 0.95em;
+}
+
+.OptionsPage-WebdavCorruptBlockedBy {
+	border-radius: var(--typography-layout-border-radius);
+	padding: var(--typography-layout-indent-m-all);
+	background: var(--options-page-dialog-fill-color, #e6e6e6);
+}
+
+.OptionsPage-WebdavCorruptBlockedByLabel {
+	font-weight: 600;
+	margin-bottom: 0.4rem;
+}
+
+.OptionsPage-WebdavCorruptBlockedByDetail {
+	margin: 0;
+	padding: 0;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: 0.85em;
+	line-height: 1.4;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
 .OptionsPage .Textarea-Control {
 	position: absolute;
 }

@@ -22,7 +22,7 @@ Bidirectional **whole-blob** sync of `AppConfig` to a fixed WebDAV object:
 | `src/lib/webdav/WebDAVClient.ts` | Minimal WebDAV IO |
 | `src/lib/webdav/configEnvelope.ts` | Envelope serialize/parse + `decideSyncAction` |
 | `src/app/Background/WebDAVSyncManager/` | Watch config, alarms, reconcile |
-| `src/requests/backend/sync/*` | Status / sync now / test connection |
+| `src/requests/backend/sync/*` | Status / sync now / force push / test connection |
 | Options + `sync.webdav.*` | Enable + credentials UI |
 
 Local meta (not in envelope) lives in `storage.local` under `configSyncMeta`:
@@ -30,6 +30,7 @@ Local meta (not in envelope) lives in `storage.local` under `configSyncMeta`:
 - `lastLocalWriteAt`, `lastRemoteUpdatedAt`, `lastSyncAt`
 - `lastError`, `lastDirection`
 - `lastRemoteEtag` (conditional writes)
+- `recovery` (`null` | `forcePushInvalidRemote`) — Options recovery CTA
 
 ## Envelope (v1)
 
@@ -46,8 +47,22 @@ Rules (`decideSyncAction`):
 
 1. Remote missing (404) → push (create).
 2. `localExt < remoteExt` → never push; may pull if remote newer and valid.
-3. Invalid remote config → never push over it (`skipIncompatibleRemote`).
+3. Invalid remote config → never **auto**-push over it (`skipIncompatibleRemote`).
 4. Else LWW on `updatedAt`.
+
+### Invalid / corrupt remote recovery
+
+Automatic reconcile **never** overwrites an unreadable envelope. Meta records:
+
+- `lastError` — parse/validation detail (e.g. `Remote config failed AppConfig validation`)
+- `recovery: 'forcePushInvalidRemote'` — Options may offer manual recovery
+
+Options **Sync now** opens a dialog when `recovery === 'forcePushInvalidRemote'`. The user can:
+
+- **Cancel** — leave remote unchanged; status keeps the error.
+- **Force push** — `forcePushWebDAVRemote` re-GETs, aborts if the remote is readable again (use Sync now for LWW), otherwise conditional PUT of local config (`prepareConfigForPush` / create-style secrets). One 412 retry with a fresh GET.
+
+Request: `src/requests/backend/sync/forcePushWebDAVRemote.ts`.
 
 ## Known gaps (review summary)
 
@@ -137,6 +152,8 @@ Rules (`decideSyncAction`):
   - remote newer → pull
   - 412 → second GET + re-decide
   - older extension never pushes
+  - invalid remote never auto-overwritten; sets `recovery`
+  - force push overwrites invalid remote; aborts if remote becomes valid
   - push alarm scheduled on local write
   - WebDAV connection always stripped on push / retained on pull; LLM key gated by syncSecrets
 

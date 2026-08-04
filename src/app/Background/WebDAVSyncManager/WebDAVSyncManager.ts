@@ -167,9 +167,6 @@ export class WebDAVSyncManager {
 	}
 
 	/**
-	 * Force a reconcile cycle (manual Sync now / test path).
-	 */
-	/**
 	 * Force a reconcile cycle. Optional credentials override uses the same source
 	 * as "Test connection" (form values) so Sync now cannot diverge after save.
 	 */
@@ -179,6 +176,22 @@ export class WebDAVSyncManager {
 		this.credentialsOverride = override ?? null;
 		try {
 			await this.reconcile('manual');
+			return this.getStatus();
+		} finally {
+			this.credentialsOverride = null;
+		}
+	}
+
+	/**
+	 * Manually overwrite a remote envelope that failed AppConfig validation.
+	 * Never used by automatic reconcile — only Options "Force push" recovery.
+	 */
+	public async forcePushRemote(
+		override?: Partial<WebDAVCredentials>,
+	): Promise<WebDAVSyncStatus> {
+		this.credentialsOverride = override ?? null;
+		try {
+			await this.runForcePushRemote();
 			return this.getStatus();
 		} finally {
 			this.credentialsOverride = null;
@@ -383,6 +396,7 @@ export class WebDAVSyncManager {
 				lastError:
 					'Sync is not configured. Enable WebDAV sync, set a base URL, and save settings first.',
 				lastDirection: 'none',
+				recovery: null,
 			});
 			return;
 		}
@@ -408,7 +422,11 @@ export class WebDAVSyncManager {
 			getResult = await client.get();
 		} catch (error) {
 			const message = error instanceof Error ? error.message : 'WebDAV GET failed';
-			await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+			await setConfigSyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
 			return;
 		}
 
@@ -428,6 +446,7 @@ export class WebDAVSyncManager {
 			await setConfigSyncMeta({
 				lastError: detail,
 				lastDirection: 'none',
+				recovery: null,
 			});
 			return;
 		}
@@ -439,7 +458,7 @@ export class WebDAVSyncManager {
 
 		const parsed = parseEnvelope(getResult.bodyText);
 
-		// Unreadable / invalid envelope — never push over it
+		// Unreadable / invalid envelope — never auto-push; offer manual force push
 		if (!parsed.ok) {
 			const remoteExt = parsed.extensionVersion;
 			const remoteUpdatedAt = parsed.updatedAt ?? null;
@@ -460,6 +479,7 @@ export class WebDAVSyncManager {
 			await setConfigSyncMeta({
 				lastError: message,
 				lastDirection: 'none',
+				recovery: 'forcePushInvalidRemote',
 				...(remoteUpdatedAt != null
 					? { lastRemoteUpdatedAt: remoteUpdatedAt }
 					: {}),
@@ -483,6 +503,7 @@ export class WebDAVSyncManager {
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastSyncAt: Date.now(),
 				lastError: null,
+				recovery: null,
 				// Keep push/pull from an earlier cycle in this drain (trailing noop).
 				lastDirection: this.directionForSuccessfulNoop(meta),
 				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
@@ -496,6 +517,7 @@ export class WebDAVSyncManager {
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastError: `Remote config was written by a newer extension (${remote.extensionVersion}); upgrade this install to sync.`,
 				lastDirection: 'none',
+				recovery: null,
 				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
 			return;
@@ -506,6 +528,7 @@ export class WebDAVSyncManager {
 				lastRemoteUpdatedAt: remote.updatedAt,
 				lastError: 'Remote config is incompatible with this extension version',
 				lastDirection: 'none',
+				recovery: null,
 				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 			});
 			return;
@@ -521,6 +544,7 @@ export class WebDAVSyncManager {
 					lastSyncAt: Date.now(),
 					lastError: null,
 					lastDirection: 'pull',
+					recovery: null,
 					...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 				});
 				await this.clearPushAlarm();
@@ -529,7 +553,11 @@ export class WebDAVSyncManager {
 					error instanceof Error
 						? error.message
 						: 'Failed to apply remote config';
-				await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+				await setConfigSyncMeta({
+					lastError: message,
+					lastDirection: 'none',
+					recovery: null,
+				});
 			}
 			return;
 		}
@@ -541,6 +569,141 @@ export class WebDAVSyncManager {
 				getResult.etag ?? meta.lastRemoteEtag,
 				remote.config,
 			);
+		}
+	}
+
+	/**
+	 * Safety re-GET then conditional PUT of local config over an invalid remote.
+	 * Aborts if the remote is readable again (user should Sync now for LWW).
+	 */
+	private async runForcePushRemote(): Promise<void> {
+		const config = await this.config.get();
+		const settings = config.sync.webdav;
+
+		if (!isConfigured(settings)) {
+			await setConfigSyncMeta({
+				lastError:
+					'Sync is not configured. Enable WebDAV sync, set a base URL, and save settings first.',
+				lastDirection: 'none',
+				recovery: null,
+			});
+			return;
+		}
+
+		const override = this.credentialsOverride;
+		const client = this.createClient({
+			url: (override?.url ?? settings.url).trim(),
+			username: (override?.username ?? settings.username).trim(),
+			password: (override?.password ?? settings.password).replace(/[\r\n]+$/g, ''),
+			path: WEBDAV_CONFIG_PATH,
+		});
+
+		const localExt = browser.runtime.getManifest().version;
+		let meta = await getConfigSyncMeta();
+		if (!meta.lastLocalWriteAt) {
+			meta = await bumpLocalWriteAt(Date.now());
+		}
+
+		const tryForceOnce = async (
+			etag: string | null,
+		): Promise<'done' | 'retry412'> => {
+			let getResult: { status: number; bodyText: string; etag: string | null };
+			try {
+				getResult = await client.get();
+			} catch (error) {
+				const message =
+					error instanceof Error ? error.message : 'WebDAV GET failed';
+				await setConfigSyncMeta({
+					lastError: message,
+					lastDirection: 'none',
+					recovery: null,
+				});
+				return 'done';
+			}
+
+			if (getResult.status === 404) {
+				// Nothing to recover — normal create path is fine
+				await this.pushCreate(client, localExt);
+				return 'done';
+			}
+
+			if (getResult.status < 200 || getResult.status >= 300) {
+				const detail =
+					getResult.status === 401
+						? 'WebDAV GET failed: 401 Unauthorized. Check username/password (or app password).'
+						: getResult.status === 403
+							? 'WebDAV GET failed: 403 Forbidden. Authenticated but not allowed to read this path.'
+							: `WebDAV GET failed: HTTP ${getResult.status}`;
+				await setConfigSyncMeta({
+					lastError: detail,
+					lastDirection: 'none',
+					recovery: null,
+				});
+				return 'done';
+			}
+
+			const effectiveEtag = getResult.etag ?? etag;
+			if (getResult.etag != null) {
+				await setConfigSyncMeta({ lastRemoteEtag: getResult.etag });
+			}
+
+			const parsed = parseEnvelope(getResult.bodyText);
+			if (parsed.ok) {
+				await setConfigSyncMeta({
+					lastError:
+						'Remote config is readable again. Use Sync now instead of force push.',
+					lastDirection: 'none',
+					recovery: null,
+					lastRemoteUpdatedAt: parsed.envelope.updatedAt,
+					...(effectiveEtag != null ? { lastRemoteEtag: effectiveEtag } : {}),
+				});
+				return 'done';
+			}
+
+			// Still invalid — overwrite with local (create-style payload; no remote secrets to preserve)
+			try {
+				meta = await getConfigSyncMeta();
+				const updatedAt = meta.lastLocalWriteAt || Date.now();
+				const latest = await this.config.get();
+				const payload = prepareConfigForPush(latest, null);
+				const body = serializeEnvelope(payload, updatedAt, localExt);
+				const putResult = await client.put(body, {
+					...(effectiveEtag != null && effectiveEtag !== ''
+						? { ifMatch: effectiveEtag }
+						: {}),
+				});
+				this.chainTransferDirection = 'push';
+				await setConfigSyncMeta({
+					lastRemoteUpdatedAt: updatedAt,
+					lastSyncAt: Date.now(),
+					lastError: null,
+					lastDirection: 'push',
+					recovery: null,
+					lastRemoteEtag: putResult.etag ?? effectiveEtag,
+				});
+				await this.clearPushAlarm();
+				return 'done';
+			} catch (error) {
+				if (error instanceof WebDAVPreconditionFailedError) {
+					await setConfigSyncMeta({ lastRemoteEtag: null });
+					return 'retry412';
+				}
+				const message =
+					error instanceof Error ? error.message : 'WebDAV PUT failed';
+				await setConfigSyncMeta({
+					lastError: message,
+					lastDirection: 'none',
+					// Keep recovery so the user can try force push again
+					recovery: 'forcePushInvalidRemote',
+				});
+				return 'done';
+			}
+		};
+
+		// One 412 retry: re-GET; if still invalid, force with new etag; if valid, abort.
+		const first = await tryForceOnce(meta.lastRemoteEtag);
+		if (first === 'retry412') {
+			await tryForceOnce(null);
 		}
 	}
 
@@ -558,6 +721,7 @@ export class WebDAVSyncManager {
 				lastSyncAt: Date.now(),
 				lastError: null,
 				lastDirection: 'push',
+				recovery: null,
 				lastRemoteEtag: putResult.etag ?? null,
 			});
 			await this.clearPushAlarm();
@@ -568,12 +732,17 @@ export class WebDAVSyncManager {
 				await setConfigSyncMeta({
 					lastError: 'Remote file appeared during create; retrying',
 					lastDirection: 'none',
+					recovery: null,
 				});
 				return;
 			}
 			const message =
 				error instanceof Error ? error.message : 'WebDAV PUT (create) failed';
-			await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+			await setConfigSyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
 		}
 	}
 
@@ -600,6 +769,7 @@ export class WebDAVSyncManager {
 				lastSyncAt: Date.now(),
 				lastError: null,
 				lastDirection: 'push',
+				recovery: null,
 				lastRemoteEtag: putResult.etag ?? etag,
 			});
 			await this.clearPushAlarm();
@@ -611,12 +781,17 @@ export class WebDAVSyncManager {
 					lastError:
 						'Remote config changed on another device (precondition failed); retrying',
 					lastDirection: 'none',
+					recovery: null,
 					lastRemoteEtag: null,
 				});
 				return;
 			}
 			const message = error instanceof Error ? error.message : 'WebDAV PUT failed';
-			await setConfigSyncMeta({ lastError: message, lastDirection: 'none' });
+			await setConfigSyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
 		}
 	}
 
