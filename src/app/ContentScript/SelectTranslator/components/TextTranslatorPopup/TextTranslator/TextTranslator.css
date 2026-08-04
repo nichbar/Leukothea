@@ -41,7 +41,9 @@
 	max-height: 400px;
 	overflow-y: auto;
 	font-size: var(--typography-layout-size-s-font-size);
-	white-space: pre-line;
+
+	/* Whitespace is owned by SimpleMarkdown (paragraphs / list items / <br>) */
+	white-space: normal;
 	line-height: 1.35rem;
 
 	/* Firefox: thin bar with soft thumb matching popup chrome */

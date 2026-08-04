@@ -7,6 +7,7 @@ import { Button } from '../../../../../../components/primitives/Button/Button.bu
 import { Loader } from '../../../../../../components/primitives/Loader/Loader';
 import { isMobileBrowser } from '../../../../../../lib/browser';
 import { detectLanguage, getMessage } from '../../../../../../lib/language';
+import { SimpleMarkdown } from '../../../../../../lib/simpleMarkdown/SimpleMarkdown';
 import { getTranslatorProviderName } from '../../../../../../lib/translators/getTranslatorProviderName';
 import { TranslatorFeatures } from '../../../../../../pages/popup/layout/PopupWindow';
 import { getConfig } from '../../../../../../requests/backend/getConfig';
@@ -353,53 +354,47 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 	// closes the popup, and source/target languages come from settings.
 	// Show the error card even when init never reached translatorFeatures, so a
 	// hung background request is not stuck on the Loader forever.
-	if (translatedText !== null || error !== null) {
+	if (translatedText !== null) {
 		return (
 			<div className={cnTextTranslator({ mobile: isMobile })}>
-				{error === null ? (
-					<>
-						<div className={cnTextTranslator('Main')}>
-							<div className={cnTextTranslator('Body')}>
-								{translatedText}
-							</div>
-						</div>
+				<div className={cnTextTranslator('Main')}>
+					<div className={cnTextTranslator('Body')}>
+						<SimpleMarkdown text={translatedText} />
+					</div>
+				</div>
 
-						{providerName && (
-							<div className={cnTextTranslator('Footer')}>
-								<span
-									className={cnTextTranslator('Provider')}
-									title={providerName}
-								>
-									{getMessage('inlineTranslator_translatedBy', [
-										providerName,
-									])}
-								</span>
-							</div>
-						)}
-					</>
-				) : (
-					<>
-						<div className={cnTextTranslator('Body', { error: true })}>
-							{error}
-						</div>
-						<div className={cnTextTranslator('ErrorActions')}>
-							<Button view="action" onPress={handleRetry}>
-								{getMessage('common_retry')}
-							</Button>
-						</div>
-						{providerName && (
-							<div className={cnTextTranslator('Footer')}>
-								<span
-									className={cnTextTranslator('Provider')}
-									title={providerName}
-								>
-									{getMessage('inlineTranslator_translatedBy', [
-										providerName,
-									])}
-								</span>
-							</div>
-						)}
-					</>
+				{providerName && (
+					<div className={cnTextTranslator('Footer')}>
+						<span
+							className={cnTextTranslator('Provider')}
+							title={providerName}
+						>
+							{getMessage('inlineTranslator_translatedBy', [providerName])}
+						</span>
+					</div>
+				)}
+			</div>
+		);
+	}
+
+	if (error !== null) {
+		return (
+			<div className={cnTextTranslator({ mobile: isMobile })}>
+				<div className={cnTextTranslator('Body', { error: true })}>{error}</div>
+				<div className={cnTextTranslator('ErrorActions')}>
+					<Button view="action" onPress={handleRetry}>
+						{getMessage('common_retry')}
+					</Button>
+				</div>
+				{providerName && (
+					<div className={cnTextTranslator('Footer')}>
+						<span
+							className={cnTextTranslator('Provider')}
+							title={providerName}
+						>
+							{getMessage('inlineTranslator_translatedBy', [providerName])}
+						</span>
+					</div>
 				)}
 			</div>
 		);

@@ -1,0 +1,31 @@
+.SimpleMarkdown {
+	min-width: 0;
+}
+
+.SimpleMarkdown-Paragraph {
+	margin: 0;
+}
+
+.SimpleMarkdown-Paragraph + .SimpleMarkdown-Paragraph,
+.SimpleMarkdown-Paragraph + .SimpleMarkdown-List,
+.SimpleMarkdown-List + .SimpleMarkdown-Paragraph,
+.SimpleMarkdown-List + .SimpleMarkdown-List {
+	margin-top: 0.5em;
+}
+
+.SimpleMarkdown-List {
+	margin: 0;
+	padding-left: 1.25em;
+}
+
+.SimpleMarkdown-List li + li {
+	margin-top: 0.15em;
+}
+
+.SimpleMarkdown strong {
+	font-weight: 600;
+}
+
+.SimpleMarkdown em {
+	font-style: italic;
+}
