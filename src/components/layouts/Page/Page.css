@@ -11,6 +11,19 @@ body {
 	color: var(--color-typo-primary, #000);
 }
 
+/* Override UA link colors so dark mode stays readable */
+a {
+	color: var(--color-link-base);
+}
+
+a:visited {
+	color: var(--color-link-base);
+}
+
+a:hover {
+	color: var(--color-link-hover);
+}
+
 /* Page */
 .Page-Body {
 	max-width: 800px;

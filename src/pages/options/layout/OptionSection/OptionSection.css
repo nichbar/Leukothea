@@ -46,7 +46,7 @@
 
 	/* Highlight option body */
 	.OptionsPage-OptionSection_changed .OptionsPage-OptionContainer::before {
-		background: #f2f5ff;
+		background: var(--color-fill-color-selection);
 		display: block;
 		content: '';
 		width: 100%;
@@ -72,7 +72,7 @@
 @media (width >= 600px) {
 	/* Highlight whole option section */
 	.OptionsPage-OptionSection_changed::before {
-		background: #f2f5ff;
+		background: var(--color-fill-color-selection);
 		display: block;
 		content: '';
 		width: 100%;

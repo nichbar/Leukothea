@@ -2,11 +2,17 @@
 color:
   # Avoid pure black — softer charcoal page background
   essential:
-    value: '#121212'
+    value: '#202020'
     comment: 'background color'
 
   project:
     value: '#4d8cff'
+
+  # UI-kit lightens project for selection; that yields near-white and
+  # makes white text unreadable. Use a translucent project tint instead.
+  fillColor:
+    selection:
+      value: 'color({color.project.value} a(22%))'
 
   typo:
     primary:

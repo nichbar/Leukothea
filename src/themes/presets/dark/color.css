@@ -1,6 +1,6 @@
 .Theme_color_dark {
 	--color-base: #fff; /* base content color on which depend color of text, icons, etc */
-	--color-essential: #121212; /* background color */
+	--color-essential: #202020; /* background color */
 	--color-project: #4d8cff; /* project color for accents such as a action view */
 	--color-phantom: #000; /* toning color on which depend borders, translucent typography, etc */
 	--color-path: #327cff; /* base color for link */
@@ -10,21 +10,21 @@
 	--color-fill-color-inverse: #fff;
 	--color-fill-color-overlay: rgb(255 255 255 / 30%);
 	--color-fill-color-action: rgb(153 189 255);
-	--color-fill-color-selection: rgb(235 242 255);
+	--color-fill-color-selection: rgb(77 140 255 / 22%);
 	--color-fill-color-hover: rgb(255 255 255 / 15%);
 	--color-fill-color-border: rgb(0 0 0 / 5%);
 	--color-fill-color-outline: #fff;
 	--color-fill-color-stripe: rgb(0 0 0 / 4%);
 	--color-fill-color-ghost: rgb(0 0 0 / 8%);
-	--color-fill-color-default: #121212;
+	--color-fill-color-default: #202020;
 	--color-fill-color-tone: rgb(0 0 0 / 90%);
-	--color-fill-color-soft: rgb(18 18 18 / 97%);
+	--color-fill-color-soft: rgb(32 32 32 / 97%);
 	--color-fill-color-success: #00985f;
 	--color-fill-color-alert: #f00;
 	--color-fill-color-warning: #f90;
 	--color-fill-color-link: rgb(131 187 246 / 40%);
 	--color-typo-primary: #fff; /* Primary color for all text */
-	--color-typo-inverse: #121212; /* contrast to primary color */
+	--color-typo-inverse: #202020; /* contrast to primary color */
 	--color-typo-secondary: rgb(255 255 255 / 65%); /* Used for descriptions */
 	--color-typo-ghost: rgb(255 255 255 / 30%); /* color of the additional text */
 	--color-typo-disabled: rgb(
@@ -78,17 +78,17 @@
 	--color-control-type-input-border-color-disabled: rgb(38 38 38);
 	--color-control-type-input-typo-base: #fff;
 	--color-control-type-input-typo-disabled: rgb(153 153 153);
-	--color-control-type-pseudo-fill-color-base: #121212;
+	--color-control-type-pseudo-fill-color-base: #202020;
 	--color-control-type-pseudo-fill-color-hover: rgb(51 51 51);
 	--color-control-type-pseudo-border-color-base: rgb(51 51 51);
-	--color-control-type-passive-fill-color-base: #121212;
-	--color-control-type-blank-fill-color-base: #121212;
-	--color-control-type-blank-fill-color-hover: #121212;
+	--color-control-type-passive-fill-color-base: #202020;
+	--color-control-type-blank-fill-color-base: #202020;
+	--color-control-type-blank-fill-color-hover: #202020;
 	--color-control-type-blank-fill-color-disabled: rgb(38 38 38);
 	--color-control-type-blank-border-color-base: rgb(102 102 102);
 	--color-control-type-blank-border-color-hover: rgb(128 128 128);
 	--color-control-type-blank-border-color-disabled: rgb(38 38 38);
-	--color-control-type-faint-fill-color-base: #121212;
+	--color-control-type-faint-fill-color-base: #202020;
 	--color-control-type-faint-fill-color-disabled: rgb(199 199 199);
 	--color-control-type-link-fill-color-base: #327cff;
 	--color-control-type-link-fill-color-hover: rgb(50 124 255 / 30%);
@@ -113,7 +113,7 @@
 	--button-view-clear-typo-color-disabled: rgb(153 153 153);
 	--button-view-pseudo-outline-color: #fff;
 	--button-view-pseudo-border-color-base: rgb(51 51 51);
-	--button-view-pseudo-fill-color-base: #121212;
+	--button-view-pseudo-fill-color-base: #202020;
 	--button-view-pseudo-fill-color-disabled: rgb(38 38 38);
 	--button-view-pseudo-fill-color-hovered: rgb(51 51 51);
 	--button-view-pseudo-typo-color-base: #fff;
@@ -149,10 +149,10 @@
 	--menu-view-action-item-typo-color-hover: #fff;
 	--menu-view-action-item-typo-color-disabled: rgb(153 153 153);
 	--menu-view-action-item-fill-color-hover: rgb(117 165 255);
-	--modal-view-default-fill-color: #121212;
+	--modal-view-default-fill-color: #202020;
 	--modal-view-default-overlay-fill-color: rgb(255 255 255 / 30%);
 	--popup-view-default-typo-color: #fff;
-	--popup-view-default-fill-color: #121212;
+	--popup-view-default-fill-color: #202020;
 	--popup-view-default-border-color-shadow: rgb(153 153 153 / 20%);
 	--select-fill-color-base: rgb(64 64 64);
 	--spinner-view-primitive-border-color-active: #4d8cff;
@@ -160,7 +160,7 @@
 	--tabsmenu-view-default-outline-color: #fff;
 	--tabsmenu-view-default-border-color-base: rgb(51 51 51);
 	--tabsmenu-view-default-border-color-active: rgb(117 165 255);
-	--tabsmenu-view-default-fill-color-base: #121212;
+	--tabsmenu-view-default-fill-color-base: #202020;
 	--tabsmenu-view-default-fill-color-hover: rgb(51 51 51);
 	--tabsmenu-view-default-fill-color-disabled: rgb(38 38 38);
 	--tabsmenu-view-default-typo-color-base: #fff;
@@ -199,7 +199,7 @@
 	--text-translator-popup-scrollbar-thumb-hover: rgb(255 255 255 / 36%);
 	--text-translator-popup-scrollbar-track: transparent;
 	--toast-messages-message-type-info-fill-color: rgb(128 172 255);
-	--toast-messages-message-type-info-typo-color: #121212;
+	--toast-messages-message-type-info-typo-color: #202020;
 	--toast-messages-message-type-error-fill-color: rgb(255 102 102);
 	--toast-messages-message-type-error-typo-color: #fff;
 	--options-page-section-active-border-color: #4d8cff;
