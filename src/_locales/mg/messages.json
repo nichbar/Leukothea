@@ -111,7 +111,7 @@
 		"message": "Fandikan-teny pejy web, fandikan-teny lahatsoratra, rakibolana, tantara, mpandika manokana, izay rehetra ilainao hanapaka ny sakana amin'ny fiteny"
 	},
 	"ext_name": {
-		"message": "Linguist - mpandika pejy web"
+		"message": "Leukothea - mpandika pejy web"
 	},
 	"history_control_selectEntry": {
 		"message": "Misafidiana fandikan-teny ho an'ny hetsika betsaka",
@@ -498,7 +498,7 @@
 		"message": "Fitantanana ny module fanamboarana feo"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Afaka manampy module fanamboarana feo ianao izay mampiasa ny serivisy sy motera feo tianao indrindra. Vakio bebe kokoa ao amin'ny <slot id=docs>antontan-taratasy TTS manokana</slot>"
+		"message": "Afaka manampy module fanamboarana feo ianao izay mampiasa ny serivisy sy motera feo tianao indrindra."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module TTS voafantina"

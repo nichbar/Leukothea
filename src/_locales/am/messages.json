@@ -111,7 +111,7 @@
 		"message": "የድህረ ገጽ ትርጉም፣ የጽሑፍ ትርጉም፣ መዝገበ ቃላት፣ ታሪክ፣ ብጁ ተርጓሚዎች፣ የቋንቋ እንቅስቃሴዎችን ለማስቀረት ያስፈልጋቸው ሁሉ"
 	},
 	"ext_name": {
-		"message": "Linguist - የድህረ ገጽ ተርጓሚ"
+		"message": "Leukothea - የድህረ ገጽ ተርጓሚ"
 	},
 	"history_control_selectEntry": {
 		"message": "ለብዙ እርምጃ ትርጉም ይምረጡ",
@@ -498,7 +498,7 @@
 		"message": "የድምጽ አሰምራሚ ሞጁሎችን መከላከል"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "የተወደዳችሁን አገልግሎቶች እና ድምጽ ሞተሮች የሚጠቀሙ የድምጽ አሰምራሚ ሞጁሎችን ማከል ይችላሉ። በ<slot id=docs>የተለየ የTTS ሰነድ</slot> ውስጥ ተጨማሪ ያንብቡ"
+		"message": "የተወደዳችሁን አገልግሎቶች እና ድምጽ ሞተሮች የሚጠቀሙ የድምጽ አሰምራሚ ሞጁሎችን ማከል ይችላሉ።"
 	},
 	"settings_option_ttsModule": {
 		"message": "የተመረጠ የTTS ሞጁል"

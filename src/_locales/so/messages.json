@@ -111,7 +111,7 @@
 		"message": "Tarjumaadda bogga webka, tarjumaadda qoraalka, qaamuus, taariikh, turjumaad gaar ah, dhammaan waxaad u baahan tahay inaad jebiso caqabadaha luqadda"
 	},
 	"ext_name": {
-		"message": "Linguist - turjumaadda bogga webka"
+		"message": "Leukothea - turjumaadda bogga webka"
 	},
 	"history_control_selectEntry": {
 		"message": "Dooro tarjumaadda ficilka ballaaran",
@@ -498,7 +498,7 @@
 		"message": "Maareynta qaybaha habaynta hadalka"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Waxaad ku dari kartaa qaybaha habaynta hadalka ee adeegyada aad jeceshahay iyo matoorada codka. Akhri wax badan oo ku saabsan <slot id=docs>dukumentiga TTS ee gaarka ah</slot>"
+		"message": "Waxaad ku dari kartaa qaybaha habaynta hadalka ee adeegyada aad jeceshahay iyo matoorada codka."
 	},
 	"settings_option_ttsModule": {
 		"message": "Qaybta TTS ee la doortay"

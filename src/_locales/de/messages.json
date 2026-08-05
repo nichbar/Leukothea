@@ -111,7 +111,7 @@
 		"message": "Webseitenübersetzung, Textübersetzung, Wörterbuch, Verlauf, benutzerdefinierte Übersetzer, alles, was Sie brauchen, um Sprachbarrieren zu überwinden"
 	},
 	"ext_name": {
-		"message": "Linguist - Webseitenübersetzer"
+		"message": "Leukothea - Webseitenübersetzer"
 	},
 	"history_control_selectEntry": {
 		"message": "Übersetzung für Massenaktion auswählen",
@@ -498,7 +498,7 @@
 		"message": "Verwaltung von Sprachsynthesemodulen"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Sie können Sprachsynthesemodule hinzufügen, die Ihre bevorzugten Dienste und Sprach-Engines verwenden. Lesen Sie mehr in der <slot id=docs>benutzerdefinierten TTS-Dokumentation</slot>"
+		"message": "Sie können Sprachsynthesemodule hinzufügen, die Ihre bevorzugten Dienste und Sprach-Engines verwenden."
 	},
 	"settings_option_ttsModule": {
 		"message": "Ausgewähltes TTS-Modul"

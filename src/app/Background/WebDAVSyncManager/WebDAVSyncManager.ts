@@ -76,7 +76,7 @@ const isConfigured = (settings: WebDAVSettings): boolean =>
 /**
  * Bidirectional WebDAV sync of full AppConfig (last-write-wins + extension version gate).
  *
- * See docs/dev/WebDAVSync.md for the runtime contract (dirty re-run, alarms, conditional PUT).
+ * Runtime contract: dirty re-run, alarms, conditional PUT (last-write-wins).
  */
 export class WebDAVSyncManager {
 	private readonly config: ObservableAsyncStorage<AppConfigType>;

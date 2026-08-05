@@ -111,7 +111,7 @@
 		"message": "Webpagina vertaling, tekstvertaling, woordenboek, geschiedenis, aangepaste vertalers, alles wat je nodig hebt om taalbarrières te doorbreken"
 	},
 	"ext_name": {
-		"message": "Linguist - webpagina vertaler"
+		"message": "Leukothea - webpagina vertaler"
 	},
 	"history_control_selectEntry": {
 		"message": "Vertaling kiezen voor bulkactie",
@@ -498,7 +498,7 @@
 		"message": "Beheren van spraaksynthesemodules"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "U kunt spraaksynthesemodules toevoegen die uw favoriete diensten en stemengines gebruiken. Lees meer in de <slot id=docs>documentatie voor aangepaste TTS</slot>"
+		"message": "U kunt spraaksynthesemodules toevoegen die uw favoriete diensten en stemengines gebruiken."
 	},
 	"settings_option_ttsModule": {
 		"message": "Geselecteerde TTS-module"

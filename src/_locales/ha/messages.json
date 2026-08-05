@@ -111,7 +111,7 @@
 		"message": "Fassarar shafin yanar gizo, fassarar rubutu, ƙamus, tarihi, masu fassara na al'ada, duk abin da kuke buƙata don karya shingen harshe"
 	},
 	"ext_name": {
-		"message": "Linguist - mai fassara shafin yanar gizo"
+		"message": "Leukothea - mai fassara shafin yanar gizo"
 	},
 	"history_control_selectEntry": {
 		"message": "Zaɓi fassarar don aikin taro",
@@ -498,7 +498,7 @@
 		"message": "Gudanar da tsarin ƙirƙirar magana"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Kuna iya ƙara tsarin ƙirƙirar magana waɗanda ke amfani da sabis da injunan murya da kuka fi so. Karanta ƙarin a cikin <slot id=docs>takaddun TTS na musamman</slot>"
+		"message": "Kuna iya ƙara tsarin ƙirƙirar magana waɗanda ke amfani da sabis da injunan murya da kuka fi so."
 	},
 	"settings_option_ttsModule": {
 		"message": "Zaɓaɓɓen tsarin TTS"

@@ -111,7 +111,7 @@
 		"message": "Guhindura urupapuro rwa interineti, guhindura inyandiko, umusogongero, amateka, abahinduzi b'inyandiko bwite, byose ukeneye ngo usimbure inzitizi z'ururimi"
 	},
 	"ext_name": {
-		"message": "Linguist - umusemuzi w'urupapuro rwa interineti"
+		"message": "Leukothea - umusemuzi w'urupapuro rwa interineti"
 	},
 	"history_control_selectEntry": {
 		"message": "Hitamo guhindura ku gikorwa rusange",
@@ -498,7 +498,7 @@
 		"message": "Gucunga ibyiciro byo gukora amajwi"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Urashobora kongera ibyiciro byo gukora amajwi bikoresha serivisi ukunda n'ibikoresho by'amajwi. Soma byinshi muri <slot id=docs>inyandiko yihariye ya TTS</slot>"
+		"message": "Urashobora kongera ibyiciro byo gukora amajwi bikoresha serivisi ukunda n'ibikoresho by'amajwi."
 	},
 	"settings_option_ttsModule": {
 		"message": "Icyiciro cya TTS cyatoranijwe"

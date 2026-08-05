@@ -115,7 +115,7 @@
 		"message": "Web page translation, text translation, dictionary, history, custom translators, all you need to break language barriers"
 	},
 	"ext_name": {
-		"message": "Linguist - web page translator"
+		"message": "Leukothea - web page translator"
 	},
 	"history_control_selectEntry": {
 		"message": "Pick translation for bulk action",
@@ -578,7 +578,7 @@
 		"message": "Managing speech synthesis modules"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "You can add speech synthesis modules that use your favorite services and voice engines. Read more in the <slot id=docs>custom TTS documentation</slot>"
+		"message": "You can add speech synthesis modules that use your favorite services and voice engines."
 	},
 	"settings_option_ttsModule": {
 		"message": "Selected TTS module"

@@ -1,6 +1,6 @@
 version: "3"
 services:
-  linguist:
+  leukothea:
     user: node
     build:
       context: .

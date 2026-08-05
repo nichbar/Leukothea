@@ -111,7 +111,7 @@
 		"message": "Traducere pagini web, traducere text, dicționar, istoric, traducători personalizați, tot ce ai nevoie pentru a depăși barierele lingvistice"
 	},
 	"ext_name": {
-		"message": "Linguist - traducător de pagini web"
+		"message": "Leukothea - traducător de pagini web"
 	},
 	"history_control_selectEntry": {
 		"message": "Alege traducerea pentru acțiune în masă",
@@ -498,7 +498,7 @@
 		"message": "Gestionarea modulelor de sinteză vocală"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Puteți adăuga module de sinteză vocală care utilizează serviciile și motoarele vocale preferate. Citiți mai multe în <slot id=docs>documentația TTS personalizată</slot>"
+		"message": "Puteți adăuga module de sinteză vocală care utilizează serviciile și motoarele vocale preferate."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modul TTS selectat"

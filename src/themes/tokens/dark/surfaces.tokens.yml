@@ -22,3 +22,11 @@ popupWindow:
   header:
     fillColor:
       value: '#2c2c2e'
+
+# Elevated card surface on #202020 page background
+translationCard:
+  borderColor:
+    value: 'rgb(255 255 255 / 12%)'
+  textContainer:
+    fillColor:
+      value: '#2c2c2e'

@@ -1,0 +1,7 @@
+# Card chrome for history / dictionary translation entries
+translationCard:
+  borderColor:
+    value: '#eeeeee'
+  textContainer:
+    fillColor:
+      value: '#eeeeee'

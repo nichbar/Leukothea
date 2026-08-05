@@ -111,7 +111,7 @@
 		"message": "Terjemahan halaman web, terjemahan teks, kamus, riwayat, penerjemah kustom, semua yang Anda butuhkan untuk mengatasi hambatan bahasa"
 	},
 	"ext_name": {
-		"message": "Linguist - penerjemah halaman web"
+		"message": "Leukothea - penerjemah halaman web"
 	},
 	"history_control_selectEntry": {
 		"message": "Pilih terjemahan untuk tindakan massal",
@@ -498,7 +498,7 @@
 		"message": "Mengelola modul sintesis suara"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Anda dapat menambahkan modul sintesis suara yang menggunakan layanan dan mesin suara favorit Anda. Baca lebih lanjut di <slot id=docs>dokumentasi TTS kustom</slot>"
+		"message": "Anda dapat menambahkan modul sintesis suara yang menggunakan layanan dan mesin suara favorit Anda."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modul TTS yang dipilih"

@@ -111,7 +111,7 @@
 		"message": "Kumasulira masamba a pa intaneti, kumasulira mawu, dikishonale, mbiri, omasulira makonda, zonse zomwe mukufuna kuthyola zopinga za chilankhulo"
 	},
 	"ext_name": {
-		"message": "Linguist - womasulira masamba a pa intaneti"
+		"message": "Leukothea - womasulira masamba a pa intaneti"
 	},
 	"history_control_selectEntry": {
 		"message": "Kusankha kumasulira kwa zochita zambiri",
@@ -498,7 +498,7 @@
 		"message": "Kuwongolera ma module a synthesis a mawu"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Mutha kuwonjezera ma module a synthesis a mawu omwe amagwiritsa ntchito mautumiki ndi ma injini a mawu omwe mumakonda. Werengani zambiri mu <slot id=docs>zolemba za TTS mwamakonda</slot>"
+		"message": "Mutha kuwonjezera ma module a synthesis a mawu omwe amagwiritsa ntchito mautumiki ndi ma injini a mawu omwe mumakonda."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module ya TTS yosankhidwa"

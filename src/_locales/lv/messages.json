@@ -111,7 +111,7 @@
 		"message": "Tīmekļa lapu tulkošana, teksta tulkošana, vārdnīca, vēsture, pielāgoti tulkotāji, viss, kas nepieciešams, lai pārvarētu valodas barjeras"
 	},
 	"ext_name": {
-		"message": "Linguist - tīmekļa lapu tulkotājs"
+		"message": "Leukothea - tīmekļa lapu tulkotājs"
 	},
 	"history_control_selectEntry": {
 		"message": "Izvēlēties tulkojumu masveida darbībai",
@@ -498,7 +498,7 @@
 		"message": "Pārvaldīt runas sintēzes moduļus"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Jūs varat pievienot runas sintēzes moduļus, kas izmanto jūsu iecienītākos pakalpojumus un balss dzinējus. Lasiet vairāk <slot id=docs>pielāgotajā TTS dokumentācijā</slot>"
+		"message": "Jūs varat pievienot runas sintēzes moduļus, kas izmanto jūsu iecienītākos pakalpojumus un balss dzinējus."
 	},
 	"settings_option_ttsModule": {
 		"message": "Izvēlētais TTS modulis"

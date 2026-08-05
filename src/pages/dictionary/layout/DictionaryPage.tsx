@@ -126,7 +126,7 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 		const date = new Date().toLocaleDateString();
 		saveFile(
 			new Blob([csv], { type: 'text/csv' }),
-			`linguist_dictionary-${date}.csv`,
+			`leukothea_dictionary-${date}.csv`,
 		);
 	}, [entries]);
 

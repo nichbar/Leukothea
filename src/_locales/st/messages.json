@@ -111,7 +111,7 @@
 		"message": "Phetolelo ea maqephe a webo, phetolelo ea mongolo, bukantswe, nalane, bafetoleli ba tloaelo, tsohle tseo u li hlokang ho tlola meeli ea puo"
 	},
 	"ext_name": {
-		"message": "Linguist - mofetoleli oa maqephe a webo"
+		"message": "Leukothea - mofetoleli oa maqephe a webo"
 	},
 	"history_control_selectEntry": {
 		"message": "Khetha phetolelo bakeng sa ketso e ngata",
@@ -498,7 +498,7 @@
 		"message": "Ho laola likarolo tsa ho bopa puo"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "U ka eketsa likarolo tsa ho bopa puo tse sebelisang lits'ebeletso le lienjine tsa lentsoe tseo u li ratang. Bala haholoanyane ho <slot id=docs>litokomane tse ikhethileng tsa TTS</slot>"
+		"message": "U ka eketsa likarolo tsa ho bopa puo tse sebelisang lits'ebeletso le lienjine tsa lentsoe tseo u li ratang."
 	},
 	"settings_option_ttsModule": {
 		"message": "Mokhoa o khethiloeng oa TTS"

@@ -111,7 +111,7 @@
 		"message": "Ntụgharị weebụ peeji, ntụgharị ederede, akwụkwọ, akụkọ ihe mere eme, ndị ntụgharị omenala, ihe niile ịchọrọ iji mebie mgbochi asụsụ"
 	},
 	"ext_name": {
-		"message": "Linguist - onye ntụgharị peeji weebụ"
+		"message": "Leukothea - onye ntụgharị peeji weebụ"
 	},
 	"history_control_selectEntry": {
 		"message": "Họrọ ntụgharị maka omume ibu",
@@ -498,7 +498,7 @@
 		"message": "Ịchịkwa mọdule nhazi olu"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Ị nwere ike ịgbakwunye mọdule nhazi olu na-eji ọrụ na igwe olu masịrị gị. Gụọkwuo na <slot id=docs>akwụkwọ TTS omenala</slot>"
+		"message": "Ị nwere ike ịgbakwunye mọdule nhazi olu na-eji ọrụ na igwe olu masịrị gị."
 	},
 	"settings_option_ttsModule": {
 		"message": "Mọdule TTS ahọpụtara"

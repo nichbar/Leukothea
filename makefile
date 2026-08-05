@@ -21,7 +21,7 @@ build: clean prepare buildAll packAll lintBuilds
 buildAll:
 	mkdir -p ./build
 	chmod 777 ./build
-	${DOCKER_COMPOSE} run --rm linguist make buildChromium
+	${DOCKER_COMPOSE} run --rm leukothea make buildChromium
 
 buildChromium:
 	NODE_ENV=production EXT_TARGET=chromium npx webpack-cli -c ./webpack.config.js

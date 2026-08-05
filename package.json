@@ -8,7 +8,7 @@
 		"test": "vitest",
 		"test:all": "TEST_TARGETS=all npx vitest",
 		"build:dev": "EXT_TARGET=chromium webpack-cli -wc ./webpack.config.js",
-		"build:tokens": "themekit build -c themekit.config.json",
+		"build:tokens": "themekit build -c themekit.config.json -e default && themekit build -c themekit.config.json -e dark",
 		"release:patch": "npm version patch",
 		"prettify": "prettier --write \"{*,**/*}.{ts,tsx,js,jsx}\" && eslint --fix \".\" && stylelint --fix \"{*,**/*}.css\"",
 		"lint": "prettier \"{*,**/*}.{ts,tsx,js,jsx}\" --check && eslint --max-warnings 0 . && stylelint --fix \"{*,**/*}.css\"",

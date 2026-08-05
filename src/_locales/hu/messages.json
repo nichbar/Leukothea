@@ -111,7 +111,7 @@
 		"message": "Weboldal fordítás, szövegfordítás, szótár, előzmények, egyedi fordítók, minden, amire szüksége van a nyelvi akadályok leküzdéséhez"
 	},
 	"ext_name": {
-		"message": "Linguist - weboldal fordító"
+		"message": "Leukothea - weboldal fordító"
 	},
 	"history_control_selectEntry": {
 		"message": "Fordítás kiválasztása tömeges művelethez",
@@ -498,7 +498,7 @@
 		"message": "Beszédszintézis modulok kezelése"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Hozzáadhat beszédszintézis modulokat, amelyek a kedvenc szolgáltatásait és hangmotorjait használják. További információ a <slot id=docs>egyedi TTS dokumentációban</slot>"
+		"message": "Hozzáadhat beszédszintézis modulokat, amelyek a kedvenc szolgáltatásait és hangmotorjait használják."
 	},
 	"settings_option_ttsModule": {
 		"message": "Kiválasztott TTS modul"

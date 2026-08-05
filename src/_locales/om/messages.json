@@ -111,7 +111,7 @@
 		"message": "Hiikkaa fuula webii, hiikkaa barruu, kuusaa jechootaa, seenaa, hiiktota addaa, waan hundaa daangaa afaanii diiguuf barbaachisu"
 	},
 	"ext_name": {
-		"message": "Linguist - hiiktuu fuula webii"
+		"message": "Leukothea - hiiktuu fuula webii"
 	},
 	"history_control_selectEntry": {
 		"message": "Hiikkaa hojii baay'ee filadhu",
@@ -498,7 +498,7 @@
 		"message": "Modula sagalee uumuu to'achuu"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Modula sagalee uumuu kan tajaajiloota fi injineri sagalee jaalataman fayyadamu dabaluu dandeessa. Dabalata dubbisi <slot id=docs>dokumantii TTS addaa</slot>"
+		"message": "Modula sagalee uumuu kan tajaajiloota fi injineri sagalee jaalataman fayyadamu dabaluu dandeessa."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modula TTS filatame"

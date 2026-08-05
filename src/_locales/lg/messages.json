@@ -111,7 +111,7 @@
 		"message": "Okutaputa empapula ku mukutu, okutaputa ebigambo, olulimi, ebyafaayo, abataputa ab'enjawulo, byonna by'oyetaaga okusobola okumenya embeera z'olulimi"
 	},
 	"ext_name": {
-		"message": "Linguist - omutaputa w'empapula ku mukutu"
+		"message": "Leukothea - omutaputa w'empapula ku mukutu"
 	},
 	"history_control_selectEntry": {
 		"message": "Kikola okutaputa okwa bulk action",
@@ -498,7 +498,7 @@
 		"message": "Okutwala ebikozesebwa eby'okukyusa eddoboozi"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Osobola okwongeza ebikozesebwa eby'okukyusa eddoboozi ebikozesa ebyo by'oyagala n'amakubo g'eddoboozi. Soma ebisingawo mu <slot id=docs>ebiwandiiko by'okukyusa eddoboozi ebya kka</slot>"
+		"message": "Osobola okwongeza ebikozesebwa eby'okukyusa eddoboozi ebikozesa ebyo by'oyagala n'amakubo g'eddoboozi."
 	},
 	"settings_option_ttsModule": {
 		"message": "Ekibinja ky'okukyusa eddoboozi ekirondebwa"

@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const sharp = require('sharp');
 const { mergeWith } = require('lodash');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -168,19 +167,17 @@ module.exports = {
 					to: path.join(outputPath, '_locales'),
 				},
 
-				// Serve static files
-				...['logo.svg'].map((filename) => ({
+				// Serve static logo assets (SVG for pages, PNG sizes for browser chrome)
+				...[
+					'logo.svg',
+					'logo.png',
+					'logo-16.png',
+					'logo-32.png',
+					'logo-48.png',
+					'logo-128.png',
+				].map((filename) => ({
 					from: './src/res/' + filename,
 					to: path.join(outputPath, 'static', filename),
-				})),
-
-				//  Convert svg to png files for use as addon logotypes (chromium is not support svg logotypes)
-				...['logo.svg'].map((file) => ({
-					from: './src/res/' + file,
-					to: path.join(outputPath, 'static', file.replace(/\.svg$/, '.png')),
-					transform(content) {
-						return sharp(content).resize(128, 128).toBuffer();
-					},
 				})),
 			],
 		}),

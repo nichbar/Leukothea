@@ -195,6 +195,8 @@
 	--text-translator-popup-scrollbar-thumb: rgb(0 0 0 / 18%);
 	--text-translator-popup-scrollbar-thumb-hover: rgb(0 0 0 / 32%);
 	--text-translator-popup-scrollbar-track: transparent;
+	--translation-card-border-color: #eee;
+	--translation-card-text-container-fill-color: #eee;
 	--toast-messages-message-type-info-fill-color: rgb(82 139 255);
 	--toast-messages-message-type-info-typo-color: #fff;
 	--toast-messages-message-type-error-fill-color: rgb(255 153 153);

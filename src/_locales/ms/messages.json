@@ -111,7 +111,7 @@
 		"message": "Terjemahan halaman web, terjemahan teks, kamus, sejarah, penterjemah tersuai, semua yang anda perlukan untuk mengatasi halangan bahasa"
 	},
 	"ext_name": {
-		"message": "Linguist - penterjemah halaman web"
+		"message": "Leukothea - penterjemah halaman web"
 	},
 	"history_control_selectEntry": {
 		"message": "Pilih terjemahan untuk tindakan pukal",
@@ -498,7 +498,7 @@
 		"message": "Menguruskan modul sintesis ucapan"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Anda boleh menambah modul sintesis ucapan yang menggunakan perkhidmatan dan enjin suara kegemaran anda. Baca lebih lanjut dalam <slot id=docs>dokumen TTS tersuai</slot>"
+		"message": "Anda boleh menambah modul sintesis ucapan yang menggunakan perkhidmatan dan enjin suara kegemaran anda."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modul TTS yang dipilih"

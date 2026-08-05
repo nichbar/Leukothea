@@ -111,7 +111,7 @@
 		"message": "Verkkosivujen käännös, tekstin käännös, sanakirja, historia, mukautetut kääntäjät, kaikki mitä tarvitset kielimuurien murtamiseen"
 	},
 	"ext_name": {
-		"message": "Linguist - verkkosivujen kääntäjä"
+		"message": "Leukothea - verkkosivujen kääntäjä"
 	},
 	"history_control_selectEntry": {
 		"message": "Valitse käännös joukkotoimintoa varten",
@@ -498,7 +498,7 @@
 		"message": "Puheentunnistusmoduulien hallinta"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Voit lisätä puheentunnistusmoduuleja, jotka käyttävät suosikkipalveluitasi ja äänimoottoreitasi. Lue lisää <slot id=docs>mukautetusta TTS-dokumentaatiosta</slot>"
+		"message": "Voit lisätä puheentunnistusmoduuleja, jotka käyttävät suosikkipalveluitasi ja äänimoottoreitasi."
 	},
 	"settings_option_ttsModule": {
 		"message": "Valittu TTS-moduuli"

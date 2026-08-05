@@ -111,7 +111,7 @@
 		"message": "Kibosana ya masolo ya nse, kobosana ya mambu, dikisonari, lisolo, batranslateurs ya mimeseno, nyonso oyo osengeli mpo na kobuka bisika ya minoko"
 	},
 	"ext_name": {
-		"message": "Linguist - kibosana ya masolo ya nse"
+		"message": "Leukothea - kibosana ya masolo ya nse"
 	},
 	"history_control_selectEntry": {
 		"message": "Kopona kobosana mpo na mosala ya ebele",
@@ -498,7 +498,7 @@
 		"message": "Kumanisa ba module ya synthesis ya mambu"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Oyo ke zola kubakisa ba module ya synthesis ya mambu ke sala ti ba service mpi ba engine ya mambu ya ke zola. Tanga mingi na <slot id=docs>documentation ya TTS ya custom</slot>"
+		"message": "Oyo ke zola kubakisa ba module ya synthesis ya mambu ke sala ti ba service mpi ba engine ya mambu ya ke zola."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module ya TTS ya kusala"

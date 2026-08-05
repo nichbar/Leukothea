@@ -111,7 +111,7 @@
 		"message": "Veebilehtede tõlkimine, tekstitõlge, sõnastik, ajalugu, kohandatud tõlkijad, kõik, mida vajate keelebarjääride ületamiseks"
 	},
 	"ext_name": {
-		"message": "Linguist - veebilehe tõlkija"
+		"message": "Leukothea - veebilehe tõlkija"
 	},
 	"history_control_selectEntry": {
 		"message": "Vali tõlge massitoiminguks",
@@ -498,7 +498,7 @@
 		"message": "Kõnesünteesi moodulite haldamine"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Saate lisada kõnesünteesi mooduleid, mis kasutavad teie lemmikteenuseid ja häälemootoreid. Lisateavet leiate <slot id=docs>kohandatud TTS dokumentatsioonist</slot>"
+		"message": "Saate lisada kõnesünteesi mooduleid, mis kasutavad teie lemmikteenuseid ja häälemootoreid."
 	},
 	"settings_option_ttsModule": {
 		"message": "Valitud TTS moodul"

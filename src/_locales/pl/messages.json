@@ -111,7 +111,7 @@
 		"message": "Tłumaczenie stron internetowych, tłumaczenie tekstu, słownik, historia, niestandardowi tłumacze, wszystko, czego potrzebujesz, aby przełamać bariery językowe"
 	},
 	"ext_name": {
-		"message": "Linguist - tłumacz stron internetowych"
+		"message": "Leukothea - tłumacz stron internetowych"
 	},
 	"history_control_selectEntry": {
 		"message": "Wybrać tłumaczenie do zbiorczej akcji",
@@ -498,7 +498,7 @@
 		"message": "Zarządzanie modułami syntezy mowy"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Możesz dodać moduły syntezy mowy, które korzystają z ulubionych usług i silników głosowych. Przeczytaj więcej w <slot id=docs>dokumentacji niestandardowego TTS</slot>"
+		"message": "Możesz dodać moduły syntezy mowy, które korzystają z ulubionych usług i silników głosowych."
 	},
 	"settings_option_ttsModule": {
 		"message": "Wybrany moduł TTS"

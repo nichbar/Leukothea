@@ -111,7 +111,7 @@
 		"message": "Web sahypa terjimesi, tekst terjimesi, sözlük, taryh, ýörite terjimeçiler, dil päsgelçiliklerini aýyrmak üçin ähli zat"
 	},
 	"ext_name": {
-		"message": "Linguist - web sahypa terjimeçisi"
+		"message": "Leukothea - web sahypa terjimeçisi"
 	},
 	"history_control_selectEntry": {
 		"message": "Köpçülikleýin hereket üçin terjime saýla",
@@ -498,7 +498,7 @@
 		"message": "Ses sintez modullaryny dolandyrmak"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Halanýan hyzmatlaryňyzy we ses hereketlendirijileriňizi ulanýan ses sintez modullaryny goşup bilersiňiz. <slot id=docs>özbaşdak TTS dokumentasiýasy</slot> hakda has giňişleýin okaň"
+		"message": "Halanýan hyzmatlaryňyzy we ses hereketlendirijileriňizi ulanýan ses sintez modullaryny goşup bilersiňiz."
 	},
 	"settings_option_ttsModule": {
 		"message": "Saýlanan TTS moduly"

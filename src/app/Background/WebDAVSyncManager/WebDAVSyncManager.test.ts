@@ -108,7 +108,7 @@ describe('WebDAVSyncManager', () => {
 
 		vi.spyOn(browser.runtime, 'getManifest').mockReturnValue({
 			manifest_version: 3,
-			name: 'linguist-test',
+			name: 'leukothea-test',
 			version: '7.0.12',
 		} as browser.Manifest.WebExtensionManifest);
 
@@ -228,7 +228,7 @@ describe('WebDAVSyncManager', () => {
 	test('older local extension never pushes over newer remote writer', async () => {
 		vi.spyOn(browser.runtime, 'getManifest').mockReturnValue({
 			manifest_version: 3,
-			name: 'linguist-test',
+			name: 'leukothea-test',
 			version: '7.0.10',
 		} as browser.Manifest.WebExtensionManifest);
 

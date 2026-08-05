@@ -111,7 +111,7 @@
 		"message": "Tafsiri ya ukurasa wa wavuti, tafsiri ya maandishi, kamusi, historia, watafsiri maalum, yote unayohitaji kuvunja vizuizi vya lugha"
 	},
 	"ext_name": {
-		"message": "Linguist - mtafsiri wa ukurasa wa wavuti"
+		"message": "Leukothea - mtafsiri wa ukurasa wa wavuti"
 	},
 	"history_control_selectEntry": {
 		"message": "Chagua tafsiri kwa hatua ya pamoja",
@@ -498,7 +498,7 @@
 		"message": "Kusimamia moduli za usanisi wa sauti"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Unaweza kuongeza moduli za usanisi wa sauti zinazotumia huduma na injini za sauti unazopenda. Soma zaidi katika <slot id=docs>nyaraka za TTS maalum</slot>"
+		"message": "Unaweza kuongeza moduli za usanisi wa sauti zinazotumia huduma na injini za sauti unazopenda."
 	},
 	"settings_option_ttsModule": {
 		"message": "Moduli ya TTS iliyochaguliwa"

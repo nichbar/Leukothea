@@ -111,7 +111,7 @@
 		"message": "Tradiksyon paj wèb, tradiksyon tèks, diksyonè, istwa, tradiktè pèsonalize, tout sa ou bezwen pou kraze baryè lang"
 	},
 	"ext_name": {
-		"message": "Linguist - tradiktè paj wèb"
+		"message": "Leukothea - tradiktè paj wèb"
 	},
 	"history_control_selectEntry": {
 		"message": "Chwazi tradiksyon pou aksyon an mas",
@@ -498,7 +498,7 @@
 		"message": "Jere modil sentèz lapawòl"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Ou ka ajoute modil sentèz lapawòl ki itilize sèvis ak motè vwa ou pi renmen. Li plis nan <slot id=docs>dokimantasyon TTS koutim</slot>"
+		"message": "Ou ka ajoute modil sentèz lapawòl ki itilize sèvis ak motè vwa ou pi renmen."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modil TTS chwazi"

@@ -111,7 +111,7 @@
 		"message": "Nanaadee e binndol, nanaadee e binndol, diina, histori, diinaaji moƴƴi, ko ɗum woni maa waɗi ko ɓe"
 	},
 	"ext_name": {
-		"message": "Linguist - nanaadee e binndol"
+		"message": "Leukothea - nanaadee e binndol"
 	},
 	"history_control_selectEntry": {
 		"message": "Nanaadee e binndol e ɗam",
@@ -498,7 +498,7 @@
 		"message": "Nana ɗaɓɓitii modules ɗiɗi waɗi ko ɓuri"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Aɗa waɗi ko ɓuri modules ɗiɗi waɗi ko ɓuri waɗi ko ɓuri services ɗiɗi waɗi ko ɓuri e engines ɗiɗi waɗi ko ɓuri. Nana waɗi ko ɓuri e <slot id=docs>custom TTS documentation</slot>"
+		"message": "Aɗa waɗi ko ɓuri modules ɗiɗi waɗi ko ɓuri waɗi ko ɓuri services ɗiɗi waɗi ko ɓuri e engines ɗiɗi waɗi ko ɓuri."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module ɗiɗi waɗi ko ɓuri"

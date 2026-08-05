@@ -111,7 +111,7 @@
 		"message": "ウェブページ翻訳、テキスト翻訳、辞書、履歴、カスタム翻訳者、言語の壁を打破するために必要なすべて"
 	},
 	"ext_name": {
-		"message": "Linguist - ウェブページ翻訳ツール"
+		"message": "Leukothea - ウェブページ翻訳ツール"
 	},
 	"history_control_selectEntry": {
 		"message": "一括操作のための翻訳を選択",
@@ -498,7 +498,7 @@
 		"message": "音声合成モジュールの管理"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "お気に入りのサービスや音声エンジンを使用する音声合成モジュールを追加できます。詳細は<slot id=docs>カスタムTTSドキュメント</slot>をご覧ください"
+		"message": "お気に入りのサービスや音声エンジンを使用する音声合成モジュールを追加できます。"
 	},
 	"settings_option_ttsModule": {
 		"message": "選択されたTTSモジュール"

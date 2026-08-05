@@ -1,5 +1,5 @@
 .TranslationCard {
-	border: 2px solid #eee;
+	border: 2px solid var(--translation-card-border-color, #eee);
 	padding: var(--typography-controls-indent-xl);
 	border-radius: var(--typography-controls-border-radius);
 }
@@ -59,7 +59,7 @@
 	box-sizing: border-box;
 	width: 100%;
 	border-radius: var(--typography-controls-border-radius);
-	background-color: #eee;
+	background-color: var(--translation-card-text-container-fill-color, #eee);
 }
 
 .TranslationCard-TextAction {

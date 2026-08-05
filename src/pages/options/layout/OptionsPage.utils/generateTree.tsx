@@ -13,12 +13,6 @@ import { OptionsGroup } from '../OptionsTree/OptionsTree';
 
 const langCodes = getLanguageCodesISO639('v1');
 
-const docsUrl = (path: string) => {
-	const url = new URL(path, 'https://linguister.io');
-	url.searchParams.set('utm_source', 'linguist');
-	return url.toString();
-};
-
 type Options = {
 	clearCacheProcess: boolean;
 	ttsModules: Record<string, string>;
@@ -296,12 +290,7 @@ export const generateTree = ({
 						},
 				{
 					title: getMessage('settings_option_ttsCustomModules'),
-					description: getLocalizedNode({
-						messageName: 'settings_option_ttsCustomModules_desc',
-						slots: {
-							docs: buildLink(docsUrl('/docs/CustomTTS')),
-						},
-					}),
+					description: getMessage('settings_option_ttsCustomModules_desc'),
 					optionContent: {
 						type: 'Button',
 						text: getMessage('settings_option_ttsCustomModules_button'),

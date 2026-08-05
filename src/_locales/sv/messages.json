@@ -111,7 +111,7 @@
 		"message": "Webbsidöversättning, textöversättning, ordbok, historik, anpassade översättare, allt du behöver för att bryta språkbarriärer"
 	},
 	"ext_name": {
-		"message": "Linguist - webbsidöversättare"
+		"message": "Leukothea - webbsidöversättare"
 	},
 	"history_control_selectEntry": {
 		"message": "Välj översättning för massåtgärd",
@@ -498,7 +498,7 @@
 		"message": "Hantera talmoduler"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Du kan lägga till talmoduler som använder dina favorittjänster och röstmotorer. Läs mer i <slot id=docs>anpassad TTS-dokumentation</slot>"
+		"message": "Du kan lägga till talmoduler som använder dina favorittjänster och röstmotorer."
 	},
 	"settings_option_ttsModule": {
 		"message": "Vald TTS-modul"

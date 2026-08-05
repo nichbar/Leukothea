@@ -1,12 +1,12 @@
-Linguist is a browser extension for private, on-device selection and text translation under your control.
+Leukothea is a browser extension for private, on-device selection and text translation under your control.
 
 This repository is a [fork](https://github.com/nichbar/linguist) of [translate-tools/linguist](https://github.com/translate-tools/linguist). Selection and text translation are the core workflow. The only built-in translator is an LLM backend you configure; other providers load as custom modules.
 
-# Why Linguist?
+# Why Leukothea?
 
-Linguist is a standalone translation system — not a thin wrapper around a commercial widget. Configure an OpenAI-compatible LLM endpoint, or plug in any other backend with [custom translators](./docs/CustomTranslator.md). Community module examples live in [translate-tools/linguist-translators](https://github.com/translate-tools/linguist-translators) (self-hosted / offline services included).
+Leukothea is a standalone translation system — not a thin wrapper around a commercial widget. Configure an OpenAI-compatible LLM endpoint, or plug in any other backend with custom translator modules. Community module examples live in [translate-tools/linguist-translators](https://github.com/translate-tools/linguist-translators) (self-hosted / offline services included).
 
-Linguist is free, open-source, and collects no personal data.
+Leukothea is free, open-source, and collects no personal data.
 
 # Features
 
@@ -70,8 +70,6 @@ Use a package from the [GitHub Releases page](https://github.com/nichbar/linguis
 4. **Load unpacked** → select `build/chromium` (or extract a release zip)
 
 # Development
-
-See [development docs](./docs/dev/Development.md) for build, debug, tests, and migrations.
 
 This fork’s default load-unpacked target is Chromium:
 

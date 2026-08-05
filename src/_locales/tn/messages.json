@@ -111,7 +111,7 @@
 		"message": "Phetolelo ya tsebe ya webosaete, phetolelo ya lentswe, thanodi, hisitori, bafetoleli ba itlhophileng, tsotlhe tse o di tlhokang go tlola diphepa tsa puo"
 	},
 	"ext_name": {
-		"message": "Linguist - mofetoleli wa tsebe ya webosaete"
+		"message": "Leukothea - mofetoleli wa tsebe ya webosaete"
 	},
 	"history_control_selectEntry": {
 		"message": "Kgetha phetolelo ya tiro e kgolo",
@@ -498,7 +498,7 @@
 		"message": "Go tsamaisa dikgwebo tsa go bopa puo"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "O ka oketsa dikgwebo tsa go bopa puo tse di dirisang ditirelo tse o di ratang le mechine ya mantswe. Bala go feta mo <slot id=docs>dikgatisong tsa TTS tse di kgethegileng</slot>"
+		"message": "O ka oketsa dikgwebo tsa go bopa puo tse di dirisang ditirelo tse o di ratang le mechine ya mantswe."
 	},
 	"settings_option_ttsModule": {
 		"message": "Mokgwa wa TTS o o kgethilweng"

@@ -111,7 +111,7 @@
 		"message": "Ìtumọ̀ ojúewé wẹẹ̀bù, ìtumọ̀ ọrọ, ìwé ìtúmọ̀, ìtàn, àwọn onítúmọ̀ àdani, gbogbo ohun tí o nílò láti bù ú ìdí àṣà"
 	},
 	"ext_name": {
-		"message": "Linguist - onítúmọ̀ ojúewé wẹẹ̀bù"
+		"message": "Leukothea - onítúmọ̀ ojúewé wẹẹ̀bù"
 	},
 	"history_control_selectEntry": {
 		"message": "Yan ìtumọ̀ fún ìṣe àkójọpọ̀",
@@ -498,7 +498,7 @@
 		"message": "Ṣakoso awọn ẹka sisọ ohùn"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "O le ṣafikun awọn ẹka sisọ ohùn ti o lo awọn iṣẹ ayanfẹ rẹ ati awọn ẹrọ ohùn. Ka diẹ sii ninu <slot id=docs>iwe itumọ TTS ti ara ẹni</slot>"
+		"message": "O le ṣafikun awọn ẹka sisọ ohùn ti o lo awọn iṣẹ ayanfẹ rẹ ati awọn ẹrọ ohùn."
 	},
 	"settings_option_ttsModule": {
 		"message": "Ẹka TTS ti a yan"

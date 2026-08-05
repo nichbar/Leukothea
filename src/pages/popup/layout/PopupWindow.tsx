@@ -21,7 +21,7 @@ import { TabsMenu } from '../../../components/primitives/TabsMenu/TabsMenu.bundl
 import { isMobileBrowser } from '../../../lib/browser';
 import { getMessage } from '../../../lib/language';
 import { XResizeObserver } from '../../../lib/XResizeObserver';
-import LogoElement from '../../../res/logo-base.svg';
+import LogoElement from '../../../res/logo-icon.svg';
 import { AppConfigType } from '../../../types/runtime';
 
 import './PopupWindow.css';

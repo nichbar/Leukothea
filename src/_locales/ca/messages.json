@@ -111,7 +111,7 @@
 		"message": "Traducció de pàgines web, traducció de text, diccionari, historial, traductors personalitzats, tot el que necessites per trencar barreres lingüístiques"
 	},
 	"ext_name": {
-		"message": "Linguist - traductor de pàgines web"
+		"message": "Leukothea - traductor de pàgines web"
 	},
 	"history_control_selectEntry": {
 		"message": "Seleccionar traducció per a acció massiva",
@@ -498,7 +498,7 @@
 		"message": "Gestió de mòduls de síntesi de veu"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Podeu afegir mòduls de síntesi de veu que utilitzin els vostres serveis i motors de veu preferits. Llegiu més a la <slot id=docs>documentació personalitzada de TTS</slot>"
+		"message": "Podeu afegir mòduls de síntesi de veu que utilitzin els vostres serveis i motors de veu preferits."
 	},
 	"settings_option_ttsModule": {
 		"message": "Mòdul TTS seleccionat"

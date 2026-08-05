@@ -111,7 +111,7 @@
 		"message": "Kobosana lokota ya nkita, kobongola mokanda, dikisonɛrɛ, lisolo, batranslatɛrɛ ya moko, nyonso oyo osengeli mpo na kobuka mikakatano ya lokota"
 	},
 	"ext_name": {
-		"message": "Linguist - translatɛrɛ ya nkita"
+		"message": "Leukothea - translatɛrɛ ya nkita"
 	},
 	"history_control_selectEntry": {
 		"message": "Kopona kobongola mpo na mosala ya ebele",
@@ -498,7 +498,7 @@
 		"message": "Kobongisa ba modules ya kosala mongongo"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Okoki kobakisa ba modules ya kosala mongongo oyo esalelaka ba services mpe ba moteurs ya mongongo oyo olingaka. Tanga mingi na <slot id=docs>documentation ya TTS ya moko</slot>"
+		"message": "Okoki kobakisa ba modules ya kosala mongongo oyo esalelaka ba services mpe ba moteurs ya mongongo oyo olingaka."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module ya TTS oyo esalemi"

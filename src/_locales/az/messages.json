@@ -111,7 +111,7 @@
 		"message": "Veb səhifə tərcüməsi, mətn tərcüməsi, lüğət, tarixçə, xüsusi tərcüməçilər, dil maneələrini aşmaq üçün lazım olan hər şey"
 	},
 	"ext_name": {
-		"message": "Linguist - veb səhifə tərcüməçisi"
+		"message": "Leukothea - veb səhifə tərcüməçisi"
 	},
 	"history_control_selectEntry": {
 		"message": "Kütləvi əməliyyat üçün tərcüməni seçmək",
@@ -498,7 +498,7 @@
 		"message": "Səs sintez modullarını idarə etmək"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Sevdiyiniz xidmətlər və səs mühərriklərindən istifadə edən səs sintez modulları əlavə edə bilərsiniz. Daha ətraflı <slot id=docs>xüsusi TTS sənədlərində</slot> oxuyun"
+		"message": "Sevdiyiniz xidmətlər və səs mühərriklərindən istifadə edən səs sintez modulları əlavə edə bilərsiniz."
 	},
 	"settings_option_ttsModule": {
 		"message": "Seçilmiş TTS modulu"

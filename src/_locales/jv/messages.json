@@ -111,7 +111,7 @@
 		"message": "Terjemahan kaca web, terjemahan teks, kamus, riwayat, penerjemah khusus, kabeh sing dibutuhake kanggo ngatasi alangan basa"
 	},
 	"ext_name": {
-		"message": "Linguist - penerjemah kaca web"
+		"message": "Leukothea - penerjemah kaca web"
 	},
 	"history_control_selectEntry": {
 		"message": "Pilih terjemahan kanggo tumindak massal",
@@ -498,7 +498,7 @@
 		"message": "Ngatur modul sintesis ucapan"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Sampeyan bisa nambah modul sintesis ucapan sing nggunakake layanan lan mesin swara favorit sampeyan. Waca luwih lengkap ing <slot id=docs>dokumen TTS khusus</slot>"
+		"message": "Sampeyan bisa nambah modul sintesis ucapan sing nggunakake layanan lan mesin swara favorit sampeyan."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modul TTS sing dipilih"

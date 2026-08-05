@@ -111,7 +111,7 @@
 		"message": "Dịch trang web, dịch văn bản, từ điển, lịch sử, dịch giả tùy chỉnh, tất cả những gì bạn cần để phá vỡ rào cản ngôn ngữ"
 	},
 	"ext_name": {
-		"message": "Linguist - trình dịch trang web"
+		"message": "Leukothea - trình dịch trang web"
 	},
 	"history_control_selectEntry": {
 		"message": "Chọn bản dịch cho hành động hàng loạt",
@@ -498,7 +498,7 @@
 		"message": "Quản lý mô-đun tổng hợp giọng nói"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Bạn có thể thêm các mô-đun tổng hợp giọng nói sử dụng các dịch vụ và động cơ giọng nói yêu thích của bạn. Đọc thêm trong <slot id=docs>tài liệu TTS tùy chỉnh</slot>"
+		"message": "Bạn có thể thêm các mô-đun tổng hợp giọng nói sử dụng các dịch vụ và động cơ giọng nói yêu thích của bạn."
 	},
 	"settings_option_ttsModule": {
 		"message": "Mô-đun TTS đã chọn"

@@ -111,7 +111,7 @@
 		"message": "Oversettelse av nettsider, tekstoversettelse, ordbok, historikk, tilpassede oversettere, alt du trenger for å bryte språkbarrierer"
 	},
 	"ext_name": {
-		"message": "Linguist - nettsideoversetter"
+		"message": "Leukothea - nettsideoversetter"
 	},
 	"history_control_selectEntry": {
 		"message": "Velg oversettelse for massehandling",
@@ -498,7 +498,7 @@
 		"message": "Administrere talesyntesemoduler"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Du kan legge til talesyntesemoduler som bruker dine favorittjenester og stemmemotorer. Les mer i <slot id=docs>egendefinert TTS-dokumentasjon</slot>"
+		"message": "Du kan legge til talesyntesemoduler som bruker dine favorittjenester og stemmemotorer."
 	},
 	"settings_option_ttsModule": {
 		"message": "Valgt TTS-modul"

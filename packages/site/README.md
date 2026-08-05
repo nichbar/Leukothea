@@ -1,1 +1,0 @@
-Web site code for [linguist.io](https://linguist.io)

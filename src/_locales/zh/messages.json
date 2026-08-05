@@ -111,7 +111,7 @@
 		"message": "网页翻译、文本翻译、词典、历史记录、自定义翻译器，打破语言障碍所需的一切"
 	},
 	"ext_name": {
-		"message": "Linguist - 网页翻译器"
+		"message": "Leukothea - 网页翻译器"
 	},
 	"history_control_selectEntry": {
 		"message": "选择翻译进行批量操作",
@@ -498,7 +498,7 @@
 		"message": "管理语音合成模块"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "您可以添加使用您喜欢的服务和语音引擎的语音合成模块。请在<slot id=docs>自定义TTS文档</slot>中阅读更多信息"
+		"message": "您可以添加使用您喜欢的服务和语音引擎的语音合成模块。"
 	},
 	"settings_option_ttsModule": {
 		"message": "选定的TTS模块"

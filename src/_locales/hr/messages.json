@@ -111,7 +111,7 @@
 		"message": "Prijevod web stranica, prijevod teksta, rječnik, povijest, prilagođeni prevoditelji, sve što vam treba za prevladavanje jezičnih barijera"
 	},
 	"ext_name": {
-		"message": "Linguist - prevoditelj web stranica"
+		"message": "Leukothea - prevoditelj web stranica"
 	},
 	"history_control_selectEntry": {
 		"message": "Odaberite prijevod za grupnu akciju",
@@ -498,7 +498,7 @@
 		"message": "Upravljanje modulima za sintezu govora"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Možete dodati module za sintezu govora koji koriste vaše omiljene usluge i glasovne motore. Pročitajte više u <slot id=docs>dokumentaciji za prilagođeni TTS</slot>"
+		"message": "Možete dodati module za sintezu govora koji koriste vaše omiljene usluge i glasovne motore."
 	},
 	"settings_option_ttsModule": {
 		"message": "Odabrani TTS modul"

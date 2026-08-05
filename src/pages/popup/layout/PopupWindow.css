@@ -33,17 +33,17 @@ body {
 /* Logo */
 .PopupWindow-Logo {
 	display: inline-block;
-
-	/* Wordmark follows theme text color (paths use fill="currentColor") */
-	color: var(--color-typo-primary);
 }
 
 .PopupWindow-Logo svg {
 	display: inline-block;
 	vertical-align: middle;
-	width: 80px;
-	height: auto;
-	fill: currentcolor;
+	width: 1.75rem;
+	height: 1.75rem;
+
+	/* Pixel-art icon: keep hard edges when scaled */
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 }
 
 /* HeaderMenu */

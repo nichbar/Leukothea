@@ -111,7 +111,7 @@
 		"message": "Pagsasalin ng web page, pagsasalin ng teksto, diksyunaryo, kasaysayan, mga custom na tagasalin, lahat ng kailangan mo para masira ang mga hadlang sa wika"
 	},
 	"ext_name": {
-		"message": "Linguist - tagasalin ng web page"
+		"message": "Leukothea - tagasalin ng web page"
 	},
 	"history_control_selectEntry": {
 		"message": "Pumili ng pagsasalin para sa maramihang aksyon",
@@ -498,7 +498,7 @@
 		"message": "Pamamahala ng mga module ng pagsasalita"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Maaari kang magdagdag ng mga module ng pagsasalita na gumagamit ng iyong paboritong mga serbisyo at mga makina ng boses. Magbasa pa sa <slot id=docs>custom TTS documentation</slot>"
+		"message": "Maaari kang magdagdag ng mga module ng pagsasalita na gumagamit ng iyong paboritong mga serbisyo at mga makina ng boses."
 	},
 	"settings_option_ttsModule": {
 		"message": "Napiling TTS module"

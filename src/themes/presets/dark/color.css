@@ -28,10 +28,7 @@
 	--color-typo-secondary: rgb(255 255 255 / 65%); /* Used for descriptions */
 	--color-typo-ghost: rgb(255 255 255 / 30%); /* color of the additional text */
 	--color-typo-disabled: rgb(
-		255
-		255
-		255 /
-		30%
+		255 255 255 / 30%
 	); /* color of the main text of disabled control */
 
 	--color-typo-success: #00985f;
@@ -198,6 +195,8 @@
 	--text-translator-popup-scrollbar-thumb: rgb(255 255 255 / 22%);
 	--text-translator-popup-scrollbar-thumb-hover: rgb(255 255 255 / 36%);
 	--text-translator-popup-scrollbar-track: transparent;
+	--translation-card-border-color: rgb(255 255 255 / 12%);
+	--translation-card-text-container-fill-color: #2c2c2e;
 	--toast-messages-message-type-info-fill-color: rgb(128 172 255);
 	--toast-messages-message-type-info-typo-color: #202020;
 	--toast-messages-message-type-error-fill-color: rgb(255 102 102);

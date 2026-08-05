@@ -111,7 +111,7 @@
 		"message": "Traduction de pages web, traduction de texte, dictionnaire, historique, traducteurs personnalisés, tout ce dont vous avez besoin pour briser les barrières linguistiques"
 	},
 	"ext_name": {
-		"message": "Linguist - traducteur de pages web"
+		"message": "Leukothea - traducteur de pages web"
 	},
 	"history_control_selectEntry": {
 		"message": "Sélectionner la traduction pour une action groupée",
@@ -498,7 +498,7 @@
 		"message": "Gestion des modules de synthèse vocale"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Vous pouvez ajouter des modules de synthèse vocale qui utilisent vos services et moteurs vocaux préférés. En savoir plus dans la <slot id=docs>documentation TTS personnalisée</slot>"
+		"message": "Vous pouvez ajouter des modules de synthèse vocale qui utilisent vos services et moteurs vocaux préférés."
 	},
 	"settings_option_ttsModule": {
 		"message": "Module TTS sélectionné"

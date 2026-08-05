@@ -111,7 +111,7 @@
 		"message": "Tarjamahan halaman wéb, tarjamahan téks, kamus, sajarah, panarjamah khusus, sadayana anu anjeun peryogikeun pikeun ngarecah halangan basa"
 	},
 	"ext_name": {
-		"message": "Linguist - panarjamah halaman wéb"
+		"message": "Leukothea - panarjamah halaman wéb"
 	},
 	"history_control_selectEntry": {
 		"message": "Milih tarjamahan pikeun tindakan masal",
@@ -498,7 +498,7 @@
 		"message": "Ngatur modul sintésis ucapan"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Anjeun tiasa nambihan modul sintésis ucapan anu nganggo jasa sareng mesin sora karesep anjeun. Baca deui dina <slot id=docs>dokuméntasi TTS khusus</slot>"
+		"message": "Anjeun tiasa nambihan modul sintésis ucapan anu nganggo jasa sareng mesin sora karesep anjeun."
 	},
 	"settings_option_ttsModule": {
 		"message": "Modul TTS anu dipilih"

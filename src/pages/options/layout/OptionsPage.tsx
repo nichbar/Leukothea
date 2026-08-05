@@ -162,7 +162,7 @@ export const OptionsPage: FC<OptionsPageProps> = ({ messageHideDelay }) => {
 		const dump = JSON.stringify(config);
 		const file = new Blob([dump], { type: 'application/json' });
 
-		saveFile(file, `linguist-config_${new Date().getTime()}.json`);
+		saveFile(file, `leukothea-config_${new Date().getTime()}.json`);
 	}, [config]);
 
 	const resetConfig = useCallback(() => {

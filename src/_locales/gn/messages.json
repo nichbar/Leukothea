@@ -111,7 +111,7 @@
 		"message": "Ñembojere kuatiarogue, ñe'ẽ ñembojere, ñe'ẽryru, rembiasakue, ñe'ẽmboguata ha'e opa mba'e reikotevẽva oikytĩ hag̃ua ñe'ẽ ñemombyry"
 	},
 	"ext_name": {
-		"message": "Linguist - kuatiarogue moñe'ẽha"
+		"message": "Leukothea - kuatiarogue moñe'ẽha"
 	},
 	"history_control_selectEntry": {
 		"message": "Purahei ñembojere tembiapo heta rehe",
@@ -498,7 +498,7 @@
 		"message": "Ñemoñe'ẽ módulo ñemotenonde"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Ikatu remoinge módulo ñe'ẽ ñemoñe'ẽ oipuruva ne servísio ha motor de voz favorito. Leiave <slot id=docs>documentación TTS jeporavo</slot>"
+		"message": "Ikatu remoinge módulo ñe'ẽ ñemoñe'ẽ oipuruva ne servísio ha motor de voz favorito."
 	},
 	"settings_option_ttsModule": {
 		"message": "Módulo TTS jeporavo"

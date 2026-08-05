@@ -111,7 +111,7 @@
 		"message": "Web sayfası çevirisi, metin çevirisi, sözlük, geçmiş, özel çevirmenler, dil engellerini aşmak için ihtiyacınız olan her şey"
 	},
 	"ext_name": {
-		"message": "Linguist - web sayfası çevirmeni"
+		"message": "Leukothea - web sayfası çevirmeni"
 	},
 	"history_control_selectEntry": {
 		"message": "Toplu işlem için çeviri seç",
@@ -498,7 +498,7 @@
 		"message": "Konuşma sentezi modüllerini yönetme"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Favori hizmetlerinizi ve ses motorlarınızı kullanan konuşma sentezi modülleri ekleyebilirsiniz. Daha fazla bilgi için <slot id=docs>özel TTS belgelerine</slot> bakın"
+		"message": "Favori hizmetlerinizi ve ses motorlarınızı kullanan konuşma sentezi modülleri ekleyebilirsiniz."
 	},
 	"settings_option_ttsModule": {
 		"message": "Seçilen TTS modülü"

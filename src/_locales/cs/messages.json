@@ -111,7 +111,7 @@
 		"message": "Překlad webových stránek, překlad textu, slovník, historie, vlastní překladače, vše, co potřebujete k překonání jazykových bariér"
 	},
 	"ext_name": {
-		"message": "Linguist - překladač webových stránek"
+		"message": "Leukothea - překladač webových stránek"
 	},
 	"history_control_selectEntry": {
 		"message": "Vybrat překlad pro hromadnou akci",
@@ -498,7 +498,7 @@
 		"message": "Správa modulů syntézy řeči"
 	},
 	"settings_option_ttsCustomModules_desc": {
-		"message": "Můžete přidat moduly syntézy řeči, které používají vaše oblíbené služby a hlasové enginy. Více si přečtěte v <slot id=docs>uživatelské dokumentaci TTS</slot>"
+		"message": "Můžete přidat moduly syntézy řeči, které používají vaše oblíbené služby a hlasové enginy."
 	},
 	"settings_option_ttsModule": {
 		"message": "Vybraný TTS modul"

@@ -71,7 +71,7 @@ Webpack targets (`EXT_TARGET`): `chromium` (default release), `chrome`, `firefox
 ## ALWAYS
 
 - Keep `AppConfig` schema, `defaultConfig`, options tree, and migrations in sync when changing settings
-- Add or update tests when touching storage, migrations, translators, or pure data transforms (see `docs/dev/Development.md`)
+- Add or update tests when touching storage, migrations, translators, or pure data transforms
 - Update snapshots intentionally (`vitest -u`) when migration output or locale tooling output changes
 - Show the diff (or summarize changed files) before committing when asked to commit
 - Prefer Chromium as the default load-unpacked target for manual verification in this fork
@@ -113,4 +113,3 @@ Preserve:
 | LLM translator | `src/lib/translators/llm/LLMTranslator.ts` |
 | Locales | `src/_locales/`, tooling `packages/locales/` |
 | Build targets | `webpack.config.js`, `makefile`, `manifests/` |
-| Dev notes | `docs/dev/Development.md` |
