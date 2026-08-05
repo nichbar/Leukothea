@@ -1,4 +1,12 @@
-Leukothea is a browser extension for private, on-device selection and text translation under your control.
+<p align="center">
+  <img src="src/res/logo-128.png" alt="Leukothea logo" width="128" height="128">
+</p>
+
+<h1 align="center">Leukothea</h1>
+
+<p align="center">
+  Browser extension for private, on-device selection and text translation under your control.
+</p>
 
 This repository is a [fork](https://github.com/nichbar/linguist) of [translate-tools/linguist](https://github.com/translate-tools/linguist). Selection and text translation are the core workflow. The only translator is a configurable OpenAI-compatible LLM backend.
 
