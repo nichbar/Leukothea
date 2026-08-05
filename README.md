@@ -1,18 +1,19 @@
 Leukothea is a browser extension for private, on-device selection and text translation under your control.
 
-This repository is a [fork](https://github.com/nichbar/linguist) of [translate-tools/linguist](https://github.com/translate-tools/linguist). Selection and text translation are the core workflow. The only built-in translator is an LLM backend you configure; other providers load as custom modules.
+This repository is a [fork](https://github.com/nichbar/linguist) of [translate-tools/linguist](https://github.com/translate-tools/linguist). Selection and text translation are the core workflow. The only translator is a configurable OpenAI-compatible LLM backend.
 
 # Why Leukothea?
 
-Leukothea is a standalone translation system — not a thin wrapper around a commercial widget. Configure an OpenAI-compatible LLM endpoint, or plug in any other backend with custom translator modules. Community module examples live in [translate-tools/linguist-translators](https://github.com/translate-tools/linguist-translators) (self-hosted / offline services included).
+Leukothea is a standalone translation system — not a thin wrapper around a commercial widget. Point it at any OpenAI-compatible chat completions endpoint (local or remote), set the model and prompt, and keep control of where text is sent.
 
 Leukothea is free, open-source, and collects no personal data.
 
 # Features
 
-- **LLM translator** (default, OpenAI-compatible chat completions)
-  - Configurable API key, URL, model, and system prompt (`{from}` / `{to}`)
-- **Custom translators and TTS** via JS modules (DeepL, LibreTranslate, Google, etc.)
+- **LLM translator** (OpenAI-compatible chat completions)
+  - Configurable API key, URL, model, and system prompt (`{from}` / `{to}` / `{title}`)
+  - Optional model list loaded from the provider’s `/models` API (pick or type)
+  - Optional **Include page title** context in the prompt
 - **Selection and text translation**
   - Floating button + compact selection popup
   - Optional quick translate / context-menu modes
@@ -20,18 +21,21 @@ Leukothea is free, open-source, and collects no personal data.
   - Configurable popup opacity
   - Optional fixed source language (skip detection)
   - Optional hide popup when selected text is already in **Your language**
+  - Markdown in translations (bold, italic, lists)
   - Translate free-form text from the extension popup
 - **Dictionary** for saved translations
 - **History** of recent translations
-- **Text-to-speech (TTS)**
+- **Text-to-speech (TTS)** with optional custom TTS modules
+- **Theme mode**: light, dark, or auto (follow OS / browser)
+- **WebDAV sync** for AppConfig (optional; secrets stay local unless you opt in)
 
 # Not in this fork
 
 These upstream capabilities were removed and are not supported here:
 
 - Full-page translation (engine, popup tab, auto-translate site/lang prefs, page-translate context menu)
-- Built-in commercial / offline stacks: Google, Microsoft/Bing, Yandex, Bergamot  
-  (use custom modules if you need those providers)
+- Built-in commercial / offline translator stacks: Google, Microsoft/Bing, Yandex, Bergamot
+- Custom translation modules in settings (LLM is the only translator)
 - Firefox XPI / Chrome CRX packaging in the release path (Chromium zip is the default artifact)
 
 # Changes in this fork
@@ -40,16 +44,22 @@ Compared to upstream [translate-tools/linguist](https://github.com/translate-too
 
 ### Added
 - Built-in LLM translator with OpenAI-compatible endpoint (`apiKey`, `apiUrl`, `model`)
-- Configurable LLM system prompt (`{from}` / `{to}` placeholders)
+- Configurable LLM system prompt (`{from}` / `{to}` / `{title}` placeholders)
+- Model suggestions loaded from the provider API
+- Include page title toggle for LLM context
 - Fixed source language option in settings
 - Selection popup opacity setting (default `0.95`)
 - Option to hide the selection popup when text matches **Your language**
 - Redesigned compact selection TextTranslator card
 - Selection popup placement relative to the selected text (prefer top/bottom)
+- Markdown rendering in selection translations
+- Light / dark / auto theme mode
+- WebDAV bidirectional AppConfig sync
 
 ### Removed / simplified
 - Full-page translation and related settings / menus
 - Built-in Google, Microsoft/Bing, Yandex, and Bergamot translators
+- Custom translator modules and translator-module selection from settings
 - Release artifacts beyond Chromium zip (no CRX / Firefox XPI packaging in CI)
 
 ### Fixes
@@ -58,7 +68,7 @@ Compared to upstream [translate-tools/linguist](https://github.com/translate-too
 - Avoid duplicate translate requests on selection-popup init
 - More reliable selection-popup init/error handling with retry
 
-Version line: upstream is at `7.0.5`; this fork is at `7.0.10`.
+Version line: upstream is at `7.0.5`; this fork is at `7.0.17`.
 
 # Installation
 
