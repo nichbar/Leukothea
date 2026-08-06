@@ -10,7 +10,7 @@ import { Modal } from '../../../../../components/primitives/Modal/Modal.bundle/d
 import { Popup } from '../../../../../components/primitives/Popup/Popup';
 import { isMobileBrowser } from '../../../../../lib/browser';
 import { getThemeByMode, ThemeMode } from '../../../../../lib/theme/themeMode';
-import LogoElement from '../../../../../res/logo-icon.svg';
+import TranslateButtonIcon from '../../../../../res/translate-button.svg';
 
 import {
 	TextTranslator,
@@ -351,7 +351,16 @@ export const TextTranslatorPopup: FC<TextTranslatorPopupProps> = ({
 						toggleAutoclose(true);
 					}}
 				>
-					<LogoElement className={cnTextTranslatorPopup('TranslateButton')} />
+					<TranslateButtonIcon
+						className={cnTextTranslatorPopup('TranslateButton')}
+						style={
+							{
+								// Hover opacity reuses selectTranslator.opacity from settings.
+								['--text-translator-popup-button-opacity' as string]:
+									clampedOpacity,
+							} as React.CSSProperties
+						}
+					/>
 				</div>
 			)}
 		</div>

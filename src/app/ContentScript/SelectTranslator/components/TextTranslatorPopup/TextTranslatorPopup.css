@@ -21,20 +21,21 @@
 	display: none;
 }
 
-/* TranslateButton */
+/* TranslateButton — tight-cropped project icon (no padding in the SVG). */
 .TextTranslatorPopup-TranslateButton {
 	display: block;
 	opacity: 0.7;
-	width: 1.5rem;
-	height: 1.5rem;
 
-	/* Pixel-art icon: keep hard edges when scaled */
+	/* Match content aspect 29×32; keep hard edges when scaled */
+	width: 1.5rem;
+	height: calc(1.5rem * 32 / 29);
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
 }
 
+/* Hover uses selectTranslator.opacity from settings (CSS var on the button). */
 .TextTranslatorPopup-TranslateButton:hover {
-	opacity: 1;
+	opacity: var(--text-translator-popup-button-opacity, 0.95);
 }
 
 /* Mobile overrides */

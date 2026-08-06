@@ -250,7 +250,27 @@ module.exports = {
 			{
 				test: /\.svg$/,
 				resourceQuery: { not: [/raw/] },
-				use: ['@svgr/webpack'],
+				// Keep viewBox so CSS width/height scale the artwork instead of
+				// clipping it (SVGO's default removeViewBox drops the attribute).
+				use: [
+					{
+						loader: '@svgr/webpack',
+						options: {
+							svgoConfig: {
+								plugins: [
+									{
+										name: 'preset-default',
+										params: {
+											overrides: {
+												removeViewBox: false,
+											},
+										},
+									},
+								],
+							},
+						},
+					},
+				],
 			},
 			{
 				test: /\.txt$/i,
