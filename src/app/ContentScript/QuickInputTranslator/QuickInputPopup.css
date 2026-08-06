@@ -1,0 +1,162 @@
+.QuickInputPopup {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	font-family: var(--typography-font-family, system-ui, sans-serif);
+}
+
+.QuickInputPopup-Overlay {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	background: rgb(0 0 0 / 28%);
+	pointer-events: all;
+	box-sizing: border-box;
+}
+
+.QuickInputPopup-Card {
+	width: min(560px, 100%);
+	max-height: min(72vh, 640px);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 16px;
+	background: var(--text-translator-popup-fill-color, #fff);
+	border: 1px solid var(--text-translator-popup-border-color, rgb(0 0 0 / 10%));
+	border-radius: 14px;
+	box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+	color: var(--color-typo-primary, #1a1a1a);
+	box-sizing: border-box;
+	overflow: hidden;
+	text-align: initial;
+	font-weight: normal;
+}
+
+.QuickInputPopup-Header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.QuickInputPopup-Title {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.QuickInputPopup-TitleText {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.QuickInputPopup-LangPair {
+	font-size: 12px;
+	color: var(--color-typo-secondary, rgb(0 0 0 / 58%));
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.QuickInputPopup-Warning {
+	font-size: 12px;
+	color: var(--color-typo-error, #d32f2f);
+	background: rgb(211 47 47 / 8%);
+	border: 1px solid rgb(211 47 47 / 18%);
+	border-radius: 8px;
+	padding: 8px 10px;
+}
+
+.QuickInputPopup-Textarea {
+	width: 100%;
+	min-height: 72px;
+	max-height: 160px;
+	resize: vertical;
+	padding: 10px 12px;
+	font-size: 14px;
+	line-height: 1.45;
+	font-family: inherit;
+	color: var(--textarea-view-default-typo-color-base, var(--color-typo-primary));
+	background: var(--textarea-view-default-fill-color-base);
+	border: 1px solid var(--textarea-view-default-border-color-base, rgb(0 0 0 / 14%));
+	border-radius: 10px;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.QuickInputPopup-Textarea::placeholder {
+	color: var(--color-typo-ghost);
+	opacity: 1;
+}
+
+.QuickInputPopup-Textarea:hover {
+	border-color: var(--textarea-view-default-border-color-hover);
+}
+
+.QuickInputPopup-Textarea:focus {
+	border-color: var(--textarea-view-default-border-color-focus);
+	box-shadow: 0 0 0 2px var(--color-fill-color-selection, rgb(0 102 255 / 14%));
+}
+
+.QuickInputPopup-Result {
+	min-height: 64px;
+	max-height: 220px;
+	overflow-y: auto;
+	padding: 10px 12px;
+	background: var(--translation-card-text-container-fill-color, rgb(0 0 0 / 3.5%));
+	border: 1px solid var(--translation-card-border-color, rgb(0 0 0 / 6%));
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: var(--color-typo-primary);
+	scrollbar-width: thin;
+	scrollbar-color: var(--text-translator-popup-scrollbar-thumb, rgb(0 0 0 / 18%))
+		var(--text-translator-popup-scrollbar-track, transparent);
+}
+
+.QuickInputPopup-Translated {
+	font-size: 14px;
+	line-height: 1.45;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.QuickInputPopup-Placeholder {
+	font-size: 13px;
+	color: var(--color-typo-secondary, rgb(0 0 0 / 52%));
+}
+
+.QuickInputPopup-ErrorWrap {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.QuickInputPopup-Error {
+	font-size: 13px;
+	color: var(--color-typo-error, #d32f2f);
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.QuickInputPopup-Footer {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.QuickInputPopup-Provider {
+	font-size: 11px;
+	color: var(--color-typo-secondary, rgb(0 0 0 / 52%));
+}
+
+.QuickInputPopup-Loader {
+	padding: 4px 0;
+}
+
+.QuickInputPopup-Loader > svg {
+	width: 3rem;
+	height: auto;
+}

@@ -3,6 +3,7 @@ import { combine, createEffect, createEvent, createStore, sample, Store } from '
 import { getPageLanguage } from '../../lib/browser';
 import { AppConfigType } from '../../types/runtime';
 
+import { QuickInputManager } from './QuickInputTranslator/QuickInputManager';
 import { SelectTranslatorController } from './SelectTranslator/SelectTranslatorController';
 import { SelectTranslatorManager } from './SelectTranslator/SelectTranslatorManager';
 
@@ -52,6 +53,8 @@ export class PageTranslationContext {
 		selectTranslator: null,
 	};
 
+	private quickInputManager: QuickInputManager | null = null;
+
 	public getTextTranslator() {
 		return this.controllers.selectTranslator;
 	}
@@ -80,6 +83,15 @@ export class PageTranslationContext {
 		this.controllers.selectTranslator = new SelectTranslatorController(
 			selectTranslatorManager,
 		);
+
+		// Quick input popup (Shift+Q): Your language → fixed source language
+		const $quickInputState = this.$config.map((config) => ({
+			language: config.language,
+			fixedSourceLanguage: config.fixedSourceLanguage,
+			themeMode: config.themeMode,
+		}));
+		this.quickInputManager = new QuickInputManager($quickInputState);
+		this.quickInputManager.start();
 
 		// Detect page language for selection translator fallbacks
 		const $docReadyState = createStore(document.readyState);

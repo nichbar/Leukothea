@@ -843,5 +843,26 @@
 	},
 	"settings_option_syncWebdav_direction_none": {
 		"message": "already in sync"
+	},
+	"quickInput_title": {
+		"message": "Quick translate"
+	},
+	"quickInput_hint": {
+		"message": "Press Shift+Q anywhere to open. Translates from Your language to the fixed source language."
+	},
+	"quickInput_placeholder": {
+		"message": "Type text in Your language…"
+	},
+	"quickInput_resultPlaceholder": {
+		"message": "Translation will appear here"
+	},
+	"quickInput_fixedNotSet": {
+		"message": "Fixed source language is not set. Open Settings → Common settings to choose a target language."
+	},
+	"quickInput_sameLanguage": {
+		"message": "Your language and fixed source language are the same — no translation needed."
+	},
+	"quickInput_footerHint": {
+		"message": "Esc or click outside to close"
 	}
 }
