@@ -6,6 +6,20 @@ import { notifyDictionaryClear } from '.';
 export const [clearTranslationsFactory, clearTranslations] = buildBackendRequest(
 	'clearTranslations',
 	{
-		factoryHandler: () => () => flush().then(notifyDictionaryClear),
+		factoryHandler:
+			({ backgroundContext }) =>
+			async () => {
+				await flush();
+				notifyDictionaryClear();
+				void backgroundContext
+					.getWebDAVSyncManager()
+					.onLocalDictionaryWrite()
+					.catch((error) => {
+						console.error(
+							'[dictionary] failed to schedule WebDAV sync after clear',
+							error,
+						);
+					});
+			},
 	},
 );

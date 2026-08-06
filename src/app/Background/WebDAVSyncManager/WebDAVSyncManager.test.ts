@@ -16,11 +16,21 @@ import { WebDAVPreconditionFailedError } from '../../../lib/webdav/WebDAVClient'
 import { AppConfigType } from '../../../types/runtime';
 import { ConfigStorage, ObservableAsyncStorage } from '../../ConfigStorage/ConfigStorage';
 
+import { serializeDictionaryEnvelope } from '../../../lib/webdav/dictionaryEnvelope';
+import * as translationsStore from '../../../requests/backend/translations/data';
+
 import {
+	WEBDAV_CONFIG_PATH,
+	WEBDAV_DICTIONARY_PATH,
 	WEBDAV_PUSH_ALARM_NAME,
 	WEBDAV_SYNC_ALARM_NAME,
 	WebDAVSyncManager,
 } from './WebDAVSyncManager';
+import {
+	defaultDictionarySyncMeta,
+	getDictionarySyncMeta,
+	setDictionarySyncMeta,
+} from './dictionarySyncMeta';
 import {
 	CONFIG_SYNC_META_KEY,
 	defaultConfigSyncMeta,
@@ -31,7 +41,37 @@ import {
 type MockClient = WebDAVClientLike & {
 	get: ReturnType<typeof vi.fn>;
 	put: ReturnType<typeof vi.fn>;
+	path: string;
 };
+
+const makeDictionaryEnvelope = (
+	entries: Array<{
+		timestamp: number;
+		translation: {
+			from: string;
+			to: string;
+			originalText: string;
+			translatedText: string;
+		};
+	}> = [],
+	updatedAt = 1000,
+	extensionVersion = '7.0.12',
+): string => serializeDictionaryEnvelope(entries, updatedAt, extensionVersion);
+
+const makeMockClient = (path: string): MockClient => ({
+	path,
+	get: vi.fn(async (): Promise<WebDAVGetResult> => {
+		// Dictionary defaults to empty remote create path (404) so config tests
+		// only need to assert on the config client unless they set dictionary state.
+		if (path === WEBDAV_DICTIONARY_PATH) {
+			return { status: 404, bodyText: '', etag: null };
+		}
+		return { status: 404, bodyText: '', etag: null };
+	}),
+	put: vi.fn(async (): Promise<WebDAVPutResult> => ({ etag: '"etag-1"' })),
+	resolveFileUrl: vi.fn(() => `https://example.com/dav/files/user/${path}`),
+	ensureParentCollections: vi.fn(async () => undefined),
+});
 
 const ensureAlarmsMock = () => {
 	const alarms = (
@@ -100,11 +140,15 @@ const makeEnvelope = (
 describe('WebDAVSyncManager', () => {
 	let storage: ObservableAsyncStorage<AppConfigType>;
 	let mockClient: MockClient;
+	let dictionaryClient: MockClient;
 	let createClient: ReturnType<typeof vi.fn>;
+	const clientsByPath = new Map<string, MockClient>();
 
 	beforeEach(async () => {
 		await clearAllMocks();
 		ensureAlarmsMock();
+		translationsStore.closeDB();
+		clientsByPath.clear();
 
 		vi.spyOn(browser.runtime, 'getManifest').mockReturnValue({
 			manifest_version: 3,
@@ -118,25 +162,23 @@ describe('WebDAVSyncManager', () => {
 		await configStorage.set(initial);
 		storage = new ObservableAsyncStorage(configStorage);
 
-		mockClient = {
-			get: vi.fn(
-				async (): Promise<WebDAVGetResult> => ({
-					status: 404,
-					bodyText: '',
-					etag: null,
-				}),
-			),
-			put: vi.fn(async (): Promise<WebDAVPutResult> => ({ etag: '"etag-1"' })),
-			resolveFileUrl: vi.fn(
-				() => 'https://example.com/dav/files/user/linguist/linguist-config.json',
-			),
-			ensureParentCollections: vi.fn(async () => undefined),
-		};
-		createClient = vi.fn(() => mockClient);
+		mockClient = makeMockClient(WEBDAV_CONFIG_PATH);
+		dictionaryClient = makeMockClient(WEBDAV_DICTIONARY_PATH);
+		clientsByPath.set(WEBDAV_CONFIG_PATH, mockClient);
+		clientsByPath.set(WEBDAV_DICTIONARY_PATH, dictionaryClient);
+
+		createClient = vi.fn((credentials: { path: string }) => {
+			const existing = clientsByPath.get(credentials.path);
+			if (existing) return existing;
+			const created = makeMockClient(credentials.path);
+			clientsByPath.set(credentials.path, created);
+			return created;
+		});
 	});
 
 	afterEach(() => {
 		vi.restoreAllMocks();
+		translationsStore.closeDB();
 	});
 
 	const createManager = () =>
@@ -155,6 +197,12 @@ describe('WebDAVSyncManager', () => {
 		expect(meta.lastError).toBeNull();
 		expect(meta.lastRemoteEtag).toBe('"etag-1"');
 		expect(meta.lastSyncAt).not.toBeNull();
+
+		// Dictionary also creates on 404 in the same drain
+		expect(dictionaryClient.get).toHaveBeenCalled();
+		expect(dictionaryClient.put).toHaveBeenCalled();
+		const dictMeta = await getDictionarySyncMeta();
+		expect(dictMeta.lastDirection).toBe('push');
 	});
 
 	test('local newer pushes with If-Match when etag known', async () => {
@@ -173,6 +221,17 @@ describe('WebDAVSyncManager', () => {
 			status: 200,
 			bodyText: makeEnvelope(remoteConfig, 1000),
 			etag: '"remote-old"',
+		});
+		// Keep dictionary as equal-clocks noop so it does not muddy config assertions
+		await setDictionarySyncMeta({
+			...defaultDictionarySyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		dictionaryClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeDictionaryEnvelope([], 1000),
+			etag: '"dict-etag"',
 		});
 
 		const manager = createManager();
@@ -208,6 +267,16 @@ describe('WebDAVSyncManager', () => {
 			status: 200,
 			bodyText: makeEnvelope(remoteConfig, 3000),
 			etag: '"remote-new"',
+		});
+		await setDictionarySyncMeta({
+			...defaultDictionarySyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		dictionaryClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeDictionaryEnvelope([], 1000),
+			etag: '"dict-etag"',
 		});
 
 		const manager = createManager();
@@ -755,5 +824,143 @@ describe('WebDAVSyncManager', () => {
 		expect(mockClient.get).not.toHaveBeenCalled();
 		expect(status.lastError).toMatch(/not configured/i);
 		expect(status.lastSyncAt).toBeNull();
+	});
+
+	test('dictionary remote newer replaces local IndexedDB entries', async () => {
+		await translationsStore.addEntry({
+			timestamp: 1,
+			translation: {
+				from: 'en',
+				to: 'de',
+				originalText: 'local-only',
+				translatedText: 'lokal',
+			},
+		});
+
+		// Config equal-clocks so only dictionary transfer is asserted
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		const remoteConfig = configuredConfig();
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeEnvelope(remoteConfig, 1000),
+			etag: '"cfg"',
+		});
+
+		await setDictionarySyncMeta({
+			...defaultDictionarySyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		const remoteEntries = [
+			{
+				timestamp: 9,
+				translation: {
+					from: 'en',
+					to: 'zh',
+					originalText: 'hello',
+					translatedText: '你好',
+				},
+			},
+		];
+		dictionaryClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeDictionaryEnvelope(remoteEntries, 5000),
+			etag: '"dict-new"',
+		});
+
+		const manager = createManager();
+		await manager.reconcile('manual');
+
+		const local = await translationsStore.getEntries(undefined, undefined, {
+			order: 'asc',
+		});
+		expect(local.map(({ data }) => data.translation.originalText)).toEqual(['hello']);
+		expect(dictionaryClient.put).not.toHaveBeenCalled();
+
+		const dictMeta = await getDictionarySyncMeta();
+		expect(dictMeta.lastDirection).toBe('pull');
+		expect(dictMeta.lastLocalWriteAt).toBe(5000);
+		expect(dictMeta.lastRemoteEtag).toBe('"dict-new"');
+	});
+
+	test('dictionary local newer pushes snapshot JSON without IDB keys', async () => {
+		await translationsStore.addEntry({
+			timestamp: 42,
+			translation: {
+				from: 'en',
+				to: 'zh',
+				originalText: 'word',
+				translatedText: '词',
+			},
+		});
+
+		await setConfigSyncMeta({
+			...defaultConfigSyncMeta(),
+			lastLocalWriteAt: 1000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		mockClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeEnvelope(configuredConfig(), 1000),
+			etag: '"cfg"',
+		});
+
+		await setDictionarySyncMeta({
+			...defaultDictionarySyncMeta(),
+			lastLocalWriteAt: 8000,
+			lastRemoteUpdatedAt: 1000,
+		});
+		dictionaryClient.get.mockResolvedValue({
+			status: 200,
+			bodyText: makeDictionaryEnvelope([], 1000),
+			etag: '"dict-old"',
+		});
+
+		const manager = createManager();
+		await manager.reconcile('manual');
+
+		expect(dictionaryClient.put).toHaveBeenCalledTimes(1);
+		expect(dictionaryClient.put.mock.calls[0]?.[1]).toMatchObject({
+			ifMatch: '"dict-old"',
+		});
+		const body = dictionaryClient.put.mock.calls[0]?.[0] as string;
+		const parsed = JSON.parse(body) as {
+			updatedAt: number;
+			entries: Array<Record<string, unknown>>;
+		};
+		expect(parsed.updatedAt).toBe(8000);
+		expect(parsed.entries).toHaveLength(1);
+		expect(parsed.entries[0]).not.toHaveProperty('id');
+		expect(parsed.entries[0]?.translation).toMatchObject({
+			originalText: 'word',
+			translatedText: '词',
+		});
+
+		const dictMeta = await getDictionarySyncMeta();
+		expect(dictMeta.lastDirection).toBe('push');
+	});
+
+	test('onLocalDictionaryWrite bumps meta and schedules push when enabled', async () => {
+		const alarms = ensureAlarmsMock();
+		const manager = createManager();
+
+		// Avoid start() network; exercise the public mutation hook directly.
+		await setDictionarySyncMeta({
+			...defaultDictionarySyncMeta(),
+			lastLocalWriteAt: 0,
+		});
+
+		await manager.onLocalDictionaryWrite();
+
+		const meta = await getDictionarySyncMeta();
+		expect(meta.lastLocalWriteAt).toBeGreaterThan(0);
+		expect(alarms.create).toHaveBeenCalledWith(
+			WEBDAV_PUSH_ALARM_NAME,
+			expect.objectContaining({ delayInMinutes: expect.any(Number) }),
+		);
 	});
 });

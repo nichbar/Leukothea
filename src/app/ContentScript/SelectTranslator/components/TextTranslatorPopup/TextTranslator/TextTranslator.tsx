@@ -3,6 +3,7 @@ import browser from 'webextension-polyfill';
 import { cn } from '@bem-react/classname';
 
 // Components
+import { DictionaryButton } from '../../../../../../components/controls/DictionaryButton/DictionaryButton';
 import { Button } from '../../../../../../components/primitives/Button/Button.bundle/desktop';
 import { Loader } from '../../../../../../components/primitives/Loader/Loader';
 import { isMobileBrowser } from '../../../../../../lib/browser';
@@ -17,6 +18,7 @@ import { addTranslationHistoryEntry } from '../../../../../../requests/backend/h
 import { TRANSLATION_ORIGIN } from '../../../../../../requests/backend/history/constants';
 import { ping as pingBackend } from '../../../../../../requests/backend/ping';
 import { getAvailableTranslators } from '../../../../../../requests/backend/translators/getAvailableTranslators';
+import { ITranslation } from '../../../../../../types/translation/Translation';
 
 import './TextTranslator.css';
 
@@ -350,6 +352,24 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 
 	const isMobile = useMemo(() => isMobileBrowser(), []);
 
+	const dictionaryTranslation = useMemo((): ITranslation | null => {
+		if (
+			translatedText === null ||
+			from === undefined ||
+			to === undefined ||
+			originalText.trim() === ''
+		) {
+			return null;
+		}
+
+		return {
+			from,
+			to,
+			originalText: originalText.trim(),
+			translatedText: translatedText.trim(),
+		};
+	}, [from, to, originalText, translatedText]);
+
 	// Language panel and close button are intentionally omitted: outside click
 	// closes the popup, and source/target languages come from settings.
 	// Show the error card even when init never reached translatorFeatures, so a
@@ -363,16 +383,19 @@ export const TextTranslator: FC<TextTranslatorComponentProps> = ({
 					</div>
 				</div>
 
-				{providerName && (
-					<div className={cnTextTranslator('Footer')}>
+				<div className={cnTextTranslator('Footer')}>
+					<div className={cnTextTranslator('FooterActions')}>
+						<DictionaryButton translation={dictionaryTranslation} />
+					</div>
+					{providerName && (
 						<span
 							className={cnTextTranslator('Provider')}
 							title={providerName}
 						>
 							{getMessage('inlineTranslator_translatedBy', [providerName])}
 						</span>
-					</div>
-				)}
+					)}
+				</div>
 			</div>
 		);
 	}

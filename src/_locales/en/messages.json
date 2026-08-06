@@ -630,7 +630,7 @@
 		"description": "Settings group for bidirectional AppConfig sync over WebDAV"
 	},
 	"settings_option_syncWebdav_desc": {
-		"message": "Sync settings across devices via a WebDAV file. Dictionary and history stay local. Last write wins. WebDAV URL, username, and password always stay on this device. The LLM API key is off by default — enable “Sync secrets” only if you trust the WebDAV host and its ACLs."
+		"message": "Sync settings and dictionary across devices via WebDAV (two JSON files under the same folder). History stays local. Last write wins. WebDAV URL, username, and password always stay on this device. The LLM API key is off by default — enable “Sync secrets” only if you trust the WebDAV host and its ACLs."
 	},
 	"settings_option_syncWebdav_enable": {
 		"message": "Enable WebDAV sync"

@@ -2,23 +2,27 @@
 	margin-block-end: 0.5rem;
 }
 
-/* full */
+/* full: label + control on one row (table-row without a table parent was misaligned) */
 .OptionsPanel_view_full .OptionsPanel-Option {
-	display: table-row;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
 }
 
 .OptionsPanel_view_full .OptionsPanel-OptionTitle {
-	display: table-cell;
-	line-height: 200%;
-	padding-bottom: 0.3rem;
-	padding-right: 0.3rem;
+	flex: 0 0 auto;
+	min-width: 3.5rem;
+	line-height: 1.4;
+	color: var(--color-typo-secondary);
 }
 
 .OptionsPanel_view_full .OptionsPanel-OptionBody {
-	display: block;
+	flex: 1 1 auto;
+	min-width: 10rem;
 }
 
-/* mobile */
+/* mobile: stacked label above control */
 .OptionsPanel_view_mobile .OptionsPanel-Option {
 	display: block;
 }
@@ -26,6 +30,7 @@
 .OptionsPanel_view_mobile .OptionsPanel-OptionTitle {
 	display: block;
 	margin-bottom: 0.3rem;
+	color: var(--color-typo-secondary);
 }
 
 .OptionsPanel_view_mobile .OptionsPanel-OptionBody {

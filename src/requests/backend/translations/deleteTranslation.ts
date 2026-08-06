@@ -8,11 +8,22 @@ export const [deleteTranslationFactory, deleteTranslationReq] = buildBackendRequ
 	'deleteTranslation',
 	{
 		requestValidator: type.number,
-		factoryHandler: () => async (id) => {
-			await deleteEntry(id);
+		factoryHandler:
+			({ backgroundContext }) =>
+			async (id) => {
+				await deleteEntry(id);
 
-			notifyDictionaryEntryDelete(id);
-		},
+				notifyDictionaryEntryDelete(id);
+				void backgroundContext
+					.getWebDAVSyncManager()
+					.onLocalDictionaryWrite()
+					.catch((error) => {
+						console.error(
+							'[dictionary] failed to schedule WebDAV sync after delete',
+							error,
+						);
+					});
+			},
 	},
 );
 

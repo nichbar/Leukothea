@@ -88,18 +88,29 @@
 	justify-content: flex-start;
 }
 
-/* Footer */
+/* Footer: bookmark bottom-left, provider attribution bottom-right */
 .TextTranslator-Footer {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: var(--typography-layout-indent-s-all);
 	min-width: 0;
 	padding-top: var(--typography-layout-indent-xs-all, 0.1rem);
 }
 
+.TextTranslator-FooterActions {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+
+	/* Nudge icon slightly into card padding so the row stays compact */
+	margin: 0 0 calc(var(--typography-layout-indent-l-all) * -0.25)
+		calc(var(--typography-layout-indent-l-all) * -0.35);
+}
+
 .TextTranslator-Provider {
+	margin-left: auto;
 	color: var(--color-typo-secondary);
 	font-size: 0.85em;
 	white-space: nowrap;

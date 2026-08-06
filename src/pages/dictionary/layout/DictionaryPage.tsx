@@ -77,10 +77,12 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 	//
 
 	const remove = useImmutableCallback(
-		async (idx: number) => {
+		async (entryKey: number) => {
 			if (entries === null) return;
 
-			const entry = entries[idx];
+			// Always resolve by IDB key — filtered list indices must not be used
+			// (they point at a different entry once From/To/search filters apply).
+			const entry = entries.find(({ key }) => key === entryKey);
 			if (entry === undefined) return;
 
 			const translation = entry.data.translation;
@@ -100,10 +102,9 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 			await deleteTranslation(entry.key);
 
 			setEntries((state) => {
-				if (state !== entries || state === null) return state;
+				if (state === null) return state;
 
-				// Remove from entry from state
-				return state.filter((_, itemIdx) => itemIdx !== idx);
+				return state.filter(({ key }) => key !== entryKey);
 			});
 		},
 		[confirmDelete, entries],
@@ -232,7 +233,7 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 			);
 
 		// Render entries
-		return filteredEntries.map(({ data, key }, idx) => {
+		return filteredEntries.map(({ data, key }) => {
 			const { timestamp, translation } = data;
 			return (
 				<TranslationCard
@@ -250,7 +251,7 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 						<Button
 							view="clear"
 							size="s"
-							onPress={() => remove(idx)}
+							onPress={() => remove(key)}
 							title={getMessage('common_action_removeFromDictionary')}
 							content="icon"
 						>
@@ -336,11 +337,19 @@ export const DictionaryPage: FC<IDictionaryPageProps> = ({ confirmDelete = true 
 					<LayoutFlow indent="l" className={cnDictionaryPage('MainContainer')}>
 						<LayoutFlow indent="m" direction="horizontal">
 							{!isMobile && (
-								<Button view="default" onPress={exportDictionary}>
+								<Button
+									view="default"
+									onPress={exportDictionary}
+									disabled={entries === null || entries.length === 0}
+								>
 									{getMessage('dictionary_button_export')}
 								</Button>
 							)}
-							<Button view="default" onPress={removeAll}>
+							<Button
+								view="default"
+								onPress={removeAll}
+								disabled={entries === null || entries.length === 0}
+							>
 								{getMessage('dictionary_button_removeAll')}
 							</Button>
 						</LayoutFlow>

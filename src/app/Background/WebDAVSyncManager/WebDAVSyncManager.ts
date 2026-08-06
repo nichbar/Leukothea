@@ -7,6 +7,10 @@ import {
 	parseEnvelope,
 	serializeEnvelope,
 } from '../../../lib/webdav/configEnvelope';
+import {
+	parseDictionaryEnvelope,
+	serializeDictionaryEnvelope,
+} from '../../../lib/webdav/dictionaryEnvelope';
 import { mergeRemoteConfig, prepareConfigForPush } from '../../../lib/webdav/syncSecrets';
 import {
 	WebDAVClient,
@@ -14,9 +18,21 @@ import {
 	WebDAVCredentials,
 	WebDAVPreconditionFailedError,
 } from '../../../lib/webdav/WebDAVClient';
+import {
+	getEntries as getDictionaryEntries,
+	ITranslationEntry,
+	replaceAllEntries as replaceDictionaryEntries,
+} from '../../../requests/backend/translations/data';
 import { AppConfigType } from '../../../types/runtime';
 import { ObservableAsyncStorage } from '../../ConfigStorage/ConfigStorage';
 
+import {
+	bumpDictionaryLocalWriteAt,
+	DictionarySyncDirection,
+	DictionarySyncMeta,
+	getDictionarySyncMeta,
+	setDictionarySyncMeta,
+} from './dictionarySyncMeta';
 import {
 	bumpLocalWriteAt,
 	ConfigSyncDirection,
@@ -33,6 +49,9 @@ export const WEBDAV_PUSH_ALARM_NAME = 'webdav-config-push';
 
 /** Fixed remote filename under the configured WebDAV base URL. */
 export const WEBDAV_CONFIG_PATH = 'linguist/linguist-config.json';
+
+/** Fixed remote dictionary snapshot under the same WebDAV base URL. */
+export const WEBDAV_DICTIONARY_PATH = 'linguist/linguist-dictionary.json';
 
 /** Fixed periodic pull interval (once per day). */
 export const WEBDAV_PULL_INTERVAL_MINUTES = 1440;
@@ -74,14 +93,17 @@ const isConfigured = (settings: WebDAVSettings): boolean =>
 	settings.enabled && settings.url.trim() !== '';
 
 /**
- * Bidirectional WebDAV sync of full AppConfig (last-write-wins + extension version gate).
+ * Bidirectional WebDAV sync of AppConfig + dictionary (last-write-wins + extension version gate).
  *
  * Runtime contract: dirty re-run, alarms, conditional PUT (last-write-wins).
+ * Dictionary lives in IndexedDB locally; JSON on WebDAV is transport only.
  */
 export class WebDAVSyncManager {
 	private readonly config: ObservableAsyncStorage<AppConfigType>;
 	private readonly createClient: (credentials: WebDAVCredentials) => WebDAVClientLike;
 	private applyingRemote = false;
+	/** Suppress dictionary push while applying a remote dictionary pull. */
+	private applyingRemoteDictionary = false;
 	private reconcilePromise: Promise<void> | null = null;
 	private dirtyWhileReconciling = false;
 	/** Most recent trigger reason while a chain is active (used for dirty re-entry). */
@@ -92,6 +114,8 @@ export class WebDAVSyncManager {
 	 * after a real transfer in the same Sync now / reconcile chain).
 	 */
 	private chainTransferDirection: 'push' | 'pull' | null = null;
+	/** Same role as chainTransferDirection, for dictionary file status. */
+	private dictionaryChainTransferDirection: 'push' | 'pull' | null = null;
 	private started = false;
 	private lastSettings: WebDAVSettings | null = null;
 	/** One-shot credentials for manual sync/test-aligned reconcile. */
@@ -295,6 +319,41 @@ export class WebDAVSyncManager {
 		void this.reconcile('localWrite');
 	}
 
+	/**
+	 * Call after dictionary IndexedDB mutations (add / delete / clear).
+	 * Bumps dictionary LWW clock and schedules the shared multi-file reconcile.
+	 */
+	public async onLocalDictionaryWrite() {
+		if (this.applyingRemoteDictionary) return;
+
+		const config = await this.config.get();
+		if (!isConfigured(config.sync.webdav)) {
+			await bumpDictionaryLocalWriteAt(Date.now());
+			return;
+		}
+
+		await bumpDictionaryLocalWriteAt(Date.now());
+		await this.schedulePushAlarm();
+		void this.reconcile('localWrite');
+	}
+
+	private clientForPath(
+		settings: WebDAVSettings,
+		path: string,
+		override?: Partial<WebDAVCredentials> | null,
+	): WebDAVClientLike {
+		const credentials = override ?? this.credentialsOverride;
+		return this.createClient({
+			url: (credentials?.url ?? settings.url).trim(),
+			username: (credentials?.username ?? settings.username).trim(),
+			password: (credentials?.password ?? settings.password).replace(
+				/[\r\n]+$/g,
+				'',
+			),
+			path,
+		});
+	}
+
 	private async schedulePullAlarm() {
 		if (!browser.alarms?.create) return;
 		await browser.alarms.clear(WEBDAV_SYNC_ALARM_NAME);
@@ -354,12 +413,15 @@ export class WebDAVSyncManager {
 	private async drainReconcile(): Promise<void> {
 		// Reset per drain so a pure equal-clocks sync still reports "already in sync".
 		this.chainTransferDirection = null;
+		this.dictionaryChainTransferDirection = null;
 		let reruns = 0;
 		while (this.dirtyWhileReconciling && reruns < MAX_DIRTY_RERUNS) {
 			this.dirtyWhileReconciling = false;
 			const cycleReason: ReconcileReason =
 				reruns === 0 ? this.latestReconcileReason : 'localWrite';
 			await this.runReconcile(cycleReason);
+			// Dictionary is independent LWW; always attempt in the same drain cycle.
+			await this.runDictionaryReconcile();
 			reruns += 1;
 		}
 	}
@@ -374,6 +436,23 @@ export class WebDAVSyncManager {
 	private directionForSuccessfulNoop(meta: ConfigSyncMeta): ConfigSyncDirection {
 		if (this.chainTransferDirection != null) {
 			return this.chainTransferDirection;
+		}
+		const lastDirection = meta.lastDirection;
+		if (
+			(lastDirection === 'push' || lastDirection === 'pull') &&
+			meta.lastSyncAt != null &&
+			Date.now() - meta.lastSyncAt < TRAILING_NOOP_DIRECTION_WINDOW_MS
+		) {
+			return lastDirection;
+		}
+		return 'none';
+	}
+
+	private dictionaryDirectionForSuccessfulNoop(
+		meta: DictionarySyncMeta,
+	): DictionarySyncDirection {
+		if (this.dictionaryChainTransferDirection != null) {
+			return this.dictionaryChainTransferDirection;
 		}
 		const lastDirection = meta.lastDirection;
 		if (
@@ -401,13 +480,7 @@ export class WebDAVSyncManager {
 			return;
 		}
 
-		const override = this.credentialsOverride;
-		const client = this.createClient({
-			url: (override?.url ?? settings.url).trim(),
-			username: (override?.username ?? settings.username).trim(),
-			password: (override?.password ?? settings.password).replace(/[\r\n]+$/g, ''),
-			path: WEBDAV_CONFIG_PATH,
-		});
+		const client = this.clientForPath(settings, WEBDAV_CONFIG_PATH);
 
 		const localExt = browser.runtime.getManifest().version;
 		let meta = await getConfigSyncMeta();
@@ -590,13 +663,7 @@ export class WebDAVSyncManager {
 			return;
 		}
 
-		const override = this.credentialsOverride;
-		const client = this.createClient({
-			url: (override?.url ?? settings.url).trim(),
-			username: (override?.username ?? settings.username).trim(),
-			password: (override?.password ?? settings.password).replace(/[\r\n]+$/g, ''),
-			path: WEBDAV_CONFIG_PATH,
-		});
+		const client = this.clientForPath(settings, WEBDAV_CONFIG_PATH);
 
 		const localExt = browser.runtime.getManifest().version;
 		let meta = await getConfigSyncMeta();
@@ -807,6 +874,287 @@ export class WebDAVSyncManager {
 			// Allow microtask queue for effector watchers that run sync
 			await Promise.resolve();
 			this.applyingRemote = false;
+		}
+	}
+
+	/**
+	 * Independent LWW reconcile for dictionary IndexedDB ↔ remote JSON snapshot.
+	 * Failures are recorded on dictionarySyncMeta and do not abort config sync.
+	 */
+	private async runDictionaryReconcile(): Promise<void> {
+		const config = await this.config.get();
+		const settings = config.sync.webdav;
+
+		if (!isConfigured(settings)) {
+			return;
+		}
+
+		const client = this.clientForPath(settings, WEBDAV_DICTIONARY_PATH);
+		const localExt = browser.runtime.getManifest().version;
+		let meta = await getDictionarySyncMeta();
+
+		if (!meta.lastLocalWriteAt) {
+			meta = await bumpDictionaryLocalWriteAt(Date.now());
+		}
+
+		let getResult: { status: number; bodyText: string; etag: string | null };
+		try {
+			getResult = await client.get();
+		} catch (error) {
+			const message =
+				error instanceof Error ? error.message : 'WebDAV dictionary GET failed';
+			await setDictionarySyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
+			return;
+		}
+
+		if (getResult.status === 404) {
+			await this.pushDictionaryCreate(client, localExt);
+			return;
+		}
+
+		if (getResult.status < 200 || getResult.status >= 300) {
+			const detail =
+				getResult.status === 401
+					? 'WebDAV dictionary GET failed: 401 Unauthorized. Check username/password (or app password).'
+					: getResult.status === 403
+						? 'WebDAV dictionary GET failed: 403 Forbidden. Authenticated but not allowed to read this path.'
+						: `WebDAV dictionary GET failed: HTTP ${getResult.status}`;
+			await setDictionarySyncMeta({
+				lastError: detail,
+				lastDirection: 'none',
+				recovery: null,
+			});
+			return;
+		}
+
+		if (getResult.etag != null) {
+			meta = await setDictionarySyncMeta({ lastRemoteEtag: getResult.etag });
+		}
+
+		const parsed = parseDictionaryEnvelope(getResult.bodyText);
+
+		if (!parsed.ok) {
+			const remoteExt = parsed.extensionVersion;
+			const remoteUpdatedAt = parsed.updatedAt ?? null;
+			const action = decideSyncAction({
+				localWriteAt: meta.lastLocalWriteAt,
+				remoteUpdatedAt,
+				localExt,
+				remoteExt,
+				remoteConfigValid: false,
+				remoteMissing: false,
+			});
+
+			const message =
+				action === 'skipPushOlderExtension'
+					? `Remote dictionary was written by a newer extension (${remoteExt ?? 'unknown'}); upgrade this install to sync. Also: ${parsed.error}`
+					: parsed.error;
+
+			await setDictionarySyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: 'forcePushInvalidRemote',
+				...(remoteUpdatedAt != null
+					? { lastRemoteUpdatedAt: remoteUpdatedAt }
+					: {}),
+			});
+			return;
+		}
+
+		const remote = parsed.envelope;
+		meta = await getDictionarySyncMeta();
+		const action = decideSyncAction({
+			localWriteAt: meta.lastLocalWriteAt,
+			remoteUpdatedAt: remote.updatedAt,
+			localExt,
+			remoteExt: remote.extensionVersion,
+			remoteConfigValid: true,
+		});
+
+		if (action === 'noop') {
+			await setDictionarySyncMeta({
+				lastRemoteUpdatedAt: remote.updatedAt,
+				lastSyncAt: Date.now(),
+				lastError: null,
+				recovery: null,
+				lastDirection: this.dictionaryDirectionForSuccessfulNoop(meta),
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
+			});
+			return;
+		}
+
+		if (action === 'skipPushOlderExtension') {
+			await setDictionarySyncMeta({
+				lastRemoteUpdatedAt: remote.updatedAt,
+				lastError: `Remote dictionary was written by a newer extension (${remote.extensionVersion}); upgrade this install to sync.`,
+				lastDirection: 'none',
+				recovery: null,
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
+			});
+			return;
+		}
+
+		if (action === 'skipIncompatibleRemote') {
+			await setDictionarySyncMeta({
+				lastRemoteUpdatedAt: remote.updatedAt,
+				lastError:
+					'Remote dictionary is incompatible with this extension version',
+				lastDirection: 'none',
+				recovery: null,
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
+			});
+			return;
+		}
+
+		if (action === 'pull') {
+			try {
+				await this.applyRemoteDictionary(remote.entries);
+				this.dictionaryChainTransferDirection = 'pull';
+				await setDictionarySyncMeta({
+					lastLocalWriteAt: remote.updatedAt,
+					lastRemoteUpdatedAt: remote.updatedAt,
+					lastSyncAt: Date.now(),
+					lastError: null,
+					lastDirection: 'pull',
+					recovery: null,
+					...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
+				});
+			} catch (error) {
+				const message =
+					error instanceof Error
+						? error.message
+						: 'Failed to apply remote dictionary';
+				await setDictionarySyncMeta({
+					lastError: message,
+					lastDirection: 'none',
+					recovery: null,
+				});
+			}
+			return;
+		}
+
+		if (action === 'push') {
+			await this.pushDictionaryUpdate(
+				client,
+				localExt,
+				getResult.etag ?? meta.lastRemoteEtag,
+			);
+		}
+	}
+
+	private async pushDictionaryCreate(
+		client: WebDAVClientLike,
+		localExt: string,
+	): Promise<void> {
+		try {
+			const meta = await getDictionarySyncMeta();
+			const updatedAt = meta.lastLocalWriteAt || Date.now();
+			const entries = await this.loadDictionaryEntriesForPush();
+			const body = serializeDictionaryEnvelope(entries, updatedAt, localExt);
+			const putResult = await client.put(body, { createOnly: true });
+			this.dictionaryChainTransferDirection = 'push';
+			await setDictionarySyncMeta({
+				lastRemoteUpdatedAt: updatedAt,
+				lastSyncAt: Date.now(),
+				lastError: null,
+				lastDirection: 'push',
+				recovery: null,
+				lastRemoteEtag: putResult.etag ?? null,
+			});
+		} catch (error) {
+			if (error instanceof WebDAVPreconditionFailedError) {
+				this.dirtyWhileReconciling = true;
+				await setDictionarySyncMeta({
+					lastError: 'Remote dictionary file appeared during create; retrying',
+					lastDirection: 'none',
+					recovery: null,
+				});
+				return;
+			}
+			const message =
+				error instanceof Error
+					? error.message
+					: 'WebDAV dictionary PUT (create) failed';
+			await setDictionarySyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
+		}
+	}
+
+	private async pushDictionaryUpdate(
+		client: WebDAVClientLike,
+		localExt: string,
+		etag: string | null,
+	): Promise<void> {
+		try {
+			const meta = await getDictionarySyncMeta();
+			const updatedAt = meta.lastLocalWriteAt || Date.now();
+			const entries = await this.loadDictionaryEntriesForPush();
+			const body = serializeDictionaryEnvelope(entries, updatedAt, localExt);
+			const putResult = await client.put(body, {
+				...(etag != null && etag !== '' ? { ifMatch: etag } : {}),
+			});
+			this.dictionaryChainTransferDirection = 'push';
+			await setDictionarySyncMeta({
+				lastRemoteUpdatedAt: updatedAt,
+				lastSyncAt: Date.now(),
+				lastError: null,
+				lastDirection: 'push',
+				recovery: null,
+				lastRemoteEtag: putResult.etag ?? etag,
+			});
+		} catch (error) {
+			if (error instanceof WebDAVPreconditionFailedError) {
+				this.dirtyWhileReconciling = true;
+				await setDictionarySyncMeta({
+					lastError:
+						'Remote dictionary changed on another device (precondition failed); retrying',
+					lastDirection: 'none',
+					recovery: null,
+					lastRemoteEtag: null,
+				});
+				return;
+			}
+			const message =
+				error instanceof Error ? error.message : 'WebDAV dictionary PUT failed';
+			await setDictionarySyncMeta({
+				lastError: message,
+				lastDirection: 'none',
+				recovery: null,
+			});
+		}
+	}
+
+	private async loadDictionaryEntriesForPush(): Promise<ITranslationEntry[]> {
+		const withKeys = await getDictionaryEntries(undefined, undefined, {
+			order: 'asc',
+		});
+		// Strip IDB-injected `id` (keyPath) — remote envelope is keyless.
+		return withKeys.map(({ data }) => {
+			const entry: ITranslationEntry = {
+				timestamp: data.timestamp,
+				translation: data.translation,
+			};
+			if (data.translator !== undefined) {
+				entry.translator = data.translator;
+			}
+			return entry;
+		});
+	}
+
+	private async applyRemoteDictionary(entries: ITranslationEntry[]) {
+		this.applyingRemoteDictionary = true;
+		try {
+			await replaceDictionaryEntries(entries);
+		} finally {
+			await Promise.resolve();
+			this.applyingRemoteDictionary = false;
 		}
 	}
 }

@@ -125,8 +125,9 @@ export const AppConfig = type.type({
 		enabled: type.boolean,
 	}),
 	/**
-	 * Multi-device config sync settings (WebDAV).
-	 * Dictionary and history stay local; only AppConfig is synced.
+	 * Multi-device sync settings (WebDAV).
+	 * Syncs AppConfig (`linguist-config.json`) and dictionary (`linguist-dictionary.json`).
+	 * History stays local.
 	 */
 	sync: type.type({
 		webdav: type.type({

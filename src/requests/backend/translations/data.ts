@@ -101,6 +101,22 @@ export const flush = async () => {
 	await transaction.done;
 };
 
+/**
+ * Replace the entire dictionary with the given entries (new auto-increment keys).
+ * Used by WebDAV dictionary pull — remote snapshots never carry local IDB keys.
+ */
+export const replaceAllEntries = async (entries: ITranslationEntry[]) => {
+	const db = await getDB();
+	const transaction = await db.transaction(translationsStoreName, 'readwrite');
+
+	await transaction.store.clear();
+	for (const entry of entries) {
+		await transaction.store.add(entry);
+	}
+
+	await transaction.done;
+};
+
 // TODO: refactor it to use object with options
 export const getEntries = async (
 	from?: number,

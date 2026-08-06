@@ -11,15 +11,26 @@ export const [addTranslationFactory, addTranslation] = buildBackendRequest(
 		requestValidator: TranslationType,
 		responseValidator: type.number,
 
-		factoryHandler: () => async (translation) => {
-			const id = await addEntry({
-				translation,
-				timestamp: new Date().getTime(),
-			});
+		factoryHandler:
+			({ backgroundContext }) =>
+			async (translation) => {
+				const id = await addEntry({
+					translation,
+					timestamp: new Date().getTime(),
+				});
 
-			notifyDictionaryEntryAdd(translation);
+				notifyDictionaryEntryAdd(translation);
+				void backgroundContext
+					.getWebDAVSyncManager()
+					.onLocalDictionaryWrite()
+					.catch((error) => {
+						console.error(
+							'[dictionary] failed to schedule WebDAV sync after add',
+							error,
+						);
+					});
 
-			return id;
-		},
+				return id;
+			},
 	},
 );
