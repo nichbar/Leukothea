@@ -24,6 +24,8 @@ export interface QuickInputPopupProps {
 	to: string | null;
 	themeMode: ThemeMode;
 	closeHandler: () => void;
+	/** Shift+Q while open — must run with preventDefault on the focused control. */
+	swapHandler?: () => void;
 	zIndex?: number;
 }
 
@@ -34,11 +36,20 @@ const formatError = (reason: unknown): string => {
 	return getMessage('message_unknownError');
 };
 
+const isSwapHotkey = (evt: React.KeyboardEvent | KeyboardEvent) =>
+	evt.code === 'KeyQ' &&
+	evt.shiftKey &&
+	!evt.ctrlKey &&
+	!evt.altKey &&
+	!evt.metaKey &&
+	!evt.repeat;
+
 export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 	from,
 	to,
 	themeMode,
 	closeHandler,
+	swapHandler,
 	zIndex = 2147483647,
 }) => {
 	const theme = useMemo(() => getThemeByMode(themeMode), [themeMode]);
@@ -81,6 +92,34 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 		document.addEventListener('keydown', onKey);
 		return () => document.removeEventListener('keydown', onKey);
 	}, [closeHandler]);
+
+	// Cancel Shift+Q on the focused control so "Q" is not typed into the textarea.
+	// Document-level preventDefault is unreliable for closed-shadow inputs.
+	const handleHotkeys = useCallback(
+		(evt: React.KeyboardEvent) => {
+			if (!isSwapHotkey(evt)) return;
+			evt.preventDefault();
+			evt.stopPropagation();
+			swapHandler?.();
+		},
+		[swapHandler],
+	);
+
+	// Closed-shadow: only an in-tree preventDefault cancels character insertion.
+	// Attach a native listener on the focused textarea (React synthetic alone is enough
+	// in most cases; this keeps swap reliable if focus stays on the field).
+	useEffect(() => {
+		const el = inputRef.current;
+		if (el === null) return;
+		const onKeyDown = (evt: KeyboardEvent) => {
+			if (!isSwapHotkey(evt)) return;
+			evt.preventDefault();
+			evt.stopPropagation();
+			swapHandler?.();
+		};
+		el.addEventListener('keydown', onKeyDown);
+		return () => el.removeEventListener('keydown', onKeyDown);
+	}, [swapHandler]);
 
 	useEffect(() => {
 		return () => {
@@ -152,6 +191,37 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 		[doTranslate, from, to],
 	);
 
+	// Re-translate when direction is swapped while text is already entered.
+	const directionKey = `${from}:${to ?? ''}`;
+	const lastDirectionKey = useRef(directionKey);
+	useEffect(() => {
+		if (lastDirectionKey.current === directionKey) return;
+		lastDirectionKey.current = directionKey;
+		if (timerRef.current !== null) {
+			window.clearTimeout(timerRef.current);
+			timerRef.current = null;
+		}
+		if (input.trim().length === 0) {
+			translateContext.current = Symbol('ctx');
+			setTranslated(null);
+			setError(null);
+			setIsTranslating(false);
+			return;
+		}
+		if (to === null || from === to) {
+			translateContext.current = Symbol('ctx');
+			setTranslated(null);
+			setIsTranslating(false);
+			if (from === to && to !== null) {
+				setError(getMessage('quickInput_sameLanguage'));
+			} else {
+				setError(null);
+			}
+			return;
+		}
+		doTranslate(input);
+	}, [directionKey, doTranslate, from, to, input]);
+
 	const handleRetry = useCallback(() => {
 		doTranslate(input);
 	}, [doTranslate, input]);
@@ -175,16 +245,15 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 					role="dialog"
 					aria-modal="true"
 					onClick={(evt) => evt.stopPropagation()}
+					onKeyDown={handleHotkeys}
 				>
 					<div className={cnQuickInputPopup('Header')}>
-						<div className={cnQuickInputPopup('Title')}>
-							<span className={cnQuickInputPopup('TitleText')}>
-								{getMessage('quickInput_title')}
-							</span>
-							<span className={cnQuickInputPopup('LangPair')}>
-								{fromName} → {toName ?? '—'}
-							</span>
-						</div>
+						<span className={cnQuickInputPopup('TitleText')}>
+							{getMessage('quickInput_title')}
+						</span>
+						<span className={cnQuickInputPopup('LangPair')}>
+							{fromName} → {toName ?? '—'}
+						</span>
 					</div>
 
 					{isMissingTarget && (
@@ -201,7 +270,7 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 					<textarea
 						ref={inputRef}
 						className={cnQuickInputPopup('Textarea')}
-						placeholder={getMessage('quickInput_placeholder')}
+						placeholder={getMessage('quickInput_placeholder', [fromName])}
 						value={input}
 						onChange={(e) => onChange(e.target.value)}
 						rows={3}
@@ -231,11 +300,14 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 						)}
 					</div>
 
-					{providerName &&
-						translated !== null &&
-						!isTranslating &&
-						error === null && (
-							<div className={cnQuickInputPopup('Footer')}>
+					<div className={cnQuickInputPopup('Footer')}>
+						<span className={cnQuickInputPopup('Hint')}>
+							{getMessage('quickInput_footerHint')}
+						</span>
+						{providerName &&
+							translated !== null &&
+							!isTranslating &&
+							error === null && (
 								<span
 									className={cnQuickInputPopup('Provider')}
 									title={providerName}
@@ -244,8 +316,8 @@ export const QuickInputPopup: FC<QuickInputPopupProps> = ({
 										providerName,
 									])}
 								</span>
-							</div>
-						)}
+							)}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -84,7 +84,8 @@ export class PageTranslationContext {
 			selectTranslatorManager,
 		);
 
-		// Quick input popup (Shift+Q): Your language → fixed source language
+		// Quick input popup (Shift+Q): Your language → fixed source language.
+		// Second Shift+Q while open swaps direction for that session only.
 		const $quickInputState = this.$config.map((config) => ({
 			language: config.language,
 			fixedSourceLanguage: config.fixedSourceLanguage,

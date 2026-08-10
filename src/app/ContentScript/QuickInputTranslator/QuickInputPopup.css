@@ -37,21 +37,17 @@
 
 .QuickInputPopup-Header {
 	display: flex;
-	align-items: center;
+	align-items: baseline;
 	justify-content: space-between;
 	gap: 12px;
-}
-
-.QuickInputPopup-Title {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
 	min-width: 0;
 }
 
 .QuickInputPopup-TitleText {
 	font-size: 14px;
 	font-weight: 600;
+	min-width: 0;
+	flex: 0 1 auto;
 }
 
 .QuickInputPopup-LangPair {
@@ -60,6 +56,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	margin-left: auto;
+	text-align: right;
+	flex: 0 1 auto;
+	max-width: 60%;
 }
 
 .QuickInputPopup-Warning {
@@ -144,12 +144,23 @@
 
 .QuickInputPopup-Footer {
 	display: flex;
-	justify-content: flex-end;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.QuickInputPopup-Hint {
+	font-size: 11px;
+	color: var(--color-typo-secondary, rgb(0 0 0 / 52%));
+	min-width: 0;
 }
 
 .QuickInputPopup-Provider {
 	font-size: 11px;
 	color: var(--color-typo-secondary, rgb(0 0 0 / 52%));
+	margin-left: auto;
+	text-align: right;
+	white-space: nowrap;
 }
 
 .QuickInputPopup-Loader {

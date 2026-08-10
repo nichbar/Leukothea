@@ -20,6 +20,8 @@ export class QuickInputManager {
 		themeMode: AppConfigType['themeMode'];
 	} | null = null;
 	private isOpen = false;
+	/** Session-only direction flip for the open popup (resets on close). */
+	private swapped = false;
 
 	constructor(
 		$state: Store<{
@@ -57,6 +59,18 @@ export class QuickInputManager {
 		this.shadowRoot.removeRootNode();
 	}
 
+	private isSwapHotkey(evt: KeyboardEvent) {
+		// Shift+Q without Ctrl/Alt/Meta. Use code for physical key, not locale-dependent key.
+		return (
+			evt.code === 'KeyQ' &&
+			evt.shiftKey &&
+			!evt.ctrlKey &&
+			!evt.altKey &&
+			!evt.metaKey &&
+			!evt.repeat
+		);
+	}
+
 	private readonly onShadowKeyDown = (evt: KeyboardEvent) => {
 		if (evt.key === 'Escape' || evt.key === 'Esc') {
 			evt.preventDefault();
@@ -64,14 +78,25 @@ export class QuickInputManager {
 			if (this.isOpen) this.hide();
 			return;
 		}
+		// Closed shadow: also catch Shift+Q on the host path and cancel default.
+		if (this.isOpen && this.isSwapHotkey(evt)) {
+			evt.preventDefault();
+			evt.stopImmediatePropagation();
+			this.toggleSwap();
+			return;
+		}
 		evt.stopImmediatePropagation();
 	};
 
 	private readonly onKeyDown = (evt: KeyboardEvent) => {
-		// Shift+Q without Ctrl/Alt/Meta. Use code for physical key, not locale-dependent key.
-		if (evt.code !== 'KeyQ') return;
-		if (!evt.shiftKey || evt.ctrlKey || evt.altKey || evt.metaKey) return;
-		// Do not hijack when typing in editable
+		if (!this.isSwapHotkey(evt)) return;
+
+		// While open, popup/shadow handlers own Shift+Q. Document-level
+		// preventDefault + stopImmediatePropagation cannot cancel typing into a
+		// closed-shadow textarea (and would also block the target handler).
+		if (this.isOpen) return;
+
+		// Do not hijack when typing in editable page fields.
 		const target = evt.target as HTMLElement | null;
 		if (target !== null) {
 			const tag = target.tagName;
@@ -87,31 +112,52 @@ export class QuickInputManager {
 				return;
 			}
 		}
-		if (this.isOpen) return;
 		evt.preventDefault();
 		evt.stopImmediatePropagation();
 		this.show();
 	};
 
 	private show() {
+		this.swapped = false;
 		this.isOpen = true;
 		this.render();
 	}
 
 	private readonly hide = () => {
 		this.isOpen = false;
+		this.swapped = false;
 		this.shadowRoot.mountComponent();
+	};
+
+	private lastSwapAt = 0;
+
+	private readonly toggleSwap = () => {
+		// Nothing useful to swap without a fixed source language.
+		if (this.config?.fixedSourceLanguage === null) return;
+		// React target handler + shadow host listener can both see the same key.
+		const now = Date.now();
+		if (now - this.lastSwapAt < 50) return;
+		this.lastSwapAt = now;
+		this.swapped = !this.swapped;
+		this.render();
 	};
 
 	private render() {
 		if (!this.isOpen || this.config === null) return;
 		const { language, fixedSourceLanguage, themeMode } = this.config;
+		const from =
+			this.swapped && fixedSourceLanguage !== null ? fixedSourceLanguage : language;
+		const to =
+			this.swapped && fixedSourceLanguage !== null ? language : fixedSourceLanguage;
 		this.shadowRoot.mountComponent(
 			React.createElement(QuickInputPopup, {
-				from: language,
-				to: fixedSourceLanguage,
+				from,
+				to,
 				themeMode,
 				closeHandler: this.hide,
+				// Handle on the focused control: document preventDefault can miss
+				// closed-shadow inputs and still insert "Q".
+				swapHandler: this.toggleSwap,
 			}),
 		);
 	}

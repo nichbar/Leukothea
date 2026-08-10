@@ -848,10 +848,16 @@
 		"message": "Quick translate"
 	},
 	"quickInput_hint": {
-		"message": "Press Shift+Q anywhere to open. Translates from Your language to the fixed source language."
+		"message": "Press Shift+Q anywhere to open. Translates from Your language to the fixed source language. Press Shift+Q again while open to swap direction."
 	},
 	"quickInput_placeholder": {
-		"message": "Type text in Your language…"
+		"message": "Type text in $1…",
+		"placeholders": {
+			"language": {
+				"content": "$1",
+				"example": "English"
+			}
+		}
 	},
 	"quickInput_resultPlaceholder": {
 		"message": "Translation will appear here"
@@ -863,6 +869,6 @@
 		"message": "Your language and fixed source language are the same — no translation needed."
 	},
 	"quickInput_footerHint": {
-		"message": "Esc or click outside to close"
+		"message": "Shift+Q swap · Esc or click outside to close"
 	}
 }
