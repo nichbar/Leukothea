@@ -38,6 +38,9 @@ export class QuickInputManager {
 
 	public start() {
 		this.shadowRoot.createRootNode();
+		// Warm contentscript.css inside the closed shadow so first Shift+Q
+		// does not paint an unstyled white flash at the top-left.
+		this.shadowRoot.preloadStyles();
 
 		this.$state.watch((state) => {
 			this.config = state;

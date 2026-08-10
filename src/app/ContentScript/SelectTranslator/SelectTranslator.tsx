@@ -168,6 +168,8 @@ export class SelectTranslator {
 		}
 
 		this.shadowRoot.createRootNode();
+		// Preload contentscript.css so the first selection popup does not flash unstyled.
+		this.shadowRoot.preloadStyles();
 		const root = this.shadowRoot.getRootNode()!;
 
 		// Add event listeners
