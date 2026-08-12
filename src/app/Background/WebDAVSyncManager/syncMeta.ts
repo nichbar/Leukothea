@@ -74,20 +74,42 @@ export const getConfigSyncMeta = async (): Promise<ConfigSyncMeta> => {
 	return decoded.data;
 };
 
+/**
+ * Serialize read-modify-write updates. Concurrent setConfigSyncMeta calls (e.g.
+ * etag write then error write, or config + overlapping reconcile) otherwise race
+ * under delayed storage mocks and can drop lastError/recovery.
+ */
+let configSyncMetaWriteChain: Promise<unknown> = Promise.resolve();
+
 export const setConfigSyncMeta = async (
 	meta: ConfigSyncMeta | Partial<ConfigSyncMeta>,
 ): Promise<ConfigSyncMeta> => {
-	const current = await getConfigSyncMeta();
-	const next: ConfigSyncMeta = {
-		...current,
-		...meta,
+	const run = async (): Promise<ConfigSyncMeta> => {
+		const current = await getConfigSyncMeta();
+		const next: ConfigSyncMeta = {
+			...current,
+			...meta,
+		};
+		await browser.storage.local.set({ [CONFIG_SYNC_META_KEY]: next });
+		return next;
 	};
-	await browser.storage.local.set({ [CONFIG_SYNC_META_KEY]: next });
-	return next;
+
+	const result = configSyncMetaWriteChain.then(run, run);
+	// Keep the chain alive regardless of success/failure so later writers still queue.
+	configSyncMetaWriteChain = result.then(
+		() => undefined,
+		() => undefined,
+	);
+	return result;
 };
 
 export const bumpLocalWriteAt = async (
 	at: number = Date.now(),
 ): Promise<ConfigSyncMeta> => {
 	return setConfigSyncMeta({ lastLocalWriteAt: at });
+};
+
+/** Wait for queued meta writers (tests: drain before/after storage clear). */
+export const flushConfigSyncMetaWrites = async (): Promise<void> => {
+	await configSyncMetaWriteChain;
 };

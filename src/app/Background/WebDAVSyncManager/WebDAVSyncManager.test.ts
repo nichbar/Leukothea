@@ -28,12 +28,14 @@ import {
 } from './WebDAVSyncManager';
 import {
 	defaultDictionarySyncMeta,
+	flushDictionarySyncMetaWrites,
 	getDictionarySyncMeta,
 	setDictionarySyncMeta,
 } from './dictionarySyncMeta';
 import {
 	CONFIG_SYNC_META_KEY,
 	defaultConfigSyncMeta,
+	flushConfigSyncMetaWrites,
 	getConfigSyncMeta,
 	setConfigSyncMeta,
 } from './syncMeta';
@@ -145,6 +147,13 @@ describe('WebDAVSyncManager', () => {
 	const clientsByPath = new Map<string, MockClient>();
 
 	beforeEach(async () => {
+		// Drain writers from a previous test before clearing storage, then drain
+		// again so a late write cannot repopulate cleared keys.
+		await flushConfigSyncMetaWrites();
+		await flushDictionarySyncMetaWrites();
+		await clearAllMocks();
+		await flushConfigSyncMetaWrites();
+		await flushDictionarySyncMetaWrites();
 		await clearAllMocks();
 		ensureAlarmsMock();
 		translationsStore.closeDB();
@@ -176,7 +185,11 @@ describe('WebDAVSyncManager', () => {
 		});
 	});
 
-	afterEach(() => {
+	afterEach(async () => {
+		// Drain any fire-and-forget reconcile/meta work before the next test
+		// mutates shared browser.storage (delayed mock can reorder otherwise).
+		await flushConfigSyncMetaWrites();
+		await flushDictionarySyncMetaWrites();
 		vi.restoreAllMocks();
 		translationsStore.closeDB();
 	});
@@ -480,8 +493,11 @@ describe('WebDAVSyncManager', () => {
 
 		expect(mockClient.put).not.toHaveBeenCalled();
 		const meta = await getConfigSyncMeta();
+		// lastError must be a string (null would surface as "got object" with toMatch)
+		expect(meta.lastError).toEqual(expect.any(String));
 		expect(meta.lastError).toMatch(/validation|incompatible|failed/i);
 		expect(meta.recovery).toBe('forcePushInvalidRemote');
+		expect(meta.lastRemoteEtag).toBe('"bad"');
 	});
 
 	test('forcePushRemote overwrites invalid remote with local envelope', async () => {

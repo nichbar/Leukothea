@@ -72,20 +72,40 @@ export const getDictionarySyncMeta = async (): Promise<DictionarySyncMeta> => {
 	return decoded.data;
 };
 
+/**
+ * Serialize read-modify-write updates (same race as configSyncMeta under delayed
+ * storage mocks / overlapping reconcile writers).
+ */
+let dictionarySyncMetaWriteChain: Promise<unknown> = Promise.resolve();
+
 export const setDictionarySyncMeta = async (
 	meta: DictionarySyncMeta | Partial<DictionarySyncMeta>,
 ): Promise<DictionarySyncMeta> => {
-	const current = await getDictionarySyncMeta();
-	const next: DictionarySyncMeta = {
-		...current,
-		...meta,
+	const run = async (): Promise<DictionarySyncMeta> => {
+		const current = await getDictionarySyncMeta();
+		const next: DictionarySyncMeta = {
+			...current,
+			...meta,
+		};
+		await browser.storage.local.set({ [DICTIONARY_SYNC_META_KEY]: next });
+		return next;
 	};
-	await browser.storage.local.set({ [DICTIONARY_SYNC_META_KEY]: next });
-	return next;
+
+	const result = dictionarySyncMetaWriteChain.then(run, run);
+	dictionarySyncMetaWriteChain = result.then(
+		() => undefined,
+		() => undefined,
+	);
+	return result;
 };
 
 export const bumpDictionaryLocalWriteAt = async (
 	at: number = Date.now(),
 ): Promise<DictionarySyncMeta> => {
 	return setDictionarySyncMeta({ lastLocalWriteAt: at });
+};
+
+/** Wait for queued meta writers (tests: drain before/after storage clear). */
+export const flushDictionarySyncMetaWrites = async (): Promise<void> => {
+	await dictionarySyncMetaWriteChain;
 };

@@ -316,7 +316,9 @@ export class WebDAVSyncManager {
 		await bumpLocalWriteAt(Date.now());
 		// MV3 backstop: alarm survives SW sleep. Also reconcile immediately while awake.
 		await this.schedulePushAlarm();
-		void this.reconcile('localWrite');
+		// Await so callers (and tests) that await onLocalConfigWrite drain the cycle.
+		// Watch handlers still fire-and-forget via `void this.onLocalConfigWrite()`.
+		await this.reconcile('localWrite');
 	}
 
 	/**
@@ -334,7 +336,7 @@ export class WebDAVSyncManager {
 
 		await bumpDictionaryLocalWriteAt(Date.now());
 		await this.schedulePushAlarm();
-		void this.reconcile('localWrite');
+		await this.reconcile('localWrite');
 	}
 
 	private clientForPath(
@@ -524,11 +526,6 @@ export class WebDAVSyncManager {
 			return;
 		}
 
-		// Remember etag from successful GET for conditional update
-		if (getResult.etag != null) {
-			meta = await setConfigSyncMeta({ lastRemoteEtag: getResult.etag });
-		}
-
 		const parsed = parseEnvelope(getResult.bodyText);
 
 		// Unreadable / invalid envelope — never auto-push; offer manual force push
@@ -549,15 +546,22 @@ export class WebDAVSyncManager {
 					? `Remote config was written by a newer extension (${remoteExt ?? 'unknown'}); upgrade this install to sync. Also: ${parsed.error}`
 					: parsed.error;
 
+			// Single meta write: avoid racing a prior lastRemoteEtag-only update
 			await setConfigSyncMeta({
 				lastError: message,
 				lastDirection: 'none',
 				recovery: 'forcePushInvalidRemote',
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 				...(remoteUpdatedAt != null
 					? { lastRemoteUpdatedAt: remoteUpdatedAt }
 					: {}),
 			});
 			return;
+		}
+
+		// Remember etag from successful GET for conditional update
+		if (getResult.etag != null) {
+			meta = await setConfigSyncMeta({ lastRemoteEtag: getResult.etag });
 		}
 
 		const remote = parsed.envelope;
@@ -931,10 +935,6 @@ export class WebDAVSyncManager {
 			return;
 		}
 
-		if (getResult.etag != null) {
-			meta = await setDictionarySyncMeta({ lastRemoteEtag: getResult.etag });
-		}
-
 		const parsed = parseDictionaryEnvelope(getResult.bodyText);
 
 		if (!parsed.ok) {
@@ -958,11 +958,16 @@ export class WebDAVSyncManager {
 				lastError: message,
 				lastDirection: 'none',
 				recovery: 'forcePushInvalidRemote',
+				...(getResult.etag != null ? { lastRemoteEtag: getResult.etag } : {}),
 				...(remoteUpdatedAt != null
 					? { lastRemoteUpdatedAt: remoteUpdatedAt }
 					: {}),
 			});
 			return;
+		}
+
+		if (getResult.etag != null) {
+			meta = await setDictionarySyncMeta({ lastRemoteEtag: getResult.etag });
 		}
 
 		const remote = parsed.envelope;
