@@ -1,98 +1,40 @@
 .TextTranslator {
 	box-sizing: border-box;
-	font-family: var(--textarea-font-family);
+	font-family: var(--typography-font-family);
+	padding: var(--typography-layout-indent-s-all);
 }
 
-.TextTranslator > *:not(:last-child) {
-	margin-block-end: var(--typography-layout-indent-m-all);
-}
-
-/* LangPanel */
-.TextTranslator-LangPanel {
-	min-width: max-content;
-}
-
-/* InputContainer */
-.TextTranslator-InputContainer {
-	width: min-content;
-	min-width: 100%;
-	max-width: 100%;
-}
-
-.TextTranslator-InputContainerWrapper {
-	box-sizing: border-box;
-}
-
-.TextTranslator-InputContainerWrapper > *:not(:last-child) {
-	margin-block-end: var(--typography-layout-indent-m-all);
-}
-
-/* Input */
-.TextTranslator-Input {
-	width: 100%;
-}
-
-.TextTranslator-Input .Textarea-Wrap {
-	display: flex;
-	height: 150px;
-	flex-direction: column;
-}
-
-.TextTranslator-Input .Textarea-Control {
-	min-height: initial;
-	max-height: initial;
-}
-
-.TextTranslator-Input .TextTranslator-TextActions {
-	z-index: 2;
-}
-
-.TextTranslator-TextActions > :not(:last-child) {
-	margin-right: var(--typography-layout-indent-s-all);
-}
-
-/* Result */
-.TextTranslator-ResultContainer {
+.TextTranslator-Hub {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--textarea-view-default-fill-color-disabled);
-	color: var(--textarea-view-default-typo-color-base);
-	border-radius: var(--textarea-border-radius);
-	max-height: 200px;
-	font-family: var(--textarea-font-family);
+	gap: var(--typography-layout-indent-m-all);
+	min-width: 16rem;
 }
 
-.TextTranslator-ResultText {
-	min-height: 130px;
-	overflow: auto;
-	padding: var(--textarea-size-m-control-indent);
-	white-space: pre-line;
-	box-sizing: border-box;
-	/* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
-	word-break: break-word;
+.TextTranslator-HubLink {
+	justify-content: flex-start;
+	text-align: left;
+	height: auto;
+	min-height: 2.5rem;
+	padding-block: var(--typography-layout-indent-m-all);
 }
 
-.TextTranslator-Footer {
+.TextTranslator-HubLinkBody {
 	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	flex-wrap: wrap;
-	gap: var(--typography-layout-indent-s-all);
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.15rem;
 	min-width: 0;
-	padding: 0 var(--textarea-size-m-control-indent) var(--textarea-size-m-control-indent);
-	padding-top: var(--typography-layout-indent-xs-all, 0.1rem);
-	box-sizing: border-box;
 }
 
-.TextTranslator-Provider {
+.TextTranslator-HubLinkTitle {
+	font-weight: 600;
+}
+
+.TextTranslator-HubLinkDescription {
 	color: var(--color-typo-secondary);
 	font-size: 0.85em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 100%;
-}
-
-.TextTranslator-LanguageSuggestion > *:not(:last-child) {
-	margin-inline-end: 0.3em;
+	/* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
+	word-break: break-word;
+	white-space: normal;
 }
