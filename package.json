@@ -1,6 +1,6 @@
 {
 	"name": "browser-addon",
-	"version": "7.0.20",
+	"version": "7.0.21",
 	"description": "Browser addon for selection and text translation with a configurable LLM backend",
 	"license": "GPL-3.0",
 	"author": "Vitonsky <https://github.com/vitonsky>",
