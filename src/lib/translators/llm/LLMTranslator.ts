@@ -24,7 +24,7 @@ export const DEFAULT_LLM_API_URL = 'https://opencode.ai/zen/v1/chat/completions'
 export const DEFAULT_LLM_API_KEY = 'public';
 export const DEFAULT_LLM_MODEL = 'big-pickle';
 export const DEFAULT_LLM_PROMPT =
-	'You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.';
+	'You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".\n\nWhen the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.\n\nWhen the input is a single word, that explain this word like a dictory.';
 
 /**
  * Built-in translator that talks to any OpenAI-compatible chat completions endpoint.

@@ -569,6 +569,40 @@ const migrations: Migration[] = [
 			await browser.storage.local.set({ [storageName]: updatedConfig });
 		},
 	},
+	{
+		// Update default LLM prompt
+		version: 22,
+		async migrate() {
+			const storageName = 'appConfig';
+
+			let { [storageName]: actualData } =
+				await browser.storage.local.get(storageName);
+			if (typeof actualData !== 'object' || actualData === null) {
+				actualData = {};
+			}
+
+			const previousDefaultPrompt =
+				'You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.';
+
+			const llmTranslator = {
+				...(actualData?.llmTranslator ?? {}),
+			};
+
+			const prompt =
+				typeof llmTranslator.prompt === 'string' ? llmTranslator.prompt : '';
+
+			if (prompt.trim() === '' || prompt.trim() === previousDefaultPrompt.trim()) {
+				llmTranslator.prompt = DEFAULT_LLM_PROMPT;
+			}
+
+			const updatedConfig = {
+				...actualData,
+				llmTranslator,
+			};
+
+			await browser.storage.local.set({ [storageName]: updatedConfig });
+		},
+	},
 ];
 
 export const ConfigStorageMigration = createMigrationTask(migrations, {

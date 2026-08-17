@@ -15,7 +15,11 @@ exports[`config migrations > migrate config v0 to latest version 1`] = `
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,
@@ -79,7 +83,11 @@ exports[`config migrations > race condition detection > Detection race condition
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,
@@ -143,7 +151,11 @@ exports[`config migrations > race condition detection > Detection race condition
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,
@@ -207,7 +219,11 @@ exports[`config migrations > race condition detection > Detection race condition
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,
@@ -271,7 +287,11 @@ exports[`config migrations > race condition detection > Detection race condition
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,
@@ -335,7 +355,11 @@ exports[`config migrations > race condition detection > Detection race condition
     "apiUrl": "https://opencode.ai/zen/v1/chat/completions",
     "includePageTitle": false,
     "model": "big-pickle",
-    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}". Return ONLY the direct translation without quotes, explanations, or introductory text.",
+    "prompt": "You are a precise translator. Translate the given text from language code "{from}" to language code "{to}".
+
+When the input is more than one word. Return ONLY the direct translation without quotes, explanations, or introductory text.
+
+When the input is a single word, that explain this word like a dictory.",
   },
   "popup": {
     "rememberLastTab": true,

@@ -1,6 +1,7 @@
 childs
 Contentscript
 Customizer
+dictory
 IDBP
 indexeddb
 Inited
