@@ -150,12 +150,38 @@ export class SelectTranslator {
 		this.suppressOutsidePointerClose = suppress;
 	};
 
+	/**
+	 * Active selection session token used to discard stale async resolution
+	 * (e.g. language detection delay after the user has already deselected text).
+	 */
+	private sessionToken: symbol | null = null;
+
 	// Flag which set while every selection event and reset while button shown
 	private unhandledSelection = false;
 	private selectionTarget: HTMLElement | null = null;
 	private readonly selectionFlagUpdater = (evt: Event) => {
 		this.unhandledSelection = true;
 		this.selectionTarget = evt.target instanceof HTMLElement ? evt.target : null;
+
+		// If the floating button is currently showing (not yet open translation card)
+		// and selection collapses/clears (e.g. via keyboard Arrow/Esc or programmatic clear),
+		// dismiss the button and invalidate pending session immediately.
+		if (!this.suppressOutsidePointerClose && this.sessionToken !== null) {
+			const selection = window.getSelection();
+			const isCollapsed =
+				selection === null ||
+				selection.isCollapsed ||
+				selection.toString().trim().length === 0;
+			const isInputActive =
+				(this.selectionTarget instanceof HTMLInputElement ||
+					this.selectionTarget instanceof HTMLTextAreaElement) &&
+				document.activeElement === this.selectionTarget &&
+				getSelectedTextOfInput(this.selectionTarget).trim().length > 0;
+
+			if (isCollapsed && !isInputActive) {
+				this.hidePopup();
+			}
+		}
 	};
 
 	private readonly shadowRoot = new ShadowDOMContainerManager({
@@ -191,6 +217,9 @@ export class SelectTranslator {
 			throw new Error('Not started');
 		}
 
+		this.sessionToken = null;
+		this.suppressOutsidePointerClose = false;
+
 		// Remove event listeners
 		root.removeEventListener('keydown', this.keyDown);
 		document.removeEventListener('selectionchange', this.selectionFlagUpdater);
@@ -213,7 +242,12 @@ export class SelectTranslator {
 	public translateSelectedText = () => {
 		this.hidePopup();
 
-		this.getSelectedText().then((selection) => {
+		const sessionToken = Symbol('selection-session');
+		this.sessionToken = sessionToken;
+
+		this.getSelectedText(sessionToken).then((selection) => {
+			if (this.sessionToken !== sessionToken) return;
+
 			let text: string | null = null;
 			let selectedSelection: Selection | null = null;
 
@@ -226,7 +260,10 @@ export class SelectTranslator {
 				(this.selectionTarget instanceof HTMLTextAreaElement ||
 					this.selectionTarget instanceof HTMLInputElement)
 			) {
-				text = getSelectedTextOfInput(this.selectionTarget);
+				const inputText = getSelectedTextOfInput(this.selectionTarget);
+				if (inputText.length > 0) {
+					text = inputText;
+				}
 			}
 
 			if (text !== null) {
@@ -236,12 +273,13 @@ export class SelectTranslator {
 						selection: selectedSelection,
 						fallbackElement: this.selectionTarget,
 					}),
+					sessionToken,
 				);
 			}
 		});
 	};
 
-	private readonly getSelectedText = () =>
+	private readonly getSelectedText = (sessionToken?: symbol) =>
 		new Promise<{ selection: Selection; text: string } | null>((res) => {
 			const root = this.shadowRoot.getRootNode();
 
@@ -251,6 +289,10 @@ export class SelectTranslator {
 			// Get selected text in next frame
 			requestAnimationFrame(() => {
 				if (context !== this.context) {
+					res(null);
+					return;
+				}
+				if (sessionToken && this.sessionToken !== sessionToken) {
 					res(null);
 					return;
 				}
@@ -356,7 +398,12 @@ export class SelectTranslator {
 		// Skip events inside root node (icon / card clicks)
 		if (root === null || this.isEventInsideRoot(evt)) return;
 
-		this.getSelectedText().then((selectedTextObj) => {
+		const sessionToken = Symbol('selection-session');
+		this.sessionToken = sessionToken;
+
+		this.getSelectedText(sessionToken).then((selectedTextObj) => {
+			if (this.sessionToken !== sessionToken) return;
+
 			let text: string | null = null;
 			let selectedSelection: Selection | null = null;
 
@@ -378,10 +425,15 @@ export class SelectTranslator {
 			} else if (
 				this.selectionTarget !== null &&
 				(this.selectionTarget instanceof HTMLTextAreaElement ||
-					this.selectionTarget instanceof HTMLInputElement)
+					this.selectionTarget instanceof HTMLInputElement) &&
+				(target === this.selectionTarget ||
+					document.activeElement === this.selectionTarget)
 			) {
 				// Use selected text in input
-				text = getSelectedTextOfInput(this.selectionTarget);
+				const inputText = getSelectedTextOfInput(this.selectionTarget);
+				if (inputText.length > 0) {
+					text = inputText;
+				}
 			}
 
 			if (text !== null) {
@@ -392,9 +444,41 @@ export class SelectTranslator {
 						fallbackElement: this.selectionTarget,
 						pointer: { x: pageX, y: pageY },
 					}),
+					sessionToken,
 				);
 			}
 		});
+	};
+
+	/**
+	 * Verify that expected text is still actively selected in the DOM or target input.
+	 */
+	private readonly isSelectionStillActive = (expectedText: string): boolean => {
+		const trimmedExpected = expectedText.trim();
+		if (trimmedExpected.length === 0) return false;
+
+		const selection = window.getSelection();
+		if (
+			selection !== null &&
+			!selection.isCollapsed &&
+			selection.toString().trim() === trimmedExpected
+		) {
+			return true;
+		}
+
+		if (
+			this.selectionTarget instanceof HTMLInputElement ||
+			this.selectionTarget instanceof HTMLTextAreaElement
+		) {
+			if (document.activeElement === this.selectionTarget) {
+				return (
+					getSelectedTextOfInput(this.selectionTarget).trim() ===
+					trimmedExpected
+				);
+			}
+		}
+
+		return false;
 	};
 
 	/**
@@ -416,10 +500,17 @@ export class SelectTranslator {
 			pointer,
 		});
 
-	private readonly showPopup = async (text: string, anchorRect: AnchorRect) => {
+	private readonly showPopup = async (
+		text: string,
+		anchorRect: AnchorRect,
+		sessionToken?: symbol,
+	) => {
 		const trimmedText = text.trim();
 
 		if (trimmedText.length === 0) return;
+
+		// Discard if session was invalidated before showPopup starts
+		if (sessionToken && this.sessionToken !== sessionToken) return;
 
 		const pageTitle = (typeof document !== 'undefined' ? document.title : '').trim();
 
@@ -456,6 +547,9 @@ export class SelectTranslator {
 					detectLanguage(trimmedText, false),
 				]);
 
+				// Discard if session was invalidated (e.g. user clicked away) during await
+				if (sessionToken && this.sessionToken !== sessionToken) return;
+
 				const normalizeLang = (lang: string) => lang.toLowerCase().split('-')[0];
 				if (
 					detectedLanguage !== null &&
@@ -471,6 +565,10 @@ export class SelectTranslator {
 				);
 			}
 		}
+
+		// Discard if session was invalidated or selection is no longer active
+		if (sessionToken && this.sessionToken !== sessionToken) return;
+		if (!immediateTranslate && !this.isSelectionStillActive(trimmedText)) return;
 
 		// Quick-translate opens the card immediately — suppress document
 		// pointerdown hide for the whole session until the popup is closed.
@@ -516,6 +614,7 @@ export class SelectTranslator {
 	};
 
 	private readonly hidePopup = () => {
+		this.sessionToken = null;
 		this.suppressOutsidePointerClose = false;
 		this.mountEmptyComponent();
 	};
