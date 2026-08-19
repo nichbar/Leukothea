@@ -328,7 +328,7 @@
 		"message": "API URL"
 	},
 	"settings_option_llmTranslator_apiUrl_desc": {
-		"message": "Full chat completions endpoint URL (for example OpenAI, DeepSeek, Ollama, or a local proxy)"
+		"message": "OpenAI-compatible chat completions endpoint URL (for example OpenAI, DeepSeek, Ollama, or a local proxy). Supports base URLs (e.g. ending in /v1) or full endpoint URLs — /chat/completions is appended automatically if omitted"
 	},
 	"settings_option_llmTranslator_desc": {
 		"message": "Configure the OpenAI-compatible chat completions endpoint for the built-in LLM translator"

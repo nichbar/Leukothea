@@ -1,4 +1,39 @@
 /**
+ * Derive an OpenAI-compatible POST /chat/completions URL from a user-provided apiUrl.
+ * If the URL already ends with /chat/completions, it is returned (normalized).
+ * If the URL ends with /v1 (or root / other prefix), /chat/completions is appended.
+ * If the URL ends with /completions or /models, it is replaced with /chat/completions.
+ * Returns the original string if it cannot be parsed as a valid URL.
+ */
+export const deriveChatCompletionsUrl = (apiUrl: string): string => {
+	const trimmed = apiUrl.trim();
+	if (!trimmed) return apiUrl;
+
+	let url: URL;
+	try {
+		url = new URL(trimmed);
+	} catch {
+		return apiUrl;
+	}
+
+	const pathname = url.pathname.replace(/\/+$/, '') || '/';
+	const lowerPath = pathname.toLowerCase();
+
+	if (lowerPath.endsWith('/chat/completions')) {
+		url.pathname = pathname;
+	} else if (lowerPath.endsWith('/completions')) {
+		url.pathname = pathname.slice(0, -'/completions'.length) + '/chat/completions';
+	} else if (lowerPath.endsWith('/models')) {
+		url.pathname = pathname.slice(0, -'/models'.length) + '/chat/completions';
+	} else {
+		url.pathname =
+			pathname === '/' ? '/chat/completions' : `${pathname}/chat/completions`;
+	}
+
+	return url.toString();
+};
+
+/**
  * Derive an OpenAI-compatible GET /models URL from a chat-completions apiUrl.
  * Returns null when the input cannot be parsed as a valid URL.
  */

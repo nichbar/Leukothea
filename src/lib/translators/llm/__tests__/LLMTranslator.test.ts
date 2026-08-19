@@ -43,4 +43,35 @@ describe('LLMTranslator', () => {
 
 		expect(prompt).toBe('Translate en->fr on My Page');
 	});
+
+	it('automatically appends /chat/completions when apiUrl ends with /v1', async () => {
+		const fetchMock = vi.fn().mockResolvedValue({
+			ok: true,
+			json: async () => ({
+				choices: [{ message: { content: 'Hola mundo' } }],
+			}),
+		});
+		vi.stubGlobal('fetch', fetchMock);
+
+		const translator = new LLMTranslator({
+			apiUrl: 'https://api.openai.com/v1',
+			apiKey: 'test-key',
+			model: 'gpt-4o',
+		});
+
+		const result = await translator.translate('Hello world', 'en', 'es');
+		expect(result).toBe('Hola mundo');
+		expect(fetchMock).toHaveBeenCalledWith(
+			'https://api.openai.com/v1/chat/completions',
+			expect.objectContaining({
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer test-key',
+				},
+			}),
+		);
+
+		vi.unstubAllGlobals();
+	});
 });

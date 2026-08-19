@@ -2,6 +2,8 @@ import { getLanguageCodesISO639 } from 'anylang/languages';
 
 import { getMessage } from '../../language';
 
+import { deriveChatCompletionsUrl } from './llmModels';
+
 export type LLMTranslatorOptions = {
 	apiKey?: string;
 	apiUrl?: string;
@@ -44,7 +46,7 @@ export class LLMTranslator {
 
 	constructor(options: LLMTranslatorOptions = {}) {
 		this.apiKey = options.apiKey ?? DEFAULT_LLM_API_KEY;
-		this.apiUrl = options.apiUrl || DEFAULT_LLM_API_URL;
+		this.apiUrl = deriveChatCompletionsUrl(options.apiUrl || DEFAULT_LLM_API_URL);
 		this.model = options.model || DEFAULT_LLM_MODEL;
 		this.prompt = options.prompt?.trim() || DEFAULT_LLM_PROMPT;
 	}

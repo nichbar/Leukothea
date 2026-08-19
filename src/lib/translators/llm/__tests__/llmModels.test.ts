@@ -1,4 +1,77 @@
-import { deriveModelsUrl, parseOpenAIModelsResponse } from '../llmModels';
+import {
+	deriveChatCompletionsUrl,
+	deriveModelsUrl,
+	parseOpenAIModelsResponse,
+} from '../llmModels';
+
+describe('deriveChatCompletionsUrl', () => {
+	it('keeps full /chat/completions URL', () => {
+		expect(
+			deriveChatCompletionsUrl('https://api.openai.com/v1/chat/completions'),
+		).toBe('https://api.openai.com/v1/chat/completions');
+	});
+
+	it('normalizes trailing slash on chat/completions', () => {
+		expect(
+			deriveChatCompletionsUrl('https://api.openai.com/v1/chat/completions/'),
+		).toBe('https://api.openai.com/v1/chat/completions');
+	});
+
+	it('appends /chat/completions when URL ends with /v1', () => {
+		expect(deriveChatCompletionsUrl('https://api.openai.com/v1')).toBe(
+			'https://api.openai.com/v1/chat/completions',
+		);
+	});
+
+	it('appends /chat/completions when URL ends with /v1/', () => {
+		expect(deriveChatCompletionsUrl('https://api.openai.com/v1/')).toBe(
+			'https://api.openai.com/v1/chat/completions',
+		);
+	});
+
+	it('appends /chat/completions for local endpoints ending with /v1', () => {
+		expect(deriveChatCompletionsUrl('http://localhost:11434/v1')).toBe(
+			'http://localhost:11434/v1/chat/completions',
+		);
+	});
+
+	it('replaces /completions with /chat/completions', () => {
+		expect(deriveChatCompletionsUrl('https://proxy.example/v1/completions')).toBe(
+			'https://proxy.example/v1/chat/completions',
+		);
+	});
+
+	it('replaces /models with /chat/completions', () => {
+		expect(deriveChatCompletionsUrl('https://api.openai.com/v1/models')).toBe(
+			'https://api.openai.com/v1/chat/completions',
+		);
+	});
+
+	it('appends /chat/completions for root path', () => {
+		expect(deriveChatCompletionsUrl('https://api.deepseek.com')).toBe(
+			'https://api.deepseek.com/chat/completions',
+		);
+		expect(deriveChatCompletionsUrl('https://api.deepseek.com/')).toBe(
+			'https://api.deepseek.com/chat/completions',
+		);
+	});
+
+	it('preserves query parameters and hash', () => {
+		expect(
+			deriveChatCompletionsUrl(
+				'https://custom.openai.azure.com/openai/deployments/gpt-4o?api-version=2024-02-15-preview#tag',
+			),
+		).toBe(
+			'https://custom.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-15-preview#tag',
+		);
+	});
+
+	it('returns original string for empty or invalid input', () => {
+		expect(deriveChatCompletionsUrl('')).toBe('');
+		expect(deriveChatCompletionsUrl('   ')).toBe('   ');
+		expect(deriveChatCompletionsUrl('not-a-url')).toBe('not-a-url');
+	});
+});
 
 describe('deriveModelsUrl', () => {
 	it('replaces /chat/completions with /models', () => {
