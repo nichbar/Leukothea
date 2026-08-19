@@ -21,13 +21,12 @@ body {
 /* Header */
 .PopupWindow-Header {
 	display: flex;
-	background: var(--popup-window-header-fill-color);
-	line-height: 4rem;
-	padding: 0 var(--typography-layout-indent-l-all);
-}
-
-.PopupWindow-Header > *:not(:first-child) {
-	margin-left: var(--typography-layout-indent-l-all);
+	align-items: center;
+	gap: 0.55rem;
+	min-height: 2.75rem;
+	padding: 0.7rem 0.9rem 0.2rem;
+	background: transparent;
+	line-height: 1;
 }
 
 /* Logo */
@@ -38,12 +37,21 @@ body {
 .PopupWindow-Logo svg {
 	display: inline-block;
 	vertical-align: middle;
-	width: 1.75rem;
-	height: 1.75rem;
+	width: 1.5rem;
+	height: 1.5rem;
 
 	/* Pixel-art icon: keep hard edges when scaled */
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
+}
+
+.PopupWindow-Title {
+	margin: 0;
+	font-family: var(--typography-font-family);
+	font-size: 0.98rem;
+	font-weight: 650;
+	letter-spacing: -0.02em;
+	color: var(--color-typo-primary);
 }
 
 /* Tabs */
@@ -60,7 +68,7 @@ body {
 
 /* Content */
 .PopupWindow-Content {
-	padding: 0.5rem;
+	padding: 0.35rem 0.75rem 0.85rem;
 }
 
 /* ErrorMessage */

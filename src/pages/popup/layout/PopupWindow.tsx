@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useEffect, useMemo, useRef } from 'react';
 import { cn } from '@bem-react/classname';
 
 import { isMobileBrowser } from '../../../lib/browser';
+import { getMessage } from '../../../lib/language';
 import { XResizeObserver } from '../../../lib/XResizeObserver';
 import LogoElement from '../../../res/logo-icon.svg';
 
@@ -142,6 +143,9 @@ export const PopupWindow: FC<PopupWindowProps> = ({
 				<div className={cnPopupWindow('Logo')}>
 					<LogoElement />
 				</div>
+				<h1 className={cnPopupWindow('Title')}>
+					{getMessage('popup_hub_title')}
+				</h1>
 			</div>
 			<div style={contentStyle}>{content}</div>
 		</div>

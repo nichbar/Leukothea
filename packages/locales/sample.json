@@ -245,6 +245,21 @@
 	"pageTranslator_translationReport_resolve": {
 		"message": "Translated"
 	},
+	"popup_hub_dictionary_description": {
+		"message": "Saved translations you can find later"
+	},
+	"popup_hub_history_description": {
+		"message": "Browse and search recent translations"
+	},
+	"popup_hub_settings_description": {
+		"message": "Translator, languages, theme, and shortcuts"
+	},
+	"popup_hub_subtitle": {
+		"message": "Select text on a page to translate"
+	},
+	"popup_hub_title": {
+		"message": "Leukothea"
+	},
 	"popup_tabIdNotFound": {
 		"message": "Tab \"$1\" is not found"
 	},

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { cn } from '@bem-react/classname';
 
-import { Button } from '../../../../components/primitives/Button/Button.bundle/desktop';
 import { Icon } from '../../../../components/primitives/Icon/Icon.bundle/desktop';
 import { getMessage } from '../../../../lib/language';
 
@@ -17,7 +16,7 @@ type HubLink = {
 	id: string;
 	url: string;
 	title: string;
-	description?: string;
+	description: string;
 	icon: (className: string) => React.ReactElement;
 };
 
@@ -26,12 +25,7 @@ const HistoryIcon = (className: string) => (
 );
 
 const DictionaryIcon = (className: string) => (
-	<Icon
-		glyph="dictionary"
-		scalable={false}
-		style={{ transform: 'scale(1.5)' }}
-		className={className}
-	/>
+	<Icon glyph="dictionary" scalable={false} className={className} />
 );
 
 const SettingsIcon = (className: string) => (
@@ -48,53 +42,57 @@ export const TextTranslator: FC<TextTranslatorProps> = ({ isMobile }) => {
 			id: 'settings',
 			url: '/pages/options/options.html',
 			title: getMessage('settings_pageTitle'),
+			description: getMessage('popup_hub_settings_description'),
 			icon: SettingsIcon,
 		},
 		{
 			id: 'history',
 			url: '/pages/history/history.html',
 			title: getMessage('history_pageTitle'),
+			description: getMessage('popup_hub_history_description'),
 			icon: HistoryIcon,
 		},
 		{
 			id: 'dictionary',
 			url: '/pages/dictionary/dictionary.html',
 			title: getMessage('dictionary_pageTitle'),
-			description: getMessage('dictionary_description'),
+			description: getMessage('popup_hub_dictionary_description'),
 			icon: DictionaryIcon,
 		},
 	];
 
 	return (
 		<div className={cnTextTranslator({ view: isMobile ? 'mobile' : undefined })}>
+			<p className={cnTextTranslator('Subtitle')}>
+				{getMessage('popup_hub_subtitle')}
+			</p>
 			<nav
 				className={cnTextTranslator('Hub')}
 				aria-label={getMessage('popup_tab_translateText')}
 			>
 				{links.map(({ id, url, title, description, icon }) => (
-					<Button
+					<a
 						key={id}
-						as="a"
-						type="link"
-						url={url}
+						href={url}
 						target="_blank"
-						view="default"
-						size="m"
-						width="max"
+						rel="noopener noreferrer"
 						className={cnTextTranslator('HubLink')}
-						iconLeft={icon}
 					>
+						<span
+							className={cnTextTranslator('HubLinkIcon', { id })}
+							aria-hidden
+						>
+							{icon(cnTextTranslator('HubLinkGlyph'))}
+						</span>
 						<span className={cnTextTranslator('HubLinkBody')}>
 							<span className={cnTextTranslator('HubLinkTitle')}>
 								{title}
 							</span>
-							{description ? (
-								<span className={cnTextTranslator('HubLinkDescription')}>
-									{description}
-								</span>
-							) : null}
+							<span className={cnTextTranslator('HubLinkDescription')}>
+								{description}
+							</span>
 						</span>
-					</Button>
+					</a>
 				))}
 			</nav>
 		</div>
